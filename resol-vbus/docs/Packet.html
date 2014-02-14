@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>resol-vbus Class: HeaderSet</title>
+	<title>resol-vbus Class: Packet</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -119,12 +119,12 @@
 					
 
 
-	<h1 class="page-title">Class: HeaderSet</h1>
+	<h1 class="page-title">Class: Packet</h1>
 <section>
 
 <header>
     <h2>
-    HeaderSet
+    Packet
     </h2>
     
 </header>
@@ -136,7 +136,7 @@
     
         
 <dt>
-    <h4 class="name" id="HeaderSet"><span class="type-signature"></span>new HeaderSet<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Packet"><span class="type-signature"></span>new Packet<span class="signature">(options)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -144,7 +144,7 @@
     
     
     <div class="description">
-        Creates a new header set instance and optionally initializes its members with the given values.
+        Creates a new Packet instance and optionally initializes its members with the given values.
     </div>
     
 
@@ -220,13 +220,13 @@
 
         <tr>
             
-                <td class="name"><code>timestamp</code></td>
+                <td class="name"><code>command</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Date</span>
+<span class="param-type">number</span>
 
 
             
@@ -236,20 +236,20 @@
 
             
 
-            <td class="description last"><a href="HeaderSet.html#timestamp">HeaderSet#timestamp</a></td>
+            <td class="description last"><a href="Packet.html#command">Packet#command</a></td>
         </tr>
 
 	
 
         <tr>
             
-                <td class="name"><code>headers</code></td>
+                <td class="name"><code>frameCount</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Header[]</span>
+<span class="param-type">number</span>
 
 
             
@@ -259,7 +259,30 @@
 
             
 
-            <td class="description last">Array of Headers to add to this instance</td>
+            <td class="description last"><a href="Packet.html#frameCount">Packet#frameCount</a></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>frameData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Buffer</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><a href="Packet.html#frameData">Packet#frameData</a></td>
         </tr>
 
 	
@@ -298,12 +321,19 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="header-set.js.html">header-set.js</a>
+        <a href="packet.js.html">packet.js</a>
     </li></ul></dd>
     
 
     
 
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>Header#constructor</li>
+        </ul>
+    </dd>
     
 
     
@@ -330,7 +360,7 @@
         <h3 class="subsection-title">Extends</h3>
 
         <ul>
-            <li>EventEmitter</li>
+            <li><a href="Header.html">Header</a></li>
         </ul>
     
 
@@ -348,14 +378,14 @@
         <dl>
             
 <dt>
-    <h4 class="name" id="headerList"><span class="type-signature"></span>headerList<span class="type-signature"> :Header[]</span></h4>
+    <h4 class="name" id="channel"><span class="type-signature"></span>channel<span class="type-signature"> :number</span></h4>
     
     
 </dt>
 <dd>
     
     <div class="description">
-        Array of Header instances in this set.
+        VBus channel of this header
     </div>
     
     
@@ -364,7 +394,79 @@
         <ul>
             <li>
                 
-<span class="param-type">Header[]</span>
+<span class="param-type">number</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Header.html#channel">Header#channel</a>
+    </li></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>0</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="header.js.html">header.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="command"><span class="type-signature"></span>command<span class="type-signature"> :number</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The command field of this VBus packet. See the VBus Protocol specification for details.
+    </div>
+    
+    
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">number</span>
 
 
             </li>
@@ -394,7 +496,269 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="header-set.js.html">header-set.js</a>
+        <a href="packet.js.html">packet.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="destinationAddress"><span class="type-signature"></span>destinationAddress<span class="type-signature"> :number</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        VBus address of this header's destination
+    </div>
+    
+    
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">number</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Header.html#destinationAddress">Header#destinationAddress</a>
+    </li></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>0</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="header.js.html">header.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="frameCount"><span class="type-signature"></span>frameCount<span class="type-signature"> :number</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The number of frames of this VBus packet. Each frame can hold four bytes of payload.
+    </div>
+    
+    
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">number</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="packet.js.html">packet.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="frameData"><span class="type-signature"></span>frameData<span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The buffer containing the frame data of this VBus packet.
+    </div>
+    
+    
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="packet.js.html">packet.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="sourceAddress"><span class="type-signature"></span>sourceAddress<span class="type-signature"> :number</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        VBus address of this header's source
+    </div>
+    
+    
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">number</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Header.html#sourceAddress">Header#sourceAddress</a>
+    </li></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>0</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="header.js.html">header.js</a>
     </li></ul></dd>
     
 
@@ -419,7 +783,7 @@
 <dd>
     
     <div class="description">
-        Timestamp of the youngest Header instance added to this set.
+        Timestamp of this header
     </div>
     
     
@@ -444,7 +808,10 @@
     
 
     
-
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Header.html#timestamp">Header#timestamp</a>
+    </li></dd>
     
 
     
@@ -453,12 +820,17 @@
 
     
 
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>now</li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="header-set.js.html">header-set.js</a>
+        <a href="header.js.html">header.js</a>
     </li></ul></dd>
     
 
@@ -482,7 +854,7 @@
         <dl>
             
 <dt>
-    <h4 class="name" id="addHeader"><span class="type-signature"></span>addHeader<span class="signature">(header)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="compareTo"><span class="type-signature"></span>compareTo<span class="signature">(that)</span><span class="type-signature"> &rarr; {number}</span></h4>
     
     
 </dt>
@@ -490,7 +862,10 @@
     
     
     <div class="description">
-        Adds a Header instance to this set, replacing a previously added Header of same kind.
+        Compares this Header instance to another one.
+
+Sub-classes can extend the comparison to include specific
+information.
     </div>
     
 
@@ -524,7 +899,7 @@
 
         <tr>
             
-                <td class="name"><code>header</code></td>
+                <td class="name"><code>that</code></td>
             
 
             <td class="type">
@@ -540,7 +915,7 @@
 
             
 
-            <td class="description last">The Header instance to add to this set.</td>
+            <td class="description last">Another Header instance to compare to.</td>
         </tr>
 
 	
@@ -558,123 +933,10 @@
     
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="header-set.js.html">header-set.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="addHeaders"><span class="type-signature"></span>addHeaders<span class="signature">(headers)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Adds a list of Header instances to this set, replacing previously added Headers of same kind.
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>headers</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Header[]</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The list of Header instances to add.</td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Header.html#compareTo">Header#compareTo</a>
+    </li></dd>
     
 
     
@@ -690,76 +952,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="header-set.js.html">header-set.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="getHeaderCount"><span class="type-signature"></span>getHeaderCount<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Returns the count of Header instances currently stored in this set.
-    </div>
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="header-set.js.html">header-set.js</a>
+        <a href="header.js.html">header.js</a>
     </li></ul></dd>
     
 
@@ -784,7 +977,11 @@
     
             
 <div class="param-desc">
-    Number of Header instances in this set.
+    Returns a number
+
+  - less than 0 if `this < that`
+  - greater than 0 if `this > that`
+  - equal to to if `this == that`
 </div>
 
 
@@ -810,98 +1007,6 @@
         
             
 <dt>
-    <h4 class="name" id="getHeaders"><span class="type-signature"></span>getHeaders<span class="signature">()</span><span class="type-signature"> &rarr; {Header[]}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Returns an unsorted list of Header instances stored in this set.
-    </div>
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="header-set.js.html">header-set.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    List of headers stored in this set.
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">Header[]</span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
     <h4 class="name" id="getId"><span class="type-signature"></span>getId<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
     
     
@@ -910,7 +1015,16 @@
     
     
     <div class="description">
-        Returns an ID composed of the IDs of all headers stored in this set.
+        Returns a string identifier describing this Header instance.
+It contains at least:
+
+  - channel
+  - destination address
+  - source address
+  - protocol version
+
+Sub-classes can extend that information. The structure of this
+identifier is implementation specific, do not rely on it!
     </div>
     
 
@@ -929,6 +1043,11 @@
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Header.html#getId">Header#getId</a>
+    </li></dd>
+    
 
     
 
@@ -943,7 +1062,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="header-set.js.html">header-set.js</a>
+        <a href="header.js.html">header.js</a>
     </li></ul></dd>
     
 
@@ -968,7 +1087,7 @@
     
             
 <div class="param-desc">
-    ID of this HeaderSet.
+    Identifier
 </div>
 
 
@@ -994,7 +1113,7 @@
         
             
 <dt>
-    <h4 class="name" id="getIdHash"><span class="type-signature"></span>getIdHash<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+    <h4 class="name" id="getInfo"><span class="type-signature"></span>getInfo<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span></h4>
     
     
 </dt>
@@ -1002,7 +1121,9 @@
     
     
     <div class="description">
-        Returns an ID hash for this HeaderSet instance.
+        Returns an info number about this Header instance. It can be used
+for sorting purposes (to distinguish Header objects that would
+otherwise compare as equal).
     </div>
     
 
@@ -1021,6 +1142,11 @@
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Header.html#getInfo">Header#getInfo</a>
+    </li></dd>
+    
 
     
 
@@ -1035,7 +1161,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="header-set.js.html">header-set.js</a>
+        <a href="header.js.html">header.js</a>
     </li></ul></dd>
     
 
@@ -1060,7 +1186,7 @@
     
             
 <div class="param-desc">
-    ID hash for this HeaderSet
+    Info value
 </div>
 
 
@@ -1071,7 +1197,7 @@
 	</dt>
 	<dd>
 		
-<span class="param-type">string</span>
+<span class="param-type">number</span>
 
 
 	</dd>
@@ -1086,7 +1212,7 @@
         
             
 <dt>
-    <h4 class="name" id="getSortedHeaders"><span class="type-signature"></span>getSortedHeaders<span class="signature">()</span><span class="type-signature"> &rarr; {Header[]}</span></h4>
+    <h4 class="name" id="getProtocolVersion"><span class="type-signature">&lt;virtual> </span>getProtocolVersion<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span></h4>
     
     
 </dt>
@@ -1094,7 +1220,12 @@
     
     
     <div class="description">
-        Returns a sorted list of Header instances stored in this set.
+        Returns the protocol version of this Header instance as a 8-bit
+number. The high nibble is used for the major version, the low
+nibble for the minor version. For example: a header with protocol
+version 2.0 would return `0x20`.
+
+Must be implemented by sub-class.
     </div>
     
 
@@ -1113,6 +1244,11 @@
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Header.html#getProtocolVersion">Header#getProtocolVersion</a>
+    </li></dd>
+    
 
     
 
@@ -1127,7 +1263,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="header-set.js.html">header-set.js</a>
+        <a href="header.js.html">header.js</a>
     </li></ul></dd>
     
 
@@ -1152,7 +1288,7 @@
     
             
 <div class="param-desc">
-    List of headers stored in this set.
+    Protocol version
 </div>
 
 
@@ -1163,7 +1299,7 @@
 	</dt>
 	<dd>
 		
-<span class="param-type">Header[]</span>
+<span class="param-type">number</span>
 
 
 	</dd>
@@ -1178,7 +1314,7 @@
         
             
 <dt>
-    <h4 class="name" id="removeAllHeaders"><span class="type-signature"></span>removeAllHeaders<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="toLiveBuffer"><span class="type-signature">&lt;virtual> </span>toLiveBuffer<span class="signature">(<span class="optional">buffer</span>, <span class="optional">start</span>, <span class="optional">end</span>)</span><span class="type-signature"> &rarr; {Buffer}</span></h4>
     
     
 </dt>
@@ -1186,76 +1322,12 @@
     
     
     <div class="description">
-        Removes all Header instances from this set.
-    </div>
-    
+        Creates a representation of this Header instance that can be
+transmitted over a Connection. If no buffer is given as an
+arguments, it creates a new one that is big enough to hold
+the representation.
 
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="header-set.js.html">header-set.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="removeHeadersOlderThan"><span class="type-signature"></span>removeHeadersOlderThan<span class="signature">(timestamp)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Removes all Header instances from this set which are older than the given timestamp.
+Must be implemented by sub-class.
     </div>
     
 
@@ -1277,6 +1349,8 @@
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -1289,23 +1363,99 @@
 
         <tr>
             
-                <td class="name"><code>timestamp</code></td>
+                <td class="name"><code>buffer</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Date</span>
+<span class="param-type">Buffer</span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last">Timestamp to compare Header instances against.</td>
+            <td class="description last">Buffer object to store data in</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>start</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Start index in the buffer</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>end</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">End index in the buffer</td>
         </tr>
 
 	
@@ -1323,6 +1473,11 @@
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Header.html#toLiveBuffer">Header#toLiveBuffer</a>
+    </li></dd>
+    
 
     
 
@@ -1337,7 +1492,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="header-set.js.html">header-set.js</a>
+        <a href="header.js.html">header.js</a>
     </li></ul></dd>
     
 
@@ -1358,177 +1513,38 @@
     
     
     
+    <h5>Returns:</h5>
     
-    
-</dd>
-
-        </dl>
-    
-
-    
-
-    
-        <h3 class="subsection-title">Events</h3>
-
-        <dl>
             
-<dt>
-    <h4 class="name" id="event:addHeader">addHeader</h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        This event is fired whenever a Header instance is added to this set.
-    </div>
-    
-
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type"><a href="Header.html">Header</a></span>
+<div class="param-desc">
+    Buffer object containing the data
+</div>
 
 
-            </li>
-        </ul>
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
 
-    
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Buffer</span>
 
-    
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="header-set.js.html">header-set.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
+	</dd>
 </dl>
 
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
 
         
-            
-<dt>
-    <h4 class="name" id="event:removeHeader">removeHeader</h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        This event is fired whenever a Header is removed from this set.
-    </div>
-    
-
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type"><a href="Header.html">Header</a></span>
-
-
-            </li>
-        </ul>
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="header-set.js.html">header-set.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
     
     
 </dd>
 
         </dl>
+    
+
+    
+
     
 </article>
 

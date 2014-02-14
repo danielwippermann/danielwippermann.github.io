@@ -29,6 +29,10 @@
 					<ul class="dropdown-menu ">
 						
 						<li>
+							<a href="Connection.html">Connection</a>
+						</li>
+						
+						<li>
 							<a href="ConnectionCustomizer.html">ConnectionCustomizer</a>
 						</li>
 						
@@ -57,6 +61,10 @@
 						</li>
 						
 						<li>
+							<a href="Packet.html">Packet</a>
+						</li>
+						
+						<li>
 							<a href="Recorder.html">Recorder</a>
 						</li>
 						
@@ -65,7 +73,33 @@
 						</li>
 						
 						<li>
+							<a href="TcpConnection.html">TcpConnection</a>
+						</li>
+						
+						<li>
+							<a href="Telegram.html">Telegram</a>
+						</li>
+						
+						<li>
 							<a href="TextConverter.html">TextConverter</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="HeaderSet.html#event:addHeader">addHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSet.html#event:removeHeader">removeHeader</a>
 						</li>
 						
 
@@ -98,6 +132,7 @@ var _ = require('lodash');
 var Q = require('q');
 
 
+var Connection = require('./connection');
 var utils = require('./utils');
 
 var Customizer = require('./customizer');
@@ -293,8 +328,8 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
 
                                 Q.fcall(checkCanceled).then(function() {
                                     return _this.transceiveValue(valueInfo.valueIndex, valueInfo.value, {
-                                        tries: options.triesPerValue,
-                                        timeout: options.timeoutPerValue,
+                                        triesPerValue: options.triesPerValue,
+                                        timeoutPerValue: options.timeoutPerValue,
                                         action: options.action,
                                         actionOptions: options.actionOptions,
                                     }, state).progress(function(progress) {
@@ -373,7 +408,7 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
         var address = this.deviceAddress;
 
         return utils.cancelablePromise(function(resolve, reject, notify, checkCanceled) {
-            var timer;
+            var timer, onConnectionState;
 
             var done = function(err, result) {
                 if (timer) {
@@ -381,11 +416,41 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
                     timer = null;
                 }
 
+                if (onConnectionState) {
+                    connection.removeListener('connectionState', onConnectionState);
+                }
+
                 if (err) {
                     reject(err);
                 } else {
                     resolve(result);
                 }
+            };
+
+            var check = function(result) {
+                return Q.fcall(function() {
+                    return checkCanceled();
+                }).then(function() {
+                    return utils.promise(function(resolve, reject) {
+                        if (connection.connectionState === Connection.STATE_DISCONNECTED) {
+                            reject(new Error('Disconnected'));
+                        } else if (connection.connectionState !== Connection.STATE_CONNECTED) {
+                            onConnectionState = function(state) {
+                                if (state === Connection.STATE_DISCONNECTED) {
+                                    reject(new Error('Disconnected'));
+                                } else if (state === Connection.STATE_CONNECTED) {
+                                    connection.removeListener('connectionState', onConnectionState);
+
+                                    resolve();
+                                }
+                            };
+
+                            connection.on('connectionState', onConnectionState);
+                        } else {
+                            resolve();
+                        }
+                    });
+                });
             };
 
             var tries = 0;
@@ -401,7 +466,7 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
                 if (tries &lt; options.triesPerValue) {
                     tries++;
 
-                    Q.fcall(checkCanceled).then(function() {
+                    Q.fcall(check).then(function() {
                         if ((tries > 1) &amp;&amp; (state.masterLastContacted !== null)) {
                             reportProgress('RELEASING_BUS');
 
@@ -409,7 +474,7 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
 
                             return connection.releaseBus(state.masterAddress);
                         }
-                    }).then(checkCanceled).then(function() {
+                    }).then(check).then(function() {
                         if (state.masterLastContacted === null) {
                             reportProgress('WAITING_FOR_FREE_BUS');
 
@@ -421,7 +486,7 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
                                 }
                             });
                         }
-                    }).then(checkCanceled).then(function() {
+                    }).then(check).then(function() {
                         var contactMaster;
                         if (state.masterAddress === null) {
                             contactMaster = false;
@@ -444,7 +509,7 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
                                 tries: 1,
                             });
                         }
-                    }).then(checkCanceled).then(function() {
+                    }).then(check).then(function() {
                         if (state.masterAddress === address) {
                             state.masterLastContacted = Date.now();
                         }
@@ -508,7 +573,7 @@ module.exports = ConnectionCustomizer;
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
-		on Sun Feb 09 2014 10:18:36 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Fri Feb 14 2014 20:37:40 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>

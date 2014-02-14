@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>resol-vbus Source: utils.js</title>
+	<title>resol-vbus Source: telegram.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -119,7 +119,7 @@
 					
 
 
-		<h1 class="page-title">Source: utils.js</h1>
+		<h1 class="page-title">Source: telegram.js</h1>
     
     <section>
         <article>
@@ -128,120 +128,138 @@
 
 
 
-var Q = require('q');
+var _ = require('lodash');
+var sprintf = require('sprintf').sprintf;
+
+
+var Header = require('./header');
 
 
 
-var utils = {
+var optionKeys = [
+    'command',
+];
+
+
+
+var Telegram = Header.extend(/** @lends Telegram# */ {
 
     /**
-     * @see http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript
+     * The VBus command of this Telegram instance.
+     * @type {number}
      */
-    generateGUID: function() {
-        var s4 = function() {
-            return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-        };
+    command: 0,
 
-        var guid = [
-            s4(),
-            s4(),
-            '-',
-            s4(),
-            '-',
-            s4(),
-            '-',
-            s4(),
-            '-',
-            s4(),
-            s4(),
-            s4(),
-        ].join('');
+    frameData: null,
 
-        return guid;
+    /**
+     * Creates a new Telegram instance.
+     *
+     * @constructs
+     * @augments Header
+     * @param {object} options Initialization options.
+     */
+    constructor: function(options) {
+        Header.call(this, options);
+
+        _.extend(this, _.pick(options, optionKeys));
+
+        if (_.has(options, 'frameData') &amp;&amp; _.has(options, 'dontCopyFrameData') &amp;&amp; options.dontCopyFrameData) {
+            this.frameData = options.frameData;
+        } else {
+            this.frameData = new Buffer(3 * 7);
+            this.frameData.fill(0);
+
+            if (_.has(options, 'frameData')) {
+                var minLength = Math.min(this.frameData.length, options.frameData.length);
+                options.frameData.copy(this.frameData, 0, 0, minLength);
+            }
+        }
     },
 
-    promise: function(callback, thisArg) {
-        var deferred = Q.defer();
-        var promise = deferred.promise;
+    toLiveBuffer: function(origBuffer, start, end) {
+        var frameCount = this.getFrameCount();
+        var length = 8 + frameCount * 9;
 
-        var resolve = function(result) {
-            if (deferred) {
-                deferred.resolve(result);
-
-                deferred = null;
-            }
-        };
-
-        var reject = function(reason) {
-            if (deferred) {
-                deferred.reject(reason);
-
-                deferred = null;
-            }
-        };
-
-        var notify = function(value) {
-            if (deferred) {
-                deferred.notify(value);
-            }
-        };
-
-        try {
-            callback.call(thisArg, resolve, reject, notify);
-        } catch (ex) {
-            reject(ex);
+        var buffer;
+        if (origBuffer === undefined) {
+            buffer = new Buffer(length);
+        } else if (start + length &lt;= end) {
+            buffer = origBuffer.slice(start, start + length);
+        } else {
+            throw new Error('Buffer too small');
         }
 
-        return promise;
+        buffer [0] = 0xAA;
+        buffer.writeUInt16LE(this.destinationAddress &amp; 0x7F7F, 1);
+        buffer.writeUInt16LE(this.sourceAddress &amp; 0x7F7F, 3);
+        buffer [5] = 0x30;
+        buffer [6] = this.command &amp; 0x7F;
+        Telegram.calcAndSetChecksumV0(buffer, 1, 7);
+
+        for (var i = 0; i &lt; frameCount; i++) {
+            var srcStart = 7 * i;
+            var dstStart = 8 + 9 * i;
+            Telegram.extractSeptett(this.frameData, srcStart, srcStart + 7, buffer, dstStart);
+            Telegram.calcAndSetChecksumV0(buffer, dstStart, dstStart + 8);
+        }
+
+        return buffer;
     },
 
-    cancelablePromise: function(callback, thisArg) {
-        var cancelDeferred = Q.defer();
-        var cancelPromise = cancelDeferred.promise;
-        var isCanceled = false;
+    getProtocolVersion: function() {
+        return 0x30;
+    },
 
-        var cancel = function(reason) {
-            if (!isCanceled) {
-                cancelPromise.then(function(result) {
-                    result.cancel(reason);
-                });
+    getId: function() {
+        var baseId = Header.prototype.getId.call(this);
+        return sprintf('%s_%02X', baseId, this.command);
+    },
 
-                isCanceled = true;
-            }
-        };
+    compareTo: function(that) {
+        var result = Header.prototype.compareTo.apply(this, arguments);
+        if (result === 0) {
+            result = this.command - that.command;
+        }
+        return result;
+    },
 
-        var checkCanceled = function(result) {
-            if (!isCanceled) {
-                return result;
-            } else {
-                throw new Error('Canceled');
-            }
-        };
+    getFrameCount: function() {
+        return Telegram.getFrameCountForCommand(this.command);
+    },
 
-        var promise = utils.promise(function(resolve, reject, notify) {
-            if (cancelDeferred) {
-                cancelDeferred.resolve({ cancel: reject });
+}, /** @lends Telegram */ {
 
-                cancelDeferred = null;
-            }
+    fromLiveBuffer: function(buffer, start, end) {
+        var frameCount = this.getFrameCountForCommand(buffer [start + 6]);
 
-            return Q.fcall(function() {
-                return cancelPromise;
-            }).then(function() {
-                return callback.call(thisArg, resolve, reject, notify, checkCanceled);
-            });
+        var frameData = new Buffer(3 * 7);
+        frameData.fill(0);
+
+        for (var i = 0; i &lt; frameCount; i++) {
+            var srcStart = start + 8 + 9 * i;
+            var dstStart = 7 * i;
+            Telegram.injectSeptett(buffer, srcStart, srcStart + 7, frameData, dstStart);
+        }
+
+        return new Telegram({
+            destinationAddress: buffer.readUInt16LE(start + 1),
+            sourceAddress: buffer.readUInt16LE(start + 3),
+            command: buffer [start + 6],
+            frameData: frameData,
+            dontCopyFrameData: true
         });
-
-        promise.cancel = cancel;
-
-        return promise;
     },
 
-};
+    getFrameCountForCommand: function(command) {
+        return ((command >> 5) &amp; 0x03);
+    }
+
+});
 
 
 
-module.exports = utils;
+module.exports = Telegram;
 </pre>
         </article>
     </section>
