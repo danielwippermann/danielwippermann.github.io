@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>resol-vbus Source: extend.js</title>
+	<title>resol-vbus Source: serial-data-source.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -123,7 +123,7 @@
 					
 
 
-		<h1 class="page-title">Source: extend.js</h1>
+		<h1 class="page-title">Source: serial-data-source.js</h1>
     
     <section>
         <article>
@@ -132,68 +132,62 @@
 
 
 
-var util = require('util');
-
-
 var _ = require('lodash');
 
 
+var DataSource = require('./data-source');
 
-/**
- * A helper method for classical inheritance.
- *
- * @param {?function} parent Parent class constructor
- * @param {?object} protoProps Properties to be mixed-in the prototype of
- *                             the child class
- * @param {?object} staticProps Properties to be mixed-in the constructor
- *                              function of the child class
- * @returns {function} Child class constructor
- */
-var extend = function(parent, protoProps, staticProps) {
+var SerialConnection = require('./serial-connection');
 
-    var child;
-    if (protoProps &amp;&amp; _.has(protoProps, 'constructor')) {
-        child = protoProps.constructor;
-    } else if (parent) {
-        child = function() {
-            return parent.apply(this, arguments);
+
+
+var optionKeys = [
+    'path',
+];
+
+
+
+var SerialDataSource = DataSource.extend(/** @lends SerialDataSource# */ {
+
+    /**
+     * The path to the serial port.
+     */
+    path: null,
+
+    /**
+     * Creates a new SerialDataSource.
+     *
+     * @constructs
+     * @augments DataSource
+     */
+    constructor: function(options) {
+        DataSource.call(this, options);
+
+        _.extend(this, _.pick(options, optionKeys));
+    },
+
+    connectLive: function(options) {
+        var defaultOptions = {
+            path: this.path,
         };
-    } else {
-        child = function() {
-            // nop
-        };
+
+        options = _.extend(defaultOptions, options, {
+            provider: this.provider,
+            dataSource: this.id,
+        });
+
+        var connection = new SerialConnection(options);
+
+        return connection.connect().then(function() {
+            return connection;
+        });
     }
 
-    _.extend(child, parent, staticProps);
-
-    if (parent) {
-        var Surrogate = function() {
-            this.constructor = child;
-        };
-        Surrogate.prototype = parent.prototype;
-        child.prototype = new Surrogate();
-    }
-
-    if (protoProps) {
-        _.extend(child.prototype, protoProps);
-    }
-
-    if (parent) {
-        child.__super__ = parent.prototype;
-    }
-
-    if (!_.has(child, 'extend')) {
-        child.extend = function(protoProps, staticProps) {
-            return extend(this, protoProps, staticProps);
-        };
-    }
-
-    return child;
-};
+});
 
 
 
-module.exports = extend;
+module.exports = SerialDataSource;
 </pre>
         </article>
     </section>
