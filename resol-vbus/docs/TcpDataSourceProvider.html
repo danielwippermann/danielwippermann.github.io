@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>resol-vbus Source: customizer.js</title>
+	<title>resol-vbus Class: TcpDataSourceProvider</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -125,118 +125,220 @@
 	<div class="row-fluid">
 
 		
-			<div class="span12">
-				
+		<div class="span8">
+			
 				<div id="main">
 					
 
 
-		<h1 class="page-title">Source: customizer.js</h1>
+	<h1 class="page-title">Class: TcpDataSourceProvider</h1>
+<section>
+
+<header>
+    <h2>
+    TcpDataSourceProvider
+    </h2>
     
-    <section>
-        <article>
-            <pre class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2014, Daniel Wippermann | MIT license */
-'use strict';
+</header>
+
+<article>
+    <div class="container-overview">
+    
+
+    
+        
+<dt>
+    <h4 class="name" id="TcpDataSourceProvider"><span class="type-signature"></span>new TcpDataSourceProvider<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Creates a new TcpDataSourceProvider instance.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="tcp-data-source-provider.js.html">tcp-data-source-provider.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+    
+    </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        <ul>
+            <li>DataSourceProvider</li>
+        </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id="discoverDevices"><span class="type-signature">&lt;static> </span>discoverDevices<span class="signature">()</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Discovers devices on the local network.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="tcp-data-source-provider.js.html">tcp-data-source-provider.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    A Promise that resolves to an array of device information objects.
+</div>
 
 
 
-var EventEmitter = require('events').EventEmitter;
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Promise</span>
 
 
-var _ = require('lodash');
-var Q = require('q');
+	</dd>
+</dl>
 
 
-var ConfigurationOptimizer = require('./configuration-optimizer');
-var utils = require('./utils');
+        
+    
+    
+</dd>
 
-var extend = require('./extend');
+        </dl>
+    
 
+    
 
+    
+</article>
 
-var optionKeys = [
-    'id',
-    'deviceAddress',
-    'optimizer',
-];
-
-
-
-var Customizer = extend(EventEmitter, /** @lends Customizer# */ {
-
-    /**
-     * An identifier for this customizer.
-     * @type {string}
-     */
-    id: null,
-
-    /**
-     * The VBus address of the device to customize.
-     * @type {number}
-     */
-    deviceAddress: 0,
-
-    /**
-     * A configuration optimizer.
-     * @type {ConfigurationOptimizer}
-     */
-    optimizer: null,
-
-    /**
-     * Creates a new Customizer instance and optionally initializes its members
-     * with the given values.
-     *
-     * @constructs
-     * @param {object} [options] Initialization values for this instance's members
-     * @param {string} [options.id] {@link Customizer#id}
-     * @param {string} [options.deviceAddress] {@link Customizer#deviceAddress}
-     * @param {string} [options.optimizer] {@link Customizer#optimizer}
-     *
-     * @classdesc
-     * A Customizer provides functionality to transfer a set of configuration
-     * values from or to a device.
-     */
-    constructor: function(options) {
-        EventEmitter.call(this);
-
-        _.extend(this, _.pick(options, optionKeys));
-
-        if (!this.optimizer) {
-            this.optimizer = new ConfigurationOptimizer(this.deviceAddress);
-        }
-    },
-
-    /**
-     * Load a set of configuration values from a device.
-     */
-    loadConfiguration: function() {
-        throw new Error('Must be implemented by sub-class');
-    },
-
-    /**
-     * Save a set of configuration values to a device.
-     */
-    saveConfiguration: function(configuration) {
-        throw new Error('Must be implemented by sub-class');
-    },
-
-    _getInitialConfiguration: function(oldConfig) {
-        return this.optimizer.getInitialConfiguration(oldConfig);
-    },
-
-    _optimizeConfiguration: function(oldConfig) {
-        return this.optimizer.optimizeConfiguration(oldConfig);
-    },
-
-});
-
-
-
-module.exports = Customizer;
-</pre>
-        </article>
-    </section>
-
+</section>
 
 
 
@@ -259,6 +361,10 @@ module.exports = Customizer;
 				</footer>
 			</div>
 
+			
+			<div class="span3">
+				<div id="toc"></div>
+			</div>
 			
 			<br clear="both">
 		</div>

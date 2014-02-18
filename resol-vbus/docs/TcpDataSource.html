@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>resol-vbus Source: customizer.js</title>
+	<title>resol-vbus Class: TcpDataSource</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -125,118 +125,320 @@
 	<div class="row-fluid">
 
 		
-			<div class="span12">
-				
+		<div class="span8">
+			
 				<div id="main">
 					
 
 
-		<h1 class="page-title">Source: customizer.js</h1>
+	<h1 class="page-title">Class: TcpDataSource</h1>
+<section>
+
+<header>
+    <h2>
+    TcpDataSource
+    </h2>
     
-    <section>
-        <article>
-            <pre class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2014, Daniel Wippermann | MIT license */
-'use strict';
+</header>
+
+<article>
+    <div class="container-overview">
+    
+
+    
+        
+<dt>
+    <h4 class="name" id="TcpDataSource"><span class="type-signature"></span>new TcpDataSource<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Creates a new TcpDataSource instance.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="tcp-data-source.js.html">tcp-data-source.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+    
+    </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        <ul>
+            <li>DataSource</li>
+        </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id="host"><span class="type-signature"></span>host<span class="type-signature"> :string</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The host to connect to.
+    </div>
+    
+    
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
 
 
+            </li>
+        </ul>
+    
 
-var EventEmitter = require('events').EventEmitter;
+    
+<dl class="details">
+    
 
+    
 
-var _ = require('lodash');
-var Q = require('q');
+    
 
+    
 
-var ConfigurationOptimizer = require('./configuration-optimizer');
-var utils = require('./utils');
+    
 
-var extend = require('./extend');
+    
 
+    
 
+    
 
-var optionKeys = [
-    'id',
-    'deviceAddress',
-    'optimizer',
-];
+    
 
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="tcp-data-source.js.html">tcp-data-source.js</a>
+    </li></ul></dd>
+    
 
+    
 
-var Customizer = extend(EventEmitter, /** @lends Customizer# */ {
+    
 
-    /**
-     * An identifier for this customizer.
-     * @type {string}
-     */
-    id: null,
+    
+</dl>
 
-    /**
-     * The VBus address of the device to customize.
-     * @type {number}
-     */
-    deviceAddress: 0,
+    
+    
+</dd>
 
-    /**
-     * A configuration optimizer.
-     * @type {ConfigurationOptimizer}
-     */
-    optimizer: null,
-
-    /**
-     * Creates a new Customizer instance and optionally initializes its members
-     * with the given values.
-     *
-     * @constructs
-     * @param {object} [options] Initialization values for this instance's members
-     * @param {string} [options.id] {@link Customizer#id}
-     * @param {string} [options.deviceAddress] {@link Customizer#deviceAddress}
-     * @param {string} [options.optimizer] {@link Customizer#optimizer}
-     *
-     * @classdesc
-     * A Customizer provides functionality to transfer a set of configuration
-     * values from or to a device.
-     */
-    constructor: function(options) {
-        EventEmitter.call(this);
-
-        _.extend(this, _.pick(options, optionKeys));
-
-        if (!this.optimizer) {
-            this.optimizer = new ConfigurationOptimizer(this.deviceAddress);
-        }
-    },
-
-    /**
-     * Load a set of configuration values from a device.
-     */
-    loadConfiguration: function() {
-        throw new Error('Must be implemented by sub-class');
-    },
-
-    /**
-     * Save a set of configuration values to a device.
-     */
-    saveConfiguration: function(configuration) {
-        throw new Error('Must be implemented by sub-class');
-    },
-
-    _getInitialConfiguration: function(oldConfig) {
-        return this.optimizer.getInitialConfiguration(oldConfig);
-    },
-
-    _optimizeConfiguration: function(oldConfig) {
-        return this.optimizer.optimizeConfiguration(oldConfig);
-    },
-
-});
+        
+            
+<dt>
+    <h4 class="name" id="liveChannel"><span class="type-signature"></span>liveChannel<span class="type-signature"> :number</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The channel to connect to live.
+    </div>
+    
+    
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">number</span>
 
 
+            </li>
+        </ul>
+    
 
-module.exports = Customizer;
-</pre>
-        </article>
-    </section>
+    
+<dl class="details">
+    
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="tcp-data-source.js.html">tcp-data-source.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="livePassword"><span class="type-signature"></span>livePassword<span class="type-signature"> :string</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The password to connect live.
+    </div>
+    
+    
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="tcp-data-source.js.html">tcp-data-source.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
@@ -259,6 +461,10 @@ module.exports = Customizer;
 				</footer>
 			</div>
 
+			
+			<div class="span3">
+				<div id="toc"></div>
+			</div>
 			
 			<br clear="both">
 		</div>

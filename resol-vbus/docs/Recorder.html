@@ -81,6 +81,14 @@
 						</li>
 						
 						<li>
+							<a href="TcpDataSource.html">TcpDataSource</a>
+						</li>
+						
+						<li>
+							<a href="TcpDataSourceProvider.html">TcpDataSourceProvider</a>
+						</li>
+						
+						<li>
 							<a href="Telegram.html">Telegram</a>
 						</li>
 						
@@ -900,6 +908,336 @@ See [http://en.wikipedia.org/wiki/Set_theory]() for details.
         
             
 <dt>
+    <h4 class="name" id="_playbackSyncJob"><span class="type-signature"></span>_playbackSyncJob<span class="signature">(stream, syncJob)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Plays back the requested synchronization job, piping the resulting data into the
+provided stream. Returns a Promise that resolves to the played back ranges.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>stream</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Stream</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The stream to pipe data into</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>syncJob</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">RecorderSyncJob</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The synchronization job to perform.</td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="recorder.js.html">recorder.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    Promise resolving with a list of ranges that were synchronized.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Promise</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="_recordSyncJob"><span class="type-signature"></span>_recordSyncJob<span class="signature">(recorder, syncJob)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Starts a playback of the provided recorder, recording its data and returning a
+Promise that resolves to the recorded ranges.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>recorder</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Recorder.html">Recorder</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The recorder to use for playback</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>syncJob</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">RecorderSyncJob</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The synchronization job to perform.</td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="recorder.js.html">recorder.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    Promise resolving with a list of ranges that were synchronized.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Promise</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="playback"><span class="type-signature"></span>playback<span class="signature">(stream, options)</span><span class="type-signature"></span></h4>
     
     
@@ -1536,7 +1874,7 @@ the stream using the VBusRecordingConverter.
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
-		on Sun Feb 16 2014 09:40:36 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Tue Feb 18 2014 01:05:29 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>

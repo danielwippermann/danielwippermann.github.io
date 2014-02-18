@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>resol-vbus Source: customizer.js</title>
+	<title>resol-vbus Source: tcp-data-source.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -131,7 +131,7 @@
 					
 
 
-		<h1 class="page-title">Source: customizer.js</h1>
+		<h1 class="page-title">Source: tcp-data-source.js</h1>
     
     <section>
         <article>
@@ -140,99 +140,83 @@
 
 
 
-var EventEmitter = require('events').EventEmitter;
-
-
 var _ = require('lodash');
 var Q = require('q');
 
 
-var ConfigurationOptimizer = require('./configuration-optimizer');
-var utils = require('./utils');
+var DataSource = require('./data-source');
 
-var extend = require('./extend');
+var TcpConnection = require('./tcp-connection');
 
 
 
 var optionKeys = [
-    'id',
-    'deviceAddress',
-    'optimizer',
+    'host',
+    'liveChannel',
+    'livePassword',
 ];
 
 
 
-var Customizer = extend(EventEmitter, /** @lends Customizer# */ {
+var TcpDataSource = DataSource.extend(/** @lends TcpDataSource# */ {
 
     /**
-     * An identifier for this customizer.
+     * The host to connect to.
      * @type {string}
      */
-    id: null,
+    host: null,
 
     /**
-     * The VBus address of the device to customize.
+     * The channel to connect to live.
      * @type {number}
      */
-    deviceAddress: 0,
+    liveChannel: 0,
 
     /**
-     * A configuration optimizer.
-     * @type {ConfigurationOptimizer}
+     * The password to connect live.
+     * @type {string}
      */
-    optimizer: null,
+    livePassword: 'vbus',
 
     /**
-     * Creates a new Customizer instance and optionally initializes its members
-     * with the given values.
+     * Creates a new TcpDataSource instance.
      *
      * @constructs
-     * @param {object} [options] Initialization values for this instance's members
-     * @param {string} [options.id] {@link Customizer#id}
-     * @param {string} [options.deviceAddress] {@link Customizer#deviceAddress}
-     * @param {string} [options.optimizer] {@link Customizer#optimizer}
-     *
-     * @classdesc
-     * A Customizer provides functionality to transfer a set of configuration
-     * values from or to a device.
+     * @augments DataSource
      */
     constructor: function(options) {
-        EventEmitter.call(this);
+        DataSource.call(this, options);
 
         _.extend(this, _.pick(options, optionKeys));
 
-        if (!this.optimizer) {
-            this.optimizer = new ConfigurationOptimizer(this.deviceAddress);
-        }
+        this.options = options;
     },
 
-    /**
-     * Load a set of configuration values from a device.
-     */
-    loadConfiguration: function() {
-        throw new Error('Must be implemented by sub-class');
-    },
+    connectLive: function(options) {
+        var defaultOptions = {
+            channel: this.liveChannel,
+            password: this.livePassword,
+        };
 
-    /**
-     * Save a set of configuration values to a device.
-     */
-    saveConfiguration: function(configuration) {
-        throw new Error('Must be implemented by sub-class');
-    },
+        options = _.extend(defaultOptions, options, {
+            provider: this.provider,
+            dataSource: this.id,
+        });
 
-    _getInitialConfiguration: function(oldConfig) {
-        return this.optimizer.getInitialConfiguration(oldConfig);
-    },
+        var connection = new TcpConnection(options);
 
-    _optimizeConfiguration: function(oldConfig) {
-        return this.optimizer.optimizeConfiguration(oldConfig);
-    },
+        return Q.fcall(function() {
+            return connection.connect();
+        }).then(function() {
+            return connection;
+        });
+    }
 
 });
 
 
 
-module.exports = Customizer;
+module.exports = TcpDataSource;
 </pre>
         </article>
     </section>

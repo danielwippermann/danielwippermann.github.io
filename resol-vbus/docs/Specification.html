@@ -81,6 +81,14 @@
 						</li>
 						
 						<li>
+							<a href="TcpDataSource.html">TcpDataSource</a>
+						</li>
+						
+						<li>
+							<a href="TcpDataSourceProvider.html">TcpDataSourceProvider</a>
+						</li>
+						
+						<li>
 							<a href="Telegram.html">Telegram</a>
 						</li>
 						
@@ -778,6 +786,170 @@ undefined
         
             
 <dt>
+    <h4 class="name" id="getDeviceSpecification"><span class="type-signature"></span>getDeviceSpecification<span class="signature">(header, which)</span><span class="type-signature"> &rarr; {<a href="global.html#DeviceSpecification">DeviceSpecification</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Gets the DeviceSpecification object matching the given header and direction.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>header</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Header.html">Header</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Header instance</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>which</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Either `'source'` or `'destination'`</td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="specification.js.html">specification.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    DeviceSpecification object
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="global.html#DeviceSpecification">DeviceSpecification</a></span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="getDeviceSpecification"><span class="type-signature"></span>getDeviceSpecification<span class="signature">(selfAddress, peerAddress, <span class="optional">channel</span>)</span><span class="type-signature"> &rarr; {<a href="global.html#DeviceSpecification">DeviceSpecification</a>}</span></h4>
     
     
@@ -1017,170 +1189,6 @@ undefined
 ></pre>
 
 
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="getDeviceSpecification"><span class="type-signature"></span>getDeviceSpecification<span class="signature">(header, which)</span><span class="type-signature"> &rarr; {<a href="global.html#DeviceSpecification">DeviceSpecification</a>}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Gets the DeviceSpecification object matching the given header and direction.
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>header</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Header.html">Header</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Header instance</td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>which</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Either `'source'` or `'destination'`</td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="specification.js.html">specification.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    DeviceSpecification object
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type"><a href="global.html#DeviceSpecification">DeviceSpecification</a></span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
     
 </dd>
 
@@ -1930,147 +1938,6 @@ undefined
         
             
 <dt>
-    <h4 class="name" id="getPacketSpecification"><span class="type-signature"></span>getPacketSpecification<span class="signature">(packet)</span><span class="type-signature"> &rarr; {<a href="global.html#PacketSpecification">PacketSpecification</a>}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Gets the PacketSpecification object matching the given packet.
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>packet</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Packet.html">Packet</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">VBus packet</td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="specification.js.html">specification.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    PacketSpecification object
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type"><a href="global.html#PacketSpecification">PacketSpecification</a></span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
     <h4 class="name" id="getPacketSpecification"><span class="type-signature"></span>getPacketSpecification<span class="signature">(packetSpecId)</span><span class="type-signature"> &rarr; {<a href="global.html#PacketSpecification">PacketSpecification</a>}</span></h4>
     
     
@@ -2245,6 +2112,147 @@ undefined
 ></pre>
 
 
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getPacketSpecification"><span class="type-signature"></span>getPacketSpecification<span class="signature">(packet)</span><span class="type-signature"> &rarr; {<a href="global.html#PacketSpecification">PacketSpecification</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Gets the PacketSpecification object matching the given packet.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>packet</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Packet.html">Packet</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">VBus packet</td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="specification.js.html">specification.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    PacketSpecification object
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="global.html#PacketSpecification">PacketSpecification</a></span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
     
 </dd>
 
@@ -2865,7 +2873,7 @@ undefined
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
-		on Sun Feb 16 2014 09:40:36 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Tue Feb 18 2014 01:05:29 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>
