@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>About &middot; resol-vbus Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="styles/bootstrap.css">
+
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="styles/syntax.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">resol-vbus</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-inverse-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html">About</a></li>
+            <li><a href="docs.html">Documentation</a></li>
+            <li><a href="examples.html">Examples</a></li>
+            <li><a href="support.html">Support</a></li>
+  <!--
+            <li class="active"><a href="#">Active</a></li>
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Dropdown header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+  -->
+          </ul>
+  <!--
+          <form class="navbar-form navbar-left">
+            <input type="text" class="form-control col-lg-8" placeholder="Search">
+          </form>
+  -->
+          <ul class="nav navbar-nav navbar-right">
+  <!--
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+  -->
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+    <div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 id="toc_0">resol-vbus</h1>
+
+<h4 id="toc_1">A JavaScript library for processing RESOL VBus data.</h4>
+
+<iframe src="http://ghbtns.com/github-btn.html?user=danielwippermann&repo=resol-vbus&type=watch&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="77" height="30"></iframe>
+
+<p><a href="https://npmjs.org/package/resol-vbus"><img src="https://badge.fury.io/js/resol-vbus.png" alt="NPM version"></a>
+<a href="https://travis-ci.org/danielwippermann/resol-vbus"><img src="https://travis-ci.org/danielwippermann/resol-vbus.png?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/r/danielwippermann/resol-vbus"><img src="https://coveralls.io/repos/danielwippermann/resol-vbus/badge.png" alt="Coverage Status"></a>
+<a href="https://codeclimate.com/github/danielwippermann/resol-vbus"><img src="https://codeclimate.com/github/danielwippermann/resol-vbus.png" alt="Code Climate"></a>
+<a href="https://david-dm.org/danielwippermann/resol-vbus"><img src="https://david-dm.org/danielwippermann/resol-vbus.png?theme=shields.io" alt="Dependency Status"></a>
+<a href="https://david-dm.org/danielwippermann/resol-vbus#info=devDependencies"><img src="https://david-dm.org/danielwippermann/resol-vbus/dev-status.png?theme=shields.io" alt="devDependency Status"></a></p>
+
+<h2 id="toc_2">Features</h2>
+
+<ul>
+<li>Connects to various RESOL VBus devices</li>
+<li>Processes live and recorded VBus data streams</li>
+<li>Discovers LAN-enabled RESOL devices on the local network</li>
+<li>Allows to send parameterization commands to a controller</li>
+<li>Synchronizes recorded VBus data from a RESOL datalogger to your local file system</li>
+<li>Converts recorded VBus data into human or machine readable formats, optionally allowing to filter the output</li>
+</ul>
+
+<h2 id="toc_3">Documentation</h2>
+
+<p>You can find the work-in-progress documentation for this project here:</p>
+
+<p><a href="http://danielwippermann.github.io/resol-vbus/">http://danielwippermann.github.io/resol-vbus/</a></p>
+
+<p>The JSDoc-generated documentation is located here:</p>
+
+<p><a href="http://danielwippermann.github.io/resol-vbus/docs/classes.list.html">http://danielwippermann.github.io/resol-vbus/jsdoc/classes.list.html</a></p>
+
+<h2 id="toc_4">Installation</h2>
+
+<p>If you want to use this module in your own application, you can just install it from the npm registry:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">⌘  npm install --save resol-vbus
+</code></pre></div>
+<p>If you want to contribute to it you might want to check out the latest version from GitHub:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">⌘  git clone https://github.com/danielwippermann/resol-vbus.git
+⌘  cd resol-vbus
+⌘  npm install
+</code></pre></div>
+<h2 id="toc_5">Running the console examples</h2>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">⌘  node examples/&lt;name&gt;/index.js
+</code></pre></div>
+<h2 id="toc_6">Running the tests</h2>
+
+<p>To start a single run of the test suite just enter the following command
+into your shell:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">⌘  gulp
+</code></pre></div>
+<p>In addition to that the project is configured to watch its own files for
+modification and rerun the documentation generator and test suite every
+time you hit save on a file. To run that just enter the following command
+into your shell:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">⌘  gulp watch
+</code></pre></div>
+<h2 id="toc_7">Supported Devices &amp; Services</h2>
+
+<ul>
+<li><a href="http://www.resol.de/index/produkte/sprache/en">All current RESOL controllers with VBus</a></li>
+<li><a href="http://www.resol.de/index/produktdetail/kategorie/2/sprache/en/id/12">RESOL DL2 Datalogger</a></li>
+<li><a href="http://www.resol.de/index/produktdetail/kategorie/2/sprache/en/id/86">RESOL DL3 Datalogger</a></li>
+<li><a href="http://www.resol.de/index/produktdetail/kategorie/2/id/76/sprache/en">RESOL VBus/LAN interface adapter</a></li>
+<li><a href="http://www.resol.de/index/produktdetail/kategorie/2/id/13/sprache/en">RESOL VBus/USB interface adapter</a></li>
+<li><a href="http://www.vbus.net/">RESOL VBus.net</a></li>
+</ul>
+
+<h2 id="toc_8"><a name="specs"></a>Technical Information &amp; Specifications</h2>
+
+<ul>
+<li><a href="https://groups.google.com/forum/#!forum/resol-vbus">RESOL VBus Google Group</a></li>
+<li><a href="https://drive.google.com/file/d/0B4wMTuLGRPi2RnU0Vm1tTG5wM1k/edit?usp=sharing">RESOL VBus Protocol Specification</a></li>
+<li><a href="https://docs.google.com/document/d/1qNdpl8pB409eeCmpoApXBVtR8feIn_Jz3XEk8E5r7Go/edit?usp=sharing&amp;authkey=COLYjnI">RESOL VBus File Format Specification</a></li>
+<li><a href="https://docs.google.com/document/d/1fIDqsWv2X7EfezLiP9f2P3vRdpmgbiK6kzcUUrMGoEU/edit?usp=sharing&amp;authkey=CODQ-vMD">RESOL VBus over TCP Specification</a></li>
+<li><a href="https://drive.google.com/file/d/0B4wMTuLGRPi2YmM5ZTJiNDQtNjkyMi00ZWYzLTgzYzgtYTdiMjBlZmI5ODgx/edit?usp=sharing">RESOL DL2 (v1) Data Download API</a></li>
+<li><a href="http://danielwippermann.github.io/resol-vbus/dlx-data-download-api-docs">RESOL DL2 (v2) &amp; DL3 Data Download API</a></li>
+</ul>
+
+<h2 id="toc_9">Changelog</h2>
+
+<h3 id="toc_10">Version 0.7.0 (2014-02-17)</h3>
+
+<p>First release to the NPM registry.</p>
+
+<h2 id="toc_11">Legal Notices</h2>
+
+<p>RESOL, VBus, VBus.net and others are trademarks or registered trademarks
+of RESOL - Elektronische Regelungen GmbH.</p>
+
+<p>All other trademarks are the property of their respective owners.</p>
+
+<h2 id="toc_12">License</h2>
+
+<p>The MIT License (MIT)</p>
+
+<p>Copyright (c) 2013-2014, Daniel Wippermann.</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>
+
+<h2 id="toc_13">Brought to you by</h2>
+
+<p><a href="http://github.com/danielwippermann"><img src="http://www.gravatar.com/avatar/47da741e6cbac21945a7334f570176f4.png?s=48" alt="Gravatar"> Daniel Wippermann</a></p>
+
+    </div>
+  </div>
+</div>
+
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted">Place sticky footer content here.</p>
+      </div>
+    </div>
+
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/lodash.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+  </body>
+</html>

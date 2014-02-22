@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Documentation &middot; resol-vbus Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="styles/bootstrap.css">
+
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="styles/syntax.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">resol-vbus</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-inverse-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">About</a></li>
+            <li class="active"><a href="docs.html">Documentation</a></li>
+            <li><a href="examples.html">Examples</a></li>
+            <li><a href="support.html">Support</a></li>
+  <!--
+            <li class="active"><a href="#">Active</a></li>
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Dropdown header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+  -->
+          </ul>
+  <!--
+          <form class="navbar-form navbar-left">
+            <input type="text" class="form-control col-lg-8" placeholder="Search">
+          </form>
+  -->
+          <ul class="nav navbar-nav navbar-right">
+  <!--
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+  -->
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+    <div class="container">
+  <div class="row">
+    <div class="col-sm-3 doc-sidebar">
+      <div class="well">
+        <h4>General</h4>
+        <ul>
+          <li><a href="docs.html">Overview</a></li>
+          <li><a href="getting-started.html">Getting Started</a></li>
+        </ul>
+        <h4>Connections</h4>
+        <ul>
+          <li><a href="connection.html">Overview</a></li>
+          <li><a href="connection-class.html">vbus.Connection</a></li>
+          <li><a href="serial-connection-class.html">vbus.SerialConnection</a></li>
+          <li><a href="tcp-connection-class.html">vbus.TcpConnection</a></li>
+        </ul>
+        <h4>Technical Specifications</h4>
+        <ul>
+          <li><a href="vbus-recording-file-format.html">VBus Recording File Format</a></li>
+          <li><a href="vbus-over-tcp.html">VBus Over TCP</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm-9 doc-main">
+      <h1>Documentation</h1>
+      <p>Welcome to the documentation of the resol-vbus project. The resol-vbus Node.js module allows you to connect to RESOL VBus-enabled devices, get their live or recorded data, filter them and then store them in many different formats.</p>
+
+<h2 id="toc_0">Connections</h2>
+
+<p>Connections are used to get live data from a RESOL VBus-enabled device. Connections know how to decode the incoming binary data stream according to the VBus Protocol Specification. One a valid piece of information was decoded the Connection emits an event.</p>
+
+<h2 id="toc_1">VBus Models</h2>
+
+<p>Currently VBus has three different protocol version, each specialized for its use case. Each of these three different kinds of models has an associated class which inherits from the abstract Header class.</p>
+
+<h3 id="toc_2">Header</h3>
+
+<p>This Header class provides uniform access to properties and methods that are applicable for all sub-classes. Each Header sub-class knows how to generate a Header ID from its properties. Header IDs include information about the source and the destination of the Header as well as other information that identifies that Header.</p>
+
+<h3 id="toc_3">Packet</h3>
+
+<p>The version 1 Packets are sent by the RESOL VBus-enabled device in regular intervals and carry payload data like sensor temperatures, relais speeds, date and time. Those Packets have a predefined structure which is documented in the Appendix H of the VBus Protocol Specification.</p>
+
+<h3 id="toc_4">Datagram</h3>
+
+<p>The version 2 Datagrams allow remote access to device values that are part of the device&#39;s display menu interface. Each of these values has an unique index that can be used to read or write the value using a datagram.</p>
+
+<h3 id="toc_5">Telegram</h3>
+
+<p>The version 3 Telegrams are mostly used to communicate with external sensors and actors in a very efficient way.</p>
+
+<h3 id="toc_6">HeaderSet</h3>
+
+<p>In addition to those model classes there is a HeaderSet class which works like an intelligent array. Adding an instance of one of the Header sub-classes to a HeaderSet automatically replaces an older version of this instance with the same Header ID if present.</p>
+
+<h2 id="toc_7">Specification</h2>
+
+<p>Instances of the Packet class carry optional binary payload in them. The Specification class is capable of enumerating and converting the information within that payload to a human- or machine-readable format. It basically is a JavaScript implementation of Appendix H of the VBus Protocol Specification.</p>
+
+<h2 id="toc_8">Converters</h2>
+
+<p>Converters take instances of the Header and HeaderSet classes and converts them to a different format. There are several</p>
+
+    </div>
+  </div>
+</div>
+
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted">Place sticky footer content here.</p>
+      </div>
+    </div>
+
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/lodash.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+  </body>
+</html>
