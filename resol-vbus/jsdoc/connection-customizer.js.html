@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>resol-vbus Source: connection-customizer.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	
+	<link type="text/css" rel="stylesheet" href="styles/site.spacelab.css">
+	
+</head>
+
+<body>
+<div class="container-fluid">
+	<div class="navbar navbar-fixed-top navbar-inverse">
+		<div class="navbar-inner">
+			<a class="brand" href="index.html">resol-vbus</a>
+			<ul class="nav">
+				
+				<li class="dropdown">
+					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu inline">
+						
+						<li>
+							<a href="Connection.html">Connection</a>
+						</li>
+						
+						<li>
+							<a href="ConnectionCustomizer.html">ConnectionCustomizer</a>
+						</li>
+						
+						<li>
+							<a href="Converter.html">Converter</a>
+						</li>
+						
+						<li>
+							<a href="Customizer.html">Customizer</a>
+						</li>
+						
+						<li>
+							<a href="DLxJsonConverter.html">DLxJsonConverter</a>
+						</li>
+						
+						<li>
+							<a href="DLxRecorder.html">DLxRecorder</a>
+						</li>
+						
+						<li>
+							<a href="Header.html">Header</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSet.html">HeaderSet</a>
+						</li>
+						
+						<li>
+							<a href="I18N.html">I18N</a>
+						</li>
+						
+						<li>
+							<a href="Packet.html">Packet</a>
+						</li>
+						
+						<li>
+							<a href="Recorder.html">Recorder</a>
+						</li>
+						
+						<li>
+							<a href="SerialDataSource.html">SerialDataSource</a>
+						</li>
+						
+						<li>
+							<a href="Specification.html">Specification</a>
+						</li>
+						
+						<li>
+							<a href="TcpConnection.html">TcpConnection</a>
+						</li>
+						
+						<li>
+							<a href="TcpDataSource.html">TcpDataSource</a>
+						</li>
+						
+						<li>
+							<a href="TcpDataSourceProvider.html">TcpDataSourceProvider</a>
+						</li>
+						
+						<li>
+							<a href="Telegram.html">Telegram</a>
+						</li>
+						
+						<li>
+							<a href="TextConverter.html">TextConverter</a>
+						</li>
+						
+						<li>
+							<a href="_.html">undefined</a>
+						</li>
+						
+						<li>
+							<a href="VBusRecordingConverter.html">VBusRecordingConverter</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu inline">
+						
+						<li>
+							<a href="HeaderSet.html#event:addHeader">addHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSet.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+
+		
+			<div class="span12">
+				
+				<div id="main">
+					
+
+
+		<h1 class="page-title">Source: connection-customizer.js</h1>
+    
+    <section>
+        <article>
+            <pre class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2014, Daniel Wippermann | MIT license */
+'use strict';
+
+
+
+var _ = require('lodash');
+var Q = require('q');
+
+
+var Connection = require('./connection');
+var utils = require('./utils');
+
+var Customizer = require('./customizer');
+
+
+
+var optionKeys = [
+    'connection',
+    'maxRounds',
+    'triesPerValue',
+    'timeoutPerValue',
+    'masterTimeout',
+];
+
+
+
+var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */ {
+
+    /**
+     * The connection to use for transfer of the configuration values.
+     * @type {Connection}
+     */
+    connection: null,
+
+    /**
+     * Maximum number of optimization rounds for {@link transceiveConfiguration}.
+     * @type {number}
+     * @default 10
+     */
+    maxRounds: 10,
+
+    /**
+     * Amount of retries to transceive one value.
+     * Between two tries the VBus is released and then re-acquired.
+     * @type {number}
+     * @default 2
+     */
+    triesPerValue: 2,
+
+    /**
+     * Timeout in milliseconds after which the transceive times out.
+     * @type {number}
+     * @default 30000
+     */
+    timeoutPerValue: 30000,
+
+    /**
+     * Interval in milliseconds in which
+     * the VBus master is contacted to reissue the VBus clearance.
+     * @type {number}
+     * @default 8000
+     */
+    masterTimeout: 8000,
+
+    /**
+     * Constructs a new ConnectionCustomizer instance and optionally initializes its
+     * members with the given values.
+     *
+     * @constructs
+     * @augments Customizer
+     * @param {object} [options] Initialization values for this instance's members
+     * @param {number} [options.connection] {@link ConnectionCustomizer#connection}
+     * @param {number} [options.maxRounds] {@link ConnectionCustomizer#maxRounds}
+     * @param {number} [options.triesPerValue] {@link ConnectionCustomizer#triesPerValue}
+     * @param {number} [options.timeoutPerValue] {@link ConnectionCustomizer#timeoutPerValue}
+     * @param {number} [options.masterTimeout] {@link ConnectionCustomizer#masterTimeout}
+     *
+     * @classdesc
+     * A ConnectionCustomizer uses an established connection to a device
+     * to transfer sets of configuration values over it.
+     */
+    constructor: function(options) {
+        Customizer.apply(this, arguments);
+
+        _.extend(this, _.pick(options, optionKeys));
+    },
+
+    loadConfiguration: function() {
+        var _this = this;
+
+        var options = {
+            action: 'get',
+        };
+
+        var callback = function(config, round) {
+            if (round === 1) {
+                return _this._getInitialConfiguration(config);
+            } else {
+                return _this._optimizeConfiguration(config);
+            }
+        };
+
+        return this.transceiveConfiguration(options, callback);
+    },
+
+    saveConfiguration: function(configuration) {
+        var _this = this;
+
+        var options = {
+            action: 'set',
+            actionOptions: {
+                save: true,
+            },
+        };
+
+        var callback = function(config, round) {
+            if (round === 1) {
+                return _this._getInitialConfiguration(config);
+            } else {
+                return _this._optimizeConfiguration(config);
+            }
+        };
+
+        return this.transceiveConfiguration(options, callback);
+    },
+
+    /**
+     * Transceives a controller configuration set, handling timeouts, retries etc.
+     *
+     * @param {object} options Options
+     * @param {number} [options.maxRounds] {@link ConnectionCustomizer#maxRounds}
+     * @param {number} [options.triesPerValue] {@link ConnectionCustomizer#triesPerValue}
+     * @param {number} [options.timeoutPerValue] {@link ConnectionCustomizer#timeoutPerValue}
+     * @param {number} [options.masterTimeout] {@link ConnectionCustomizer#masterTimeout}
+     * @param {number} options.action Action to perform, can be `'get'` or `'set'`.
+     * @param {number} [options.actionOptions] Options object to forward to the action to perform.
+     * @return {object} Promise that resolves to the configuration or `null` on timeout.
+     */
+    transceiveConfiguration: function(options, callback) {
+        var _this = this;
+
+        if (_.isFunction(options)) {
+            callback = options;
+            options = null;
+        }
+
+        options = _.defaults({}, options, {
+            maxRounds: this.maxRounds,
+            triesPerValue: this.triesPerValue,
+            timeoutPerValue: this.timeoutPerValue,
+            masterTimeout: this.masterTimeout,
+            action: null,
+            actionOptions: null,
+        });
+
+        var connection = this.connection;
+        var address = this.deviceAddress;
+
+        return utils.cancelablePromise(function(resolve, reject, notify, checkCanceled) {
+            var check = function(result) {
+                return Q.fcall(function() {
+                    return checkCanceled();
+                }).then(function() {
+                    return connection.createConnectedPromise();
+                }).then(function() {
+                    return result;
+                });
+            };
+
+            var config = null;
+
+            var state = {
+                masterAddress: null,
+                masterLastContacted: null,
+            };
+
+            var round = 0;
+
+            var reportProgress = function(progress) {
+                if (_.isString(progress)) {
+                    progress = {
+                        message: progress,
+                    };
+                }
+
+                _.extend(progress, {
+                    round: round,
+                });
+
+                notify(progress);
+            };
+
+            var nextRound = function() {
+                if (round &lt; options.maxRounds) {
+                    round++;
+
+                    Q.fcall(check).then(function() {
+                        reportProgress('OPTIMIZING_VALUES');
+
+                        return callback(config, round);
+                    }).then(check).then(function(newConfig) {
+                        config = newConfig;
+
+                        var pendingValues = _.filter(config, function(value) {
+                            return value.pending;
+                        });
+
+                        var index = 0;
+
+                        var nextValue = function() {
+                            if (index &lt; pendingValues.length) {
+                                var valueInfo = pendingValues [index++];
+
+                                Q.fcall(check).then(function() {
+                                    return _this.transceiveValue(valueInfo.valueIndex, valueInfo.value, {
+                                        triesPerValue: options.triesPerValue,
+                                        timeoutPerValue: options.timeoutPerValue,
+                                        action: options.action,
+                                        actionOptions: options.actionOptions,
+                                    }, state).progress(function(progress) {
+                                        reportProgress(progress);
+                                    });
+                                }).then(function(datagram) {
+                                    valueInfo.pending = false;
+                                    valueInfo.transceived = !!datagram;
+
+                                    if (datagram) {
+                                        valueInfo.value = datagram.value;
+                                    }
+
+                                    nextValue();
+                                }).done();
+                            } else {
+                                nextRound(config);
+                            }
+                        };
+
+                        if (pendingValues.length > 0) {
+                            process.nextTick(nextValue);
+                        } else {
+                            Q.fcall(function() {
+                                if (state.masterLastContacted !== null) {
+                                    reportProgress('RELEASING_BUS');
+
+                                    return connection.releaseBus(address);
+                                }
+                            }).then(function() {
+                                resolve(config);
+                            }).done();
+                        }
+                    }).fail(reject).done();
+                } else {
+                    resolve(null);
+                }
+            };
+
+            process.nextTick(nextRound);
+        });
+    },
+
+    /**
+     * Transceive a controller value over this connection, handling
+     * timeouts, retries etc.
+     *
+     * @param {number} valueIndex Value index
+     * @param {number} value Value
+     * @param {object} options Options
+     * @param {number} options.triesPerValue {@link ConnectionCustomizer#triesPerValue}
+     * @param {number} options.timeoutPerValue {@link ConnectionCustomizer#timeoutPerValue}
+     * @param {number} options.masterTimeout {@link ConnectionCustomizer#masterTimeout}
+     * @param {object} state State to share between multiple calls to this method.
+     * @returns {object} Promise that resolves with the datagram received or `null` on timeout.
+     */
+    transceiveValue: function(valueIndex, value, options, state) {
+        if (state === undefined) {
+            state = {};
+        }
+
+        options = _.defaults({}, options, {
+            triesPerValue: this.triesPerValue,
+            timeoutPerValue: this.timeoutPerValue,
+            masterTimeout: this.masterTimeout,
+            action: null,
+            actionOptions: null,
+        });
+
+        state = _.defaults(state, {
+            masterAddress: this.deviceAddress,
+            masterLastContacted: Date.now(),
+        });
+
+        var connection = this.connection;
+        var address = this.deviceAddress;
+
+        return utils.cancelablePromise(function(resolve, reject, notify, checkCanceled) {
+            var timer, onConnectionState;
+
+            var done = function(err, result) {
+                if (timer) {
+                    clearTimeout(timer);
+                    timer = null;
+                }
+
+                if (onConnectionState) {
+                    connection.removeListener('connectionState', onConnectionState);
+                }
+
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
+                }
+            };
+
+            var check = function(result) {
+                return Q.fcall(function() {
+                    return checkCanceled();
+                }).then(function() {
+                    return connection.createConnectedPromise();
+                }).then(function() {
+                    return result;
+                });
+            };
+
+            var tries = 0;
+
+            var reportProgress = function(message) {
+                notify({
+                    message: message,
+                    tries: tries,
+                });
+            };
+
+            var nextTry = function() {
+                if (tries &lt; options.triesPerValue) {
+                    tries++;
+
+                    Q.fcall(check).then(function() {
+                        if ((tries > 1) &amp;&amp; (state.masterLastContacted !== null)) {
+                            reportProgress('RELEASING_BUS');
+
+                            state.masterLastContacted = null;
+
+                            return connection.releaseBus(state.masterAddress);
+                        }
+                    }).then(check).then(function() {
+                        if (state.masterLastContacted === null) {
+                            reportProgress('WAITING_FOR_FREE_BUS');
+
+                            return connection.waitForFreeBus().then(function(datagram) { // TODO: optional timeout?
+                                if (datagram) {
+                                    state.masterAddress = datagram.sourceAddress;
+                                } else {
+                                    state.masterAddress = null;
+                                }
+                            });
+                        }
+                    }).then(check).then(function() {
+                        var contactMaster;
+                        if (state.masterAddress === null) {
+                            contactMaster = false;
+                        } else if (state.masterAddress === address) {
+                            contactMaster = false;
+                        } else if (state.masterLastContacted === null) {
+                            contactMaster = true;
+                        } else if ((Date.now() - state.masterLastContacted) >= options.masterTimeout) {
+                            contactMaster = true;
+                        } else {
+                            contactMaster = false;
+                        }
+                        if (contactMaster) {
+                            reportProgress('CONTACTING_MASTER');
+
+                            state.masterLastContacted = Date.now();
+
+                            return connection.getValueById(state.masterAddress, 0, {
+                                timeout: 500,
+                                tries: 1,
+                            });
+                        }
+                    }).then(check).then(function() {
+                        if (state.masterAddress === address) {
+                            state.masterLastContacted = Date.now();
+                        }
+
+                        if (options.action === 'get') {
+                            reportProgress('GETTING_VALUE');
+
+                            return connection.getValueById(address, valueIndex, options.actionOptions);
+                        } else if (options.action === 'set') {
+                            reportProgress('SETTING_VALUE');
+
+                            return connection.setValueById(address, valueIndex, value, options.actionOptions);
+                        } else {
+                            throw new Error('Unknown action "' + options.action + '"');
+                        }
+                    }).then(function(datagram) {
+                        if (datagram) {
+                            done(null, datagram);
+                        } else {
+                            return nextTry();
+                        }
+                    }).fail(function(reason) {
+                        done(reason);
+                    }).done();
+                } else {
+                    done(null, null);
+                }
+            };
+
+            var onTimeout = function() {
+                done(null, null);
+            };
+
+            process.nextTick(nextTry);
+            timer = setTimeout(onTimeout, options.timeoutPerValue);
+        });
+    }
+});
+
+
+
+module.exports = ConnectionCustomizer;
+</pre>
+        </article>
+    </section>
+
+
+
+
+
+				</div>
+
+				<div class="clearfix"></div>
+				<footer>
+					
+					
+		<span class="copyright">
+		resol-vbus | Copyright (c) 2013-2014, Daniel Wippermann
+		</span>
+					<br />
+					
+		<span class="jsdoc-message">
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
+		on Sat Feb 22 2014 14:04:39 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		</span>
+				</footer>
+			</div>
+
+			
+			<br clear="both">
+		</div>
+
+	</div>
+	<script src="scripts/sunlight.js"></script>
+	<script src="scripts/sunlight.javascript.js"></script>
+	<script src="scripts/sunlight-plugin.doclinks.js"></script>
+	<script src="scripts/sunlight-plugin.linenumbers.js"></script>
+	<script src="scripts/sunlight-plugin.menu.js"></script>
+	<script src="scripts/jquery.min.js"></script>
+	<script src="scripts/jquery.scrollTo.js"></script>
+	<script src="scripts/jquery.localScroll.js"></script>
+	<script src="scripts/bootstrap-dropdown.js"></script>
+	<script src="scripts/toc.js"></script>
+
+
+	<script>  Sunlight.highlightAll({lineNumbers:false,  showMenu: true, enableDoclinks :true}); </script>
+
+	<script>
+		$( function () {
+			$( "#toc" ).toc( {
+				selectors   : "h1,h2,h3,h4",
+				showAndHide : false,
+				scrollTo    : 60
+			} );
+			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+
+		} );
+	</script>
+
+	
+	<script>
+		$( function () {
+			$('#main').localScroll({
+				offset: { top: 56 } //offset by the height of your header (give or take a few px, see what works for you)
+			});
+			$( "dt h4.name" ).each( function () {
+				var $this = $( this );
+				var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
+				var dt = $this.parents( "dt" );
+				var children = dt.next( "dd" );
+
+				$this.append( icon ).css( {cursor : "pointer"} );
+				$this.addClass( "member-collapsed" ).addClass( "member" );
+
+				children.hide();
+				$this.toggle( function () {
+					icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
+					$this.addClass( "member-open" ).removeClass( "member-collapsed" );
+					children.slideDown();
+				}, function () {
+					icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
+					$this.addClass( "member-collapsed" ).removeClass( "member-open" );
+					children.slideUp();
+				} );
+			} );
+		} );
+	</script>
+	
+
+</body>
+</html>

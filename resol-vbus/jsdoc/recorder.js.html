@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>resol-vbus Source: recorder.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	
+	<link type="text/css" rel="stylesheet" href="styles/site.spacelab.css">
+	
+</head>
+
+<body>
+<div class="container-fluid">
+	<div class="navbar navbar-fixed-top navbar-inverse">
+		<div class="navbar-inner">
+			<a class="brand" href="index.html">resol-vbus</a>
+			<ul class="nav">
+				
+				<li class="dropdown">
+					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu inline">
+						
+						<li>
+							<a href="Connection.html">Connection</a>
+						</li>
+						
+						<li>
+							<a href="ConnectionCustomizer.html">ConnectionCustomizer</a>
+						</li>
+						
+						<li>
+							<a href="Converter.html">Converter</a>
+						</li>
+						
+						<li>
+							<a href="Customizer.html">Customizer</a>
+						</li>
+						
+						<li>
+							<a href="DLxJsonConverter.html">DLxJsonConverter</a>
+						</li>
+						
+						<li>
+							<a href="DLxRecorder.html">DLxRecorder</a>
+						</li>
+						
+						<li>
+							<a href="Header.html">Header</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSet.html">HeaderSet</a>
+						</li>
+						
+						<li>
+							<a href="I18N.html">I18N</a>
+						</li>
+						
+						<li>
+							<a href="Packet.html">Packet</a>
+						</li>
+						
+						<li>
+							<a href="Recorder.html">Recorder</a>
+						</li>
+						
+						<li>
+							<a href="SerialDataSource.html">SerialDataSource</a>
+						</li>
+						
+						<li>
+							<a href="Specification.html">Specification</a>
+						</li>
+						
+						<li>
+							<a href="TcpConnection.html">TcpConnection</a>
+						</li>
+						
+						<li>
+							<a href="TcpDataSource.html">TcpDataSource</a>
+						</li>
+						
+						<li>
+							<a href="TcpDataSourceProvider.html">TcpDataSourceProvider</a>
+						</li>
+						
+						<li>
+							<a href="Telegram.html">Telegram</a>
+						</li>
+						
+						<li>
+							<a href="TextConverter.html">TextConverter</a>
+						</li>
+						
+						<li>
+							<a href="_.html">undefined</a>
+						</li>
+						
+						<li>
+							<a href="VBusRecordingConverter.html">VBusRecordingConverter</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu inline">
+						
+						<li>
+							<a href="HeaderSet.html#event:addHeader">addHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSet.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+
+		
+			<div class="span12">
+				
+				<div id="main">
+					
+
+
+		<h1 class="page-title">Source: recorder.js</h1>
+    
+    <section>
+        <article>
+            <pre class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2014, Daniel Wippermann | MIT license */
+'use strict';
+
+
+
+var EventEmitter = require('events').EventEmitter;
+
+
+var _ = require('lodash');
+var Q = require('q');
+
+
+var extend = require('./extend');
+var HeaderSetConsolidator = require('./header-set-consolidator');
+var utils = require('./utils');
+var VBusRecordingConverter = require('./vbus-recording-converter');
+
+
+
+var optionKeys = [
+    'id',
+    'minTimestamp',
+    'maxTimestamp',
+    'interval',
+];
+
+
+
+var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
+
+    /**
+     * Identifier for this recorder instance. It may be used to reference
+     * recorders, for example in sync data storage.
+     * @type {string}
+     */
+    id: null,
+
+    /**
+     * Minimum timestamp to use as a default during playback and
+     * synchronization.
+     * @type {Date}
+     * @default '2001-01-01T00:00:00.000Z'
+     */
+    minTimestamp: null,
+
+    /**
+     * Maximum timestamp to use as a default during playback and
+     * synchronization.
+     * @type {Date}
+     * @default '2038-01-01T00:00:00.000Z'
+     */
+    maxTimestamp: null,
+
+    /**
+     * Interval to be used as a default during playback and
+     * synchronization.
+     * @type {number}
+     * @default 0
+     */
+    interval: 0,
+
+    /**
+     * Creates a new Recorder instance and optionally initializes
+     * its members with the given values.
+     *
+     * @constructs
+     * @param {object} options Initialization values for this instance's members
+     * @param {string} options.id {@link Recorder#id}
+     * @param {Date} options.minTimestamp {@link Recorder#minTimestamp}
+     * @param {Date} options.maxTimestamp {@link Recorder#maxTimestamp}
+     * @param {number} options.interval {@link Recorder#interval}
+     *
+     * @classdesc
+     * A Recorder provides access to HeaderSet stores (e.g. dataloggers) by
+     * allowing to either playback the HeaderSets in the store, record
+     * HeaderSets to the store or synchronize two Recorders.
+     *
+     * The playback and record operation both use the VBusRecordingConverter
+     * to serialize the HeaderSets to and from Node.js streams.
+     *
+     * The synchronization operation builds on top of this two operations
+     * and is able to find unsynced HeaderSets in the source Recorder.
+     * Thoses unsynced HeaderSets are then played back from the source Recorder
+     * and recorded in the destination Recorder.
+     *
+     * The storage mechanism and format of the Recorder sub-classes is
+     * implementation-specific to this class.
+     */
+    constructor: function(options) {
+        EventEmitter.call(this);
+
+        _.extend(this, _.pick(options, optionKeys));
+
+        if (!this.id) {
+            this.id = utils.generateGUID();
+        }
+        if (!this.minTimestamp) {
+            this.minTimestamp = new Date(Date.UTC(2001, 0));
+        }
+        if (!this.maxTimestamp) {
+            this.maxTimestamp = new Date(Date.UTC(2038, 0));
+        }
+    },
+
+    _getOptions: function() {
+        return _.extend({}, _.pick(this, optionKeys));
+    },
+
+    /**
+     * Plays back a given range of HeaderSets. The HeaderSets are serialized to
+     * the stream using the VBusRecordingConverter.
+     *
+     * @param {Writable} stream A writable stream
+     * @param {object} options Options to select and filter HeaderSets
+     * @param {Date} [options.minTimestamp] {@link Recorder#minTimestamp}
+     * @param {Date} [options.maxTimestamp] {@link Recorder#maxTimestamp}
+     * @param {number} [options.interval] {@link Recorder#interval}
+     * @param {boolean} [options.end=true] Whether the stream should be `end()`ed when the playback is complete
+     */
+    playback: function(stream, options) {
+        var _this = this;
+
+        options = _.defaults({}, options, this._getOptions(), {
+            end: true
+        });
+
+        var converter = new VBusRecordingConverter();
+
+        converter.pipe(stream);
+
+        var headerSetConsolidator = new HeaderSetConsolidator({
+            minTimestamp: options.minTimestamp,
+            maxTimestamp: options.maxTimestamp,
+            interval: options.interval,
+        });
+
+        var playedBackRanges = [];
+
+        headerSetConsolidator.on('headerSet', function(headerSet) {
+            var timestamp = headerSet.timestamp;
+
+            var headerSetRange = {
+                minTimestamp: timestamp,
+                maxTimestamp: timestamp,
+            };
+
+            playedBackRanges = Recorder.performRangeSetOperation(playedBackRanges, [ headerSetRange ], options.interval, 'union');
+
+            converter.convertHeaderSet(headerSet);
+        });
+
+        return Q.fcall(function() {
+            return _this._playback(headerSetConsolidator, options);
+        }).then(function() {
+            if (options.end) {
+                return utils.promise(function(resolve) {
+                    stream.end(function() {
+                        resolve();
+                    });
+                });
+            }
+        }).then(function() {
+            return playedBackRanges;
+        });
+    },
+
+    _playback: function(headerSetConsolidator, options) {
+        throw new Error('Must be implemented by sub-class');
+    },
+
+    /**
+     * Synchronize this Recorder's HeaderSets to another Recorder.
+     *
+     * @param {Recorder} recorder Destination Recorder
+     * @param {object} options Options to select and filter HeaderSets
+     * @param {Date} [options.minTimestamp] {@link Recorder#minTimestamp}
+     * @param {Date} [options.maxTimestamp] {@link Recorder#maxTimestamp}
+     * @param {number} [options.interval] {@link Recorder#interval}
+     * @returns {Promise} Promise resolving with a list of ranges that were synchronized.
+     */
+    synchronizeTo: function(recorder, options) {
+        var _this = this;
+
+        options = _.extend({}, this._getOptions(), options);
+
+        return Q.fcall(function() {
+            return recorder._getCurrentSyncState(options);
+        }).then(function(oldSyncState) {
+            oldSyncState = _.cloneDeep(oldSyncState);
+
+            if (!oldSyncState.sourceSyncState) {
+                oldSyncState.sourceSyncState = {};
+            }
+            if (!oldSyncState.destinationSyncState) {
+                oldSyncState.destinationSyncState = {};
+            }
+
+            return _this._getSyncJob(oldSyncState, options);
+        }).then(function(syncJob) {
+            return recorder._recordSyncJob(_this, syncJob);
+        });
+    },
+
+    _getCurrentSyncState: function(options) {
+        throw new Error('Must be implemented by sub-class');
+    },
+
+    _getSyncJob: function(oldSyncState, options) {
+        var syncJob = _.extend({}, options, {
+            syncId: utils.generateGUID(),
+            syncState: oldSyncState,
+            syncStateDiffs: [],
+        });
+
+        var syncState = this._getSyncState(syncJob, 'source', 'Recorder');
+
+        // migrate
+        var syncVersion = syncState.version || 0;
+        if (syncVersion === 0) {
+            syncVersion = 1;
+            syncState.rangesByInterval = {};
+        }
+        syncState.version = syncVersion;
+
+        if (!syncState.rangesByInterval [options.interval]) {
+            syncState.rangesByInterval [options.interval] = [];
+        }
+
+        // find diffs
+        var syncStateDiffs = syncJob.syncStateDiffs;
+        syncStateDiffs.push({
+            minTimestamp: options.minTimestamp,
+            maxTimestamp: options.maxTimestamp,
+        });
+
+        _.forEach(syncState.rangesByInterval, function(ranges, rangesKey) {
+            var interval = rangesKey | 0;
+            if ((options.interval % interval) === 0) {
+                syncStateDiffs = Recorder.performRangeSetOperation(syncStateDiffs, ranges, interval, 'difference');
+            }
+        });
+
+        syncJob.syncStateDiffs = syncStateDiffs;
+
+        return Q(syncJob);
+    },
+
+    /**
+     * Starts a playback of the provided recorder, recording its data and returning a
+     * Promise that resolves to the recorded ranges.
+     *
+     * @param {Recorder} recorder The recorder to use for playback
+     * @param {RecorderSyncJob} syncJob The synchronization job to perform.
+     * @returns {Promise} Promise resolving with a list of ranges that were synchronized.
+     */
+    _recordSyncJob: function(recorder, syncJob) {
+        throw new Error('Must be implemented by sub-class');
+    },
+
+    /**
+     * Plays back the requested synchronization job, piping the resulting data into the
+     * provided stream. Returns a Promise that resolves to the played back ranges.
+     *
+     * @param {Stream} stream The stream to pipe data into
+     * @param {RecorderSyncJob} syncJob The synchronization job to perform.
+     * @returns {Promise} Promise resolving with a list of ranges that were synchronized.
+     */
+    _playbackSyncJob: function(stream, syncJob) {
+        throw new Error('Must be implemented by sub-class');
+    },
+
+    _getSyncState: function(syncJob, which, type) {
+        var syncStateRoot = syncJob.syncState [which + 'SyncState'];
+
+        if (!syncStateRoot [type]) {
+            syncStateRoot [type] = {};
+        }
+
+        return syncStateRoot [type];
+    },
+
+    _markSourceSyncRanges: function(ranges, syncJob) {
+        var syncState = this._getSyncState(syncJob, 'source', 'Recorder');
+
+        var handledRanges = syncState.rangesByInterval [syncJob.interval];
+
+        handledRanges = Recorder.performRangeSetOperation(handledRanges, ranges, syncJob.interval, 'union');
+
+        syncState.rangesByInterval [syncJob.interval] = handledRanges;
+    },
+
+}, /** @lends Recorder. */ {
+
+    /**
+     * Performs operations on two sets of timestamp ranges.
+     *
+     * Timestamp ranges are objects with two properties: `minTimestamp` and `maxTimestamp`.
+     *
+     * The operations correspond to the operations in mathematic's set theory.
+     * Currently supported are union, difference and intersection.
+     *
+     * See [http://en.wikipedia.org/wiki/Set_theory]() for details.
+     *
+     * @param {Array} rangesA Set A containing timestamp ranges
+     * @param {Array} rangesB Set B containing timestamp ranges
+     * @param {number} interval Interval to allow between adjacent timestamp ranges
+     * @param {string} operation Operation to perform, can be `'union'`, `'difference'` or `'intersection'`
+     * @returns {Array} Set containing timestamp ranges after the operation
+     */
+    performRangeSetOperation: function(rangesA, rangesB, interval, operation) {
+        var newInfos = [];
+
+        var calcBaseTimestamp = function(timestamp) {
+            if (interval > 0) {
+                return Math.floor(timestamp / interval) * interval;
+            } else {
+                return timestamp;
+            }
+        };
+
+        var rangeToInfo = function(range) {
+            var minTimestamp = range.minTimestamp;
+            if (typeof minTimestamp.getTime === 'function') {
+                minTimestamp = minTimestamp.getTime();
+            } else if (typeof minTimestamp === 'string') {
+                minTimestamp = new Date(minTimestamp).getTime();
+            } else if (typeof minTimestamp !== 'number') {
+                throw new Error('Invalid minTimestamp "' + minTimestamp + '" (type "' + typeof minTimestamp + '"');
+            }
+
+            var maxTimestamp = range.maxTimestamp;
+            if (typeof maxTimestamp.getTime === 'function') {
+                maxTimestamp = maxTimestamp.getTime();
+            } else if (typeof maxTimestamp === 'string') {
+                maxTimestamp = new Date(maxTimestamp).getTime();
+            } else if (typeof maxTimestamp !== 'number') {
+                throw new Error('Invalid maxTimestamp "' + maxTimestamp + '" (type "' + typeof maxTimestamp + '"');
+            }
+
+            var minBaseTimestamp = calcBaseTimestamp(minTimestamp);
+            var maxBaseTimestamp = calcBaseTimestamp(maxTimestamp + interval);
+
+            return {
+                minTimestamp: minTimestamp,
+                maxTimestamp: maxTimestamp,
+                minBaseTimestamp: minBaseTimestamp,
+                maxBaseTimestamp: maxBaseTimestamp,
+                valid: true,
+            };
+        };
+
+        var infoToRange = function(info) {
+            var range;
+            if (info &amp;&amp; info.valid) {
+                range = {
+                    minTimestamp: new Date(info.minTimestamp),
+                    maxTimestamp: new Date(info.maxTimestamp),
+                };
+            }
+            return range;
+        };
+
+        var processInfo = function(refInfo, operation) {
+            if (!refInfo || !refInfo.valid || (refInfo.minTimestamp > refInfo.maxTimestamp)) {
+                return;
+            }
+
+            for (var i = 0; i &lt;= newInfos.length; i++) {
+                var newInfo = newInfos [i];
+
+                var nextInfo;
+                for (var j = i + 1; j &lt; newInfos.length; j++) {
+                    if (newInfos [j].valid) {
+                        nextInfo = newInfos [j];
+                        break;
+                    }
+                }
+
+                var insert = false, deleteThis = false;
+                if (newInfo &amp;&amp; !newInfo.valid) {
+                    // skip
+                } else if (operation === 'union') {
+                    if (i === newInfos.length) {
+                        // append
+                        insert = true;
+                    } else if (refInfo.minBaseTimestamp > newInfo.maxBaseTimestamp) {
+                        // skip
+                    } else if (refInfo.maxBaseTimestamp &lt; newInfo.minBaseTimestamp) {
+                        // insert
+                        insert = true;
+                    } else if (nextInfo &amp;&amp; (refInfo.maxBaseTimestamp >= nextInfo.minBaseTimestamp)) {
+                        // union into next info
+                        if (refInfo.minTimestamp > newInfo.minTimestamp) {
+                            refInfo.minTimestamp = newInfo.minTimestamp;
+                        }
+                        if (refInfo.minBaseTimestamp > newInfo.minBaseTimestamp) {
+                            refInfo.minBaseTimestamp = newInfo.minBaseTimestamp;
+                        }
+                        newInfo.valid = false;
+                    } else {
+                        // union into this info
+                        if (newInfo.minTimestamp > refInfo.minTimestamp) {
+                            newInfo.minTimestamp = refInfo.minTimestamp;
+                        }
+                        if (newInfo.maxTimestamp &lt; refInfo.maxTimestamp) {
+                            newInfo.maxTimestamp = refInfo.maxTimestamp;
+                        }
+                        if (newInfo.minBaseTimestamp > refInfo.minBaseTimestamp) {
+                            newInfo.minBaseTimestamp = refInfo.minBaseTimestamp;
+                        }
+                        if (newInfo.maxBaseTimestamp &lt; refInfo.maxBaseTimestamp) {
+                            newInfo.maxBaseTimestamp = refInfo.maxBaseTimestamp;
+                        }
+                        break;
+                    }
+                } else if (operation === 'difference') {
+                    if (i === newInfos.length) {
+                        // skip
+                    } else if (refInfo.minBaseTimestamp > newInfo.maxBaseTimestamp) {
+                        // skip
+                    } else if (refInfo.maxBaseTimestamp &lt; newInfo.minBaseTimestamp) {
+                        // skip
+                    } else if (refInfo.minBaseTimestamp &lt;= newInfo.minBaseTimestamp) {
+                        if (refInfo.maxBaseTimestamp >= newInfo.maxBaseTimestamp) {
+                            deleteThis = true;
+                        } else {
+                            if (newInfo.minTimestamp &lt; refInfo.maxTimestamp + 1) {
+                                newInfo.minTimestamp = refInfo.maxTimestamp + 1;
+                            }
+                            newInfo.minBaseTimestamp = refInfo.maxBaseTimestamp + 1;
+                        }
+                    } else if (refInfo.maxBaseTimestamp >= newInfo.maxBaseTimestamp) {
+                        if (newInfo.maxTimestamp > refInfo.minTimestamp - 1) {
+                            newInfo.maxTimestamp = refInfo.minTimestamp - 1;
+                        }
+                        newInfo.maxBaseTimestamp = refInfo.minBaseTimestamp - 1;
+                    } else {
+                        // split
+                        var splitInfo = {
+                            minTimestamp: newInfo.minTimestamp,
+                            maxTimestamp: refInfo.minTimestamp - 1,
+                            minBaseTimestamp: newInfo.minBaseTimestamp,
+                            maxBaseTimestamp: refInfo.minBaseTimestamp - 1,
+                            valid: true,
+                        };
+                        newInfos.splice(i, 0, splitInfo);
+
+                        newInfo.minTimestamp = refInfo.maxBaseTimestamp + 1;
+                        newInfo.minBaseTimestamp = refInfo.maxBaseTimestamp + 1;
+                        break;
+                    }
+
+                } else {
+                    throw new Error('Unknown set operation "' + operation + '"');
+                }
+
+                if (insert) {
+                    newInfos.splice(i, 0, _.clone(refInfo));
+                    break;
+                } else if (deleteThis) {
+                    newInfo.valid = false;
+                }
+            }
+        };
+
+        var processInfos = function(infos, operation) {
+            _.forEach(_.clone(infos), function(info, index) {
+                processInfo(info, operation);
+            });
+        };
+
+        var infosA = _.map(rangesA, rangeToInfo);
+
+        var infosB = _.map(rangesB, rangeToInfo);
+
+        if (operation === 'intersection') {
+            processInfos(infosA, 'union');
+            processInfos(infosB, 'difference');
+
+            var infosAMinusB = newInfos;
+            newInfos = [];
+
+            processInfos(infosB, 'union');
+            processInfos(infosA, 'difference');
+
+            var infosBMinusA = newInfos;
+            newInfos = [];
+
+            processInfos(infosA, 'union');
+            processInfos(infosB, 'union');
+
+            processInfos(infosAMinusB, 'difference');
+            processInfos(infosBMinusA, 'difference');
+        } else {
+            _.forEach(infosA, function(info) {
+                processInfo(info, 'union');
+            });
+
+            _.forEach(infosB, function(info) {
+                processInfo(info, operation);
+            });
+        }
+
+        var newRanges = [];
+        _.forEach(newInfos, function(newInfo) {
+            var newRange = infoToRange(newInfo);
+            if (newRange) {
+                newRanges.push(newRange);
+            }
+        });
+
+        return newRanges;
+    },
+
+});
+
+
+
+module.exports = Recorder;
+</pre>
+        </article>
+    </section>
+
+
+
+
+
+				</div>
+
+				<div class="clearfix"></div>
+				<footer>
+					
+					
+		<span class="copyright">
+		resol-vbus | Copyright (c) 2013-2014, Daniel Wippermann
+		</span>
+					<br />
+					
+		<span class="jsdoc-message">
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
+		on Sat Feb 22 2014 14:04:39 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		</span>
+				</footer>
+			</div>
+
+			
+			<br clear="both">
+		</div>
+
+	</div>
+	<script src="scripts/sunlight.js"></script>
+	<script src="scripts/sunlight.javascript.js"></script>
+	<script src="scripts/sunlight-plugin.doclinks.js"></script>
+	<script src="scripts/sunlight-plugin.linenumbers.js"></script>
+	<script src="scripts/sunlight-plugin.menu.js"></script>
+	<script src="scripts/jquery.min.js"></script>
+	<script src="scripts/jquery.scrollTo.js"></script>
+	<script src="scripts/jquery.localScroll.js"></script>
+	<script src="scripts/bootstrap-dropdown.js"></script>
+	<script src="scripts/toc.js"></script>
+
+
+	<script>  Sunlight.highlightAll({lineNumbers:false,  showMenu: true, enableDoclinks :true}); </script>
+
+	<script>
+		$( function () {
+			$( "#toc" ).toc( {
+				selectors   : "h1,h2,h3,h4",
+				showAndHide : false,
+				scrollTo    : 60
+			} );
+			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+
+		} );
+	</script>
+
+	
+	<script>
+		$( function () {
+			$('#main').localScroll({
+				offset: { top: 56 } //offset by the height of your header (give or take a few px, see what works for you)
+			});
+			$( "dt h4.name" ).each( function () {
+				var $this = $( this );
+				var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
+				var dt = $this.parents( "dt" );
+				var children = dt.next( "dd" );
+
+				$this.append( icon ).css( {cursor : "pointer"} );
+				$this.addClass( "member-collapsed" ).addClass( "member" );
+
+				children.hide();
+				$this.toggle( function () {
+					icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
+					$this.addClass( "member-open" ).removeClass( "member-collapsed" );
+					children.slideDown();
+				}, function () {
+					icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
+					$this.addClass( "member-collapsed" ).removeClass( "member-open" );
+					children.slideUp();
+				} );
+			} );
+		} );
+	</script>
+	
+
+</body>
+</html>
