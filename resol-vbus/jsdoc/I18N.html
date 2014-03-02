@@ -26,7 +26,7 @@
 					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="Connection.html">Connection</a>
@@ -61,6 +61,10 @@
 						</li>
 						
 						<li>
+							<a href="HeaderSetConsolidator.html">HeaderSetConsolidator</a>
+						</li>
+						
+						<li>
 							<a href="I18N.html">I18N</a>
 						</li>
 						
@@ -70,6 +74,10 @@
 						
 						<li>
 							<a href="Recorder.html">Recorder</a>
+						</li>
+						
+						<li>
+							<a href="SerialConnection.html">SerialConnection</a>
 						</li>
 						
 						<li>
@@ -105,10 +113,6 @@
 						</li>
 						
 						<li>
-							<a href="_.html">undefined</a>
-						</li>
-						
-						<li>
 							<a href="VBusRecordingConverter.html">VBusRecordingConverter</a>
 						</li>
 						
@@ -120,7 +124,7 @@
 					<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="HeaderSet.html#event:addHeader">addHeader</a>
@@ -128,6 +132,28 @@
 						
 						<li>
 							<a href="HeaderSet.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:addHeader">addHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="global.html#extend">extend</a>
 						</li>
 						
 
@@ -172,7 +198,7 @@
     
     
     <div class="description">
-        Creates a new I18N instance for the given language code.
+        <p>Creates a new I18N instance for the given language code.</p>
     </div>
     
 
@@ -242,7 +268,7 @@
                 </td>
             
 
-            <td class="description last">Language code (ISO 639-1)</td>
+            <td class="description last"><p>Language code (ISO 639-1)</p></td>
         </tr>
 
 	
@@ -328,8 +354,8 @@
     
     
     <div class="description">
-        Wrapper for a moment.js date object that is setup to use this
-instance's language code.
+        <p>Wrapper for a moment.js date object that is setup to use this
+instance's language code.</p>
     </div>
     
 
@@ -391,7 +417,7 @@ instance's language code.
 
             
 
-            <td class="description last">Arguments to be passed to `moment()` function</td>
+            <td class="description last"><p>Arguments to be passed to <code>moment()</code> function</p></td>
         </tr>
 
 	
@@ -455,7 +481,7 @@ instance's language code.
     
             
 <div class="param-desc">
-    Result of calling the `moment()` function
+    <p>Result of calling the <code>moment()</code> function</p>
 </div>
 
 
@@ -489,8 +515,8 @@ instance's language code.
     
     
     <div class="description">
-        Wrapper for a numeral.js number object that is setup to use this
-instance's language code.
+        <p>Wrapper for a numeral.js number object that is setup to use this
+instance's language code.</p>
     </div>
     
 
@@ -552,7 +578,7 @@ instance's language code.
 
             
 
-            <td class="description last">Arguments to be passes to `numeral()` function</td>
+            <td class="description last"><p>Arguments to be passes to <code>numeral()</code> function</p></td>
         </tr>
 
 	
@@ -616,7 +642,7 @@ instance's language code.
     
             
 <div class="param-desc">
-    Result of calling the `numeral()` function
+    <p>Result of calling the <code>numeral()</code> function</p>
 </div>
 
 
@@ -650,8 +676,8 @@ instance's language code.
     
     
     <div class="description">
-        Formats a string using a `printf(3)` compatible format string and
-variadic arguments (comparable to `sprintf(3)`) and returns it.
+        <p>Formats a string using a <code>printf(3)</code> compatible format string and
+variadic arguments (comparable to <code>sprintf(3)</code>) and returns it.</p>
     </div>
     
 
@@ -711,7 +737,7 @@ variadic arguments (comparable to `sprintf(3)`) and returns it.
 
             
 
-            <td class="description last">Format string</td>
+            <td class="description last"><p>Format string</p></td>
         </tr>
 
 	
@@ -744,7 +770,7 @@ variadic arguments (comparable to `sprintf(3)`) and returns it.
 
             
 
-            <td class="description last">Arguments to format</td>
+            <td class="description last"><p>Arguments to format</p></td>
         </tr>
 
 	
@@ -810,7 +836,7 @@ variadic arguments (comparable to `sprintf(3)`) and returns it.
     
             
 <div class="param-desc">
-    Formatted string
+    <p>Formatted string</p>
 </div>
 
 
@@ -854,9 +880,9 @@ console.log(i18n.sprintf('%2$s', 3, 'DeltaSol MX'));</pre>
     
     
     <div class="description">
-        Get a translation for the given key. If more than one argument is
+        <p>Get a translation for the given key. If more than one argument is
 given, the translation is then used as a format string for the
-<a href="I18N.html#sprintf">I18N#sprintf</a> method.
+<a href="I18N.html#sprintf">I18N#sprintf</a> method.</p>
     </div>
     
 
@@ -916,7 +942,7 @@ given, the translation is then used as a format string for the
 
             
 
-            <td class="description last">Key for the translation</td>
+            <td class="description last"><p>Key for the translation</p></td>
         </tr>
 
 	
@@ -949,7 +975,7 @@ given, the translation is then used as a format string for the
 
             
 
-            <td class="description last">Arguments to format</td>
+            <td class="description last"><p>Arguments to format</p></td>
         </tr>
 
 	
@@ -1006,7 +1032,7 @@ given, the translation is then used as a format string for the
     
             
 <div class="param-desc">
-    Formatted string
+    <p>Formatted string</p>
 </div>
 
 
@@ -1052,8 +1078,8 @@ console.log(i18n.t('specification.unknownDevice', 0x7e11));</pre>
     
     
     <div class="description">
-        Formats a string using a `printf(3)` compatible format string and
-a arguments array (comparable to `vsprintf(3)`) and returns it.
+        <p>Formats a string using a <code>printf(3)</code> compatible format string and
+a arguments array (comparable to <code>vsprintf(3)</code>) and returns it.</p>
     </div>
     
 
@@ -1103,7 +1129,7 @@ a arguments array (comparable to `vsprintf(3)`) and returns it.
 
             
 
-            <td class="description last">Format string</td>
+            <td class="description last"><p>Format string</p></td>
         </tr>
 
 	
@@ -1126,7 +1152,7 @@ a arguments array (comparable to `vsprintf(3)`) and returns it.
 
             
 
-            <td class="description last">Arguments to format</td>
+            <td class="description last"><p>Arguments to format</p></td>
         </tr>
 
 	
@@ -1183,7 +1209,7 @@ a arguments array (comparable to `vsprintf(3)`) and returns it.
     
             
 <div class="param-desc">
-    Formatted string
+    <p>Formatted string</p>
 </div>
 
 
@@ -1242,7 +1268,7 @@ console.log(i18n.vsprintf('%2$s', [ 3, 'DeltaSol MX' ]));</pre>
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
-		on Sat Mar 01 2014 20:49:51 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Sun Mar 02 2014 12:10:00 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>
@@ -1283,34 +1309,6 @@ console.log(i18n.vsprintf('%2$s', [ 3, 'DeltaSol MX' ]));</pre>
 		} );
 	</script>
 
-	
-	<script>
-		$( function () {
-			$('#main').localScroll({
-				offset: { top: 56 } //offset by the height of your header (give or take a few px, see what works for you)
-			});
-			$( "dt h4.name" ).each( function () {
-				var $this = $( this );
-				var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
-				var dt = $this.parents( "dt" );
-				var children = dt.next( "dd" );
-
-				$this.append( icon ).css( {cursor : "pointer"} );
-				$this.addClass( "member-collapsed" ).addClass( "member" );
-
-				children.hide();
-				$this.toggle( function () {
-					icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
-					$this.addClass( "member-open" ).removeClass( "member-collapsed" );
-					children.slideDown();
-				}, function () {
-					icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
-					$this.addClass( "member-collapsed" ).removeClass( "member-open" );
-					children.slideUp();
-				} );
-			} );
-		} );
-	</script>
 	
 
 </body>

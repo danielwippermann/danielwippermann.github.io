@@ -26,7 +26,7 @@
 					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="Connection.html">Connection</a>
@@ -61,6 +61,10 @@
 						</li>
 						
 						<li>
+							<a href="HeaderSetConsolidator.html">HeaderSetConsolidator</a>
+						</li>
+						
+						<li>
 							<a href="I18N.html">I18N</a>
 						</li>
 						
@@ -70,6 +74,10 @@
 						
 						<li>
 							<a href="Recorder.html">Recorder</a>
+						</li>
+						
+						<li>
+							<a href="SerialConnection.html">SerialConnection</a>
 						</li>
 						
 						<li>
@@ -105,10 +113,6 @@
 						</li>
 						
 						<li>
-							<a href="_.html">undefined</a>
-						</li>
-						
-						<li>
 							<a href="VBusRecordingConverter.html">VBusRecordingConverter</a>
 						</li>
 						
@@ -120,7 +124,7 @@
 					<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="HeaderSet.html#event:addHeader">addHeader</a>
@@ -128,6 +132,28 @@
 						
 						<li>
 							<a href="HeaderSet.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:addHeader">addHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="global.html#extend">extend</a>
 						</li>
 						
 
@@ -160,8 +186,8 @@ var _ = require('lodash');
 var moreints = require('buffer-more-ints');
 
 
-var Packet = require('./packet');
 var HeaderSet = require('./header-set');
+var Packet = require('./packet');
 
 var Converter = require('./converter');
 
@@ -221,11 +247,19 @@ var VBusRecordingConverter = Converter.extend(/** @lends VBusRecordingConverter#
     },
 
     convertHeader: function(header) {
-        return this._convertHeaders(header.timestamp, [ header ]);
+        if (this.objectMode) {
+            return Converter.prototype.convertHeader.apply(this, arguments);
+        } else {
+            return this._convertHeaders(header.timestamp, [ header ]);
+        }
     },
 
     convertHeaderSet: function(headerSet) {
-        return this._convertHeaders(headerSet.timestamp, headerSet.getSortedHeaders());
+        if (this.objectMode) {
+            return Converter.prototype.convertHeaderSet.apply(this, arguments);
+        } else {
+            return this._convertHeaders(headerSet.timestamp, headerSet.getSortedHeaders());
+        }
     },
 
     _convertHeaders: function(timestamp, headers) {
@@ -297,69 +331,73 @@ var VBusRecordingConverter = Converter.extend(/** @lends VBusRecordingConverter#
     },
 
     _write: function(chunk, encoding, callback) {
-        var buffer;
-        if (this.rxBuffer) {
-            buffer = Buffer.concat([ this.rxBuffer, chunk ]);
+        if (this.objectMode) {
+            return Converter.prototype._write.apply(this, arguments);
         } else {
-            buffer = chunk;
-        }
-
-        var getRecordLength = function(index) {
-            var length;
-            if (index > buffer.length - 6) {
-                length = 0;
-            } else if (buffer [index] !== 0xA5) {
-                length = 0;
-            } else if ((buffer [index + 1] >> 4) !== (buffer [index + 1] &amp; 15)) {
-                length = 0;
-            } else if (buffer [index + 2] !== buffer [index + 4]) {
-                length = 0;
-            } else if (buffer [index + 3] !== buffer [index + 5]) {
-                length = 0;
+            var buffer;
+            if (this.rxBuffer) {
+                buffer = Buffer.concat([ this.rxBuffer, chunk ]);
             } else {
-                length = buffer.readUInt16LE(index + 2);
+                buffer = chunk;
+            }
 
-                if ((index + length) > buffer.length) {
+            var getRecordLength = function(index) {
+                var length;
+                if (index > buffer.length - 6) {
                     length = 0;
+                } else if (buffer [index] !== 0xA5) {
+                    length = 0;
+                } else if ((buffer [index + 1] >> 4) !== (buffer [index + 1] &amp; 15)) {
+                    length = 0;
+                } else if (buffer [index + 2] !== buffer [index + 4]) {
+                    length = 0;
+                } else if (buffer [index + 3] !== buffer [index + 5]) {
+                    length = 0;
+                } else {
+                    length = buffer.readUInt16LE(index + 2);
+
+                    if ((index + length) > buffer.length) {
+                        length = 0;
+                    }
                 }
-            }
-            return length;
-        };
+                return length;
+            };
 
-        var currentIndex = 0, currentLength = getRecordLength(0), nextIndex, nextLength, start = 0;
-        while (currentIndex &lt; buffer.length) {
-            if (currentLength > 0) {
-                nextIndex = currentIndex + currentLength;
-            } else {
-                nextIndex = currentIndex + 1;
-            }
+            var currentIndex = 0, currentLength = getRecordLength(0), nextIndex, nextLength, start = 0;
+            while (currentIndex &lt; buffer.length) {
+                if (currentLength > 0) {
+                    nextIndex = currentIndex + currentLength;
+                } else {
+                    nextIndex = currentIndex + 1;
+                }
 
-            nextLength = getRecordLength(nextIndex);
-
-            if ((currentLength > 0) &amp;&amp; ((nextLength > 0) || (nextIndex === buffer.length))) {
-                var record = buffer.slice(currentIndex, nextIndex);
-
-                this._processRecord(record);
-
-                start = nextIndex;
-            } else if (nextIndex !== (currentIndex + 1)) {
-                nextIndex = currentIndex + 1;
                 nextLength = getRecordLength(nextIndex);
+
+                if ((currentLength > 0) &amp;&amp; ((nextLength > 0) || (nextIndex === buffer.length))) {
+                    var record = buffer.slice(currentIndex, nextIndex);
+
+                    this._processRecord(record);
+
+                    start = nextIndex;
+                } else if (nextIndex !== (currentIndex + 1)) {
+                    nextIndex = currentIndex + 1;
+                    nextLength = getRecordLength(nextIndex);
+                }
+
+                currentIndex = nextIndex;
+                currentLength = nextLength;
             }
 
-            currentIndex = nextIndex;
-            currentLength = nextLength;
-        }
+            var maxLength = 65536;
+            if (buffer.length - start >= maxLength) {
+                start = buffer.length - maxLength;
+            }
 
-        var maxLength = 65536;
-        if (buffer.length - start >= maxLength) {
-            start = buffer.length - maxLength;
-        }
-
-        if (start &lt; buffer.length) {
-            this.rxBuffer = new Buffer(buffer.slice(start));
-        } else {
-            this.rxBuffer = null;
+            if (start &lt; buffer.length) {
+                this.rxBuffer = new Buffer(buffer.slice(start));
+            } else {
+                this.rxBuffer = null;
+            }
         }
 
         callback();
@@ -452,7 +490,7 @@ module.exports = VBusRecordingConverter;
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
-		on Sat Mar 01 2014 20:49:51 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Sun Mar 02 2014 12:10:00 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>
@@ -489,34 +527,6 @@ module.exports = VBusRecordingConverter;
 		} );
 	</script>
 
-	
-	<script>
-		$( function () {
-			$('#main').localScroll({
-				offset: { top: 56 } //offset by the height of your header (give or take a few px, see what works for you)
-			});
-			$( "dt h4.name" ).each( function () {
-				var $this = $( this );
-				var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
-				var dt = $this.parents( "dt" );
-				var children = dt.next( "dd" );
-
-				$this.append( icon ).css( {cursor : "pointer"} );
-				$this.addClass( "member-collapsed" ).addClass( "member" );
-
-				children.hide();
-				$this.toggle( function () {
-					icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
-					$this.addClass( "member-open" ).removeClass( "member-collapsed" );
-					children.slideDown();
-				}, function () {
-					icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
-					$this.addClass( "member-collapsed" ).removeClass( "member-open" );
-					children.slideUp();
-				} );
-			} );
-		} );
-	</script>
 	
 
 </body>

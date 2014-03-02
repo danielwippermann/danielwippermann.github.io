@@ -26,7 +26,7 @@
 					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="Connection.html">Connection</a>
@@ -61,6 +61,10 @@
 						</li>
 						
 						<li>
+							<a href="HeaderSetConsolidator.html">HeaderSetConsolidator</a>
+						</li>
+						
+						<li>
 							<a href="I18N.html">I18N</a>
 						</li>
 						
@@ -70,6 +74,10 @@
 						
 						<li>
 							<a href="Recorder.html">Recorder</a>
+						</li>
+						
+						<li>
+							<a href="SerialConnection.html">SerialConnection</a>
 						</li>
 						
 						<li>
@@ -105,10 +113,6 @@
 						</li>
 						
 						<li>
-							<a href="_.html">undefined</a>
-						</li>
-						
-						<li>
 							<a href="VBusRecordingConverter.html">VBusRecordingConverter</a>
 						</li>
 						
@@ -120,7 +124,7 @@
 					<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="HeaderSet.html#event:addHeader">addHeader</a>
@@ -128,6 +132,28 @@
 						
 						<li>
 							<a href="HeaderSet.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:addHeader">addHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="global.html#extend">extend</a>
 						</li>
 						
 
@@ -232,6 +258,9 @@
             <dt><a href="HeaderSet.html">HeaderSet</a></dt>
             <dd></dd>
         
+            <dt><a href="HeaderSetConsolidator.html">HeaderSetConsolidator</a></dt>
+            <dd></dd>
+        
             <dt><a href="I18N.html">I18N</a></dt>
             <dd></dd>
         
@@ -239,6 +268,9 @@
             <dd></dd>
         
             <dt><a href="Recorder.html">Recorder</a></dt>
+            <dd></dd>
+        
+            <dt><a href="SerialConnection.html">SerialConnection</a></dt>
             <dd></dd>
         
             <dt><a href="SerialDataSource.html">SerialDataSource</a></dt>
@@ -263,9 +295,6 @@
             <dd></dd>
         
             <dt><a href="TextConverter.html">TextConverter</a></dt>
-            <dd></dd>
-        
-            <dt><a href="_.html">undefined</a></dt>
             <dd></dd>
         
             <dt><a href="VBusRecordingConverter.html">VBusRecordingConverter</a></dt>
@@ -295,7 +324,7 @@
     
     
     <div class="description">
-        This event is fired whenever a Header instance is added to this set.
+        <p>This event is fired whenever a Header instance is added to this set.</p>
     </div>
     
 
@@ -374,7 +403,7 @@
     
     
     <div class="description">
-        This event is fired whenever a Header is removed from this set.
+        <p>This event is fired whenever a Header is removed from this set.</p>
     </div>
     
 
@@ -442,6 +471,174 @@
     
 </dd>
 
+        
+            
+<dt>
+    <h4 class="name" id="event:addHeader">addHeader</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This event is fired whenever a Header instance is added to this set.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type"><a href="Header.html">Header</a></span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="HeaderSet.html#event:addHeader">HeaderSet#event:addHeader</a>
+    </li></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="header-set.js.html">header-set.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:removeHeader">removeHeader</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This event is fired whenever a Header is removed from this set.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type"><a href="Header.html">Header</a></span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="HeaderSet.html#event:removeHeader">HeaderSet#event:removeHeader</a>
+    </li></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="header-set.js.html">header-set.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
         </dl>
     
 </article>
@@ -464,7 +661,7 @@
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
-		on Sat Mar 01 2014 20:49:51 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Sun Mar 02 2014 12:10:00 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>
@@ -505,34 +702,6 @@
 		} );
 	</script>
 
-	
-	<script>
-		$( function () {
-			$('#main').localScroll({
-				offset: { top: 56 } //offset by the height of your header (give or take a few px, see what works for you)
-			});
-			$( "dt h4.name" ).each( function () {
-				var $this = $( this );
-				var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
-				var dt = $this.parents( "dt" );
-				var children = dt.next( "dd" );
-
-				$this.append( icon ).css( {cursor : "pointer"} );
-				$this.addClass( "member-collapsed" ).addClass( "member" );
-
-				children.hide();
-				$this.toggle( function () {
-					icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
-					$this.addClass( "member-open" ).removeClass( "member-collapsed" );
-					children.slideDown();
-				}, function () {
-					icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
-					$this.addClass( "member-collapsed" ).removeClass( "member-open" );
-					children.slideUp();
-				} );
-			} );
-		} );
-	</script>
 	
 
 </body>

@@ -26,7 +26,7 @@
 					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="Connection.html">Connection</a>
@@ -61,6 +61,10 @@
 						</li>
 						
 						<li>
+							<a href="HeaderSetConsolidator.html">HeaderSetConsolidator</a>
+						</li>
+						
+						<li>
 							<a href="I18N.html">I18N</a>
 						</li>
 						
@@ -70,6 +74,10 @@
 						
 						<li>
 							<a href="Recorder.html">Recorder</a>
+						</li>
+						
+						<li>
+							<a href="SerialConnection.html">SerialConnection</a>
 						</li>
 						
 						<li>
@@ -105,10 +113,6 @@
 						</li>
 						
 						<li>
-							<a href="_.html">undefined</a>
-						</li>
-						
-						<li>
 							<a href="VBusRecordingConverter.html">VBusRecordingConverter</a>
 						</li>
 						
@@ -120,7 +124,7 @@
 					<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="HeaderSet.html#event:addHeader">addHeader</a>
@@ -128,6 +132,28 @@
 						
 						<li>
 							<a href="HeaderSet.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:addHeader">addHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="global.html#extend">extend</a>
 						</li>
 						
 
@@ -155,13 +181,12 @@
     DLxJsonConverter
     </h2>
     
-        <div class="class-description">The DLxJsonConverter class takes HeaderSet instances, converts them into JSON
+        <div class="class-description"><p>The DLxJsonConverter class takes HeaderSet instances, converts them into JSON
 representation and then publishes that on the readable stream side
 of itself. The format of the JSON data is similar to the one that is generated
-by the Dataloggers DL2 and DL3.
-
-It does not support parsing JSON content back into HeaderSet instances (the
-writable stream side).</div>
+by the Dataloggers DL2 and DL3.</p>
+<p>It does not support parsing JSON content back into HeaderSet instances (the
+writable stream side).</p></div>
     
 </header>
 
@@ -180,7 +205,7 @@ writable stream side).</div>
     
     
     <div class="description">
-        Creates a new DLxJsonConverter instance and optionally initializes its members with the given values.
+        <p>Creates a new DLxJsonConverter instance and optionally initializes its members with the given values.</p>
     </div>
     
 
@@ -230,7 +255,7 @@ writable stream side).</div>
 
             
 
-            <td class="description last">Initialization values
+            <td class="description last"><p>Initialization values</p>
                 <h6>Properties</h6>
                 
 
@@ -272,7 +297,7 @@ writable stream side).</div>
 
             
 
-            <td class="description last">See <a href="DLxJsonConverter.html#specification">DLxJsonConverter#specification</a></td>
+            <td class="description last"><p>See <a href="DLxJsonConverter.html#specification">DLxJsonConverter#specification</a></p></td>
         </tr>
 
 	
@@ -361,6 +386,75 @@ writable stream side).</div>
         <dl>
             
 <dt>
+    <h4 class="name" id="objectMode"><span class="type-signature"></span>objectMode<span class="type-signature"> :boolean</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Specifies whether the underlying stream operates in object mode.</p>
+    </div>
+    
+    
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">boolean</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Converter.html#objectMode">Converter#objectMode</a>
+    </li></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="converter.js.html">converter.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="specification"><span class="type-signature"></span>specification<span class="type-signature"> :<a href="Specification.html">Specification</a></span></h4>
     
     
@@ -368,7 +462,7 @@ writable stream side).</div>
 <dd>
     
     <div class="description">
-        Reference to the Specification instance that is used for the binary -> text conversion.
+        <p>Reference to the Specification instance that is used for the binary -&gt; text conversion.</p>
     </div>
     
     
@@ -439,8 +533,8 @@ writable stream side).</div>
     
     
     <div class="description">
-        This method queues a VBus Header model (Packet, Datagram or Telegram) for conversion.
-Not all Converter sub-classes support this method.
+        <p>This method queues a VBus Header model (Packet, Datagram or Telegram) for conversion.
+Not all Converter sub-classes support this method.</p>
     </div>
     
 
@@ -490,7 +584,7 @@ Not all Converter sub-classes support this method.
 
             
 
-            <td class="description last">The Header to queue for conversion.</td>
+            <td class="description last"><p>The Header to queue for conversion.</p></td>
         </tr>
 
 	
@@ -563,8 +657,8 @@ Not all Converter sub-classes support this method.
     
     
     <div class="description">
-        This method queues a VBus HeaderSet instance for conversion.
-Not all Converter sub-classes support this method.
+        <p>This method queues a VBus HeaderSet instance for conversion.
+Not all Converter sub-classes support this method.</p>
     </div>
     
 
@@ -614,7 +708,7 @@ Not all Converter sub-classes support this method.
 
             
 
-            <td class="description last">The HeaderSet to queue for conversion.</td>
+            <td class="description last"><p>The HeaderSet to queue for conversion.</p></td>
         </tr>
 
 	
@@ -687,8 +781,8 @@ Not all Converter sub-classes support this method.
     
     
     <div class="description">
-        This method resets the converter. It should be used e.g. if the converter output switches between files (allows
-some Converter sub-classes to correctly write a header).
+        <p>This method resets the converter. It should be used e.g. if the converter output switches between files (allows
+some Converter sub-classes to correctly write a header).</p>
     </div>
     
 
@@ -777,7 +871,7 @@ some Converter sub-classes to correctly write a header).
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
-		on Sat Mar 01 2014 20:49:51 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Sun Mar 02 2014 12:10:00 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>
@@ -818,34 +912,6 @@ some Converter sub-classes to correctly write a header).
 		} );
 	</script>
 
-	
-	<script>
-		$( function () {
-			$('#main').localScroll({
-				offset: { top: 56 } //offset by the height of your header (give or take a few px, see what works for you)
-			});
-			$( "dt h4.name" ).each( function () {
-				var $this = $( this );
-				var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
-				var dt = $this.parents( "dt" );
-				var children = dt.next( "dd" );
-
-				$this.append( icon ).css( {cursor : "pointer"} );
-				$this.addClass( "member-collapsed" ).addClass( "member" );
-
-				children.hide();
-				$this.toggle( function () {
-					icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
-					$this.addClass( "member-open" ).removeClass( "member-collapsed" );
-					children.slideDown();
-				}, function () {
-					icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
-					$this.addClass( "member-collapsed" ).removeClass( "member-open" );
-					children.slideUp();
-				} );
-			} );
-		} );
-	</script>
 	
 
 </body>

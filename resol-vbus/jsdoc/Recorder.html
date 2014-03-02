@@ -26,7 +26,7 @@
 					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="Connection.html">Connection</a>
@@ -61,6 +61,10 @@
 						</li>
 						
 						<li>
+							<a href="HeaderSetConsolidator.html">HeaderSetConsolidator</a>
+						</li>
+						
+						<li>
 							<a href="I18N.html">I18N</a>
 						</li>
 						
@@ -70,6 +74,10 @@
 						
 						<li>
 							<a href="Recorder.html">Recorder</a>
+						</li>
+						
+						<li>
+							<a href="SerialConnection.html">SerialConnection</a>
 						</li>
 						
 						<li>
@@ -105,10 +113,6 @@
 						</li>
 						
 						<li>
-							<a href="_.html">undefined</a>
-						</li>
-						
-						<li>
 							<a href="VBusRecordingConverter.html">VBusRecordingConverter</a>
 						</li>
 						
@@ -120,7 +124,7 @@
 					<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="HeaderSet.html#event:addHeader">addHeader</a>
@@ -128,6 +132,28 @@
 						
 						<li>
 							<a href="HeaderSet.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:addHeader">addHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="global.html#extend">extend</a>
 						</li>
 						
 
@@ -155,20 +181,17 @@
     Recorder
     </h2>
     
-        <div class="class-description">A Recorder provides access to HeaderSet stores (e.g. dataloggers) by
+        <div class="class-description"><p>A Recorder provides access to HeaderSet stores (e.g. dataloggers) by
 allowing to either playback the HeaderSets in the store, record
-HeaderSets to the store or synchronize two Recorders.
-
-The playback and record operation both use the VBusRecordingConverter
-to serialize the HeaderSets to and from Node.js streams.
-
-The synchronization operation builds on top of this two operations
+HeaderSets to the store or synchronize two Recorders.</p>
+<p>The playback and record operation both use the VBusRecordingConverter
+to serialize the HeaderSets to and from Node.js streams.</p>
+<p>The synchronization operation builds on top of this two operations
 and is able to find unsynced HeaderSets in the source Recorder.
 Thoses unsynced HeaderSets are then played back from the source Recorder
-and recorded in the destination Recorder.
-
-The storage mechanism and format of the Recorder sub-classes is
-implementation-specific to this class.</div>
+and recorded in the destination Recorder.</p>
+<p>The storage mechanism and format of the Recorder sub-classes is
+implementation-specific to this class.</p></div>
     
 </header>
 
@@ -187,8 +210,8 @@ implementation-specific to this class.</div>
     
     
     <div class="description">
-        Creates a new Recorder instance and optionally initializes
-its members with the given values.
+        <p>Creates a new Recorder instance and optionally initializes
+its members with the given values.</p>
     </div>
     
 
@@ -238,7 +261,7 @@ its members with the given values.
 
             
 
-            <td class="description last">Initialization values for this instance's members
+            <td class="description last"><p>Initialization values for this instance's members</p>
                 <h6>Properties</h6>
                 
 
@@ -280,7 +303,7 @@ its members with the given values.
 
             
 
-            <td class="description last"><a href="Recorder.html#id">Recorder#id</a></td>
+            <td class="description last"><p><a href="Recorder.html#id">Recorder#id</a></p></td>
         </tr>
 
 	
@@ -303,7 +326,7 @@ its members with the given values.
 
             
 
-            <td class="description last"><a href="Recorder.html#minTimestamp">Recorder#minTimestamp</a></td>
+            <td class="description last"><p><a href="Recorder.html#minTimestamp">Recorder#minTimestamp</a></p></td>
         </tr>
 
 	
@@ -326,7 +349,7 @@ its members with the given values.
 
             
 
-            <td class="description last"><a href="Recorder.html#maxTimestamp">Recorder#maxTimestamp</a></td>
+            <td class="description last"><p><a href="Recorder.html#maxTimestamp">Recorder#maxTimestamp</a></p></td>
         </tr>
 
 	
@@ -349,7 +372,7 @@ its members with the given values.
 
             
 
-            <td class="description last"><a href="Recorder.html#interval">Recorder#interval</a></td>
+            <td class="description last"><p><a href="Recorder.html#interval">Recorder#interval</a></p></td>
         </tr>
 
 	
@@ -439,8 +462,8 @@ its members with the given values.
 <dd>
     
     <div class="description">
-        Identifier for this recorder instance. It may be used to reference
-recorders, for example in sync data storage.
+        <p>Identifier for this recorder instance. It may be used to reference
+recorders, for example in sync data storage.</p>
     </div>
     
     
@@ -504,8 +527,8 @@ recorders, for example in sync data storage.
 <dd>
     
     <div class="description">
-        Interval to be used as a default during playback and
-synchronization.
+        <p>Interval to be used as a default during playback and
+synchronization.</p>
     </div>
     
     
@@ -572,8 +595,8 @@ synchronization.
 <dd>
     
     <div class="description">
-        Maximum timestamp to use as a default during playback and
-synchronization.
+        <p>Maximum timestamp to use as a default during playback and
+synchronization.</p>
     </div>
     
     
@@ -640,8 +663,8 @@ synchronization.
 <dd>
     
     <div class="description">
-        Minimum timestamp to use as a default during playback and
-synchronization.
+        <p>Minimum timestamp to use as a default during playback and
+synchronization.</p>
     </div>
     
     
@@ -715,14 +738,11 @@ synchronization.
     
     
     <div class="description">
-        Performs operations on two sets of timestamp ranges.
-
-Timestamp ranges are objects with two properties: `minTimestamp` and `maxTimestamp`.
-
-The operations correspond to the operations in mathematic's set theory.
-Currently supported are union, difference and intersection.
-
-See [http://en.wikipedia.org/wiki/Set_theory]() for details.
+        <p>Performs operations on two sets of timestamp ranges.</p>
+<p>Timestamp ranges are objects with two properties: <code>minTimestamp</code> and <code>maxTimestamp</code>.</p>
+<p>The operations correspond to the operations in mathematic's set theory.
+Currently supported are union, difference and intersection.</p>
+<p>See <a href="">http://en.wikipedia.org/wiki/Set_theory</a> for details.</p>
     </div>
     
 
@@ -772,7 +792,7 @@ See [http://en.wikipedia.org/wiki/Set_theory]() for details.
 
             
 
-            <td class="description last">Set A containing timestamp ranges</td>
+            <td class="description last"><p>Set A containing timestamp ranges</p></td>
         </tr>
 
 	
@@ -795,7 +815,7 @@ See [http://en.wikipedia.org/wiki/Set_theory]() for details.
 
             
 
-            <td class="description last">Set B containing timestamp ranges</td>
+            <td class="description last"><p>Set B containing timestamp ranges</p></td>
         </tr>
 
 	
@@ -818,7 +838,7 @@ See [http://en.wikipedia.org/wiki/Set_theory]() for details.
 
             
 
-            <td class="description last">Interval to allow between adjacent timestamp ranges</td>
+            <td class="description last"><p>Interval to allow between adjacent timestamp ranges</p></td>
         </tr>
 
 	
@@ -841,7 +861,7 @@ See [http://en.wikipedia.org/wiki/Set_theory]() for details.
 
             
 
-            <td class="description last">Operation to perform, can be `'union'`, `'difference'` or `'intersection'`</td>
+            <td class="description last"><p>Operation to perform, can be <code>'union'</code>, <code>'difference'</code> or <code>'intersection'</code></p></td>
         </tr>
 
 	
@@ -898,7 +918,7 @@ See [http://en.wikipedia.org/wiki/Set_theory]() for details.
     
             
 <div class="param-desc">
-    Set containing timestamp ranges after the operation
+    <p>Set containing timestamp ranges after the operation</p>
 </div>
 
 
@@ -932,8 +952,8 @@ See [http://en.wikipedia.org/wiki/Set_theory]() for details.
     
     
     <div class="description">
-        Plays back the requested synchronization job, piping the resulting data into the
-provided stream. Returns a Promise that resolves to the played back ranges.
+        <p>Plays back the requested synchronization job, piping the resulting data into the
+provided stream. Returns a Promise that resolves to the played back ranges.</p>
     </div>
     
 
@@ -983,7 +1003,7 @@ provided stream. Returns a Promise that resolves to the played back ranges.
 
             
 
-            <td class="description last">The stream to pipe data into</td>
+            <td class="description last"><p>The stream (in object mode) to pipe data into</p></td>
         </tr>
 
 	
@@ -1006,7 +1026,7 @@ provided stream. Returns a Promise that resolves to the played back ranges.
 
             
 
-            <td class="description last">The synchronization job to perform.</td>
+            <td class="description last"><p>The synchronization job to perform.</p></td>
         </tr>
 
 	
@@ -1063,7 +1083,7 @@ provided stream. Returns a Promise that resolves to the played back ranges.
     
             
 <div class="param-desc">
-    Promise resolving with a list of ranges that were synchronized.
+    <p>Promise resolving with a list of ranges that were synchronized.</p>
 </div>
 
 
@@ -1097,8 +1117,8 @@ provided stream. Returns a Promise that resolves to the played back ranges.
     
     
     <div class="description">
-        Starts a playback of the provided recorder, recording its data and returning a
-Promise that resolves to the recorded ranges.
+        <p>Starts a playback of the provided recorder, recording its data and returning a
+Promise that resolves to the recorded ranges.</p>
     </div>
     
 
@@ -1148,7 +1168,7 @@ Promise that resolves to the recorded ranges.
 
             
 
-            <td class="description last">The recorder to use for playback</td>
+            <td class="description last"><p>The recorder to use for playback</p></td>
         </tr>
 
 	
@@ -1171,7 +1191,7 @@ Promise that resolves to the recorded ranges.
 
             
 
-            <td class="description last">The synchronization job to perform.</td>
+            <td class="description last"><p>The synchronization job to perform.</p></td>
         </tr>
 
 	
@@ -1228,7 +1248,7 @@ Promise that resolves to the recorded ranges.
     
             
 <div class="param-desc">
-    Promise resolving with a list of ranges that were synchronized.
+    <p>Promise resolving with a list of ranges that were synchronized.</p>
 </div>
 
 
@@ -1262,8 +1282,7 @@ Promise that resolves to the recorded ranges.
     
     
     <div class="description">
-        Plays back a given range of HeaderSets. The HeaderSets are serialized to
-the stream using the VBusRecordingConverter.
+        <p>Plays back a given range of HeaderSets. The stream must be in object mode.</p>
     </div>
     
 
@@ -1313,7 +1332,7 @@ the stream using the VBusRecordingConverter.
 
             
 
-            <td class="description last">A writable stream</td>
+            <td class="description last"><p>A writable stream</p></td>
         </tr>
 
 	
@@ -1336,7 +1355,7 @@ the stream using the VBusRecordingConverter.
 
             
 
-            <td class="description last">Options to select and filter HeaderSets
+            <td class="description last"><p>Options to select and filter HeaderSets</p>
                 <h6>Properties</h6>
                 
 
@@ -1396,7 +1415,7 @@ the stream using the VBusRecordingConverter.
                 </td>
             
 
-            <td class="description last"><a href="Recorder.html#minTimestamp">Recorder#minTimestamp</a></td>
+            <td class="description last"><p><a href="Recorder.html#minTimestamp">Recorder#minTimestamp</a></p></td>
         </tr>
 
 	
@@ -1433,7 +1452,7 @@ the stream using the VBusRecordingConverter.
                 </td>
             
 
-            <td class="description last"><a href="Recorder.html#maxTimestamp">Recorder#maxTimestamp</a></td>
+            <td class="description last"><p><a href="Recorder.html#maxTimestamp">Recorder#maxTimestamp</a></p></td>
         </tr>
 
 	
@@ -1470,7 +1489,7 @@ the stream using the VBusRecordingConverter.
                 </td>
             
 
-            <td class="description last"><a href="Recorder.html#interval">Recorder#interval</a></td>
+            <td class="description last"><p><a href="Recorder.html#interval">Recorder#interval</a></p></td>
         </tr>
 
 	
@@ -1509,7 +1528,7 @@ the stream using the VBusRecordingConverter.
                 </td>
             
 
-            <td class="description last">Whether the stream should be `end()`ed when the playback is complete</td>
+            <td class="description last"><p>Whether the stream should be <code>end()</code>ed when the playback is complete</p></td>
         </tr>
 
 	
@@ -1584,7 +1603,7 @@ the stream using the VBusRecordingConverter.
     
     
     <div class="description">
-        Synchronize this Recorder's HeaderSets to another Recorder.
+        <p>Synchronize this Recorder's HeaderSets to another Recorder.</p>
     </div>
     
 
@@ -1634,7 +1653,7 @@ the stream using the VBusRecordingConverter.
 
             
 
-            <td class="description last">Destination Recorder</td>
+            <td class="description last"><p>Destination Recorder</p></td>
         </tr>
 
 	
@@ -1657,7 +1676,7 @@ the stream using the VBusRecordingConverter.
 
             
 
-            <td class="description last">Options to select and filter HeaderSets
+            <td class="description last"><p>Options to select and filter HeaderSets</p>
                 <h6>Properties</h6>
                 
 
@@ -1711,7 +1730,7 @@ the stream using the VBusRecordingConverter.
 
             
 
-            <td class="description last"><a href="Recorder.html#minTimestamp">Recorder#minTimestamp</a></td>
+            <td class="description last"><p><a href="Recorder.html#minTimestamp">Recorder#minTimestamp</a></p></td>
         </tr>
 
 	
@@ -1744,7 +1763,7 @@ the stream using the VBusRecordingConverter.
 
             
 
-            <td class="description last"><a href="Recorder.html#maxTimestamp">Recorder#maxTimestamp</a></td>
+            <td class="description last"><p><a href="Recorder.html#maxTimestamp">Recorder#maxTimestamp</a></p></td>
         </tr>
 
 	
@@ -1777,7 +1796,7 @@ the stream using the VBusRecordingConverter.
 
             
 
-            <td class="description last"><a href="Recorder.html#interval">Recorder#interval</a></td>
+            <td class="description last"><p><a href="Recorder.html#interval">Recorder#interval</a></p></td>
         </tr>
 
 	
@@ -1841,7 +1860,7 @@ the stream using the VBusRecordingConverter.
     
             
 <div class="param-desc">
-    Promise resolving with a list of ranges that were synchronized.
+    <p>Promise resolving with a list of ranges that were synchronized.</p>
 </div>
 
 
@@ -1890,7 +1909,7 @@ the stream using the VBusRecordingConverter.
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
-		on Sat Mar 01 2014 20:49:51 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Sun Mar 02 2014 12:10:00 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>
@@ -1931,34 +1950,6 @@ the stream using the VBusRecordingConverter.
 		} );
 	</script>
 
-	
-	<script>
-		$( function () {
-			$('#main').localScroll({
-				offset: { top: 56 } //offset by the height of your header (give or take a few px, see what works for you)
-			});
-			$( "dt h4.name" ).each( function () {
-				var $this = $( this );
-				var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
-				var dt = $this.parents( "dt" );
-				var children = dt.next( "dd" );
-
-				$this.append( icon ).css( {cursor : "pointer"} );
-				$this.addClass( "member-collapsed" ).addClass( "member" );
-
-				children.hide();
-				$this.toggle( function () {
-					icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
-					$this.addClass( "member-open" ).removeClass( "member-collapsed" );
-					children.slideDown();
-				}, function () {
-					icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
-					$this.addClass( "member-collapsed" ).removeClass( "member-open" );
-					children.slideUp();
-				} );
-			} );
-		} );
-	</script>
 	
 
 </body>

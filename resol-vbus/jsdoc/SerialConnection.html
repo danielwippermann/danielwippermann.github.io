@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>resol-vbus Class: TcpConnection</title>
+	<title>resol-vbus Class: SerialConnection</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -173,19 +173,15 @@
 					
 
 
-	<h1 class="page-title">Class: TcpConnection</h1>
+	<h1 class="page-title">Class: SerialConnection</h1>
 <section>
 
 <header>
     <h2>
-    TcpConnection
+    SerialConnection
     </h2>
     
-        <div class="class-description"><p>The TcpConnection class is primarily designed to provide access to VBus live data
-using the VBus-over-TCP specification. That includes the VBus/LAN adapter, the
-Dataloggers (DL2 and DL3) and VBus.net.
-In addition to that it can be used to connect to a raw VBus data stream using TCP
-(for example provided by a serial-to-LAN gateway).</p></div>
+        <div class="class-description"><p>The SerialConnection class provides asscess to a VBus live data stream using a serial port.</p></div>
     
 </header>
 
@@ -196,7 +192,7 @@ In addition to that it can be used to connect to a raw VBus data stream using TC
     
         
 <dt>
-    <h4 class="name" id="TcpConnection"><span class="type-signature"></span>new TcpConnection<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="SerialConnection"><span class="type-signature"></span>new SerialConnection<span class="signature">(options)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -204,8 +200,7 @@ In addition to that it can be used to connect to a raw VBus data stream using TC
     
     
     <div class="description">
-        <p>Creates a new TcpConnection instance and optionally initializes its
-members to the given values.</p>
+        <p>Creates a new SerialConnection instance and optionally initialized its member with the given values.</p>
     </div>
     
 
@@ -281,7 +276,7 @@ members to the given values.</p>
 
         <tr>
             
-                <td class="name"><code>host</code></td>
+                <td class="name"><code>path</code></td>
             
 
             <td class="type">
@@ -297,99 +292,7 @@ members to the given values.</p>
 
             
 
-            <td class="description last"><p>See <a href="TcpConnection.html#host">TcpConnection#host</a></p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>port</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>See <a href="TcpConnection.html#port">TcpConnection#port</a></p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>viaTag</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>See <a href="TcpConnection.html#viaTag">TcpConnection#viaTag</a></p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>password</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>See <a href="TcpConnection.html#password">TcpConnection#password</a></p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>rawVBusDataOnly</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>See <a href="TcpConnection.html#rawVBusDataOnly">TcpConnection#rawVBusDataOnly</a></p></td>
+            <td class="description last"><p>See <a href="SerialConnection.html#path">SerialConnection#path</a></p></td>
         </tr>
 
 	
@@ -428,7 +331,7 @@ members to the given values.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tcp-connection.js.html">tcp-connection.js</a>
+        <a href="serial-connection.js.html">serial-connection.js</a>
     </li></ul></dd>
     
 
@@ -687,14 +590,14 @@ this VBus channel.</p>
         
             
 <dt>
-    <h4 class="name" id="host"><span class="type-signature"></span>host<span class="type-signature"> :string</span></h4>
+    <h4 class="name" id="path"><span class="type-signature"></span>path<span class="type-signature"> :string</span></h4>
     
     
 </dt>
 <dd>
     
     <div class="description">
-        <p>Host name or IP address of the connection target.</p>
+        <p>The path to the serial port.</p>
     </div>
     
     
@@ -733,200 +636,7 @@ this VBus channel.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tcp-connection.js.html">tcp-connection.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="password"><span class="type-signature"></span>password<span class="type-signature"> :string</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>Password needed to connect to target.</p>
-    </div>
-    
-    
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">string</span>
-
-
-            </li>
-        </ul>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tcp-connection.js.html">tcp-connection.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="port"><span class="type-signature"></span>port<span class="type-signature"> :number</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>Port number of the connection target.</p>
-    </div>
-    
-    
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">number</span>
-
-
-            </li>
-        </ul>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tcp-connection.js.html">tcp-connection.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="rawVBusDataOnly"><span class="type-signature"></span>rawVBusDataOnly<span class="type-signature"> :boolean</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>Indicates that connection does not need to perform login handshake.
-Useful for serial-to-LAN converters.</p>
-    </div>
-    
-    
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">boolean</span>
-
-
-            </li>
-        </ul>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tcp-connection.js.html">tcp-connection.js</a>
+        <a href="serial-connection.js.html">serial-connection.js</a>
     </li></ul></dd>
     
 
@@ -990,7 +700,7 @@ Useful for serial-to-LAN converters.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tcp-connection.js.html">tcp-connection.js</a>
+        <a href="serial-connection.js.html">serial-connection.js</a>
     </li></ul></dd>
     
 
@@ -1054,7 +764,7 @@ Useful for serial-to-LAN converters.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tcp-connection.js.html">tcp-connection.js</a>
+        <a href="serial-connection.js.html">serial-connection.js</a>
     </li></ul></dd>
     
 
@@ -1118,7 +828,7 @@ Useful for serial-to-LAN converters.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tcp-connection.js.html">tcp-connection.js</a>
+        <a href="serial-connection.js.html">serial-connection.js</a>
     </li></ul></dd>
     
 
@@ -1257,70 +967,6 @@ Useful for serial-to-LAN converters.</p>
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="connection.js.html">connection.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="viaTag"><span class="type-signature"></span>viaTag<span class="type-signature"> :string</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>Via tag if connection target is accessed using the VBus.net service.</p>
-    </div>
-    
-    
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">string</span>
-
-
-            </li>
-        </ul>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tcp-connection.js.html">tcp-connection.js</a>
     </li></ul></dd>
     
 

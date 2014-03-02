@@ -26,7 +26,7 @@
 					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="Connection.html">Connection</a>
@@ -61,6 +61,10 @@
 						</li>
 						
 						<li>
+							<a href="HeaderSetConsolidator.html">HeaderSetConsolidator</a>
+						</li>
+						
+						<li>
 							<a href="I18N.html">I18N</a>
 						</li>
 						
@@ -70,6 +74,10 @@
 						
 						<li>
 							<a href="Recorder.html">Recorder</a>
+						</li>
+						
+						<li>
+							<a href="SerialConnection.html">SerialConnection</a>
 						</li>
 						
 						<li>
@@ -105,10 +113,6 @@
 						</li>
 						
 						<li>
-							<a href="_.html">undefined</a>
-						</li>
-						
-						<li>
 							<a href="VBusRecordingConverter.html">VBusRecordingConverter</a>
 						</li>
 						
@@ -120,7 +124,7 @@
 					<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="HeaderSet.html#event:addHeader">addHeader</a>
@@ -128,6 +132,28 @@
 						
 						<li>
 							<a href="HeaderSet.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:addHeader">addHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="global.html#extend">extend</a>
 						</li>
 						
 
@@ -172,7 +198,7 @@
     
     
     <div class="description">
-        Creates a new Specification instance and optionally initializes its members with the given values.
+        <p>Creates a new Specification instance and optionally initializes its members with the given values.</p>
     </div>
     
 
@@ -222,7 +248,7 @@
 
             
 
-            <td class="description last">Initialization values for this instance's members
+            <td class="description last"><p>Initialization values for this instance's members</p>
                 <h6>Properties</h6>
                 
 
@@ -264,7 +290,7 @@
 
             
 
-            <td class="description last"><a href="Specification.html#language">Specification#language</a></td>
+            <td class="description last"><p><a href="Specification.html#language">Specification#language</a></p></td>
         </tr>
 
 	
@@ -287,7 +313,7 @@
 
             
 
-            <td class="description last"><a href="Specification.html#specificationData">Specification#specificationData</a></td>
+            <td class="description last"><p><a href="Specification.html#specificationData">Specification#specificationData</a></p></td>
         </tr>
 
 	
@@ -377,7 +403,7 @@
 <dd>
     
     <div class="description">
-        I18N instance
+        <p>I18N instance</p>
     </div>
     
     
@@ -441,7 +467,7 @@
 <dd>
     
     <div class="description">
-        Language code (ISO 639-1)
+        <p>Language code (ISO 639-1)</p>
     </div>
     
     
@@ -505,7 +531,7 @@
 <dd>
     
     <div class="description">
-        Custom specification data to be mixed-in to built-in specification.
+        <p>Custom specification data to be mixed-in to built-in specification.</p>
     </div>
     
     
@@ -576,7 +602,7 @@
     
     
     <div class="description">
-        Formats a raw value into its textual representation.
+        <p>Formats a raw value into its textual representation.</p>
     </div>
     
 
@@ -636,7 +662,7 @@
 
             
 
-            <td class="description last">PacketFieldSpecification object</td>
+            <td class="description last"><p>PacketFieldSpecification object</p></td>
         </tr>
 
 	
@@ -667,7 +693,7 @@
 
             
 
-            <td class="description last">Raw value</td>
+            <td class="description last"><p>Raw value</p></td>
         </tr>
 
 	
@@ -706,7 +732,7 @@
 
             
 
-            <td class="description last">Unit to format to</td>
+            <td class="description last"><p>Unit to format to</p></td>
         </tr>
 
 	
@@ -763,7 +789,7 @@
     
             
 <div class="param-desc">
-    Textual representation of the raw value
+    <p>Textual representation of the raw value</p>
 </div>
 
 
@@ -802,170 +828,6 @@ undefined
         
             
 <dt>
-    <h4 class="name" id="getDeviceSpecification"><span class="type-signature"></span>getDeviceSpecification<span class="signature">(header, which)</span><span class="type-signature"> &rarr; {<a href="global.html#DeviceSpecification">DeviceSpecification</a>}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Gets the DeviceSpecification object matching the given header and direction.
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>header</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Header.html">Header</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Header instance</td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>which</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Either `'source'` or `'destination'`</td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="specification.js.html">specification.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    DeviceSpecification object
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type"><a href="global.html#DeviceSpecification">DeviceSpecification</a></span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
     <h4 class="name" id="getDeviceSpecification"><span class="type-signature"></span>getDeviceSpecification<span class="signature">(selfAddress, peerAddress, <span class="optional">channel</span>)</span><span class="type-signature"> &rarr; {<a href="global.html#DeviceSpecification">DeviceSpecification</a>}</span></h4>
     
     
@@ -974,7 +836,7 @@ undefined
     
     
     <div class="description">
-        Gets the DeviceSpecification object matching the given arguments.
+        <p>Gets the DeviceSpecification object matching the given arguments.</p>
     </div>
     
 
@@ -1040,7 +902,7 @@ undefined
                 </td>
             
 
-            <td class="description last">VBus address of the device itself</td>
+            <td class="description last"><p>VBus address of the device itself</p></td>
         </tr>
 
 	
@@ -1075,7 +937,7 @@ undefined
                 </td>
             
 
-            <td class="description last">VBus address of the device's peer</td>
+            <td class="description last"><p>VBus address of the device's peer</p></td>
         </tr>
 
 	
@@ -1114,7 +976,7 @@ undefined
                 </td>
             
 
-            <td class="description last">VBus channel of the device</td>
+            <td class="description last"><p>VBus channel of the device</p></td>
         </tr>
 
 	
@@ -1171,7 +1033,7 @@ undefined
     
             
 <div class="param-desc">
-    DeviceSpecification object
+    <p>DeviceSpecification object</p>
 </div>
 
 
@@ -1211,6 +1073,170 @@ undefined
         
             
 <dt>
+    <h4 class="name" id="getDeviceSpecification"><span class="type-signature"></span>getDeviceSpecification<span class="signature">(header, which)</span><span class="type-signature"> &rarr; {<a href="global.html#DeviceSpecification">DeviceSpecification</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Gets the DeviceSpecification object matching the given header and direction.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>header</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Header.html">Header</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Header instance</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>which</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Either <code>'source'</code> or <code>'destination'</code></p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="specification.js.html">specification.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>DeviceSpecification object</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="global.html#DeviceSpecification">DeviceSpecification</a></span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="getPacketFieldsForHeaders"><span class="type-signature"></span>getPacketFieldsForHeaders<span class="signature">(headers)</span><span class="type-signature"> &rarr; {PacketField[]}</span></h4>
     
     
@@ -1219,7 +1245,7 @@ undefined
     
     
     <div class="description">
-        Gets an array of PacketField objects for the provided Packet objects.
+        <p>Gets an array of PacketField objects for the provided Packet objects.</p>
     </div>
     
 
@@ -1269,7 +1295,7 @@ undefined
 
             
 
-            <td class="description last">Array of Header objects</td>
+            <td class="description last"><p>Array of Header objects</p></td>
         </tr>
 
 	
@@ -1326,7 +1352,7 @@ undefined
     
             
 <div class="param-desc">
-    Array of PacketField objects
+    <p>Array of PacketField objects</p>
 </div>
 
 
@@ -1352,170 +1378,6 @@ undefined
         
             
 <dt>
-    <h4 class="name" id="getPacketFieldSpecification"><span class="type-signature"></span>getPacketFieldSpecification<span class="signature">(packetFieldId)</span><span class="type-signature"> &rarr; {<a href="global.html#PacketFieldSpecification">PacketFieldSpecification</a>}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Gets the PacketFieldSpecification object matching the given arguments.
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>packetFieldId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Packet field identifier</td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="specification.js.html">specification.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    PacketFieldSpecification object
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type"><a href="global.html#PacketFieldSpecification">PacketFieldSpecification</a></span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-        <h5>Example</h5>
-        
-    <pre class="sunlight-highlight-javascript">> console.log(spec.getPacketFieldSpecification('01_0010_7E21_10_0100_000_2_0'));
-{ fieldId: '000_2_0',
-  name:
-   { ref: 'Flow set temperature',
-     en: 'Flow set temperature',
-     de: 'Vorlauf-Soll-Temperatur',
-     fr: 'Température nominale départ' },
-  type:
-   { typeId: 'Number_0_1_DegreesCelsius',
-     rootTypeId: 'Number',
-     precision: 1,
-     unit:
-      { unitId: 'DegreesCelsius',
-        unitCode: 'DegreesCelsius',
-        unitText: ' °C' } },
-  getRawValue: [Function] }
-undefined
-></pre>
-
-
-    
-</dd>
-
-        
-            
-<dt>
     <h4 class="name" id="getPacketFieldSpecification"><span class="type-signature"></span>getPacketFieldSpecification<span class="signature">(packetSpec, fieldId)</span><span class="type-signature"> &rarr; {<a href="global.html#PacketFieldSpecification">PacketFieldSpecification</a>}</span></h4>
     
     
@@ -1524,7 +1386,7 @@ undefined
     
     
     <div class="description">
-        Gets the PacketFieldSpecification object matching the given arguments.
+        <p>Gets the PacketFieldSpecification object matching the given arguments.</p>
     </div>
     
 
@@ -1574,7 +1436,7 @@ undefined
 
             
 
-            <td class="description last">PacketSpecification object</td>
+            <td class="description last"><p>PacketSpecification object</p></td>
         </tr>
 
 	
@@ -1597,7 +1459,7 @@ undefined
 
             
 
-            <td class="description last">Field identifier</td>
+            <td class="description last"><p>Field identifier</p></td>
         </tr>
 
 	
@@ -1654,7 +1516,7 @@ undefined
     
             
 <div class="param-desc">
-    PacketFieldSpecification object
+    <p>PacketFieldSpecification object</p>
 </div>
 
 
@@ -1705,6 +1567,170 @@ undefined
         
             
 <dt>
+    <h4 class="name" id="getPacketFieldSpecification"><span class="type-signature"></span>getPacketFieldSpecification<span class="signature">(packetFieldId)</span><span class="type-signature"> &rarr; {<a href="global.html#PacketFieldSpecification">PacketFieldSpecification</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Gets the PacketFieldSpecification object matching the given arguments.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>packetFieldId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Packet field identifier</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="specification.js.html">specification.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>PacketFieldSpecification object</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="global.html#PacketFieldSpecification">PacketFieldSpecification</a></span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">> console.log(spec.getPacketFieldSpecification('01_0010_7E21_10_0100_000_2_0'));
+{ fieldId: '000_2_0',
+  name:
+   { ref: 'Flow set temperature',
+     en: 'Flow set temperature',
+     de: 'Vorlauf-Soll-Temperatur',
+     fr: 'Température nominale départ' },
+  type:
+   { typeId: 'Number_0_1_DegreesCelsius',
+     rootTypeId: 'Number',
+     precision: 1,
+     unit:
+      { unitId: 'DegreesCelsius',
+        unitCode: 'DegreesCelsius',
+        unitText: ' °C' } },
+  getRawValue: [Function] }
+undefined
+></pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="getPacketSpecification"><span class="type-signature"></span>getPacketSpecification<span class="signature">(packet)</span><span class="type-signature"> &rarr; {<a href="global.html#PacketSpecification">PacketSpecification</a>}</span></h4>
     
     
@@ -1713,7 +1739,7 @@ undefined
     
     
     <div class="description">
-        Gets the PacketSpecification object matching the given packet.
+        <p>Gets the PacketSpecification object matching the given packet.</p>
     </div>
     
 
@@ -1763,7 +1789,7 @@ undefined
 
             
 
-            <td class="description last">VBus packet</td>
+            <td class="description last"><p>VBus packet</p></td>
         </tr>
 
 	
@@ -1820,7 +1846,7 @@ undefined
     
             
 <div class="param-desc">
-    PacketSpecification object
+    <p>PacketSpecification object</p>
 </div>
 
 
@@ -1840,186 +1866,6 @@ undefined
 
         
     
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="getPacketSpecification"><span class="type-signature"></span>getPacketSpecification<span class="signature">(packetSpecId)</span><span class="type-signature"> &rarr; {<a href="global.html#PacketSpecification">PacketSpecification</a>}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Gets the PacketSpecification object matching the given arguments.
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>packetSpecId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">PacketSpecification identifier</td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="specification.js.html">specification.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    PacketSpecification object
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type"><a href="global.html#PacketSpecification">PacketSpecification</a></span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-        <h5>Example</h5>
-        
-    <pre class="sunlight-highlight-javascript">> console.log(spec.getPacketSpecification('01_0010_7E21_10_0100'));
-{ packetId: '01_0010_7E21_10_0100',
-  packetFields:
-   [ { fieldId: '000_2_0',
-       name: [Object],
-       type: [Object],
-       getRawValue: [Function] },
-     { fieldId: '002_1_0',
-       name: [Object],
-       type: [Object],
-       getRawValue: [Function] } ],
-  channel: 1,
-  destinationAddress: 16,
-  sourceAddress: 32289,
-  protocolVersion: 16,
-  command: 256,
-  info: 0,
-  destinationDevice:
-   { name: 'DFA',
-     deviceId: '01_0010_7E21',
-     channel: 1,
-     selfAddress: 16,
-     peerAddress: 32289,
-     fullName: 'VBus #1: DFA' },
-  sourceDevice:
-   { name: 'DeltaSol MX [Heizkreis #1]',
-     deviceId: '01_7E21_0010',
-     channel: 1,
-     selfAddress: 32289,
-     peerAddress: 16,
-     fullName: 'VBus #1: DeltaSol MX [Heizkreis #1]' },
-  fullName: 'VBus #1: DeltaSol MX [Heizkreis #1]' }
-undefined
-></pre>
-
-
     
 </dd>
 
@@ -2034,7 +1880,7 @@ undefined
     
     
     <div class="description">
-        Gets the PacketSpecification object matching the given arguments.
+        <p>Gets the PacketSpecification object matching the given arguments.</p>
     </div>
     
 
@@ -2084,7 +1930,7 @@ undefined
 
             
 
-            <td class="description last">VBus channel</td>
+            <td class="description last"><p>VBus channel</p></td>
         </tr>
 
 	
@@ -2107,7 +1953,7 @@ undefined
 
             
 
-            <td class="description last">VBus address of destination device</td>
+            <td class="description last"><p>VBus address of destination device</p></td>
         </tr>
 
 	
@@ -2130,7 +1976,7 @@ undefined
 
             
 
-            <td class="description last">VBus address of source device</td>
+            <td class="description last"><p>VBus address of source device</p></td>
         </tr>
 
 	
@@ -2153,7 +1999,7 @@ undefined
 
             
 
-            <td class="description last">VBus command</td>
+            <td class="description last"><p>VBus command</p></td>
         </tr>
 
 	
@@ -2210,7 +2056,7 @@ undefined
     
             
 <div class="param-desc">
-    PacketSpecification object
+    <p>PacketSpecification object</p>
 </div>
 
 
@@ -2275,6 +2121,186 @@ undefined
         
             
 <dt>
+    <h4 class="name" id="getPacketSpecification"><span class="type-signature"></span>getPacketSpecification<span class="signature">(packetSpecId)</span><span class="type-signature"> &rarr; {<a href="global.html#PacketSpecification">PacketSpecification</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Gets the PacketSpecification object matching the given arguments.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>packetSpecId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>PacketSpecification identifier</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="specification.js.html">specification.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>PacketSpecification object</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="global.html#PacketSpecification">PacketSpecification</a></span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">> console.log(spec.getPacketSpecification('01_0010_7E21_10_0100'));
+{ packetId: '01_0010_7E21_10_0100',
+  packetFields:
+   [ { fieldId: '000_2_0',
+       name: [Object],
+       type: [Object],
+       getRawValue: [Function] },
+     { fieldId: '002_1_0',
+       name: [Object],
+       type: [Object],
+       getRawValue: [Function] } ],
+  channel: 1,
+  destinationAddress: 16,
+  sourceAddress: 32289,
+  protocolVersion: 16,
+  command: 256,
+  info: 0,
+  destinationDevice:
+   { name: 'DFA',
+     deviceId: '01_0010_7E21',
+     channel: 1,
+     selfAddress: 16,
+     peerAddress: 32289,
+     fullName: 'VBus #1: DFA' },
+  sourceDevice:
+   { name: 'DeltaSol MX [Heizkreis #1]',
+     deviceId: '01_7E21_0010',
+     channel: 1,
+     selfAddress: 32289,
+     peerAddress: 16,
+     fullName: 'VBus #1: DeltaSol MX [Heizkreis #1]' },
+  fullName: 'VBus #1: DeltaSol MX [Heizkreis #1]' }
+undefined
+></pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="getRawValue"><span class="type-signature"></span>getRawValue<span class="signature">(packetField, buffer, <span class="optional">start</span>, <span class="optional">end</span>)</span><span class="type-signature"> &rarr; {number}</span></h4>
     
     
@@ -2283,7 +2309,7 @@ undefined
     
     
     <div class="description">
-        Gets the raw value of a packet field from a buffer.
+        <p>Gets the raw value of a packet field from a buffer.</p>
     </div>
     
 
@@ -2349,7 +2375,7 @@ undefined
                 </td>
             
 
-            <td class="description last">PacketFieldSpecification object</td>
+            <td class="description last"><p>PacketFieldSpecification object</p></td>
         </tr>
 
 	
@@ -2384,7 +2410,7 @@ undefined
                 </td>
             
 
-            <td class="description last">Buffer object</td>
+            <td class="description last"><p>Buffer object</p></td>
         </tr>
 
 	
@@ -2423,7 +2449,7 @@ undefined
                 </td>
             
 
-            <td class="description last">Start index in the buffer</td>
+            <td class="description last"><p>Start index in the buffer</p></td>
         </tr>
 
 	
@@ -2462,7 +2488,7 @@ undefined
                 </td>
             
 
-            <td class="description last">End index in the buffer</td>
+            <td class="description last"><p>End index in the buffer</p></td>
         </tr>
 
 	
@@ -2519,7 +2545,7 @@ undefined
     
             
 <div class="param-desc">
-    Raw value
+    <p>Raw value</p>
 </div>
 
 
@@ -2566,7 +2592,7 @@ undefined
     
     
     <div class="description">
-        Gets the TypeSpecification object matching the given identifier.
+        <p>Gets the TypeSpecification object matching the given identifier.</p>
     </div>
     
 
@@ -2616,7 +2642,7 @@ undefined
 
             
 
-            <td class="description last">Type identifier</td>
+            <td class="description last"><p>Type identifier</p></td>
         </tr>
 
 	
@@ -2673,7 +2699,7 @@ undefined
     
             
 <div class="param-desc">
-    Type object
+    <p>Type object</p>
 </div>
 
 
@@ -2722,7 +2748,7 @@ undefined
     
     
     <div class="description">
-        Gets the UnitSpecification object matching the given identifier.
+        <p>Gets the UnitSpecification object matching the given identifier.</p>
     </div>
     
 
@@ -2772,7 +2798,7 @@ undefined
 
             
 
-            <td class="description last">Unit identifier</td>
+            <td class="description last"><p>Unit identifier</p></td>
         </tr>
 
 	
@@ -2829,7 +2855,7 @@ undefined
     
             
 <div class="param-desc">
-    Unit object
+    <p>Unit object</p>
 </div>
 
 
@@ -2889,7 +2915,7 @@ undefined
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
-		on Sat Mar 01 2014 20:49:51 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Sun Mar 02 2014 12:10:00 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>
@@ -2930,34 +2956,6 @@ undefined
 		} );
 	</script>
 
-	
-	<script>
-		$( function () {
-			$('#main').localScroll({
-				offset: { top: 56 } //offset by the height of your header (give or take a few px, see what works for you)
-			});
-			$( "dt h4.name" ).each( function () {
-				var $this = $( this );
-				var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
-				var dt = $this.parents( "dt" );
-				var children = dt.next( "dd" );
-
-				$this.append( icon ).css( {cursor : "pointer"} );
-				$this.addClass( "member-collapsed" ).addClass( "member" );
-
-				children.hide();
-				$this.toggle( function () {
-					icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
-					$this.addClass( "member-open" ).removeClass( "member-collapsed" );
-					children.slideDown();
-				}, function () {
-					icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
-					$this.addClass( "member-collapsed" ).removeClass( "member-open" );
-					children.slideUp();
-				} );
-			} );
-		} );
-	</script>
 	
 
 </body>

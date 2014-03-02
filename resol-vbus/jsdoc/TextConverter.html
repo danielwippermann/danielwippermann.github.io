@@ -26,7 +26,7 @@
 					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="Connection.html">Connection</a>
@@ -61,6 +61,10 @@
 						</li>
 						
 						<li>
+							<a href="HeaderSetConsolidator.html">HeaderSetConsolidator</a>
+						</li>
+						
+						<li>
 							<a href="I18N.html">I18N</a>
 						</li>
 						
@@ -70,6 +74,10 @@
 						
 						<li>
 							<a href="Recorder.html">Recorder</a>
+						</li>
+						
+						<li>
+							<a href="SerialConnection.html">SerialConnection</a>
 						</li>
 						
 						<li>
@@ -105,10 +113,6 @@
 						</li>
 						
 						<li>
-							<a href="_.html">undefined</a>
-						</li>
-						
-						<li>
 							<a href="VBusRecordingConverter.html">VBusRecordingConverter</a>
 						</li>
 						
@@ -120,7 +124,7 @@
 					<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="HeaderSet.html#event:addHeader">addHeader</a>
@@ -128,6 +132,28 @@
 						
 						<li>
 							<a href="HeaderSet.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:addHeader">addHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="global.html#extend">extend</a>
 						</li>
 						
 
@@ -155,12 +181,11 @@
     TextConverter
     </h2>
     
-        <div class="class-description">The TextConverter class takes header sets, converts them into text
+        <div class="class-description"><p>The TextConverter class takes header sets, converts them into text
 representation and then publishes that on the readable stream side
-of itself.
-
-It does not support parsing text content back into header sets (the
-writable stream side).</div>
+of itself.</p>
+<p>It does not support parsing text content back into header sets (the
+writable stream side).</p></div>
     
 </header>
 
@@ -179,7 +204,7 @@ writable stream side).</div>
     
     
     <div class="description">
-        Create a new TextConverter instance given the set of options.
+        <p>Create a new TextConverter instance given the set of options.</p>
     </div>
     
 
@@ -269,7 +294,7 @@ writable stream side).</div>
 <dd>
     
     <div class="description">
-        Column separator, defaults to tab
+        <p>Column separator, defaults to tab</p>
     </div>
     
     
@@ -333,8 +358,8 @@ writable stream side).</div>
 <dd>
     
     <div class="description">
-        List of packet IDs converted last time, enables decision whether a
-new header line pair must be output.
+        <p>List of packet IDs converted last time, enables decision whether a
+new header line pair must be output.</p>
     </div>
     
     
@@ -398,7 +423,7 @@ new header line pair must be output.
 <dd>
     
     <div class="description">
-        Line separator, defaults to CR+NL
+        <p>Line separator, defaults to CR+NL</p>
     </div>
     
     
@@ -455,6 +480,75 @@ new header line pair must be output.
         
             
 <dt>
+    <h4 class="name" id="objectMode"><span class="type-signature"></span>objectMode<span class="type-signature"> :boolean</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Specifies whether the underlying stream operates in object mode.</p>
+    </div>
+    
+    
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">boolean</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Converter.html#objectMode">Converter#objectMode</a>
+    </li></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="converter.js.html">converter.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="separateDateAndTime"><span class="type-signature"></span>separateDateAndTime<span class="type-signature"> :boolean</span></h4>
     
     
@@ -462,7 +556,7 @@ new header line pair must be output.
 <dd>
     
     <div class="description">
-        Specifies whether date and time columns should be output separately
+        <p>Specifies whether date and time columns should be output separately</p>
     </div>
     
     
@@ -526,7 +620,7 @@ new header line pair must be output.
 <dd>
     
     <div class="description">
-        VBus specification
+        <p>VBus specification</p>
     </div>
     
     
@@ -597,8 +691,8 @@ new header line pair must be output.
     
     
     <div class="description">
-        This method queues a VBus Header model (Packet, Datagram or Telegram) for conversion.
-Not all Converter sub-classes support this method.
+        <p>This method queues a VBus Header model (Packet, Datagram or Telegram) for conversion.
+Not all Converter sub-classes support this method.</p>
     </div>
     
 
@@ -648,7 +742,7 @@ Not all Converter sub-classes support this method.
 
             
 
-            <td class="description last">The Header to queue for conversion.</td>
+            <td class="description last"><p>The Header to queue for conversion.</p></td>
         </tr>
 
 	
@@ -721,7 +815,7 @@ Not all Converter sub-classes support this method.
     
     
     <div class="description">
-        Converts a header set into text representation.
+        <p>Converts a header set into text representation.</p>
     </div>
     
 
@@ -839,8 +933,8 @@ Not all Converter sub-classes support this method.
     
     
     <div class="description">
-        Resets the converter, resulting in a ne pair of header lines
-generated on next header set conversion.
+        <p>Resets the converter, resulting in a ne pair of header lines
+generated on next header set conversion.</p>
     </div>
     
 
@@ -924,7 +1018,7 @@ generated on next header set conversion.
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
-		on Sat Mar 01 2014 20:49:51 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Sun Mar 02 2014 12:10:00 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>
@@ -965,34 +1059,6 @@ generated on next header set conversion.
 		} );
 	</script>
 
-	
-	<script>
-		$( function () {
-			$('#main').localScroll({
-				offset: { top: 56 } //offset by the height of your header (give or take a few px, see what works for you)
-			});
-			$( "dt h4.name" ).each( function () {
-				var $this = $( this );
-				var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
-				var dt = $this.parents( "dt" );
-				var children = dt.next( "dd" );
-
-				$this.append( icon ).css( {cursor : "pointer"} );
-				$this.addClass( "member-collapsed" ).addClass( "member" );
-
-				children.hide();
-				$this.toggle( function () {
-					icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
-					$this.addClass( "member-open" ).removeClass( "member-collapsed" );
-					children.slideDown();
-				}, function () {
-					icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
-					$this.addClass( "member-collapsed" ).removeClass( "member-open" );
-					children.slideUp();
-				} );
-			} );
-		} );
-	</script>
 	
 
 </body>

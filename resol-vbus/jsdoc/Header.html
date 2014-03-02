@@ -26,7 +26,7 @@
 					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="Connection.html">Connection</a>
@@ -61,6 +61,10 @@
 						</li>
 						
 						<li>
+							<a href="HeaderSetConsolidator.html">HeaderSetConsolidator</a>
+						</li>
+						
+						<li>
 							<a href="I18N.html">I18N</a>
 						</li>
 						
@@ -70,6 +74,10 @@
 						
 						<li>
 							<a href="Recorder.html">Recorder</a>
+						</li>
+						
+						<li>
+							<a href="SerialConnection.html">SerialConnection</a>
 						</li>
 						
 						<li>
@@ -105,10 +113,6 @@
 						</li>
 						
 						<li>
-							<a href="_.html">undefined</a>
-						</li>
-						
-						<li>
 							<a href="VBusRecordingConverter.html">VBusRecordingConverter</a>
 						</li>
 						
@@ -120,7 +124,7 @@
 					<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="HeaderSet.html#event:addHeader">addHeader</a>
@@ -128,6 +132,28 @@
 						
 						<li>
 							<a href="HeaderSet.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:addHeader">addHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="global.html#extend">extend</a>
 						</li>
 						
 
@@ -155,13 +181,12 @@
     Header
     </h2>
     
-        <div class="class-description">All VBus models are sub-classes of this Header class. The Header class provides
+        <div class="class-description"><p>All VBus models are sub-classes of this Header class. The Header class provides
 a generic interface and the common properties that all (currently three)
-different types of VBus models can use.
-
-Header instances can either be created by calling the constructor function or
+different types of VBus models can use.</p>
+<p>Header instances can either be created by calling the constructor function or
 by passing a Buffer object containing the binary VBus data to the class method
-`HeaderSubClass.fromLiveBuffer`.</div>
+<code>HeaderSubClass.fromLiveBuffer</code>.</p></div>
     
 </header>
 
@@ -180,8 +205,8 @@ by passing a Buffer object containing the binary VBus data to the class method
     
     
     <div class="description">
-        Creates a new Header instance and optionally initializes its members
-with the given values
+        <p>Creates a new Header instance and optionally initializes its members
+with the given values</p>
     </div>
     
 
@@ -243,7 +268,7 @@ with the given values
 
             
 
-            <td class="description last">Initialization values for this instance's members
+            <td class="description last"><p>Initialization values for this instance's members</p>
                 <h6>Properties</h6>
                 
 
@@ -297,7 +322,7 @@ with the given values
 
             
 
-            <td class="description last"><a href="Header.html#timestamp">Header#timestamp</a></td>
+            <td class="description last"><p><a href="Header.html#timestamp">Header#timestamp</a></p></td>
         </tr>
 
 	
@@ -330,7 +355,7 @@ with the given values
 
             
 
-            <td class="description last"><a href="Header.html#channel">Header#channel</a></td>
+            <td class="description last"><p><a href="Header.html#channel">Header#channel</a></p></td>
         </tr>
 
 	
@@ -363,7 +388,7 @@ with the given values
 
             
 
-            <td class="description last"><a href="Header.html#destinationAddress">Header#destinationAddress</a></td>
+            <td class="description last"><p><a href="Header.html#destinationAddress">Header#destinationAddress</a></p></td>
         </tr>
 
 	
@@ -396,7 +421,7 @@ with the given values
 
             
 
-            <td class="description last"><a href="Header.html#sourceAddress">Header#sourceAddress</a></td>
+            <td class="description last"><p><a href="Header.html#sourceAddress">Header#sourceAddress</a></p></td>
         </tr>
 
 	
@@ -497,7 +522,7 @@ with the given values
 <dd>
     
     <div class="description">
-        VBus channel of this header
+        <p>VBus channel of this header</p>
     </div>
     
     
@@ -564,7 +589,7 @@ with the given values
 <dd>
     
     <div class="description">
-        VBus address of this header's destination
+        <p>VBus address of this header's destination</p>
     </div>
     
     
@@ -631,7 +656,7 @@ with the given values
 <dd>
     
     <div class="description">
-        VBus address of this header's source
+        <p>VBus address of this header's source</p>
     </div>
     
     
@@ -698,7 +723,7 @@ with the given values
 <dd>
     
     <div class="description">
-        Timestamp of this header
+        <p>Timestamp of this header</p>
     </div>
     
     
@@ -772,9 +797,9 @@ with the given values
     
     
     <div class="description">
-        Calculates the VBus checksum (according to version x.0 specification)
+        <p>Calculates the VBus checksum (according to version x.0 specification)
 over a part of a Buffer instance and compares it the checksum byte
-stored at the `end` position.
+stored at the <code>end</code> position.</p>
     </div>
     
 
@@ -824,7 +849,7 @@ stored at the `end` position.
 
             
 
-            <td class="description last">Buffer to calc and compare checksum for</td>
+            <td class="description last"><p>Buffer to calc and compare checksum for</p></td>
         </tr>
 
 	
@@ -847,7 +872,7 @@ stored at the `end` position.
 
             
 
-            <td class="description last">Start index in the buffer</td>
+            <td class="description last"><p>Start index in the buffer</p></td>
         </tr>
 
 	
@@ -870,7 +895,7 @@ stored at the `end` position.
 
             
 
-            <td class="description last">End index in the buffer</td>
+            <td class="description last"><p>End index in the buffer</p></td>
         </tr>
 
 	
@@ -927,7 +952,7 @@ stored at the `end` position.
     
             
 <div class="param-desc">
-    Result whether calculated and stored checksum match
+    <p>Result whether calculated and stored checksum match</p>
 </div>
 
 
@@ -961,8 +986,8 @@ stored at the `end` position.
     
     
     <div class="description">
-        Calculates the VBus checksum (according to version x.0 specification)
-over a part of the Buffer instance and stores it at the `end` position.
+        <p>Calculates the VBus checksum (according to version x.0 specification)
+over a part of the Buffer instance and stores it at the <code>end</code> position.</p>
     </div>
     
 
@@ -1012,7 +1037,7 @@ over a part of the Buffer instance and stores it at the `end` position.
 
             
 
-            <td class="description last">Buffer to calc and store checksum for</td>
+            <td class="description last"><p>Buffer to calc and store checksum for</p></td>
         </tr>
 
 	
@@ -1035,7 +1060,7 @@ over a part of the Buffer instance and stores it at the `end` position.
 
             
 
-            <td class="description last">Start index in the buffer</td>
+            <td class="description last"><p>Start index in the buffer</p></td>
         </tr>
 
 	
@@ -1058,7 +1083,7 @@ over a part of the Buffer instance and stores it at the `end` position.
 
             
 
-            <td class="description last">End index in the buffer</td>
+            <td class="description last"><p>End index in the buffer</p></td>
         </tr>
 
 	
@@ -1115,7 +1140,7 @@ over a part of the Buffer instance and stores it at the `end` position.
     
             
 <div class="param-desc">
-    Calculated checksum
+    <p>Calculated checksum</p>
 </div>
 
 
@@ -1149,8 +1174,8 @@ over a part of the Buffer instance and stores it at the `end` position.
     
     
     <div class="description">
-        Calculates the VBus checksum (according to version x.0 specification)
-over a part of a Buffer instance.
+        <p>Calculates the VBus checksum (according to version x.0 specification)
+over a part of a Buffer instance.</p>
     </div>
     
 
@@ -1200,7 +1225,7 @@ over a part of a Buffer instance.
 
             
 
-            <td class="description last">Buffer to calc checksum for</td>
+            <td class="description last"><p>Buffer to calc checksum for</p></td>
         </tr>
 
 	
@@ -1223,7 +1248,7 @@ over a part of a Buffer instance.
 
             
 
-            <td class="description last">Start index in the buffer</td>
+            <td class="description last"><p>Start index in the buffer</p></td>
         </tr>
 
 	
@@ -1246,7 +1271,7 @@ over a part of a Buffer instance.
 
             
 
-            <td class="description last">End index in the buffer</td>
+            <td class="description last"><p>End index in the buffer</p></td>
         </tr>
 
 	
@@ -1303,7 +1328,7 @@ over a part of a Buffer instance.
     
             
 <div class="param-desc">
-    Calculated checksum
+    <p>Calculated checksum</p>
 </div>
 
 
@@ -1337,9 +1362,9 @@ over a part of a Buffer instance.
     
     
     <div class="description">
-        Copies a part of the source Buffer instance to the destination Buffer
+        <p>Copies a part of the source Buffer instance to the destination Buffer
 instance, extracting the MSBs during the process and storing the septett
-byte to the destination buffer's end position.
+byte to the destination buffer's end position.</p>
     </div>
     
 
@@ -1389,7 +1414,7 @@ byte to the destination buffer's end position.
 
             
 
-            <td class="description last">Buffer to copy from</td>
+            <td class="description last"><p>Buffer to copy from</p></td>
         </tr>
 
 	
@@ -1412,7 +1437,7 @@ byte to the destination buffer's end position.
 
             
 
-            <td class="description last">Start index in the source buffer</td>
+            <td class="description last"><p>Start index in the source buffer</p></td>
         </tr>
 
 	
@@ -1435,7 +1460,7 @@ byte to the destination buffer's end position.
 
             
 
-            <td class="description last">End index in the source buffer</td>
+            <td class="description last"><p>End index in the source buffer</p></td>
         </tr>
 
 	
@@ -1458,7 +1483,7 @@ byte to the destination buffer's end position.
 
             
 
-            <td class="description last">Buffer to copy to</td>
+            <td class="description last"><p>Buffer to copy to</p></td>
         </tr>
 
 	
@@ -1481,7 +1506,7 @@ byte to the destination buffer's end position.
 
             
 
-            <td class="description last">Start index in the destination buffer</td>
+            <td class="description last"><p>Start index in the destination buffer</p></td>
         </tr>
 
 	
@@ -1549,10 +1574,9 @@ byte to the destination buffer's end position.
     
     
     <div class="description">
-        Creates a Header instance from a representation that was
-received over a Connection.
-
-Must be implemented by sub-class.
+        <p>Creates a Header instance from a representation that was
+received over a Connection.</p>
+<p>Must be implemented by sub-class.</p>
     </div>
     
 
@@ -1602,7 +1626,7 @@ Must be implemented by sub-class.
 
             
 
-            <td class="description last">Buffer that contains the representation</td>
+            <td class="description last"><p>Buffer that contains the representation</p></td>
         </tr>
 
 	
@@ -1625,7 +1649,7 @@ Must be implemented by sub-class.
 
             
 
-            <td class="description last">Start index in the buffer</td>
+            <td class="description last"><p>Start index in the buffer</p></td>
         </tr>
 
 	
@@ -1648,7 +1672,7 @@ Must be implemented by sub-class.
 
             
 
-            <td class="description last">End index in the buffer</td>
+            <td class="description last"><p>End index in the buffer</p></td>
         </tr>
 
 	
@@ -1705,7 +1729,7 @@ Must be implemented by sub-class.
     
             
 <div class="param-desc">
-    Header instance created from the representation
+    <p>Header instance created from the representation</p>
 </div>
 
 
@@ -1739,8 +1763,8 @@ Must be implemented by sub-class.
     
     
     <div class="description">
-        Copies a part of the source Buffer instance to the destination Buffer
-instance, injecting the MSBs stored in the septett byte during the process.
+        <p>Copies a part of the source Buffer instance to the destination Buffer
+instance, injecting the MSBs stored in the septett byte during the process.</p>
     </div>
     
 
@@ -1790,7 +1814,7 @@ instance, injecting the MSBs stored in the septett byte during the process.
 
             
 
-            <td class="description last">Buffer to copy from</td>
+            <td class="description last"><p>Buffer to copy from</p></td>
         </tr>
 
 	
@@ -1813,7 +1837,7 @@ instance, injecting the MSBs stored in the septett byte during the process.
 
             
 
-            <td class="description last">Start index in the source buffer</td>
+            <td class="description last"><p>Start index in the source buffer</p></td>
         </tr>
 
 	
@@ -1836,7 +1860,7 @@ instance, injecting the MSBs stored in the septett byte during the process.
 
             
 
-            <td class="description last">End index in the source buffer</td>
+            <td class="description last"><p>End index in the source buffer</p></td>
         </tr>
 
 	
@@ -1859,7 +1883,7 @@ instance, injecting the MSBs stored in the septett byte during the process.
 
             
 
-            <td class="description last">Buffer to copy to</td>
+            <td class="description last"><p>Buffer to copy to</p></td>
         </tr>
 
 	
@@ -1882,7 +1906,7 @@ instance, injecting the MSBs stored in the septett byte during the process.
 
             
 
-            <td class="description last">Start index in the destination buffer</td>
+            <td class="description last"><p>Start index in the destination buffer</p></td>
         </tr>
 
 	
@@ -1950,10 +1974,9 @@ instance, injecting the MSBs stored in the septett byte during the process.
     
     
     <div class="description">
-        Compares this Header instance to another one.
-
-Sub-classes can extend the comparison to include specific
-information.
+        <p>Compares this Header instance to another one.</p>
+<p>Sub-classes can extend the comparison to include specific
+information.</p>
     </div>
     
 
@@ -2003,7 +2026,7 @@ information.
 
             
 
-            <td class="description last">Another Header instance to compare to.</td>
+            <td class="description last"><p>Another Header instance to compare to.</p></td>
         </tr>
 
 	
@@ -2060,11 +2083,12 @@ information.
     
             
 <div class="param-desc">
-    Returns a number
-
-  - less than 0 if `this < that`
-  - greater than 0 if `this > that`
-  - equal to to if `this == that`
+    <p>Returns a number</p>
+<ul>
+<li>less than 0 if <code>this &lt; that</code></li>
+<li>greater than 0 if <code>this &gt; that</code></li>
+<li>equal to to if <code>this == that</code></li>
+</ul>
 </div>
 
 
@@ -2098,16 +2122,16 @@ information.
     
     
     <div class="description">
-        Returns a string identifier describing this Header instance.
-It contains at least:
-
-  - channel
-  - destination address
-  - source address
-  - protocol version
-
-Sub-classes can extend that information. The structure of this
-identifier is implementation specific, do not rely on it!
+        <p>Returns a string identifier describing this Header instance.
+It contains at least:</p>
+<ul>
+<li>channel</li>
+<li>destination address</li>
+<li>source address</li>
+<li>protocol version</li>
+</ul>
+<p>Sub-classes can extend that information. The structure of this
+identifier is implementation specific, do not rely on it!</p>
     </div>
     
 
@@ -2165,7 +2189,7 @@ identifier is implementation specific, do not rely on it!
     
             
 <div class="param-desc">
-    Identifier
+    <p>Identifier</p>
 </div>
 
 
@@ -2199,9 +2223,9 @@ identifier is implementation specific, do not rely on it!
     
     
     <div class="description">
-        Returns an info number about this Header instance. It can be used
+        <p>Returns an info number about this Header instance. It can be used
 for sorting purposes (to distinguish Header objects that would
-otherwise compare as equal).
+otherwise compare as equal).</p>
     </div>
     
 
@@ -2259,7 +2283,7 @@ otherwise compare as equal).
     
             
 <div class="param-desc">
-    Info value
+    <p>Info value</p>
 </div>
 
 
@@ -2293,12 +2317,11 @@ otherwise compare as equal).
     
     
     <div class="description">
-        Returns the protocol version of this Header instance as a 8-bit
+        <p>Returns the protocol version of this Header instance as a 8-bit
 number. The high nibble is used for the major version, the low
 nibble for the minor version. For example: a header with protocol
-version 2.0 would return `0x20`.
-
-Must be implemented by sub-class.
+version 2.0 would return <code>0x20</code>.</p>
+<p>Must be implemented by sub-class.</p>
     </div>
     
 
@@ -2356,7 +2379,7 @@ Must be implemented by sub-class.
     
             
 <div class="param-desc">
-    Protocol version
+    <p>Protocol version</p>
 </div>
 
 
@@ -2390,12 +2413,11 @@ Must be implemented by sub-class.
     
     
     <div class="description">
-        Creates a representation of this Header instance that can be
+        <p>Creates a representation of this Header instance that can be
 transmitted over a Connection. If no buffer is given as an
 arguments, it creates a new one that is big enough to hold
-the representation.
-
-Must be implemented by sub-class.
+the representation.</p>
+<p>Must be implemented by sub-class.</p>
     </div>
     
 
@@ -2457,7 +2479,7 @@ Must be implemented by sub-class.
 
             
 
-            <td class="description last">Buffer object to store data in</td>
+            <td class="description last"><p>Buffer object to store data in</p></td>
         </tr>
 
 	
@@ -2490,7 +2512,7 @@ Must be implemented by sub-class.
 
             
 
-            <td class="description last">Start index in the buffer</td>
+            <td class="description last"><p>Start index in the buffer</p></td>
         </tr>
 
 	
@@ -2523,7 +2545,7 @@ Must be implemented by sub-class.
 
             
 
-            <td class="description last">End index in the buffer</td>
+            <td class="description last"><p>End index in the buffer</p></td>
         </tr>
 
 	
@@ -2580,7 +2602,7 @@ Must be implemented by sub-class.
     
             
 <div class="param-desc">
-    Buffer object containing the data
+    <p>Buffer object containing the data</p>
 </div>
 
 
@@ -2629,7 +2651,7 @@ Must be implemented by sub-class.
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
-		on Sat Mar 01 2014 20:49:51 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Sun Mar 02 2014 12:10:00 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>
@@ -2670,34 +2692,6 @@ Must be implemented by sub-class.
 		} );
 	</script>
 
-	
-	<script>
-		$( function () {
-			$('#main').localScroll({
-				offset: { top: 56 } //offset by the height of your header (give or take a few px, see what works for you)
-			});
-			$( "dt h4.name" ).each( function () {
-				var $this = $( this );
-				var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
-				var dt = $this.parents( "dt" );
-				var children = dt.next( "dd" );
-
-				$this.append( icon ).css( {cursor : "pointer"} );
-				$this.addClass( "member-collapsed" ).addClass( "member" );
-
-				children.hide();
-				$this.toggle( function () {
-					icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
-					$this.addClass( "member-open" ).removeClass( "member-collapsed" );
-					children.slideDown();
-				}, function () {
-					icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
-					$this.addClass( "member-collapsed" ).removeClass( "member-open" );
-					children.slideUp();
-				} );
-			} );
-		} );
-	</script>
 	
 
 </body>

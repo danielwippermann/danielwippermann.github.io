@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>resol-vbus Class: HeaderSet</title>
+	<title>resol-vbus Class: HeaderSetConsolidator</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -173,13 +173,27 @@
 					
 
 
-	<h1 class="page-title">Class: HeaderSet</h1>
+	<h1 class="page-title">Class: HeaderSetConsolidator</h1>
 <section>
 
 <header>
     <h2>
-    HeaderSet
+    HeaderSetConsolidator
     </h2>
+    
+        <div class="class-description"><p>The HeaderSetConsolidator extends the functionality of the HeaderSet class
+by allowing to filter and organize the Header instances added to it.</p>
+<p>There are two common use cases for this class:</p>
+<p>The first use case is in combination with a Connection. As live Header instances
+are reported by their corresponding event they are aded to the HeaderSetConsolidator
+instance using <code>addHeader</code> or <code>addHeaders</code> methods. The <code>startTimer</code> method
+is used to start a background timer that fires a <code>headerSet</code> event every
+time the given interval has passed.</p>
+<p>The second use case is in combination with Recorders. In that case no timer
+has to be started because the data is not received in real time. As recorded HeaderSet
+instances are played back they are can be handed over to the <code>processHeaderSet</code>
+method. This method will fire a <code>headerSet</code> event every time the recorded data
+belong to a different interval.</p></div>
     
 </header>
 
@@ -190,7 +204,7 @@
     
         
 <dt>
-    <h4 class="name" id="HeaderSet"><span class="type-signature"></span>new HeaderSet<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="HeaderSetConsolidator"><span class="type-signature"></span>new HeaderSetConsolidator<span class="signature">(options)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -198,7 +212,7 @@
     
     
     <div class="description">
-        <p>Creates a new header set instance and optionally initializes its members with the given values.</p>
+        <p>Creates a new instances and optionally initializes its members to the given values.</p>
     </div>
     
 
@@ -248,7 +262,7 @@
 
             
 
-            <td class="description last"><p>Initialization values for this instance's members</p>
+            <td class="description last">
                 <h6>Properties</h6>
                 
 
@@ -274,13 +288,13 @@
 
         <tr>
             
-                <td class="name"><code>timestamp</code></td>
+                <td class="name"><code>interval</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Date</span>
+<span class="param-type">number</span>
 
 
             
@@ -290,20 +304,20 @@
 
             
 
-            <td class="description last"><p><a href="HeaderSet.html#timestamp">HeaderSet#timestamp</a></p></td>
+            <td class="description last"><p>See <a href="HeaderSetConsolidator.html#interval">HeaderSetConsolidator#interval</a></p></td>
         </tr>
 
 	
 
         <tr>
             
-                <td class="name"><code>headers</code></td>
+                <td class="name"><code>timeToLive</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Header[]</span>
+<span class="param-type">number</span>
 
 
             
@@ -313,7 +327,53 @@
 
             
 
-            <td class="description last"><p>Array of Headers to add to this instance</p></td>
+            <td class="description last"><p>See <a href="HeaderSetConsolidator.html#timeToLive">HeaderSetConsolidator#timeToLive</a></p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>minTimestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>See <a href="HeaderSetConsolidator.html#minTimestamp">HeaderSetConsolidator#minTimestamp</a></p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>maxTimestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>See <a href="HeaderSetConsolidator.html#maxTimestamp">HeaderSetConsolidator#maxTimestamp</a></p></td>
         </tr>
 
 	
@@ -352,7 +412,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="header-set.js.html">header-set.js</a>
+        <a href="header-set-consolidator.js.html">header-set-consolidator.js</a>
     </li></ul></dd>
     
 
@@ -375,6 +435,56 @@
     
     
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">// --- use case 1: live data ---
+var connection = createConnection();
+
+// create a HeaderSetConsolidator that fires a headerSet event every minute
+var hsc = new HeaderSetConsolidator({ interval: 1 * 60 * 1000 });
+
+// add an event handlers to the connection that adds incoming headers to the consolidator
+var onHeader = function(header) {
+    hsc.addHeader(header);
+};
+
+connection.on('packet', onHeader);
+connection.on('datagram', onHeader);
+connection.on('telegram', onHeader);
+
+// add an event handler to the consolidator
+hsc.on('headerSet', function(headerSet) {
+    console.log(headerSet);
+});
+
+// start the timer
+hsc.startTimer();
+
+
+
+// --- use case 2: recorded data ---
+var stream = getRecordedDataStream();
+
+var converter = new VBusRecordingConverter();
+
+// create a HeaderSetConsolidator that sieves incoming headers
+var hsc = new HeaderSetConsolidator({ interval: 60 * 60 * 1000 });
+
+// add an event handler to the converter that processes incoming header sets in the consolidator
+converter.on('headerSet', function(headerSet) {
+    hsc.processHeaderSet(headerSet);
+});
+
+// add an event handler to the consolidator
+hsc.on('headerSet', function(headerSet) {
+    console.log(headerSet);
+});
+
+// start the conversion
+stream.pipe(converter);</pre>
+
+
+    
 </dd>
 
     
@@ -384,7 +494,7 @@
         <h3 class="subsection-title">Extends</h3>
 
         <ul>
-            <li>EventEmitter</li>
+            <li><a href="HeaderSet.html">HeaderSet</a></li>
         </ul>
     
 
@@ -434,6 +544,11 @@
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="HeaderSet.html#headerList">HeaderSet#headerList</a>
+    </li></dd>
+    
 
     
 
@@ -449,6 +564,198 @@
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="header-set.js.html">header-set.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="interval"><span class="type-signature"></span>interval<span class="type-signature"> :number</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The interval in which the <code>headerSet</code> event should be emitted.</p>
+    </div>
+    
+    
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">number</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="header-set-consolidator.js.html">header-set-consolidator.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="maxTimestamp"><span class="type-signature"></span>maxTimestamp<span class="type-signature"> :Date</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>HeaderSet instances from a time after this Date are ignored.</p>
+    </div>
+    
+    
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">Date</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="header-set-consolidator.js.html">header-set-consolidator.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="minTimestamp"><span class="type-signature"></span>minTimestamp<span class="type-signature"> :Date</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>HeaderSet instances from a time before this Date are ignored.</p>
+    </div>
+    
+    
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">Date</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="header-set-consolidator.js.html">header-set-consolidator.js</a>
     </li></ul></dd>
     
 
@@ -498,6 +805,11 @@
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="HeaderSet.html#timestamp">HeaderSet#timestamp</a>
+    </li></dd>
+    
 
     
 
@@ -513,6 +825,70 @@
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="header-set.js.html">header-set.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="timeToLive"><span class="type-signature"></span>timeToLive<span class="type-signature"> :number</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Header instances that are older then this duration are removed from the set.</p>
+    </div>
+    
+    
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">number</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="header-set-consolidator.js.html">header-set-consolidator.js</a>
     </li></ul></dd>
     
 
@@ -611,6 +987,11 @@
 
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="HeaderSet.html#addHeader">HeaderSet#addHeader</a>
+    </li></dd>
     
 
     
@@ -730,6 +1111,11 @@
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="HeaderSet.html#addHeaders">HeaderSet#addHeaders</a>
+    </li></dd>
+    
 
     
 
@@ -798,6 +1184,11 @@
 
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="HeaderSet.html#getHeaderCount">HeaderSet#getHeaderCount</a>
+    </li></dd>
     
 
     
@@ -891,6 +1282,11 @@
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="HeaderSet.html#getHeaders">HeaderSet#getHeaders</a>
+    </li></dd>
+    
 
     
 
@@ -982,6 +1378,11 @@
 
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="HeaderSet.html#getId">HeaderSet#getId</a>
+    </li></dd>
     
 
     
@@ -1075,6 +1476,11 @@
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="HeaderSet.html#getIdHash">HeaderSet#getIdHash</a>
+    </li></dd>
+    
 
     
 
@@ -1167,6 +1573,11 @@
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="HeaderSet.html#getSortedHeaders">HeaderSet#getSortedHeaders</a>
+    </li></dd>
+    
 
     
 
@@ -1232,6 +1643,125 @@
         
             
 <dt>
+    <h4 class="name" id="processHeaderSet"><span class="type-signature"></span>processHeaderSet<span class="signature">(headerSet)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Process the given HeaderSet instance. The Header instances in it are
+added to the HeaderSetConsolidator.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>headerSet</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="HeaderSet.html">HeaderSet</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The HeaderSet instance to process.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="header-set-consolidator.js.html">header-set-consolidator.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="removeAllHeaders"><span class="type-signature"></span>removeAllHeaders<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
@@ -1258,6 +1788,11 @@
 
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="HeaderSet.html#removeAllHeaders">HeaderSet#removeAllHeaders</a>
+    </li></dd>
     
 
     
@@ -1380,6 +1915,11 @@
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="HeaderSet.html#removeHeadersOlderThan">HeaderSet#removeHeadersOlderThan</a>
+    </li></dd>
+    
 
     
 
@@ -1395,6 +1935,144 @@
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="header-set.js.html">header-set.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="startTimer"><span class="type-signature"></span>startTimer<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Starts a timer that processes live HeaderSets automatically.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="header-set-consolidator.js.html">header-set-consolidator.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="stopTimer"><span class="type-signature"></span>stopTimer<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Stops the timer that was started by <code>startTimer</code>.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="header-set-consolidator.js.html">header-set-consolidator.js</a>
     </li></ul></dd>
     
 
@@ -1466,6 +2144,11 @@
 
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="HeaderSet.html#event:addHeader">HeaderSet#event:addHeader</a>
+    </li></dd>
     
 
     
@@ -1545,6 +2228,11 @@
 
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="HeaderSet.html#event:removeHeader">HeaderSet#event:removeHeader</a>
+    </li></dd>
     
 
     

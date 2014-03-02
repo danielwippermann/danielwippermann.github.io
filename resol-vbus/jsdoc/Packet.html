@@ -26,7 +26,7 @@
 					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="Connection.html">Connection</a>
@@ -61,6 +61,10 @@
 						</li>
 						
 						<li>
+							<a href="HeaderSetConsolidator.html">HeaderSetConsolidator</a>
+						</li>
+						
+						<li>
 							<a href="I18N.html">I18N</a>
 						</li>
 						
@@ -70,6 +74,10 @@
 						
 						<li>
 							<a href="Recorder.html">Recorder</a>
+						</li>
+						
+						<li>
+							<a href="SerialConnection.html">SerialConnection</a>
 						</li>
 						
 						<li>
@@ -105,10 +113,6 @@
 						</li>
 						
 						<li>
-							<a href="_.html">undefined</a>
-						</li>
-						
-						<li>
 							<a href="VBusRecordingConverter.html">VBusRecordingConverter</a>
 						</li>
 						
@@ -120,7 +124,7 @@
 					<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="HeaderSet.html#event:addHeader">addHeader</a>
@@ -128,6 +132,28 @@
 						
 						<li>
 							<a href="HeaderSet.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:addHeader">addHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="global.html#extend">extend</a>
 						</li>
 						
 
@@ -155,11 +181,11 @@
     Packet
     </h2>
     
-        <div class="class-description">The Packet sub-class provides access to all properties and methods applicable for VBus version 1 packets.
+        <div class="class-description"><p>The Packet sub-class provides access to all properties and methods applicable for VBus version 1 packets.
 In addition to the packet header it may contain up to 508 bytes of payload data.
 The structure of the payload depends on the combination of destination and source addresses as well as
 the command of the packet. The different payloads are described in further detail
-in Chapter H of the VBus Protocol Specification and can be decoded using a Specification instance.</div>
+in Chapter H of the VBus Protocol Specification and can be decoded using a Specification instance.</p></div>
     
 </header>
 
@@ -178,7 +204,7 @@ in Chapter H of the VBus Protocol Specification and can be decoded using a Speci
     
     
     <div class="description">
-        Creates a new Packet instance and optionally initializes its members with the given values.
+        <p>Creates a new Packet instance and optionally initializes its members with the given values.</p>
     </div>
     
 
@@ -228,7 +254,7 @@ in Chapter H of the VBus Protocol Specification and can be decoded using a Speci
 
             
 
-            <td class="description last">Initialization values for this instance's members
+            <td class="description last"><p>Initialization values for this instance's members</p>
                 <h6>Properties</h6>
                 
 
@@ -270,7 +296,7 @@ in Chapter H of the VBus Protocol Specification and can be decoded using a Speci
 
             
 
-            <td class="description last"><a href="Packet.html#command">Packet#command</a></td>
+            <td class="description last"><p><a href="Packet.html#command">Packet#command</a></p></td>
         </tr>
 
 	
@@ -293,7 +319,7 @@ in Chapter H of the VBus Protocol Specification and can be decoded using a Speci
 
             
 
-            <td class="description last"><a href="Packet.html#frameCount">Packet#frameCount</a></td>
+            <td class="description last"><p><a href="Packet.html#frameCount">Packet#frameCount</a></p></td>
         </tr>
 
 	
@@ -316,7 +342,7 @@ in Chapter H of the VBus Protocol Specification and can be decoded using a Speci
 
             
 
-            <td class="description last"><a href="Packet.html#frameData">Packet#frameData</a></td>
+            <td class="description last"><p><a href="Packet.html#frameData">Packet#frameData</a></p></td>
         </tr>
 
 	
@@ -421,7 +447,7 @@ in Chapter H of the VBus Protocol Specification and can be decoded using a Speci
 <dd>
     
     <div class="description">
-        VBus channel of this header
+        <p>VBus channel of this header</p>
     </div>
     
     
@@ -493,7 +519,7 @@ in Chapter H of the VBus Protocol Specification and can be decoded using a Speci
 <dd>
     
     <div class="description">
-        The command field of this VBus packet. See the VBus Protocol specification for details.
+        <p>The command field of this VBus packet. See the VBus Protocol specification for details.</p>
     </div>
     
     
@@ -557,7 +583,7 @@ in Chapter H of the VBus Protocol Specification and can be decoded using a Speci
 <dd>
     
     <div class="description">
-        VBus address of this header's destination
+        <p>VBus address of this header's destination</p>
     </div>
     
     
@@ -629,7 +655,7 @@ in Chapter H of the VBus Protocol Specification and can be decoded using a Speci
 <dd>
     
     <div class="description">
-        The number of frames of this VBus packet. Each frame can hold four bytes of payload.
+        <p>The number of frames of this VBus packet. Each frame can hold four bytes of payload.</p>
     </div>
     
     
@@ -693,7 +719,7 @@ in Chapter H of the VBus Protocol Specification and can be decoded using a Speci
 <dd>
     
     <div class="description">
-        The buffer containing the frame data of this VBus packet.
+        <p>The buffer containing the frame data of this VBus packet.</p>
     </div>
     
     
@@ -747,7 +773,7 @@ in Chapter H of the VBus Protocol Specification and can be decoded using a Speci
 <dd>
     
     <div class="description">
-        VBus address of this header's source
+        <p>VBus address of this header's source</p>
     </div>
     
     
@@ -819,7 +845,7 @@ in Chapter H of the VBus Protocol Specification and can be decoded using a Speci
 <dd>
     
     <div class="description">
-        Timestamp of this header
+        <p>Timestamp of this header</p>
     </div>
     
     
@@ -898,10 +924,9 @@ in Chapter H of the VBus Protocol Specification and can be decoded using a Speci
     
     
     <div class="description">
-        Compares this Header instance to another one.
-
-Sub-classes can extend the comparison to include specific
-information.
+        <p>Compares this Header instance to another one.</p>
+<p>Sub-classes can extend the comparison to include specific
+information.</p>
     </div>
     
 
@@ -951,7 +976,7 @@ information.
 
             
 
-            <td class="description last">Another Header instance to compare to.</td>
+            <td class="description last"><p>Another Header instance to compare to.</p></td>
         </tr>
 
 	
@@ -1013,11 +1038,12 @@ information.
     
             
 <div class="param-desc">
-    Returns a number
-
-  - less than 0 if `this < that`
-  - greater than 0 if `this > that`
-  - equal to to if `this == that`
+    <p>Returns a number</p>
+<ul>
+<li>less than 0 if <code>this &lt; that</code></li>
+<li>greater than 0 if <code>this &gt; that</code></li>
+<li>equal to to if <code>this == that</code></li>
+</ul>
 </div>
 
 
@@ -1051,16 +1077,16 @@ information.
     
     
     <div class="description">
-        Returns a string identifier describing this Header instance.
-It contains at least:
-
-  - channel
-  - destination address
-  - source address
-  - protocol version
-
-Sub-classes can extend that information. The structure of this
-identifier is implementation specific, do not rely on it!
+        <p>Returns a string identifier describing this Header instance.
+It contains at least:</p>
+<ul>
+<li>channel</li>
+<li>destination address</li>
+<li>source address</li>
+<li>protocol version</li>
+</ul>
+<p>Sub-classes can extend that information. The structure of this
+identifier is implementation specific, do not rely on it!</p>
     </div>
     
 
@@ -1123,7 +1149,7 @@ identifier is implementation specific, do not rely on it!
     
             
 <div class="param-desc">
-    Identifier
+    <p>Identifier</p>
 </div>
 
 
@@ -1157,9 +1183,9 @@ identifier is implementation specific, do not rely on it!
     
     
     <div class="description">
-        Returns an info number about this Header instance. It can be used
+        <p>Returns an info number about this Header instance. It can be used
 for sorting purposes (to distinguish Header objects that would
-otherwise compare as equal).
+otherwise compare as equal).</p>
     </div>
     
 
@@ -1222,7 +1248,7 @@ otherwise compare as equal).
     
             
 <div class="param-desc">
-    Info value
+    <p>Info value</p>
 </div>
 
 
@@ -1256,12 +1282,11 @@ otherwise compare as equal).
     
     
     <div class="description">
-        Returns the protocol version of this Header instance as a 8-bit
+        <p>Returns the protocol version of this Header instance as a 8-bit
 number. The high nibble is used for the major version, the low
 nibble for the minor version. For example: a header with protocol
-version 2.0 would return `0x20`.
-
-Must be implemented by sub-class.
+version 2.0 would return <code>0x20</code>.</p>
+<p>Must be implemented by sub-class.</p>
     </div>
     
 
@@ -1324,7 +1349,7 @@ Must be implemented by sub-class.
     
             
 <div class="param-desc">
-    Protocol version
+    <p>Protocol version</p>
 </div>
 
 
@@ -1358,12 +1383,11 @@ Must be implemented by sub-class.
     
     
     <div class="description">
-        Creates a representation of this Header instance that can be
+        <p>Creates a representation of this Header instance that can be
 transmitted over a Connection. If no buffer is given as an
 arguments, it creates a new one that is big enough to hold
-the representation.
-
-Must be implemented by sub-class.
+the representation.</p>
+<p>Must be implemented by sub-class.</p>
     </div>
     
 
@@ -1425,7 +1449,7 @@ Must be implemented by sub-class.
 
             
 
-            <td class="description last">Buffer object to store data in</td>
+            <td class="description last"><p>Buffer object to store data in</p></td>
         </tr>
 
 	
@@ -1458,7 +1482,7 @@ Must be implemented by sub-class.
 
             
 
-            <td class="description last">Start index in the buffer</td>
+            <td class="description last"><p>Start index in the buffer</p></td>
         </tr>
 
 	
@@ -1491,7 +1515,7 @@ Must be implemented by sub-class.
 
             
 
-            <td class="description last">End index in the buffer</td>
+            <td class="description last"><p>End index in the buffer</p></td>
         </tr>
 
 	
@@ -1553,7 +1577,7 @@ Must be implemented by sub-class.
     
             
 <div class="param-desc">
-    Buffer object containing the data
+    <p>Buffer object containing the data</p>
 </div>
 
 
@@ -1602,7 +1626,7 @@ Must be implemented by sub-class.
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
-		on Sat Mar 01 2014 20:49:51 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Sun Mar 02 2014 12:10:00 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>
@@ -1643,34 +1667,6 @@ Must be implemented by sub-class.
 		} );
 	</script>
 
-	
-	<script>
-		$( function () {
-			$('#main').localScroll({
-				offset: { top: 56 } //offset by the height of your header (give or take a few px, see what works for you)
-			});
-			$( "dt h4.name" ).each( function () {
-				var $this = $( this );
-				var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
-				var dt = $this.parents( "dt" );
-				var children = dt.next( "dd" );
-
-				$this.append( icon ).css( {cursor : "pointer"} );
-				$this.addClass( "member-collapsed" ).addClass( "member" );
-
-				children.hide();
-				$this.toggle( function () {
-					icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
-					$this.addClass( "member-open" ).removeClass( "member-collapsed" );
-					children.slideDown();
-				}, function () {
-					icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
-					$this.addClass( "member-collapsed" ).removeClass( "member-open" );
-					children.slideUp();
-				} );
-			} );
-		} );
-	</script>
 	
 
 </body>

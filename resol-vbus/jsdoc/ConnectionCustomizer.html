@@ -26,7 +26,7 @@
 					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="Connection.html">Connection</a>
@@ -61,6 +61,10 @@
 						</li>
 						
 						<li>
+							<a href="HeaderSetConsolidator.html">HeaderSetConsolidator</a>
+						</li>
+						
+						<li>
 							<a href="I18N.html">I18N</a>
 						</li>
 						
@@ -70,6 +74,10 @@
 						
 						<li>
 							<a href="Recorder.html">Recorder</a>
+						</li>
+						
+						<li>
+							<a href="SerialConnection.html">SerialConnection</a>
 						</li>
 						
 						<li>
@@ -105,10 +113,6 @@
 						</li>
 						
 						<li>
-							<a href="_.html">undefined</a>
-						</li>
-						
-						<li>
 							<a href="VBusRecordingConverter.html">VBusRecordingConverter</a>
 						</li>
 						
@@ -120,7 +124,7 @@
 					<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="HeaderSet.html#event:addHeader">addHeader</a>
@@ -128,6 +132,28 @@
 						
 						<li>
 							<a href="HeaderSet.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:addHeader">addHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="global.html#extend">extend</a>
 						</li>
 						
 
@@ -155,8 +181,8 @@
     ConnectionCustomizer
     </h2>
     
-        <div class="class-description">A ConnectionCustomizer uses an established connection to a device
-to transfer sets of configuration values over it.</div>
+        <div class="class-description"><p>A ConnectionCustomizer uses an established connection to a device
+to transfer sets of configuration values over it.</p></div>
     
 </header>
 
@@ -175,8 +201,8 @@ to transfer sets of configuration values over it.</div>
     
     
     <div class="description">
-        Constructs a new ConnectionCustomizer instance and optionally initializes its
-members with the given values.
+        <p>Constructs a new ConnectionCustomizer instance and optionally initializes its
+members with the given values.</p>
     </div>
     
 
@@ -238,7 +264,7 @@ members with the given values.
 
             
 
-            <td class="description last">Initialization values for this instance's members
+            <td class="description last"><p>Initialization values for this instance's members</p>
                 <h6>Properties</h6>
                 
 
@@ -292,7 +318,7 @@ members with the given values.
 
             
 
-            <td class="description last"><a href="ConnectionCustomizer.html#connection">ConnectionCustomizer#connection</a></td>
+            <td class="description last"><p><a href="ConnectionCustomizer.html#connection">ConnectionCustomizer#connection</a></p></td>
         </tr>
 
 	
@@ -325,7 +351,7 @@ members with the given values.
 
             
 
-            <td class="description last"><a href="ConnectionCustomizer.html#maxRounds">ConnectionCustomizer#maxRounds</a></td>
+            <td class="description last"><p><a href="ConnectionCustomizer.html#maxRounds">ConnectionCustomizer#maxRounds</a></p></td>
         </tr>
 
 	
@@ -358,7 +384,7 @@ members with the given values.
 
             
 
-            <td class="description last"><a href="ConnectionCustomizer.html#triesPerValue">ConnectionCustomizer#triesPerValue</a></td>
+            <td class="description last"><p><a href="ConnectionCustomizer.html#triesPerValue">ConnectionCustomizer#triesPerValue</a></p></td>
         </tr>
 
 	
@@ -391,7 +417,7 @@ members with the given values.
 
             
 
-            <td class="description last"><a href="ConnectionCustomizer.html#timeoutPerValue">ConnectionCustomizer#timeoutPerValue</a></td>
+            <td class="description last"><p><a href="ConnectionCustomizer.html#timeoutPerValue">ConnectionCustomizer#timeoutPerValue</a></p></td>
         </tr>
 
 	
@@ -424,7 +450,7 @@ members with the given values.
 
             
 
-            <td class="description last"><a href="ConnectionCustomizer.html#masterTimeout">ConnectionCustomizer#masterTimeout</a></td>
+            <td class="description last"><p><a href="ConnectionCustomizer.html#masterTimeout">ConnectionCustomizer#masterTimeout</a></p></td>
         </tr>
 
 	
@@ -520,7 +546,7 @@ members with the given values.
 <dd>
     
     <div class="description">
-        The connection to use for transfer of the configuration values.
+        <p>The connection to use for transfer of the configuration values.</p>
     </div>
     
     
@@ -584,7 +610,7 @@ members with the given values.
 <dd>
     
     <div class="description">
-        The VBus address of the device to customize.
+        <p>The VBus address of the device to customize.</p>
     </div>
     
     
@@ -653,7 +679,7 @@ members with the given values.
 <dd>
     
     <div class="description">
-        An identifier for this customizer.
+        <p>An identifier for this customizer.</p>
     </div>
     
     
@@ -722,8 +748,8 @@ members with the given values.
 <dd>
     
     <div class="description">
-        Interval in milliseconds in which
-the VBus master is contacted to reissue the VBus clearance.
+        <p>Interval in milliseconds in which
+the VBus master is contacted to reissue the VBus clearance.</p>
     </div>
     
     
@@ -790,7 +816,7 @@ the VBus master is contacted to reissue the VBus clearance.
 <dd>
     
     <div class="description">
-        Maximum number of optimization rounds for transceiveConfiguration.
+        <p>Maximum number of optimization rounds for transceiveConfiguration.</p>
     </div>
     
     
@@ -857,7 +883,7 @@ the VBus master is contacted to reissue the VBus clearance.
 <dd>
     
     <div class="description">
-        A configuration optimizer.
+        <p>A configuration optimizer.</p>
     </div>
     
     
@@ -926,7 +952,7 @@ the VBus master is contacted to reissue the VBus clearance.
 <dd>
     
     <div class="description">
-        Timeout in milliseconds after which the transceive times out.
+        <p>Timeout in milliseconds after which the transceive times out.</p>
     </div>
     
     
@@ -993,8 +1019,8 @@ the VBus master is contacted to reissue the VBus clearance.
 <dd>
     
     <div class="description">
-        Amount of retries to transceive one value.
-Between two tries the VBus is released and then re-acquired.
+        <p>Amount of retries to transceive one value.
+Between two tries the VBus is released and then re-acquired.</p>
     </div>
     
     
@@ -1068,7 +1094,7 @@ Between two tries the VBus is released and then re-acquired.
     
     
     <div class="description">
-        Load a set of configuration values from a device.
+        <p>Load a set of configuration values from a device.</p>
     </div>
     
 
@@ -1142,7 +1168,7 @@ Between two tries the VBus is released and then re-acquired.
     
     
     <div class="description">
-        Save a set of configuration values to a device.
+        <p>Save a set of configuration values to a device.</p>
     </div>
     
 
@@ -1216,7 +1242,7 @@ Between two tries the VBus is released and then re-acquired.
     
     
     <div class="description">
-        Transceives a controller configuration set, handling timeouts, retries etc.
+        <p>Transceives a controller configuration set, handling timeouts, retries etc.</p>
     </div>
     
 
@@ -1266,7 +1292,7 @@ Between two tries the VBus is released and then re-acquired.
 
             
 
-            <td class="description last">Options
+            <td class="description last"><p>Options</p>
                 <h6>Properties</h6>
                 
 
@@ -1320,7 +1346,7 @@ Between two tries the VBus is released and then re-acquired.
 
             
 
-            <td class="description last"><a href="ConnectionCustomizer.html#maxRounds">ConnectionCustomizer#maxRounds</a></td>
+            <td class="description last"><p><a href="ConnectionCustomizer.html#maxRounds">ConnectionCustomizer#maxRounds</a></p></td>
         </tr>
 
 	
@@ -1353,7 +1379,7 @@ Between two tries the VBus is released and then re-acquired.
 
             
 
-            <td class="description last"><a href="ConnectionCustomizer.html#triesPerValue">ConnectionCustomizer#triesPerValue</a></td>
+            <td class="description last"><p><a href="ConnectionCustomizer.html#triesPerValue">ConnectionCustomizer#triesPerValue</a></p></td>
         </tr>
 
 	
@@ -1386,7 +1412,7 @@ Between two tries the VBus is released and then re-acquired.
 
             
 
-            <td class="description last"><a href="ConnectionCustomizer.html#timeoutPerValue">ConnectionCustomizer#timeoutPerValue</a></td>
+            <td class="description last"><p><a href="ConnectionCustomizer.html#timeoutPerValue">ConnectionCustomizer#timeoutPerValue</a></p></td>
         </tr>
 
 	
@@ -1419,7 +1445,7 @@ Between two tries the VBus is released and then re-acquired.
 
             
 
-            <td class="description last"><a href="ConnectionCustomizer.html#masterTimeout">ConnectionCustomizer#masterTimeout</a></td>
+            <td class="description last"><p><a href="ConnectionCustomizer.html#masterTimeout">ConnectionCustomizer#masterTimeout</a></p></td>
         </tr>
 
 	
@@ -1450,7 +1476,7 @@ Between two tries the VBus is released and then re-acquired.
 
             
 
-            <td class="description last">Action to perform, can be `'get'` or `'set'`.</td>
+            <td class="description last"><p>Action to perform, can be <code>'get'</code> or <code>'set'</code>.</p></td>
         </tr>
 
 	
@@ -1483,7 +1509,7 @@ Between two tries the VBus is released and then re-acquired.
 
             
 
-            <td class="description last">Options object to forward to the action to perform.</td>
+            <td class="description last"><p>Options object to forward to the action to perform.</p></td>
         </tr>
 
 	
@@ -1547,7 +1573,7 @@ Between two tries the VBus is released and then re-acquired.
     
             
 <div class="param-desc">
-    Promise that resolves to the configuration or `null` on timeout.
+    <p>Promise that resolves to the configuration or <code>null</code> on timeout.</p>
 </div>
 
 
@@ -1581,8 +1607,8 @@ Between two tries the VBus is released and then re-acquired.
     
     
     <div class="description">
-        Transceive a controller value over this connection, handling
-timeouts, retries etc.
+        <p>Transceive a controller value over this connection, handling
+timeouts, retries etc.</p>
     </div>
     
 
@@ -1632,7 +1658,7 @@ timeouts, retries etc.
 
             
 
-            <td class="description last">Value index</td>
+            <td class="description last"><p>Value index</p></td>
         </tr>
 
 	
@@ -1655,7 +1681,7 @@ timeouts, retries etc.
 
             
 
-            <td class="description last">Value</td>
+            <td class="description last"><p>Value</p></td>
         </tr>
 
 	
@@ -1678,7 +1704,7 @@ timeouts, retries etc.
 
             
 
-            <td class="description last">Options
+            <td class="description last"><p>Options</p>
                 <h6>Properties</h6>
                 
 
@@ -1720,7 +1746,7 @@ timeouts, retries etc.
 
             
 
-            <td class="description last"><a href="ConnectionCustomizer.html#triesPerValue">ConnectionCustomizer#triesPerValue</a></td>
+            <td class="description last"><p><a href="ConnectionCustomizer.html#triesPerValue">ConnectionCustomizer#triesPerValue</a></p></td>
         </tr>
 
 	
@@ -1743,7 +1769,7 @@ timeouts, retries etc.
 
             
 
-            <td class="description last"><a href="ConnectionCustomizer.html#timeoutPerValue">ConnectionCustomizer#timeoutPerValue</a></td>
+            <td class="description last"><p><a href="ConnectionCustomizer.html#timeoutPerValue">ConnectionCustomizer#timeoutPerValue</a></p></td>
         </tr>
 
 	
@@ -1766,7 +1792,7 @@ timeouts, retries etc.
 
             
 
-            <td class="description last"><a href="ConnectionCustomizer.html#masterTimeout">ConnectionCustomizer#masterTimeout</a></td>
+            <td class="description last"><p><a href="ConnectionCustomizer.html#masterTimeout">ConnectionCustomizer#masterTimeout</a></p></td>
         </tr>
 
 	
@@ -1796,7 +1822,7 @@ timeouts, retries etc.
 
             
 
-            <td class="description last">State to share between multiple calls to this method.</td>
+            <td class="description last"><p>State to share between multiple calls to this method.</p></td>
         </tr>
 
 	
@@ -1853,7 +1879,7 @@ timeouts, retries etc.
     
             
 <div class="param-desc">
-    Promise that resolves with the datagram received or `null` on timeout.
+    <p>Promise that resolves with the datagram received or <code>null</code> on timeout.</p>
 </div>
 
 
@@ -1902,7 +1928,7 @@ timeouts, retries etc.
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
-		on Sat Mar 01 2014 20:49:51 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Sun Mar 02 2014 12:10:00 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>
@@ -1943,34 +1969,6 @@ timeouts, retries etc.
 		} );
 	</script>
 
-	
-	<script>
-		$( function () {
-			$('#main').localScroll({
-				offset: { top: 56 } //offset by the height of your header (give or take a few px, see what works for you)
-			});
-			$( "dt h4.name" ).each( function () {
-				var $this = $( this );
-				var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
-				var dt = $this.parents( "dt" );
-				var children = dt.next( "dd" );
-
-				$this.append( icon ).css( {cursor : "pointer"} );
-				$this.addClass( "member-collapsed" ).addClass( "member" );
-
-				children.hide();
-				$this.toggle( function () {
-					icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
-					$this.addClass( "member-open" ).removeClass( "member-collapsed" );
-					children.slideDown();
-				}, function () {
-					icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
-					$this.addClass( "member-collapsed" ).removeClass( "member-open" );
-					children.slideUp();
-				} );
-			} );
-		} );
-	</script>
 	
 
 </body>

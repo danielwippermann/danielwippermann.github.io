@@ -26,7 +26,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">resol-vbus</a>
+          <a class="navbar-brand" href="index.html">resol-vbus</a>
         </div>
         <div class="navbar-collapse collapse navbar-inverse-collapse">
           <ul class="nav navbar-nav">
@@ -133,6 +133,7 @@
         <ul>
           <li><a href="vbus-recording-file-format.html">VBus Recording File Format</a></li>
           <li><a href="vbus-over-tcp.html">VBus Over TCP</a></li>
+          <li><a href="dlx-data-download-api.html">DLx Data Download API</a></li>
         </ul>
       </div>
     </div>
@@ -198,8 +199,6 @@
 <h2 id="toc_10">Recorders</h2>
 
 <p>A Recorder provides access to HeaderSet stores (e.g. dataloggers) by allowing to either playback the HeaderSets in the store, record HeaderSets to the store or synchronize two Recorders.</p>
-
-<p>The playback and record operation both use the VBusRecordingConverter to serialize the HeaderSets to and from Node.js streams.</p>
 
 <p>The synchronization operation builds on top of this two operations and is able to find unsynced HeaderSets in the source Recorder. Thoses unsynced HeaderSets are then played back from the source Recorder and recorded in the destination Recorder.</p>
 

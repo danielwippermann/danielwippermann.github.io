@@ -26,7 +26,7 @@
 					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="Connection.html">Connection</a>
@@ -61,6 +61,10 @@
 						</li>
 						
 						<li>
+							<a href="HeaderSetConsolidator.html">HeaderSetConsolidator</a>
+						</li>
+						
+						<li>
 							<a href="I18N.html">I18N</a>
 						</li>
 						
@@ -70,6 +74,10 @@
 						
 						<li>
 							<a href="Recorder.html">Recorder</a>
+						</li>
+						
+						<li>
+							<a href="SerialConnection.html">SerialConnection</a>
 						</li>
 						
 						<li>
@@ -105,10 +113,6 @@
 						</li>
 						
 						<li>
-							<a href="_.html">undefined</a>
-						</li>
-						
-						<li>
 							<a href="VBusRecordingConverter.html">VBusRecordingConverter</a>
 						</li>
 						
@@ -120,7 +124,7 @@
 					<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="HeaderSet.html#event:addHeader">addHeader</a>
@@ -128,6 +132,28 @@
 						
 						<li>
 							<a href="HeaderSet.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:addHeader">addHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="global.html#extend">extend</a>
 						</li>
 						
 
@@ -155,12 +181,11 @@
     TcpConnectionEndpoint
     </h2>
     
-        <div class="class-description">The TcpConnectionEndpoint can act as the remote side for a TcpConnection.
+        <div class="class-description"><p>The TcpConnectionEndpoint can act as the remote side for a TcpConnection.
 It supports all the commands that a DL3 connected via VBus.net would
-provide as well.
-
-A `connection` event is emitted whenever an incoming connection passes
-the VBus-over-TCP handshake.</div>
+provide as well.</p>
+<p>A <code>connection</code> event is emitted whenever an incoming connection passes
+the VBus-over-TCP handshake.</p></div>
     
 </header>
 
@@ -179,7 +204,7 @@ the VBus-over-TCP handshake.</div>
     
     
     <div class="description">
-        Creates a new instance and optionally initializes its members.
+        <p>Creates a new instance and optionally initializes its members.</p>
     </div>
     
 
@@ -229,7 +254,7 @@ the VBus-over-TCP handshake.</div>
 
             
 
-            <td class="description last">The initialization values for this instance.
+            <td class="description last"><p>The initialization values for this instance.</p>
                 <h6>Properties</h6>
                 
 
@@ -271,7 +296,7 @@ the VBus-over-TCP handshake.</div>
 
             
 
-            <td class="description last">See <a href="TcpConnectionEndpoint.html#port">TcpConnectionEndpoint#port</a></td>
+            <td class="description last"><p>See <a href="TcpConnectionEndpoint.html#port">TcpConnectionEndpoint#port</a></p></td>
         </tr>
 
 	
@@ -294,7 +319,7 @@ the VBus-over-TCP handshake.</div>
 
             
 
-            <td class="description last">See <a href="TcpConnectionEndpoint.html#channels">TcpConnectionEndpoint#channels</a></td>
+            <td class="description last"><p>See <a href="TcpConnectionEndpoint.html#channels">TcpConnectionEndpoint#channels</a></p></td>
         </tr>
 
 	
@@ -390,7 +415,7 @@ the VBus-over-TCP handshake.</div>
 <dd>
     
     <div class="description">
-        The list of channels to return if the CHANNELLIST command is received.
+        <p>The list of channels to return if the CHANNELLIST command is received.</p>
     </div>
     
     
@@ -454,7 +479,7 @@ the VBus-over-TCP handshake.</div>
 <dd>
     
     <div class="description">
-        The port number to listen on for incoming connections.
+        <p>The port number to listen on for incoming connections.</p>
     </div>
     
     
@@ -518,7 +543,7 @@ the VBus-over-TCP handshake.</div>
 <dd>
     
     <div class="description">
-        The Server instance used for listening for incoming connections.
+        <p>The Server instance used for listening for incoming connections.</p>
     </div>
     
     
@@ -589,7 +614,7 @@ the VBus-over-TCP handshake.</div>
     
     
     <div class="description">
-        Starts the server to listen for incoming connections.
+        <p>Starts the server to listen for incoming connections.</p>
     </div>
     
 
@@ -647,7 +672,7 @@ the VBus-over-TCP handshake.</div>
     
             
 <div class="param-desc">
-    A promise that resolves when the server is started.
+    <p>A promise that resolves when the server is started.</p>
 </div>
 
 
@@ -696,7 +721,7 @@ the VBus-over-TCP handshake.</div>
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
-		on Sat Mar 01 2014 20:49:51 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Sun Mar 02 2014 12:10:00 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>
@@ -737,34 +762,6 @@ the VBus-over-TCP handshake.</div>
 		} );
 	</script>
 
-	
-	<script>
-		$( function () {
-			$('#main').localScroll({
-				offset: { top: 56 } //offset by the height of your header (give or take a few px, see what works for you)
-			});
-			$( "dt h4.name" ).each( function () {
-				var $this = $( this );
-				var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
-				var dt = $this.parents( "dt" );
-				var children = dt.next( "dd" );
-
-				$this.append( icon ).css( {cursor : "pointer"} );
-				$this.addClass( "member-collapsed" ).addClass( "member" );
-
-				children.hide();
-				$this.toggle( function () {
-					icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
-					$this.addClass( "member-open" ).removeClass( "member-collapsed" );
-					children.slideDown();
-				}, function () {
-					icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
-					$this.addClass( "member-collapsed" ).removeClass( "member-open" );
-					children.slideUp();
-				} );
-			} );
-		} );
-	</script>
 	
 
 </body>

@@ -26,7 +26,7 @@
 					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="Connection.html">Connection</a>
@@ -61,6 +61,10 @@
 						</li>
 						
 						<li>
+							<a href="HeaderSetConsolidator.html">HeaderSetConsolidator</a>
+						</li>
+						
+						<li>
 							<a href="I18N.html">I18N</a>
 						</li>
 						
@@ -70,6 +74,10 @@
 						
 						<li>
 							<a href="Recorder.html">Recorder</a>
+						</li>
+						
+						<li>
+							<a href="SerialConnection.html">SerialConnection</a>
 						</li>
 						
 						<li>
@@ -105,10 +113,6 @@
 						</li>
 						
 						<li>
-							<a href="_.html">undefined</a>
-						</li>
-						
-						<li>
 							<a href="VBusRecordingConverter.html">VBusRecordingConverter</a>
 						</li>
 						
@@ -120,7 +124,7 @@
 					<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="HeaderSet.html#event:addHeader">addHeader</a>
@@ -128,6 +132,28 @@
 						
 						<li>
 							<a href="HeaderSet.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:addHeader">addHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="global.html#extend">extend</a>
 						</li>
 						
 
@@ -156,6 +182,9 @@
 
 
 
+var util = require('util');
+
+
 var EventEmitter = require('events').EventEmitter;
 var Duplex = require('stream').Duplex;
 
@@ -163,11 +192,15 @@ var Duplex = require('stream').Duplex;
 var _ = require('lodash');
 
 
+var Header = require('./header');
+var HeaderSet = require('./header-set');
+
 var extend = require('./extend');
 
 
 
 var optionKeys = [
+    'objectMode',
 ];
 
 
@@ -175,10 +208,18 @@ var optionKeys = [
 var Converter = extend(Duplex, /** @lends Converter# */ {
 
     /**
-     * Creates a new Converter instance.
+     * Specifies whether the underlying stream operates in object mode.
+     * @type {boolean}
+     */
+    objectMode: false,
+
+    /**
+     * Creates a new Converter instance and optionally initializes its members with the given values.
      *
      * @constructs
      * @augments Duplex
+     * @param {object} options Initialization values
+     * @param {boolean} options.objectMode See {@link Converter#objectMode}
      *
      * @classdesc
      * Converter instances are streams that convert VBus models (Packet, Datagram and Telegram instances) and / or
@@ -188,7 +229,11 @@ var Converter = extend(Duplex, /** @lends Converter# */ {
      * character-separated text representations.
      */
     constructor: function(options) {
-        Duplex.call(this);
+        options = _.defaults({}, options);
+
+        Duplex.call(this, {
+            objectMode: options.objectMode,
+        });
 
         _.extend(this, _.pick(options, optionKeys));
     },
@@ -208,7 +253,11 @@ var Converter = extend(Duplex, /** @lends Converter# */ {
      * @param {Header} header The Header to queue for conversion.
      */
     convertHeader: function(header) {
-        throw new Error('Must be implemented by sub-class');
+        if (this.objectMode) {
+            this.push(header);
+        } else {
+            throw new Error('Must be implemented by sub-class');
+        }
     },
 
     /**
@@ -218,15 +267,35 @@ var Converter = extend(Duplex, /** @lends Converter# */ {
      * @param {HeaderSet} headerSet The HeaderSet to queue for conversion.
      */
     convertHeaderSet: function(headerSet) {
-        throw new Error('Must be implemented by sub-class');
+        if (this.objectMode) {
+            this.push(headerSet);
+        } else {
+            throw new Error('Must be implemented by sub-class');
+        }
     },
 
     _read: function() {
-        throw new Error('Must be implemented by sub-class');
+        if (this.objectMode) {
+            // nop
+        } else {
+            throw new Error('Must be implemented by sub-class');
+        }
     },
 
-    _write: function() {
-        throw new Error('Must be implemented by sub-class');
+    _write: function(chunk, encoding, callback) {
+        if (this.objectMode) {
+            if (chunk instanceof HeaderSet) {
+                this.emit('headerSet', chunk);
+            } else if (chunk instanceof Header) {
+                this.emit('header', chunk);
+            } else {
+                throw new Error('Unsupported object found: ' + util.inspect(chunk));
+            }
+
+            callback();
+        } else {
+            throw new Error('Must be implemented by sub-class');
+        }
     },
 
 });
@@ -255,7 +324,7 @@ module.exports = Converter;
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
-		on Sat Mar 01 2014 20:49:51 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Sun Mar 02 2014 12:10:00 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>
@@ -292,34 +361,6 @@ module.exports = Converter;
 		} );
 	</script>
 
-	
-	<script>
-		$( function () {
-			$('#main').localScroll({
-				offset: { top: 56 } //offset by the height of your header (give or take a few px, see what works for you)
-			});
-			$( "dt h4.name" ).each( function () {
-				var $this = $( this );
-				var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
-				var dt = $this.parents( "dt" );
-				var children = dt.next( "dd" );
-
-				$this.append( icon ).css( {cursor : "pointer"} );
-				$this.addClass( "member-collapsed" ).addClass( "member" );
-
-				children.hide();
-				$this.toggle( function () {
-					icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
-					$this.addClass( "member-open" ).removeClass( "member-collapsed" );
-					children.slideDown();
-				}, function () {
-					icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
-					$this.addClass( "member-collapsed" ).removeClass( "member-open" );
-					children.slideUp();
-				} );
-			} );
-		} );
-	</script>
 	
 
 </body>

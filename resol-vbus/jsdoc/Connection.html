@@ -26,7 +26,7 @@
 					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="Connection.html">Connection</a>
@@ -61,6 +61,10 @@
 						</li>
 						
 						<li>
+							<a href="HeaderSetConsolidator.html">HeaderSetConsolidator</a>
+						</li>
+						
+						<li>
 							<a href="I18N.html">I18N</a>
 						</li>
 						
@@ -70,6 +74,10 @@
 						
 						<li>
 							<a href="Recorder.html">Recorder</a>
+						</li>
+						
+						<li>
+							<a href="SerialConnection.html">SerialConnection</a>
 						</li>
 						
 						<li>
@@ -105,10 +113,6 @@
 						</li>
 						
 						<li>
-							<a href="_.html">undefined</a>
-						</li>
-						
-						<li>
 							<a href="VBusRecordingConverter.html">VBusRecordingConverter</a>
 						</li>
 						
@@ -120,7 +124,7 @@
 					<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b
 						class="caret"></b></a>
 
-					<ul class="dropdown-menu inline">
+					<ul class="dropdown-menu ">
 						
 						<li>
 							<a href="HeaderSet.html#event:addHeader">addHeader</a>
@@ -128,6 +132,28 @@
 						
 						<li>
 							<a href="HeaderSet.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:addHeader">addHeader</a>
+						</li>
+						
+						<li>
+							<a href="HeaderSetConsolidator.html#event:removeHeader">removeHeader</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="global.html#extend">extend</a>
 						</li>
 						
 
@@ -155,20 +181,17 @@
     Connection
     </h2>
     
-        <div class="class-description">The `Connection` class is the abstract base class for all VBus live data connections.
-It extends the `Duplex` stream class. Any data written to a `Connection` instance is
+        <div class="class-description"><p>The <code>Connection</code> class is the abstract base class for all VBus live data connections.
+It extends the <code>Duplex</code> stream class. Any data written to a <code>Connection</code> instance is
 parsed according to the VBus Protocol Specification. Once a valid instance of one of the
-`Header` sub-classes (`Packet`, `Datagram` or `Telegram`)
+<code>Header</code> sub-classes (<code>Packet</code>, <code>Datagram</code> or <code>Telegram</code>)
 is created from the binary data stream, the respective event is emitted on
-the `Connection` instance.
-
-In addition to receiving incoming data the `Connection` class
-offers several helper methods e.g. to send data to the underlying VBus connection.
-
-The `Connection` class itself has no knowledge about the underlying VBus connection.
-Several sub-classes exist that know how to contact different types of VBus live streams.
-
-See `SerialConnection` or `TcpConnection` for concrete implementations.</div>
+the <code>Connection</code> instance.</p>
+<p>In addition to receiving incoming data the <code>Connection</code> class
+offers several helper methods e.g. to send data to the underlying VBus connection.</p>
+<p>The <code>Connection</code> class itself has no knowledge about the underlying VBus connection.
+Several sub-classes exist that know how to contact different types of VBus live streams.</p>
+<p>See <code>SerialConnection</code> or <code>TcpConnection</code> for concrete implementations.</p></div>
     
 </header>
 
@@ -187,7 +210,7 @@ See `SerialConnection` or `TcpConnection` for concrete implementations.</div>
     
     
     <div class="description">
-        Creates a new Connection instance and optionally initializes its member with the given values.
+        <p>Creates a new Connection instance and optionally initializes its member with the given values.</p>
     </div>
     
 
@@ -237,7 +260,7 @@ See `SerialConnection` or `TcpConnection` for concrete implementations.</div>
 
             
 
-            <td class="description last">Initialization values for this instance's members
+            <td class="description last"><p>Initialization values for this instance's members</p>
                 <h6>Properties</h6>
                 
 
@@ -279,7 +302,7 @@ See `SerialConnection` or `TcpConnection` for concrete implementations.</div>
 
             
 
-            <td class="description last">See <a href="Connection.html#channel">Connection#channel</a></td>
+            <td class="description last"><p>See <a href="Connection.html#channel">Connection#channel</a></p></td>
         </tr>
 
 	
@@ -302,7 +325,7 @@ See `SerialConnection` or `TcpConnection` for concrete implementations.</div>
 
             
 
-            <td class="description last">See <a href="Connection.html#selfAddress">Connection#selfAddress</a></td>
+            <td class="description last"><p>See <a href="Connection.html#selfAddress">Connection#selfAddress</a></p></td>
         </tr>
 
 	
@@ -414,9 +437,9 @@ connection.connect();</pre>
 <dd>
     
     <div class="description">
-        The VBus channel that this connection is established to.
-All `Header` instances created by this `Connection` instance will be assigned
-this VBus channel.
+        <p>The VBus channel that this connection is established to.
+All <code>Header</code> instances created by this <code>Connection</code> instance will be assigned
+this VBus channel.</p>
     </div>
     
     
@@ -480,7 +503,7 @@ this VBus channel.
 <dd>
     
     <div class="description">
-        The current connection state.
+        <p>The current connection state.</p>
     </div>
     
     
@@ -544,7 +567,7 @@ this VBus channel.
 <dd>
     
     <div class="description">
-        Reference to this instance's DataSource.
+        <p>Reference to this instance's DataSource.</p>
     </div>
     
     
@@ -608,7 +631,7 @@ this VBus channel.
 <dd>
     
     <div class="description">
-        The internal receive buffer of this conneciton.
+        <p>The internal receive buffer of this conneciton.</p>
     </div>
     
     
@@ -672,7 +695,7 @@ this VBus channel.
 <dd>
     
     <div class="description">
-        The VBus address used for sending information over this connection.
+        <p>The VBus address used for sending information over this connection.</p>
     </div>
     
     
@@ -743,8 +766,8 @@ this VBus channel.
     
     
     <div class="description">
-        Establish underlying connection and start streaming data to the writable side
-of this `Connection` instance's stream.
+        <p>Establish underlying connection and start streaming data to the writable side
+of this <code>Connection</code> instance's stream.</p>
     </div>
     
 
@@ -802,7 +825,7 @@ of this `Connection` instance's stream.
     
             
 <div class="param-desc">
-    A promise that resolves once the connection has been established.
+    <p>A promise that resolves once the connection has been established.</p>
 </div>
 
 
@@ -836,10 +859,10 @@ of this `Connection` instance's stream.
     
     
     <div class="description">
-        Creates a promise that resolves when this Connection
+        <p>Creates a promise that resolves when this Connection
 instance is connected and rejects if it is disconnected.
 If it is neither connected nor disconnected the promise
-will stay pending until one of the states is entered.
+will stay pending until one of the states is entered.</p>
     </div>
     
 
@@ -927,7 +950,7 @@ will stay pending until one of the states is entered.
     
     
     <div class="description">
-        Diconnect this instance.
+        <p>Diconnect this instance.</p>
     </div>
     
 
@@ -996,8 +1019,8 @@ will stay pending until one of the states is entered.
     
     
     <div class="description">
-        Sends a Datagram to get a value from a device.
-Returns a Promise that resolves to the answer Datagram or `null` on timeout.
+        <p>Sends a Datagram to get a value from a device.
+Returns a Promise that resolves to the answer Datagram or <code>null</code> on timeout.</p>
     </div>
     
 
@@ -1047,7 +1070,7 @@ Returns a Promise that resolves to the answer Datagram or `null` on timeout.
 
             
 
-            <td class="description last">The VBus address of the device to get the value from</td>
+            <td class="description last"><p>The VBus address of the device to get the value from</p></td>
         </tr>
 
 	
@@ -1070,7 +1093,7 @@ Returns a Promise that resolves to the answer Datagram or `null` on timeout.
 
             
 
-            <td class="description last">The ID of the value to read from the device.</td>
+            <td class="description last"><p>The ID of the value to read from the device.</p></td>
         </tr>
 
 	
@@ -1135,7 +1158,7 @@ Returns a Promise that resolves to the answer Datagram or `null` on timeout.
 
             
 
-            <td class="description last">Time in milliseconds between tries.</td>
+            <td class="description last"><p>Time in milliseconds between tries.</p></td>
         </tr>
 
 	
@@ -1158,7 +1181,7 @@ Returns a Promise that resolves to the answer Datagram or `null` on timeout.
 
             
 
-            <td class="description last">Number of tries to get the value.</td>
+            <td class="description last"><p>Number of tries to get the value.</p></td>
         </tr>
 
 	
@@ -1222,7 +1245,7 @@ Returns a Promise that resolves to the answer Datagram or `null` on timeout.
     
             
 <div class="param-desc">
-    A promise that resolves to the received Datagram or `null` on timeout.
+    <p>A promise that resolves to the received Datagram or <code>null</code> on timeout.</p>
 </div>
 
 
@@ -1256,8 +1279,8 @@ Returns a Promise that resolves to the answer Datagram or `null` on timeout.
     
     
     <div class="description">
-        Sends a VBus bus release datagram (Command 0x0600).
-Returns a Promise that resolves with the first VBus packet received after the release or `null` on timeout.
+        <p>Sends a VBus bus release datagram (Command 0x0600).
+Returns a Promise that resolves with the first VBus packet received after the release or <code>null</code> on timeout.</p>
     </div>
     
 
@@ -1307,7 +1330,7 @@ Returns a Promise that resolves with the first VBus packet received after the re
 
             
 
-            <td class="description last">The VBus address of the master device to give the bus ownership back to.</td>
+            <td class="description last"><p>The VBus address of the master device to give the bus ownership back to.</p></td>
         </tr>
 
 	
@@ -1372,7 +1395,7 @@ Returns a Promise that resolves with the first VBus packet received after the re
 
             
 
-            <td class="description last">Number of tries to give the bus ownership back.</td>
+            <td class="description last"><p>Number of tries to give the bus ownership back.</p></td>
         </tr>
 
 	
@@ -1395,7 +1418,7 @@ Returns a Promise that resolves with the first VBus packet received after the re
 
             
 
-            <td class="description last">Time in milliseconds to wait between tries.</td>
+            <td class="description last"><p>Time in milliseconds to wait between tries.</p></td>
         </tr>
 
 	
@@ -1470,7 +1493,7 @@ Returns a Promise that resolves with the first VBus packet received after the re
     
     
     <div class="description">
-        Send raw data over this Connection instance.
+        <p>Send raw data over this Connection instance.</p>
     </div>
     
 
@@ -1523,7 +1546,7 @@ Returns a Promise that resolves with the first VBus packet received after the re
 
             
 
-            <td class="description last">The Header or Buffer instance to be sent.</td>
+            <td class="description last"><p>The Header or Buffer instance to be sent.</p></td>
         </tr>
 
 	
@@ -1591,8 +1614,8 @@ Returns a Promise that resolves with the first VBus packet received after the re
     
     
     <div class="description">
-        Sends a Datagram to set a value in a device.
-Returns a Promise that resolves to the answer Datagram or `null` on timeout.
+        <p>Sends a Datagram to set a value in a device.
+Returns a Promise that resolves to the answer Datagram or <code>null</code> on timeout.</p>
     </div>
     
 
@@ -1642,7 +1665,7 @@ Returns a Promise that resolves to the answer Datagram or `null` on timeout.
 
             
 
-            <td class="description last">The VBus address of the device to set the value in</td>
+            <td class="description last"><p>The VBus address of the device to set the value in</p></td>
         </tr>
 
 	
@@ -1665,7 +1688,7 @@ Returns a Promise that resolves to the answer Datagram or `null` on timeout.
 
             
 
-            <td class="description last">The ID of the value to write to the device.</td>
+            <td class="description last"><p>The ID of the value to write to the device.</p></td>
         </tr>
 
 	
@@ -1688,7 +1711,7 @@ Returns a Promise that resolves to the answer Datagram or `null` on timeout.
 
             
 
-            <td class="description last">The value to write to the device.</td>
+            <td class="description last"><p>The value to write to the device.</p></td>
         </tr>
 
 	
@@ -1753,7 +1776,7 @@ Returns a Promise that resolves to the answer Datagram or `null` on timeout.
 
             
 
-            <td class="description last">Time in milliseconds between tries.</td>
+            <td class="description last"><p>Time in milliseconds between tries.</p></td>
         </tr>
 
 	
@@ -1776,7 +1799,7 @@ Returns a Promise that resolves to the answer Datagram or `null` on timeout.
 
             
 
-            <td class="description last">Number of tries to get the value.</td>
+            <td class="description last"><p>Number of tries to get the value.</p></td>
         </tr>
 
 	
@@ -1840,7 +1863,7 @@ Returns a Promise that resolves to the answer Datagram or `null` on timeout.
     
             
 <div class="param-desc">
-    A promise that resolves to the received Datagram or `null` on timeout.
+    <p>A promise that resolves to the received Datagram or <code>null</code> on timeout.</p>
 </div>
 
 
@@ -1874,7 +1897,7 @@ Returns a Promise that resolves to the answer Datagram or `null` on timeout.
     
     
     <div class="description">
-        Sends and / or receives a VBus data.
+        <p>Sends and / or receives a VBus data.</p>
     </div>
     
 
@@ -1927,7 +1950,7 @@ Returns a Promise that resolves to the answer Datagram or `null` on timeout.
 
             
 
-            <td class="description last">The Header or Buffer instance to be sent.</td>
+            <td class="description last"><p>The Header or Buffer instance to be sent.</p></td>
         </tr>
 
 	
@@ -2002,7 +2025,7 @@ Returns a Promise that resolves to the answer Datagram or `null` on timeout.
 
             
 
-            <td class="description last">Timeout in milliseconds after which the `txData` will be sent again</td>
+            <td class="description last"><p>Timeout in milliseconds after which the <code>txData</code> will be sent again</p></td>
         </tr>
 
 	
@@ -2033,7 +2056,7 @@ Returns a Promise that resolves to the answer Datagram or `null` on timeout.
 
             
 
-            <td class="description last">After each timeout retransmission the timeout value for the next try is increment by this value.</td>
+            <td class="description last"><p>After each timeout retransmission the timeout value for the next try is increment by this value.</p></td>
         </tr>
 
 	
@@ -2064,7 +2087,7 @@ Returns a Promise that resolves to the answer Datagram or `null` on timeout.
 
             
 
-            <td class="description last">After this number of tries the returned Promise will resolve with value `null`.</td>
+            <td class="description last"><p>After this number of tries the returned Promise will resolve with value <code>null</code>.</p></td>
         </tr>
 
 	
@@ -2097,7 +2120,7 @@ Returns a Promise that resolves to the answer Datagram or `null` on timeout.
 
             
 
-            <td class="description last">Will be called when a Packet has been received with the Packet and a callback as arguments.</td>
+            <td class="description last"><p>Will be called when a Packet has been received with the Packet and a callback as arguments.</p></td>
         </tr>
 
 	
@@ -2130,7 +2153,7 @@ Returns a Promise that resolves to the answer Datagram or `null` on timeout.
 
             
 
-            <td class="description last">Will be called when a Datagram has been received with the Datagram and a callback as arguments.</td>
+            <td class="description last"><p>Will be called when a Datagram has been received with the Datagram and a callback as arguments.</p></td>
         </tr>
 
 	
@@ -2194,7 +2217,7 @@ Returns a Promise that resolves to the answer Datagram or `null` on timeout.
     
             
 <div class="param-desc">
-    A Promise that either resolves to the VBus data selected by one of the filter callbacks or `null` on timeout.
+    <p>A Promise that either resolves to the VBus data selected by one of the filter callbacks or <code>null</code> on timeout.</p>
 </div>
 
 
@@ -2228,9 +2251,8 @@ Returns a Promise that resolves to the answer Datagram or `null` on timeout.
     
     
     <div class="description">
-        Waits for a VBus bus offering datagram (Command 0x0500).
-
-Returns a Promise that resolves with the Datagram or `null` if the method timed out.
+        <p>Waits for a VBus bus offering datagram (Command 0x0500).</p>
+<p>Returns a Promise that resolves with the Datagram or <code>null</code> if the method timed out.</p>
     </div>
     
 
@@ -2280,7 +2302,7 @@ Returns a Promise that resolves with the Datagram or `null` if the method timed 
 
             
 
-            <td class="description last">Timeout in milliseconds</td>
+            <td class="description last"><p>Timeout in milliseconds</p></td>
         </tr>
 
 	
@@ -2337,7 +2359,7 @@ Returns a Promise that resolves with the Datagram or `null` if the method timed 
     
             
 <div class="param-desc">
-    A Promise that resolves to the bus offering Datagram or `null` on timeout.
+    <p>A Promise that resolves to the bus offering Datagram or <code>null</code> on timeout.</p>
 </div>
 
 
@@ -2386,7 +2408,7 @@ Returns a Promise that resolves with the Datagram or `null` if the method timed 
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
-		on Sat Mar 01 2014 20:49:51 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Sun Mar 02 2014 12:10:00 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>
@@ -2427,34 +2449,6 @@ Returns a Promise that resolves with the Datagram or `null` if the method timed 
 		} );
 	</script>
 
-	
-	<script>
-		$( function () {
-			$('#main').localScroll({
-				offset: { top: 56 } //offset by the height of your header (give or take a few px, see what works for you)
-			});
-			$( "dt h4.name" ).each( function () {
-				var $this = $( this );
-				var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
-				var dt = $this.parents( "dt" );
-				var children = dt.next( "dd" );
-
-				$this.append( icon ).css( {cursor : "pointer"} );
-				$this.addClass( "member-collapsed" ).addClass( "member" );
-
-				children.hide();
-				$this.toggle( function () {
-					icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
-					$this.addClass( "member-open" ).removeClass( "member-collapsed" );
-					children.slideDown();
-				}, function () {
-					icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
-					$this.addClass( "member-collapsed" ).removeClass( "member-open" );
-					children.slideUp();
-				} );
-			} );
-		} );
-	</script>
 	
 
 </body>
