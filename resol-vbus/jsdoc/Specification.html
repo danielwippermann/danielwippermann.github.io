@@ -45,6 +45,10 @@
 						</li>
 						
 						<li>
+							<a href="Datagram.html">Datagram</a>
+						</li>
+						
+						<li>
 							<a href="DLxJsonConverter.html">DLxJsonConverter</a>
 						</li>
 						
@@ -592,6 +596,193 @@
         <h3 class="subsection-title">Methods</h3>
 
         <dl>
+            
+<dt>
+    <h4 class="name" id="convertRawValue"><span class="type-signature"></span>convertRawValue<span class="signature">(rawValue, sourceUnit, targetUnit)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Converts a raw number value from one unit to another. The units must be in the same unit family.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>rawValue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Raw number value to convert from</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>sourceUnit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Unit</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Unit to convert from</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>targetUnit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Unit</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Unit to convert to</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="specification.js.html">specification.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Result containing a <code>rawValue</code> property with the conversion result and a <code>unit</code> property with the associated unit.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">object</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
             
 <dt>
     <h4 class="name" id="formatTextValueFromRawValue"><span class="type-signature"></span>formatTextValueFromRawValue<span class="signature">(packetField, rawValue, <span class="optional">unit</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
@@ -1731,147 +1922,6 @@ undefined
         
             
 <dt>
-    <h4 class="name" id="getPacketSpecification"><span class="type-signature"></span>getPacketSpecification<span class="signature">(packet)</span><span class="type-signature"> &rarr; {<a href="global.html#PacketSpecification">PacketSpecification</a>}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Gets the PacketSpecification object matching the given packet.</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>packet</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Packet.html">Packet</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>VBus packet</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="specification.js.html">specification.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>PacketSpecification object</p>
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type"><a href="global.html#PacketSpecification">PacketSpecification</a></span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
     <h4 class="name" id="getPacketSpecification"><span class="type-signature"></span>getPacketSpecification<span class="signature">(channel, destinationAddress, sourceAddress, command)</span><span class="type-signature"> &rarr; {<a href="global.html#PacketSpecification">PacketSpecification</a>}</span></h4>
     
     
@@ -2295,6 +2345,147 @@ undefined
 ></pre>
 
 
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getPacketSpecification"><span class="type-signature"></span>getPacketSpecification<span class="signature">(packet)</span><span class="type-signature"> &rarr; {<a href="global.html#PacketSpecification">PacketSpecification</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Gets the PacketSpecification object matching the given packet.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>packet</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Packet.html">Packet</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>VBus packet</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="specification.js.html">specification.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>PacketSpecification object</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="global.html#PacketSpecification">PacketSpecification</a></span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
     
 </dd>
 
@@ -2915,7 +3106,7 @@ undefined
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
-		on Sun Mar 02 2014 12:10:00 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Sun Apr 13 2014 13:01:13 GMT+0200 (CEST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>

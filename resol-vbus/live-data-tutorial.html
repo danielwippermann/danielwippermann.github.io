@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Receive And Display Live Data &middot; resol-vbus Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="styles/bootstrap.css">
+
+    <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.css">
+
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="styles/syntax.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">resol-vbus</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-inverse-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">About</a></li>
+            <li class="active"><a href="tutorials.html">Tutorials</a></li>
+            <li><a href="docs.html">Documentation</a></li>
+            <li><a href="examples.html">Examples</a></li>
+            <li><a href="support.html">Support</a></li>
+  <!--
+            <li class="active"><a href="#">Active</a></li>
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Dropdown header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+  -->
+          </ul>
+  <!--
+          <form class="navbar-form navbar-left">
+            <input type="text" class="form-control col-lg-8" placeholder="Search">
+          </form>
+  -->
+          <ul class="nav navbar-nav navbar-right">
+  <!--
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+  -->
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+    <div class="container">
+  <div class="row">
+    <div class="col-sm-3 doc-sidebar">
+      <div class="well">
+        <h4>Getting started</h4>
+        <ul>
+          <li><a href="live-data-tutorial.html">Receive And Display Live Data</a></li>
+       </ul>
+      </div>
+    </div>
+    <div class="col-sm-9 doc-main">
+      <h1>Receive And Display Live Data</h1>
+      <p>This tutorial covers the basic steps to receive and decode live VBus data received over a serial or TCP connection.</p>
+
+<h2 id="toc_0">Install the resol-vbus module</h2>
+
+<p>Use <code>npm</code> to install the resol-vbus module:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">npm install --save resol-vbus
+</code></pre></div>
+<h2 id="toc_1">Load the resol-vbus module in your project</h2>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">var vbus = require(&#39;resol-vbus&#39;);
+</code></pre></div>
+<h2 id="toc_2">Create a connection</h2>
+
+<p>The resol-vbus module uses <code>Connection</code> instances to receive and transmit live VBus data. Several implementations exist for different connection types:</p>
+
+<h3 id="toc_3">Using a serial port</h3>
+
+<p>If you want to receive data from a serial port (or a device that acts like one, e.g. the VBus/USB interface adapter), you can use the <code>SerialConnection</code> class to do so:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">var connection = new vbus.SerialConnection({
+    path: &#39;/dev/tty.usbserial&#39;
+});
+</code></pre></div>
+<p>The <code>path</code> option is used to specify the serial port to use. On Windows you can use something like &#39;COM3&#39;.</p>
+
+<h3 id="toc_4">Using a TCP connection</h3>
+
+<p>If you want to receive data from a TCP enabled data source (e.g. VBus/LAN interface adapter or one of the dataloggers), you can use the <code>TcpConnection</code> class to do so:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">var connection = new vbus.TcpConnection({
+    host: &#39;mydl3.via.vbus.net&#39;,
+    viaTag: &#39;mydl3&#39;,             // only necessary if connected using VBus.net
+    password: &#39;secret&#39;,
+    channel: 1,                  // only necessary if connected to a DL3
+});
+</code></pre></div>
+<h2 id="toc_5">Establish the connection</h2>
+
+<p>The newly created <code>Connection</code> instances start in <code>DISCONNECTED</code> state (see <code>Connection#connectionState</code> for details). To establish the connection you have to call the <code>connect</code> method:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">var connectPromise = connection.connect();
+</code></pre></div>
+<p>The call to the <code>connect</code> method returns a promise that resolves when the connection is established. If you want to attach a callback to get notified when the connection is established, you can use the promise&#39;s <code>then</code> method to do so:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">connectPromise.then(function() {
+    console.log(&#39;Connected!&#39;);
+}, function() {
+    console.log(&#39;Connection failed&#39;);
+});
+</code></pre></div>
+<h2 id="toc_6">Add event listeners for incoming live data</h2>
+
+<p><code>Connection</code> instances decode the incoming data stream and emit events whenever a valid block of information was decoded. The information you are most likely interested in is contained in a <code>Packet</code> instance and the connection emits <code>packet</code> events for each received <code>Packet</code> instance. You can add a listener for those events:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">var onPacket = function(packet) {
+    console.log(&#39;Packet received: &#39; + packet.getId());
+};
+
+connection.on(&#39;packet&#39;, onPacket);
+</code></pre></div>
+<p>This adds an event listener to the <code>connection</code> that just prints out the ID of the <code>Packet</code> instance to the console.</p>
+
+<h2 id="toc_7">Decode the payload in the <code>Packet</code> instance</h2>
+
+<p><code>Packet</code> instances carry optional payload data in them but only provide access to the binary buffer. The get a list of the values contained in this <code>Packet</code> you can use a <code>Specification</code> instance which is able to decode the binary data into human- or machine readable representation. First you need to get a <code>Specification</code> instance.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">var spec = Specification.getDefaultSpecification();
+</code></pre></div>
+<p>The default specification is the unmodified <code>Specification</code> instances provided by the resol-vbus module. You can later create your own <code>Specification</code> instance allowing you to filter and / or convert values.</p>
+
+<p>Using this <code>Specification</code> instance you can query a list of values that are contained in a <code>Packet</code> instance:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">var onPacket = function(packet) {
+    console.log(&#39;Packet received: &#39; + packet.getId());
+
+    var packetFields = spec.getPacketFieldsForHeaders([ packet ]);
+    console.log(packetFields);
+};
+</code></pre></div>
+<h2 id="toc_8">Done!</h2>
+
+<h2 id="toc_9">Further reading</h2>
+
+    </div>
+  </div>
+</div>
+
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted">
+          <a href="https://github.com/danielwippermann/resol-vbus"><i class="fa fa-github"></i> GitHub</a>
+        </p>
+      </div>
+    </div>
+
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/lodash.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+  </body>
+</html>

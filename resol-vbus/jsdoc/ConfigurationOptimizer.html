@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>resol-vbus Class: TcpDataSource</title>
+	<title>resol-vbus Class: ConfigurationOptimizer</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -27,6 +27,10 @@
 						class="caret"></b></a>
 
 					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="ConfigurationOptimizer.html">ConfigurationOptimizer</a>
+						</li>
 						
 						<li>
 							<a href="Connection.html">Connection</a>
@@ -177,13 +181,16 @@
 					
 
 
-	<h1 class="page-title">Class: TcpDataSource</h1>
+	<h1 class="page-title">Class: ConfigurationOptimizer</h1>
 <section>
 
 <header>
     <h2>
-    TcpDataSource
+    ConfigurationOptimizer
     </h2>
+    
+        <div class="class-description"><p>The ConfigurationOptimizer can be used to find the optimal set of
+configuration values for a given VBus device.</p></div>
     
 </header>
 
@@ -194,7 +201,7 @@
     
         
 <dt>
-    <h4 class="name" id="TcpDataSource"><span class="type-signature"></span>new TcpDataSource<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="ConfigurationOptimizer"><span class="type-signature"></span>new ConfigurationOptimizer<span class="signature">(deviceAddress)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -202,7 +209,7 @@
     
     
     <div class="description">
-        <p>Creates a new TcpDataSource instance.</p>
+        <p>Creates a new ConfigurationOptimizer for the given VBus device address.</p>
     </div>
     
 
@@ -211,231 +218,56 @@
     
     
     
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tcp-data-source.js.html">tcp-data-source.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-    
-    </div>
-
-    
-        <h3 class="subsection-title">Extends</h3>
-
-        <ul>
-            <li>DataSource</li>
-        </ul>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        <dl>
-            
-<dt>
-    <h4 class="name" id="host"><span class="type-signature"></span>host<span class="type-signature"> :string</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>The host to connect to.</p>
-    </div>
-    
-    
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">string</span>
-
-
-            </li>
-        </ul>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tcp-data-source.js.html">tcp-data-source.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-</dd>
-
+        <h5>Parameters:</h5>
         
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
             
-<dt>
-    <h4 class="name" id="liveChannel"><span class="type-signature"></span>liveChannel<span class="type-signature"> :number</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>The channel to connect to live.</p>
-    </div>
-    
-    
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
+                <td class="name"><code>deviceAddress</code></td>
+            
+
+            <td class="type">
+            
                 
 <span class="param-type">number</span>
 
 
-            </li>
-        </ul>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tcp-data-source.js.html">tcp-data-source.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-</dd>
-
-        
             
-<dt>
-    <h4 class="name" id="livePassword"><span class="type-signature"></span>livePassword<span class="type-signature"> :string</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>The password to connect live.</p>
-    </div>
-    
-    
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">string</span>
+            </td>
 
+            
 
-            </li>
-        </ul>
+            
+
+            <td class="description last"><p>VBus device address of the device to configure.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
     
-
+    
     
 <dl class="details">
     
@@ -459,7 +291,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tcp-data-source.js.html">tcp-data-source.js</a>
+        <a href="configuration-optimizer.js.html">configuration-optimizer.js</a>
     </li></ul></dd>
     
 
@@ -472,9 +304,31 @@
 
     
     
+
+    
+
+    
+    
+    
+    
+    
+    
+    
 </dd>
 
-        </dl>
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
     
 
     
@@ -502,7 +356,7 @@
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
-		on Sun Apr 13 2014 13:01:13 GMT+0200 (CEST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Wed Mar 19 2014 18:10:06 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>

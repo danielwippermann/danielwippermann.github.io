@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>resol-vbus Class: Customizer</title>
+	<title>resol-vbus Class: Datagram</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -177,16 +177,17 @@
 					
 
 
-	<h1 class="page-title">Class: Customizer</h1>
+	<h1 class="page-title">Class: Datagram</h1>
 <section>
 
 <header>
     <h2>
-    Customizer
+    Datagram
     </h2>
     
-        <div class="class-description"><p>A Customizer provides functionality to transfer a set of configuration
-values from or to a device.</p></div>
+        <div class="class-description"><p>The Datagram sub-class provides access to all properties and methods applicable for VBus version 2 datagrams.
+In addition to the packet header it may contain a command, a value ID and a value.
+The value ID is a device-specific reference to one of the values presented in the device's menu interface.</p></div>
     
 </header>
 
@@ -197,7 +198,7 @@ values from or to a device.</p></div>
     
         
 <dt>
-    <h4 class="name" id="Customizer"><span class="type-signature"></span>new Customizer<span class="signature">(<span class="optional">options</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Datagram"><span class="type-signature"></span>new Datagram<span class="signature">(options)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -205,8 +206,7 @@ values from or to a device.</p></div>
     
     
     <div class="description">
-        <p>Creates a new Customizer instance and optionally initializes its members
-with the given values.</p>
+        <p>Creates a new Datagram instance and optionally initializes its members with the given values.</p>
     </div>
     
 
@@ -227,8 +227,6 @@ with the given values.</p>
 
 		<th>Type</th>
 
-		
-		<th>Argument</th>
 		
 
 		
@@ -255,16 +253,6 @@ with the given values.</p>
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
 
@@ -282,8 +270,6 @@ with the given values.</p>
 		<th>Type</th>
 
 		
-		<th>Argument</th>
-		
 
 		
 
@@ -296,99 +282,69 @@ with the given values.</p>
 
         <tr>
             
-                <td class="name"><code>id</code></td>
+                <td class="name"><code>command</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">number</span>
 
 
             
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"><p><a href="Customizer.html#id">Customizer#id</a></p></td>
+            <td class="description last"><p><a href="Datagram.html#command">Datagram#command</a></p></td>
         </tr>
 
 	
 
         <tr>
             
-                <td class="name"><code>deviceAddress</code></td>
+                <td class="name"><code>valueId</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">number</span>
 
 
             
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"><p><a href="Customizer.html#deviceAddress">Customizer#deviceAddress</a></p></td>
+            <td class="description last"><p><a href="Datagram.html#valueId">Datagram#valueId</a></p></td>
         </tr>
 
 	
 
         <tr>
             
-                <td class="name"><code>optimizer</code></td>
+                <td class="name"><code>value</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">Buffer</span>
 
 
             
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"><p><a href="Customizer.html#optimizer">Customizer#optimizer</a></p></td>
+            <td class="description last"><p><a href="Datagram.html#value">Datagram#value</a></p></td>
         </tr>
 
 	
@@ -427,12 +383,19 @@ with the given values.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="customizer.js.html">customizer.js</a>
+        <a href="datagram.js.html">datagram.js</a>
     </li></ul></dd>
     
 
     
 
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>Header#constructor</li>
+        </ul>
+    </dd>
     
 
     
@@ -456,6 +419,12 @@ with the given values.</p>
     </div>
 
     
+        <h3 class="subsection-title">Extends</h3>
+
+        <ul>
+            <li><a href="Header.html">Header</a></li>
+        </ul>
+    
 
     
 
@@ -471,14 +440,86 @@ with the given values.</p>
         <dl>
             
 <dt>
-    <h4 class="name" id="deviceAddress"><span class="type-signature"></span>deviceAddress<span class="type-signature"> :number</span></h4>
+    <h4 class="name" id="channel"><span class="type-signature"></span>channel<span class="type-signature"> :number</span></h4>
     
     
 </dt>
 <dd>
     
     <div class="description">
-        <p>The VBus address of the device to customize.</p>
+        <p>VBus channel of this header</p>
+    </div>
+    
+    
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">number</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Header.html#channel">Header#channel</a>
+    </li></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>0</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="header.js.html">header.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="command"><span class="type-signature"></span>command<span class="type-signature"> :number</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The command field of this VBus datagram. See the VBus Protocol Specification for details.</p>
     </div>
     
     
@@ -517,7 +558,7 @@ with the given values.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="customizer.js.html">customizer.js</a>
+        <a href="datagram.js.html">datagram.js</a>
     </li></ul></dd>
     
 
@@ -535,14 +576,14 @@ with the given values.</p>
         
             
 <dt>
-    <h4 class="name" id="id"><span class="type-signature"></span>id<span class="type-signature"> :string</span></h4>
+    <h4 class="name" id="destinationAddress"><span class="type-signature"></span>destinationAddress<span class="type-signature"> :number</span></h4>
     
     
 </dt>
 <dd>
     
     <div class="description">
-        <p>An identifier for this customizer.</p>
+        <p>VBus address of this header's destination</p>
     </div>
     
     
@@ -551,7 +592,223 @@ with the given values.</p>
         <ul>
             <li>
                 
-<span class="param-type">string</span>
+<span class="param-type">number</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Header.html#destinationAddress">Header#destinationAddress</a>
+    </li></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>0</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="header.js.html">header.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="sourceAddress"><span class="type-signature"></span>sourceAddress<span class="type-signature"> :number</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>VBus address of this header's source</p>
+    </div>
+    
+    
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">number</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Header.html#sourceAddress">Header#sourceAddress</a>
+    </li></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>0</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="header.js.html">header.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="timestamp"><span class="type-signature"></span>timestamp<span class="type-signature"> :Date</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Timestamp of this header</p>
+    </div>
+    
+    
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">Date</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Header.html#timestamp">Header#timestamp</a>
+    </li></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>now</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="header.js.html">header.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="value"><span class="type-signature"></span>value<span class="type-signature"> :number</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The value field of this VBus datagram.</p>
+    </div>
+    
+    
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">number</span>
 
 
             </li>
@@ -581,7 +838,7 @@ with the given values.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="customizer.js.html">customizer.js</a>
+        <a href="datagram.js.html">datagram.js</a>
     </li></ul></dd>
     
 
@@ -599,14 +856,14 @@ with the given values.</p>
         
             
 <dt>
-    <h4 class="name" id="optimizer"><span class="type-signature"></span>optimizer<span class="type-signature"> :ConfigurationOptimizer</span></h4>
+    <h4 class="name" id="valueId"><span class="type-signature"></span>valueId<span class="type-signature"> :number</span></h4>
     
     
 </dt>
 <dd>
     
     <div class="description">
-        <p>A configuration optimizer.</p>
+        <p>The value ID field of this VBus datagram.</p>
     </div>
     
     
@@ -615,7 +872,7 @@ with the given values.</p>
         <ul>
             <li>
                 
-<span class="param-type">ConfigurationOptimizer</span>
+<span class="param-type">number</span>
 
 
             </li>
@@ -645,7 +902,7 @@ with the given values.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="customizer.js.html">customizer.js</a>
+        <a href="datagram.js.html">datagram.js</a>
     </li></ul></dd>
     
 
@@ -669,7 +926,7 @@ with the given values.</p>
         <dl>
             
 <dt>
-    <h4 class="name" id="_getInitialLoadConfiguration"><span class="type-signature"></span>_getInitialLoadConfiguration<span class="signature">()</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="compareTo"><span class="type-signature"></span>compareTo<span class="signature">(that)</span><span class="type-signature"> &rarr; {number}</span></h4>
     
     
 </dt>
@@ -677,99 +934,9 @@ with the given values.</p>
     
     
     <div class="description">
-        <p>Gets the set of values for the first round of transfer.</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="customizer.js.html">customizer.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>A Promise that resolves to the set of values to load.</p>
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">Promise</span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="_getSaveConfiguration"><span class="type-signature"></span>_getSaveConfiguration<span class="signature">(newConfig, oldConfig)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Gets the set of values to save to the controller.</p>
+        <p>Compares this Header instance to another one.</p>
+<p>Sub-classes can extend the comparison to include specific
+information.</p>
     </div>
     
 
@@ -803,13 +970,13 @@ with the given values.</p>
 
         <tr>
             
-                <td class="name"><code>newConfig</code></td>
+                <td class="name"><code>that</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">array</span>
+<span class="param-type"><a href="Header.html">Header</a></span>
 
 
             
@@ -819,30 +986,7 @@ with the given values.</p>
 
             
 
-            <td class="description last"><p>The set of values to transfer.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>oldConfig</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The optional set of values that should be currently saved in the device.</p></td>
+            <td class="description last"><p>Another Header instance to compare to.</p></td>
         </tr>
 
 	
@@ -860,6 +1004,11 @@ with the given values.</p>
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Header.html#compareTo">Header#compareTo</a>
+    </li></dd>
+    
 
     
 
@@ -874,7 +1023,7 @@ with the given values.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="customizer.js.html">customizer.js</a>
+        <a href="header.js.html">header.js</a>
     </li></ul></dd>
     
 
@@ -899,7 +1048,12 @@ with the given values.</p>
     
             
 <div class="param-desc">
-    <p>A Promise that resolves to the set of values to save.</p>
+    <p>Returns a number</p>
+<ul>
+<li>less than 0 if <code>this &lt; that</code></li>
+<li>greater than 0 if <code>this &gt; that</code></li>
+<li>equal to to if <code>this == that</code></li>
+</ul>
 </div>
 
 
@@ -910,7 +1064,7 @@ with the given values.</p>
 	</dt>
 	<dd>
 		
-<span class="param-type">Promise</span>
+<span class="param-type">number</span>
 
 
 	</dd>
@@ -925,7 +1079,7 @@ with the given values.</p>
         
             
 <dt>
-    <h4 class="name" id="_optimizeLoadConfiguration"><span class="type-signature"></span>_optimizeLoadConfiguration<span class="signature">(oldConfig)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="getId"><span class="type-signature"></span>getId<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
     
     
 </dt>
@@ -933,7 +1087,317 @@ with the given values.</p>
     
     
     <div class="description">
-        <p>Gets the set of values for the second and all successive rounds of transfer.</p>
+        <p>Returns a string identifier describing this Header instance.
+It contains at least:</p>
+<ul>
+<li>channel</li>
+<li>destination address</li>
+<li>source address</li>
+<li>protocol version</li>
+</ul>
+<p>Sub-classes can extend that information. The structure of this
+identifier is implementation specific, do not rely on it!</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Header.html#getId">Header#getId</a>
+    </li></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="header.js.html">header.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Identifier</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">string</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getInfo"><span class="type-signature"></span>getInfo<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Returns an info number about this Header instance. It can be used
+for sorting purposes (to distinguish Header objects that would
+otherwise compare as equal).</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Header.html#getInfo">Header#getInfo</a>
+    </li></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="header.js.html">header.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Info value</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">number</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getProtocolVersion"><span class="type-signature">&lt;virtual> </span>getProtocolVersion<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Returns the protocol version of this Header instance as a 8-bit
+number. The high nibble is used for the major version, the low
+nibble for the minor version. For example: a header with protocol
+version 2.0 would return <code>0x20</code>.</p>
+<p>Must be implemented by sub-class.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Header.html#getProtocolVersion">Header#getProtocolVersion</a>
+    </li></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="header.js.html">header.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Protocol version</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">number</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="toLiveBuffer"><span class="type-signature">&lt;virtual> </span>toLiveBuffer<span class="signature">(<span class="optional">buffer</span>, <span class="optional">start</span>, <span class="optional">end</span>)</span><span class="type-signature"> &rarr; {Buffer}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Creates a representation of this Header instance that can be
+transmitted over a Connection. If no buffer is given as an
+arguments, it creates a new one that is big enough to hold
+the representation.</p>
+<p>Must be implemented by sub-class.</p>
     </div>
     
 
@@ -955,6 +1419,8 @@ with the given values.</p>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -967,23 +1433,99 @@ with the given values.</p>
 
         <tr>
             
-                <td class="name"><code>oldConfig</code></td>
+                <td class="name"><code>buffer</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">array</span>
+<span class="param-type">Buffer</span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The set of values that has already been looaded.</p></td>
+            <td class="description last"><p>Buffer object to store data in</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>start</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Start index in the buffer</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>end</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>End index in the buffer</p></td>
         </tr>
 
 	
@@ -1001,6 +1543,11 @@ with the given values.</p>
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Header.html#toLiveBuffer">Header#toLiveBuffer</a>
+    </li></dd>
+    
 
     
 
@@ -1015,7 +1562,7 @@ with the given values.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="customizer.js.html">customizer.js</a>
+        <a href="header.js.html">header.js</a>
     </li></ul></dd>
     
 
@@ -1040,7 +1587,7 @@ with the given values.</p>
     
             
 <div class="param-desc">
-    <p>A Promise that resolves to the set of values to load.</p>
+    <p>Buffer object containing the data</p>
 </div>
 
 
@@ -1051,240 +1598,7 @@ with the given values.</p>
 	</dt>
 	<dd>
 		
-<span class="param-type">Promise</span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="loadConfiguration"><span class="type-signature"></span>loadConfiguration<span class="signature">()</span><span class="type-signature"> &rarr; {Promise}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Load a set of configuration values from a device.</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="customizer.js.html">customizer.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>A Promise that resolves to the set of values transfered.</p>
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">Promise</span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="saveConfiguration"><span class="type-signature"></span>saveConfiguration<span class="signature">(configuration)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Save a set of configuration values to a device.</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>configuration</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The set values to transfer.</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="customizer.js.html">customizer.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>A Promise that resolves to the set of values transfered.</p>
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">Promise</span>
+<span class="param-type">Buffer</span>
 
 
 	</dd>
@@ -1322,7 +1636,7 @@ with the given values.</p>
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
-		on Sun Apr 13 2014 13:01:12 GMT+0200 (CEST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Sun Apr 13 2014 13:01:13 GMT+0200 (CEST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>

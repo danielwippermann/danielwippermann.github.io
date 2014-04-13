@@ -45,6 +45,10 @@
 						</li>
 						
 						<li>
+							<a href="Datagram.html">Datagram</a>
+						</li>
+						
+						<li>
 							<a href="DLxJsonConverter.html">DLxJsonConverter</a>
 						</li>
 						
@@ -190,6 +194,8 @@ var Q = require('q');
 
 
 var extend = require('./extend');
+var Header = require('./header');
+var HeaderSet = require('./header-set');
 var HeaderSetConsolidator = require('./header-set-consolidator');
 var utils = require('./utils');
 var VBusRecordingConverter = require('./vbus-recording-converter');
@@ -201,6 +207,7 @@ var optionKeys = [
     'minTimestamp',
     'maxTimestamp',
     'interval',
+    'timeToLive',
 ];
 
 
@@ -347,6 +354,105 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
     },
 
     /**
+     * Records a given range of HeaderSet instances. The stream must be in object mode.
+     *
+     * @param {Readable} stream A readable stream in object mode.
+     * @param {object} options Options to select and filter HeaderSet instances.
+     * @param {Date} [options.minTimestamp] See {@link Recorder#minTimestamp}
+     * @param {Date} [options.maxTimestamp] See {@link Recorder#maxTimestamp}
+     * @param {number} [options.interval] See {@link Recorder#interval}
+     * @return {Promise} A Promise that resolves to the recorded ranges.
+     */
+    record: function(stream, options) {
+        var _this = this;
+
+        options = _.defaults({}, options, this._getOptions(), {
+        });
+
+        if (!stream.objectMode) {
+            throw new Error('Stream must be in object mode');
+        }
+
+        var headerSetConsolidator = new HeaderSetConsolidator({
+            minTimestamp: options.minTimestamp,
+            maxTimestamp: options.maxTimestamp,
+            interval: options.interval,
+            timeToLive: options.timeToLive,
+        });
+
+        var recordedRanges = [];
+
+        headerSetConsolidator.on('headerSet', function(headerSet) {
+            var timestamp = headerSet.timestamp;
+
+            var headerSetRange = {
+                minTimestamp: timestamp,
+                maxTimestamp: timestamp,
+            };
+
+            recordedRanges = Recorder.performRangeSetOperation(recordedRanges, [ headerSetRange ], options.interval, 'union');
+        });
+
+        var recordingJob = _.defaults({}, options, {
+            recordedRanges: recordedRanges,
+        });
+
+        return Q.fcall(function() {
+            return _this._startRecording(headerSetConsolidator, recordingJob);
+        }).then(function(recording) {
+            return Q.fcall(function() {
+                return utils.promise(function(resolve, reject) {
+                    var onData, onEnd, onError;
+
+                    var cleanup = function() {
+                        stream.removeListener('data', onData);
+                        stream.removeListener('end', onEnd);
+                        stream.removeListener('error', onError);
+                    };
+
+                    onData = function(obj) {
+                        if (obj instanceof Header) {
+                            headerSetConsolidator.addHeader(obj);
+                        } else if (obj instanceof HeaderSet) {
+                            headerSetConsolidator.processHeaderSet(obj);
+                        } else {
+                            throw new Error('Unsupported object received by Recorder');
+                        }
+                    };
+
+                    onEnd = function() {
+                        cleanup();
+
+                        resolve();
+                    };
+
+                    onError = function(err) {
+                        cleanup();
+
+                        reject(err);
+                    };
+
+                    stream.on('data', onData);
+                    stream.on('end', onEnd);
+                    stream.on('error', onError);
+                });
+            }).finally(function() {
+                return _this._endRecording(headerSetConsolidator, recordingJob, recording);
+            });
+        }).then(function() {
+            return recordedRanges;
+        });
+    },
+
+    _startRecording: function(headerSetConsolidator, recordingJob) {
+        throw new Error('Must be implemented by sub-class');
+    },
+
+    _endRecording: function(headerSetConsolidator, recordingJob, recording) {
+        throw new Error('Must be implemented by sub-class');
+    },
+
+    /**
      * Synchronize this Recorder's HeaderSets to another Recorder.
      *
      * @param {Recorder} recorder Destination Recorder
@@ -414,6 +520,13 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
         _.forEach(syncState.rangesByInterval, function(ranges, rangesKey) {
             var interval = rangesKey | 0;
             if ((options.interval % interval) === 0) {
+                ranges = _.map(ranges, function(range) {
+                    return {
+                        minTimestamp: Recorder.alignTimestampToInterval(range.minTimestamp, interval),
+                        maxTimestamp: Recorder.alignTimestampToInterval(range.maxTimestamp, interval) + interval,
+                    };
+                });
+
                 syncStateDiffs = Recorder.performRangeSetOperation(syncStateDiffs, ranges, interval, 'difference');
             }
         });
@@ -481,6 +594,22 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
     },
 
 }, /** @lends Recorder. */ {
+
+    alignTimestampToInterval: function(timestamp, interval) {
+        if (typeof timestamp.getTime === 'function') {
+            timestamp = timestamp.getTime();
+        } else if (typeof timestamp === 'string') {
+            timestamp = new Date(timestamp).getTime();
+        } else if (typeof timestamp !== 'number') {
+            throw new Error('Invalid timestamp "' + timestamp + '" (type "' + typeof timestamp + '"');
+        }
+
+        if (_.isNumber(interval) &amp;&amp; (interval > 0)) {
+            return Math.floor(timestamp / interval) * interval;
+        } else {
+            return timestamp;
+        }
+    },
 
     /**
      * Performs operations on two sets of timestamp ranges.
@@ -729,7 +858,7 @@ module.exports = Recorder;
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
-		on Sun Mar 02 2014 12:10:00 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Sun Apr 13 2014 13:01:12 GMT+0200 (CEST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>

@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>resol-vbus Class: TcpDataSource</title>
+	<title>resol-vbus Source: datagram.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -171,320 +171,163 @@
 	<div class="row-fluid">
 
 		
-		<div class="span8">
-			
+			<div class="span12">
+				
 				<div id="main">
 					
 
 
-	<h1 class="page-title">Class: TcpDataSource</h1>
-<section>
-
-<header>
-    <h2>
-    TcpDataSource
-    </h2>
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-
-    
-        
-<dt>
-    <h4 class="name" id="TcpDataSource"><span class="type-signature"></span>new TcpDataSource<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a new TcpDataSource instance.</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tcp-data-source.js.html">tcp-data-source.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-    
-    </div>
-
-    
-        <h3 class="subsection-title">Extends</h3>
-
-        <ul>
-            <li>DataSource</li>
-        </ul>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        <dl>
-            
-<dt>
-    <h4 class="name" id="host"><span class="type-signature"></span>host<span class="type-signature"> :string</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>The host to connect to.</p>
-    </div>
-    
-    
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">string</span>
-
-
-            </li>
-        </ul>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tcp-data-source.js.html">tcp-data-source.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="liveChannel"><span class="type-signature"></span>liveChannel<span class="type-signature"> :number</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>The channel to connect to live.</p>
-    </div>
-    
-    
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">number</span>
-
-
-            </li>
-        </ul>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tcp-data-source.js.html">tcp-data-source.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="livePassword"><span class="type-signature"></span>livePassword<span class="type-signature"> :string</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>The password to connect live.</p>
-    </div>
-    
-    
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">string</span>
-
-
-            </li>
-        </ul>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tcp-data-source.js.html">tcp-data-source.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-</dd>
-
-        </dl>
-    
-
-    
-
-    
-
-    
-</article>
+		<h1 class="page-title">Source: datagram.js</h1>
+    
+    <section>
+        <article>
+            <pre class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2014, Daniel Wippermann | MIT license */
+'use strict';
+
+
+
+var _ = require('lodash');
+var sprintf = require('sprintf').sprintf;
+
+
+var Header = require('./header');
+
+
+
+var optionKeys = [
+    'command',
+    'valueId',
+    'value',
+];
+
+
+
+var Datagram = Header.extend(/** @lends Datagram# */ {
+
+    /**
+     * The command field of this VBus datagram. See the VBus Protocol Specification for details.
+     * @type {number}
+     */
+    command: 0,
+
+    /**
+     * The value ID field of this VBus datagram.
+     * @type {number}
+     */
+    valueId: 0,
+
+    /**
+     * The value field of this VBus datagram.
+     * @type {number}
+     */
+    value: 0,
+
+    /**
+     * Creates a new Datagram instance and optionally initializes its members with the given values.
+     *
+     * @constructs
+     * @augments Header
+     * @param {object} options Initialization values for this instance's members
+     * @param {number} options.command {@link Datagram#command}
+     * @param {number} options.valueId {@link Datagram#valueId}
+     * @param {Buffer} options.value {@link Datagram#value}
+     * @see Header#constructor
+     *
+     * @classdesc
+     * The Datagram sub-class provides access to all properties and methods applicable for VBus version 2 datagrams.
+     * In addition to the packet header it may contain a command, a value ID and a value.
+     * The value ID is a device-specific reference to one of the values presented in the device's menu interface.
+     */
+    constructor: function(options) {
+        Header.call(this, options);
+
+        _.extend(this, _.pick(options, optionKeys));
+    },
+
+    toLiveBuffer: function(origBuffer, start, end) {
+        var length = 16;
+
+        var buffer;
+        if (origBuffer === undefined) {
+            buffer = new Buffer(length);
+        } else {
+            buffer = origBuffer.slice(start, end);
+        }
+
+        if (buffer.length &lt; length) {
+            throw new Error('Buffer too small');
+        }
+
+        buffer [0] = 0xAA;
+        buffer.writeUInt16LE(this.destinationAddress &amp; 0x7F7F, 1);
+        buffer.writeUInt16LE(this.sourceAddress &amp; 0x7F7F, 3);
+        buffer [5] = 0x20;
+        buffer.writeUInt16LE(this.command &amp; 0x7F7F, 6);
+
+        var frameData = new Buffer(6);
+        frameData.writeUInt16LE(this.valueId, 0);
+        frameData.writeInt32LE(this.value, 2);
+        Datagram.extractSeptett(frameData, 0, 6, buffer, 8);
+        Datagram.calcAndSetChecksumV0(buffer, 1, 15);
+
+        return buffer;
+    },
+
+    getProtocolVersion: function() {
+        return 0x20;
+    },
+
+    getInfo: function() {
+        var info;
+        if (this.command === 0x0900) {
+            info = this.valueId;
+        } else {
+            info = 0;
+        }
+        return info;
+    },
+
+    getId: function() {
+        var baseId = Header.prototype.getId.call(this);
+        var info = this.getInfo();
+        return sprintf('%s_%04X_%04X', baseId, this.command, info);
+    },
+
+    compareTo: function(that) {
+        var result = Header.prototype.compareTo.apply(this, arguments);
+        if (result === 0) {
+            result = this.command - that.command;
+        }
+        if (result === 0) {
+            result = this.getInfo() - that.getInfo();
+        }
+        return result;
+    },
+
+}, {
+
+    fromLiveBuffer: function(buffer, start, end) {
+        var frameData = new Buffer(6);
+        Header.injectSeptett(buffer, start + 8, start + 14, frameData, 0);
+
+        return new Datagram({
+            destinationAddress: buffer.readUInt16LE(start + 1),
+            sourceAddress: buffer.readUInt16LE(start + 3),
+            command: buffer.readUInt16LE(start + 6),
+            valueId: frameData.readUInt16LE(0),
+            value: frameData.readInt32LE(2)
+        });
+    }
+
+});
+
+
+
+module.exports = Datagram;
+</pre>
+        </article>
+    </section>
 
-</section>
 
 
 
@@ -502,15 +345,11 @@
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha4</a>
-		on Sun Apr 13 2014 13:01:13 GMT+0200 (CEST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Sun Apr 13 2014 13:01:12 GMT+0200 (CEST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>
 
-			
-			<div class="span3">
-				<div id="toc"></div>
-			</div>
 			
 			<br clear="both">
 		</div>
