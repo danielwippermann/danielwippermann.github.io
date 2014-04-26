@@ -85,7 +85,7 @@
           <li><a href="installation-tutorial.html">Install the resol-vbus module</a></li>
           <li><a href="connection-tutorial.html">Create and establish a connection</a></li>
           <li><a href="live-data-tutorial.html">Receive And Display Live Data</a></li>
-          <li><a href="customizer-tutorial.html">Load and Store Controller Configuration</a></li>
+          <li><a href="customizer-tutorial.html">Load and Save Controller Configuration</a></li>
        </ul>
       </div>
     </div>
@@ -93,50 +93,14 @@
       <h1>Receive And Display Live Data</h1>
       <p>This tutorial covers the basic steps to receive and decode live VBus data received over a serial or TCP connection.</p>
 
-<h2 id="toc_0">Install the resol-vbus module</h2>
+<h2 id="toc_0">Preparations</h2>
 
-<p>Use <code>npm</code> to install the resol-vbus module:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">npm install --save resol-vbus
-</code></pre></div>
-<h2 id="toc_1">Load the resol-vbus module in your project</h2>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">var vbus = require(&#39;resol-vbus&#39;);
-</code></pre></div>
-<h2 id="toc_2">Create a connection</h2>
+<ul>
+<li><a href="installation-tutorial.html">Install the resol-vbus module</a></li>
+<li><a href="connection-tutorial.html">Creating and establishing a connection</a></li>
+</ul>
 
-<p>The resol-vbus module uses <code>Connection</code> instances to receive and transmit live VBus data. Several implementations exist for different connection types:</p>
-
-<h3 id="toc_3">Using a serial port</h3>
-
-<p>If you want to receive data from a serial port (or a device that acts like one, e.g. the VBus/USB interface adapter), you can use the <code>SerialConnection</code> class to do so:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">var connection = new vbus.SerialConnection({
-    path: &#39;/dev/tty.usbserial&#39;
-});
-</code></pre></div>
-<p>The <code>path</code> option is used to specify the serial port to use. On Windows you can use something like &#39;COM3&#39;.</p>
-
-<h3 id="toc_4">Using a TCP connection</h3>
-
-<p>If you want to receive data from a TCP enabled data source (e.g. VBus/LAN interface adapter or one of the dataloggers), you can use the <code>TcpConnection</code> class to do so:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">var connection = new vbus.TcpConnection({
-    host: &#39;mydl3.via.vbus.net&#39;,
-    viaTag: &#39;mydl3&#39;,             // only necessary if connected using VBus.net
-    password: &#39;secret&#39;,
-    channel: 1,                  // only necessary if connected to a DL3
-});
-</code></pre></div>
-<h2 id="toc_5">Establish the connection</h2>
-
-<p>The newly created <code>Connection</code> instances start in <code>DISCONNECTED</code> state (see <code>Connection#connectionState</code> for details). To establish the connection you have to call the <code>connect</code> method:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">var connectPromise = connection.connect();
-</code></pre></div>
-<p>The call to the <code>connect</code> method returns a promise that resolves when the connection is established. If you want to attach a callback to get notified when the connection is established, you can use the promise&#39;s <code>then</code> method to do so:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">connectPromise.then(function() {
-    console.log(&#39;Connected!&#39;);
-}, function() {
-    console.log(&#39;Connection failed&#39;);
-});
-</code></pre></div>
-<h2 id="toc_6">Add event listeners for incoming live data</h2>
+<h2 id="toc_1">Add event listeners for incoming live data</h2>
 
 <p><code>Connection</code> instances decode the incoming data stream and emit events whenever a valid block of information was decoded. The information you are most likely interested in is contained in a <code>Packet</code> instance and the connection emits <code>packet</code> events for each received <code>Packet</code> instance. You can add a listener for those events:</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">var onPacket = function(packet) {
@@ -147,7 +111,7 @@ connection.on(&#39;packet&#39;, onPacket);
 </code></pre></div>
 <p>This adds an event listener to the <code>connection</code> that just prints out the ID of the <code>Packet</code> instance to the console.</p>
 
-<h2 id="toc_7">Decode the payload in the <code>Packet</code> instance</h2>
+<h2 id="toc_2">Decode the payload in the <code>Packet</code> instance</h2>
 
 <p><code>Packet</code> instances carry optional payload data in them but only provide access to the binary buffer. The get a list of the values contained in this <code>Packet</code> you can use a <code>Specification</code> instance which is able to decode the binary data into human- or machine readable representation. First you need to get a <code>Specification</code> instance.</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">var spec = Specification.getDefaultSpecification();
@@ -162,9 +126,9 @@ connection.on(&#39;packet&#39;, onPacket);
     console.log(packetFields);
 };
 </code></pre></div>
-<h2 id="toc_8">Done!</h2>
+<h2 id="toc_3">Done!</h2>
 
-<h2 id="toc_9">Further reading</h2>
+<h2 id="toc_4">Further reading</h2>
 
     </div>
   </div>

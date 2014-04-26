@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title> &middot; resol-vbus Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="styles/bootstrap.css">
+
+    <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.css">
+
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="styles/syntax.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">resol-vbus</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-inverse-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html">About</a></li>
+            <li><a href="tutorials.html">Tutorials</a></li>
+            <li><a href="docs.html">Documentation</a></li>
+            <li><a href="examples.html">Examples</a></li>
+            <li><a href="support.html">Support</a></li>
+  <!--
+            <li class="active"><a href="#">Active</a></li>
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Dropdown header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+  -->
+          </ul>
+  <!--
+          <form class="navbar-form navbar-left">
+            <input type="text" class="form-control col-lg-8" placeholder="Search">
+          </form>
+  -->
+          <ul class="nav navbar-nav navbar-right">
+  <!--
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+  -->
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+    <div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 id="toc_0">Customizer Example</h1>
+
+<p>This example application loads and saves configuration from and to a VBus enabled controller.</p>
+
+<h2 id="toc_1">General information</h2>
+
+<p>You can find general information about the controller customization process here:</p>
+
+<p><a href="customizer-tutorial.html">Load and Store Controller Configuration Tutorial</a></p>
+
+<h2 id="toc_2">Setup</h2>
+
+<ul>
+<li><p>Install the <code>resol-vbus</code> specific dependencies</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">cd &lt;working directory&gt;
+git clone https://github.com/danielwippermann/resol-vbus.git
+cd resol-vbus
+npm install
+</code></pre></div></li>
+<li><p>Install some example app specific dependencies</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">cd examples/customizer
+npm install
+cd ../..
+</code></pre></div></li>
+<li><p>Create or edit the <code>examples/local-config.json</code> to setup up your connection to use</p>
+
+<p>If you want to use a TCP connection to a Datalogger or VBus/LAN adapter:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">{
+    &quot;customizerOptions&quot;: {
+        &quot;connection&quot;: {
+            &quot;class&quot;: &quot;TcpConnection&quot;,
+            &quot;options&quot;: {
+                &quot;host&quot;: &quot;192.168.5.156&quot;,
+                &quot;port&quot;: 7053,
+                &quot;password&quot;: &quot;vbus&quot;
+            }
+        }
+    }
+}
+</code></pre></div>
+<p>Change the <code>&quot;host&quot;</code> and <code>&quot;password&quot;</code> values to match your configuration.</p></li>
+</ul>
+
+<h2 id="toc_3">Command line options</h2>
+
+<h3 id="toc_4"><code>-q</code>: Quiet</h3>
+
+<p>Reduces console output.</p>
+
+<h3 id="toc_5"><code>--loadAll</code>: Load a complete set of adjustable values</h3>
+
+<p>Uses the <code>ConfigurationOptimizer</code> to determine a set of adjustable values that serves as a complete configuration se and loads those values from the controller.</p>
+
+<h3 id="toc_6"><code>--load &lt;file&gt;</code>: Load a specific set of adjustable values from the controller</h3>
+
+<p>Reads a JSON file <code>&lt;file&gt;</code> containing a list of adjustable values to load from the controller. The resulting list of loaded values can be written to a file again using the <code>--out</code> option.</p>
+
+<h3 id="toc_7"><code>--save &lt;file&gt;</code>: Save a specific set of adjustable values to the controller</h3>
+
+<p>Reads a JSON file <code>&lt;file&gt;</code> containing a list of adjustable values to save to the controller.</p>
+
+<h3 id="toc_8"><code>--out &lt;file&gt;</code>: Write the set of adjustable values to a file</h3>
+
+<p>Writes the loaded or saved set of adjustable values back to the file <code>&lt;file&gt;</code> as a JSON object. If this option is not given, the loaded or saved set of adjustable values is printed to the console.</p>
+
+<h2 id="toc_9">Examples</h2>
+
+<p>To load a complete set of adjustable values from the controller and write it to a file use the following command:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">⌘  node examples/customizer/index.js --loadAll --out .../complete-config.json
+Connecting...
+Connection state changed to CONNECTING
+Connection state changed to CONNECTED
+Waiting for free bus...
+Found master with address 0x5400
+[1] Optimizing set of values for round 1
+[1] Waiting for free bus
+[1] Getting value 1/164, try 1: Language
+[1] Getting value 2/164, try 1: Bedienercode
+...
+[1] Getting value 163/164, try 1: SDKarte_Logging_Intervall
+[1] Getting value 164/164, try 1: SDKarte_Logging_Methode
+[2] Optimizing set of values for round 2
+[2] Getting value 1/80, try 1: Sensor_Regler_S1_Offset
+[2] Getting value 2/80, try 1: Sensor_Regler_S2_Offset
+...
+[2] Getting value 79/80, try 1: Heizung_Heizkreis1_TModusSchaltuhrAussen
+[2] Getting value 80/80, try 1: Heizung_Heizkreis1_RTH_HKaus
+[3] Optimizing set of values for round 3
+[3] Getting value 1/42, try 1: Heizung_Heizkreis1_Schaltuhr_Woche_TagMo_Maske0
+[3] Getting value 2/42, try 1: Heizung_Heizkreis1_Schaltuhr_Woche_TagMo_Maske1
+...
+[3] Getting value 41/42, try 1: Heizung_Heizkreis1_Schaltuhr_Woche_TagSo_Maske4
+[3] Getting value 42/42, try 1: Heizung_Heizkreis1_Schaltuhr_Woche_TagSo_Maske5
+[4] Optimizing set of values for round 4
+[4] Releasing bus
+Disconnecting...
+Connection state changed to DISCONNECTING
+Connection state changed to DISCONNECTED
+
+⌘  cat .../complete-config.json
+{&quot;Language&quot;:0,&quot;Bedienercode&quot;:0,&quot;AutoSommerWinterzeit&quot;:1,&quot;TemperatureHysteresisSelector&quot;:0,&quot;FlowSelector&quot;:0,&quot;PressureSelector&quot;:0,&quot;EnergySelector&quot;:0,&quot;PowerSelector&quot;:0,&quot;Modul1_Aktiviert&quot;:0,&quot;Modul2_Aktiviert&quot;:0,&quot;Modul3_Aktiviert&quot;:0,&quot;Modul4_Aktiviert&quot;:0,&quot;Modul5_Aktiviert&quot;:0,&quot;Sensor_Regler_S1_Offset&quot;:0,&quot;Sensor_Regler_S2_Offset&quot;:0,&quot;Sensor_Regler_S3_Offset&quot;:0,&quot;Sensor_Regler_S4_Offset&quot;:0,&quot;Sensor_Regler_S5_Offset&quot;:0,&quot;Sensor_Regler_S6_Offset&quot;:0,&quot;Sensor_Regler_S7_Offset&quot;:0,...
+</code></pre></div>
+<p>The example app connects to the <code>Connection</code> specified in <code>examples/local-config.json</code> and finds a RESOL DeltaTherm HC on that VBus. It creates a <code>ConfigurationOptimizer</code> for that controller and a <code>ConnectionCustomizer</code> that combines the <code>Connection</code> and the <code>ConfigurationOptimizer</code> into a single object that is respnsible for transfering values to and from the controller.</p>
+
+<p>When the example app asks the <code>ConnectionCustomizer</code> to load a complete set of adjustable values from the controller, the <code>ConnectionCustomizer</code> in turn asks the <code>ConfigurationOptimizer</code> for that list which returns a list of over 5.700 values. The <code>ConnectionCustomizer</code> then asks the <code>ConfigurationOptimizer</code> to reduce that set to a bare minimum, resulting in a remaining list of 164 values for the first round. The <code>ConnectionCustomizer</code> starts to load those values from the controller. Once the first round of 164 values have been loaded the <code>ConnectionCustomizer</code> asks the <code>ConfigurationOptimizer</code> again for an updated list of adjustable values. Since the first round of adjustable values contained several options that enable other values the <code>ConfigurationOptimizer</code> adds 80 additional values to the list which the <code>ConnectionCustomizer</code> then starts loading as well. This continues for a third round (since some values of the second round enabled additional values), resulting in a complete set of 286 adjustable values.</p>
+
+<p>Those values are then written to the file by the example app.</p>
+
+<p>To save a specific adjustable value use the following command:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">⌘  cat .../hc-hk1-off.json
+{&quot;Heizung_Heizkreis1_Aktiviert&quot;:0}
+
+⌘  node examples/customizer/index.js --save .../hc-hk1-off.json
+Connecting...
+Connection state changed to CONNECTING
+Connection state changed to CONNECTED
+Waiting for free bus...
+Found master with address 0x5400
+[1] Optimizing set of values for round 1
+[1] Waiting for free bus
+[1] Setting value 1/1, try 1: Heizung_Heizkreis1_Aktiviert
+[2] Optimizing set of values for round 2
+[2] Releasing bus
+{&quot;Heizung_Heizkreis1_Aktiviert&quot;:0}
+Disconnecting...
+Connection state changed to DISCONNECTING
+Connection state changed to DISCONNECTED
+</code></pre></div>
+    </div>
+  </div>
+</div>
+
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted">
+          <a href="https://github.com/danielwippermann/resol-vbus"><i class="fa fa-github"></i> GitHub</a>
+        </p>
+      </div>
+    </div>
+
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/lodash.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+  </body>
+</html>

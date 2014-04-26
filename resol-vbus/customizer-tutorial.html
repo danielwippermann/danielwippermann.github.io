@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Load and Store Controller Configuration &middot; resol-vbus Documentation</title>
+    <title>Load and Save Controller Configuration &middot; resol-vbus Documentation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="styles/bootstrap.css">
@@ -85,13 +85,17 @@
           <li><a href="installation-tutorial.html">Install the resol-vbus module</a></li>
           <li><a href="connection-tutorial.html">Create and establish a connection</a></li>
           <li><a href="live-data-tutorial.html">Receive And Display Live Data</a></li>
-          <li><a href="customizer-tutorial.html">Load and Store Controller Configuration</a></li>
+          <li><a href="customizer-tutorial.html">Load and Save Controller Configuration</a></li>
        </ul>
       </div>
     </div>
     <div class="col-sm-9 doc-main">
-      <h1>Load and Store Controller Configuration</h1>
-      <p>This tutorial covers the steps to load and store configuration from a controller.</p>
+      <h1>Load and Save Controller Configuration</h1>
+      <p>This tutorial covers the steps to customize a controller&#39;s configuration by loading and saving it from and to a controller.</p>
+
+<p>You can find the example code here:</p>
+
+<p><a href="customizer-example.html">Customizer Example</a></p>
 
 <h2 id="toc_0">Preparations</h2>
 
@@ -100,7 +104,17 @@
 <li><a href="connection-tutorial.html">Creating and establishing a connection</a></li>
 </ul>
 
-<h2 id="toc_1">Find out the master controller on the VBus</h2>
+<h2 id="toc_1">General information</h2>
+
+<p>TBD: How does customization work?</p>
+
+<h2 id="toc_2">Supported controllers</h2>
+
+<p>The process of customizing a controller&#39;s adjustable values requires a <code>ConfigurationOptimizer</code> sub-class specific for that controller. This sub-class knows about all supported adjustable values in the controller and optionally about their relationship (to allow to find the minimal set of values to transfer).</p>
+
+<p>Please have a look at the <code>src/configuration-optimizer-factory.js</code> file and the <code>src/configuration-optimizers</code> directory for a list of supported controllers.</p>
+
+<h2 id="toc_3">Find out the master controller on the VBus</h2>
 
 <p>The customization process requires a VBus controller&#39;s device address where the configuration should be loaded from or saved to.</p>
 
@@ -121,7 +135,7 @@
 }).then(function() {
     // ...
 </code></pre></div>
-<h2 id="toc_2">Get configuration optimizer for controller</h2>
+<h2 id="toc_4">Get configuration optimizer for controller</h2>
 
 <p>Once the controller&#39;s device address is known a corresponding <code>ConfigurationOptimizer</code> instance can be created by calling <code>ConfigurationOptimizerFactor.createOptimizerByDeviceAddress</code>:</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">    // ...
@@ -136,7 +150,7 @@
 }).then(function() {
     // ...
 </code></pre></div>
-<h2 id="toc_3">Create a ConnectionCustomizer</h2>
+<h2 id="toc_5">Create a ConnectionCustomizer</h2>
 
 <p>The sub-classes of the <code>Customizer</code> base class handle all the timing details to load and save configurations from and to a controller. This example uses the <code>ConnectionCustomizer</code> sub-class that in turn uses a <code>Connection</code> instance to get access to a live VBus channel to perform the customization.</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">    // ...
@@ -152,7 +166,7 @@
 }).then(function() {
     // ...
 </code></pre></div>
-<h2 id="toc_4">Load parts of the configuration</h2>
+<h2 id="toc_6">Load parts of the configuration</h2>
 
 <p>Both load and save operations on the <code>Customizer</code> instance take a list of values that shall be transfered. This list of values can be either an array of objects with a <code>valueId</code> or <code>valueIndex</code> key or a object that uses the value IDs as keys and <code>null</code> as values.</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">var configArray = [
@@ -182,7 +196,7 @@ var configObject = {
 <li><code>value</code>: the value received or <code>null</code> if the value failed to transfer</li>
 </ul>
 
-<h2 id="toc_5">Load the complete configuration</h2>
+<h2 id="toc_7">Load the complete configuration</h2>
 
 <p>To load the complete configuration of the controller a list of all known values must be created. The <code>completeConfiguration</code> method of the <code>ConfigurationOptimizer</code> instance can be used for that. If that method is called without arguments it returns such a list.</p>
 
@@ -202,7 +216,7 @@ var configObject = {
 }).then(function(loadedConfiguration) {
     // ...
 </code></pre></div>
-<h2 id="toc_6">Save the configuration</h2>
+<h2 id="toc_8">Save the configuration</h2>
 
 <p>The <code>saveConfiguration</code> method also takes a list of values to save (just like the value lists for <code>loadConfiguration</code>, but with additional information about what to store). The two possible forms look like this:</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">var configArray = [
