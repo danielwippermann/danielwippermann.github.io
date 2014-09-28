@@ -91,42 +91,42 @@
     </div>
     <div class="col-sm-9 doc-main">
       <h1>Create and establish a connection</h1>
-      <h2 id="toc_0">Preparations</h2>
+      <h2 id="preparations">Preparations</h2>
 
 <ul>
 <li><a href="installation-tutorial.html">Install the resol-vbus module</a></li>
 </ul>
 
-<h2 id="toc_1">Create a connection</h2>
+<h2 id="create-a-connection">Create a connection</h2>
 
 <p>The resol-vbus module uses <code>Connection</code> instances to receive and transmit live VBus data. Several implementations exist for different connection types:</p>
 
-<h3 id="toc_2">Using a serial port</h3>
+<h3 id="using-a-serial-port">Using a serial port</h3>
 
 <p>If you want to receive data from a serial port (or a device that acts like one, e.g. the VBus/USB interface adapter), you can use the <code>SerialConnection</code> class to do so:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">var connection = new vbus.SerialConnection({
+<div class="highlight"><pre><code class="language-text" data-lang="text">var connection = new vbus.SerialConnection({
     path: &#39;/dev/tty.usbserial&#39;
 });
 </code></pre></div>
 <p>The <code>path</code> option is used to specify the serial port to use. On Windows you can use something like &#39;COM3&#39;.</p>
 
-<h3 id="toc_3">Using a TCP connection</h3>
+<h3 id="using-a-tcp-connection">Using a TCP connection</h3>
 
 <p>If you want to receive data from a TCP enabled data source (e.g. VBus/LAN interface adapter or one of the dataloggers), you can use the <code>TcpConnection</code> class to do so:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">var connection = new vbus.TcpConnection({
+<div class="highlight"><pre><code class="language-text" data-lang="text">var connection = new vbus.TcpConnection({
     host: &#39;mydl3.via.vbus.net&#39;,
     viaTag: &#39;mydl3&#39;,             // only necessary if connected using VBus.net
     password: &#39;secret&#39;,
     channel: 1,                  // only necessary if connected to a DL3
 });
 </code></pre></div>
-<h2 id="toc_4">Establish the connection</h2>
+<h2 id="establish-the-connection">Establish the connection</h2>
 
 <p>The newly created <code>Connection</code> instances start in <code>DISCONNECTED</code> state (see <code>Connection#connectionState</code> for details). To establish the connection you have to call the <code>connect</code> method:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">var connectPromise = connection.connect();
+<div class="highlight"><pre><code class="language-text" data-lang="text">var connectPromise = connection.connect();
 </code></pre></div>
 <p>The call to the <code>connect</code> method returns a promise that resolves when the connection is established. If you want to attach a callback to get notified when the connection is established, you can use the promise&#39;s <code>then</code> method to do so:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">connectPromise.then(function() {
+<div class="highlight"><pre><code class="language-text" data-lang="text">connectPromise.then(function() {
     console.log(&#39;Connected!&#39;);
 }, function() {
     console.log(&#39;Connection failed&#39;);

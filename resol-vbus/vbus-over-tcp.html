@@ -149,7 +149,7 @@
 <p>To get access to the VBus data itself the remote side has to send a command to switch from command to data mode. Once the connection entered data mode, it cannot go back into command mode. In order to do so the remote side has to establish another connection to the device.</p>
 
 <p>A sample session (using telnet) might look like this:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">⌘  telnet vbus.net 7053
+<div class="highlight"><pre><code class="language-text" data-lang="text">⌘  telnet vbus.net 7053
 Connected to vbus.net.
 Escape character is &#39;^]&#39;.
 +HELLO This is VBus.net on behalf of all its devices, welcome, stranger!
@@ -168,7 +168,7 @@ DATA
 +OK: Data incoming...
 &lt;binary VBus data according to VBus protocol specification&gt;
 </code></pre></div>
-<h2 id="toc_0">Commands</h2>
+<h2 id="commands">Commands</h2>
 
 <ul>
 <li><p><strong>CONNECT &lt;via tag&gt;</strong></p>

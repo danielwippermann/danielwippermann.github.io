@@ -142,24 +142,24 @@
       <h1>DLx Data Download API</h1>
       <p>This document describes the API that can be used to download data from a RESOL DataLogger.</p>
 
-<h4 id="toc_0">Supported Devices</h4>
+<h4 id="supported-devices">Supported Devices</h4>
 
 <ul>
 <li>RESOL Datalogger DL2 (version 2.0 or higher)</li>
 <li>RESOL Datalogger DL3 (version 2.0 or higher)</li>
 </ul>
 
-<h4 id="toc_1">Common parameters</h4>
+<h4 id="common-parameters">Common parameters</h4>
 
 <ul>
 <li><strong>sessionAuthUsername</strong>: user name for web interface access.</li>
 <li><strong>sessionAuthPassword</strong>: password for web interface access.</li>
 </ul>
 
-<h2 id="toc_2">Get live data as JSON</h2>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">GET /dlx/download/live
+<h2 id="get-live-data-as-json">Get live data as JSON</h2>
+<div class="highlight"><pre><code class="language-text" data-lang="text">GET /dlx/download/live
 </code></pre></div>
-<h4 id="toc_3">Parameters</h4>
+<h4 id="parameters">Parameters</h4>
 
 <ul>
 <li><strong>channel</strong> (optional): only include data from given channel.</li>
@@ -167,11 +167,11 @@
 <li><strong>view</strong> (optional): the ID of the view to apply on the data.</li>
 </ul>
 
-<h4 id="toc_4">Example</h4>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">curl &quot;http://$HOST/dlx/download/live?sessionAuthUsername=admin&amp;sessionAuthPassword=admin&quot;
+<h4 id="example">Example</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">curl &quot;http://$HOST/dlx/download/live?sessionAuthUsername=admin&amp;sessionAuthPassword=admin&quot;
 </code></pre></div>
-<h4 id="toc_5">Success Response</h4>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">HTTP/1.1 200 OK
+<h4 id="success-response">Success Response</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
@@ -267,17 +267,17 @@ Content-Type: application/json
     }]
 }
 </code></pre></div>
-<h4 id="toc_6">Failure responses (HTTP status code 500)</h4>
+<h4 id="failure-responses-(http-status-code-500)">Failure responses (HTTP status code 500)</h4>
 
 <ul>
 <li><strong>InvalidFilterID</strong>: the value of the <code>filter</code> parameter was invalid.</li>
 <li><strong>InvalidViewID</strong>: the value of the <code>view</code> parameter was invalid.</li>
 </ul>
 
-<h2 id="toc_7">Download data</h2>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">GET /dlx/download/download
+<h2 id="download-data">Download data</h2>
+<div class="highlight"><pre><code class="language-text" data-lang="text">GET /dlx/download/download
 </code></pre></div>
-<h4 id="toc_8">Parameters</h4>
+<h4 id="parameters">Parameters</h4>
 
 <ul>
 <li><strong>source</strong> (default <code>log</code>): source of the data (can be <code>log</code> for recorded data or <code>current</code> for live data).</li>
@@ -300,11 +300,11 @@ Content-Type: application/json
 <li><strong>filter</strong> (optional): the ID of the filter to apply on the data.</li>
 </ul>
 
-<h4 id="toc_9">Example</h4>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">curl &quot;http://$HOST/dlx/download/live?sessionAuthUsername=admin&amp;sessionAuthPassword=admin&amp;outputType=json&amp;source=current&quot;
+<h4 id="example">Example</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">curl &quot;http://$HOST/dlx/download/live?sessionAuthUsername=admin&amp;sessionAuthPassword=admin&amp;outputType=json&amp;source=current&quot;
 </code></pre></div>
-<h4 id="toc_10">Sucess Response</h4>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">HTTP/1.1 200 OK
+<h4 id="sucess-response">Sucess Response</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
@@ -400,7 +400,7 @@ Content-Type: application/json
     }]
 }
 </code></pre></div>
-<h4 id="toc_11">Failure responses (HTTP status code 500)</h4>
+<h4 id="failure-responses-(http-status-code-500)">Failure responses (HTTP status code 500)</h4>
 
 <ul>
 <li><strong>InvalidFilterID</strong>: the value of the <code>filter</code> parameter was invalid.</li>

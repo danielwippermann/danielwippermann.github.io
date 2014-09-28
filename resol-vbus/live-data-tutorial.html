@@ -93,17 +93,17 @@
       <h1>Receive And Display Live Data</h1>
       <p>This tutorial covers the basic steps to receive and decode live VBus data received over a serial or TCP connection.</p>
 
-<h2 id="toc_0">Preparations</h2>
+<h2 id="preparations">Preparations</h2>
 
 <ul>
 <li><a href="installation-tutorial.html">Install the resol-vbus module</a></li>
 <li><a href="connection-tutorial.html">Creating and establishing a connection</a></li>
 </ul>
 
-<h2 id="toc_1">Add event listeners for incoming live data</h2>
+<h2 id="add-event-listeners-for-incoming-live-data">Add event listeners for incoming live data</h2>
 
 <p><code>Connection</code> instances decode the incoming data stream and emit events whenever a valid block of information was decoded. The information you are most likely interested in is contained in a <code>Packet</code> instance and the connection emits <code>packet</code> events for each received <code>Packet</code> instance. You can add a listener for those events:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">var onPacket = function(packet) {
+<div class="highlight"><pre><code class="language-text" data-lang="text">var onPacket = function(packet) {
     console.log(&#39;Packet received: &#39; + packet.getId());
 };
 
@@ -111,24 +111,24 @@ connection.on(&#39;packet&#39;, onPacket);
 </code></pre></div>
 <p>This adds an event listener to the <code>connection</code> that just prints out the ID of the <code>Packet</code> instance to the console.</p>
 
-<h2 id="toc_2">Decode the payload in the <code>Packet</code> instance</h2>
+<h2 id="decode-the-payload-in-the-packet-instance">Decode the payload in the <code>Packet</code> instance</h2>
 
 <p><code>Packet</code> instances carry optional payload data in them but only provide access to the binary buffer. The get a list of the values contained in this <code>Packet</code> you can use a <code>Specification</code> instance which is able to decode the binary data into human- or machine readable representation. First you need to get a <code>Specification</code> instance.</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">var spec = Specification.getDefaultSpecification();
+<div class="highlight"><pre><code class="language-text" data-lang="text">var spec = Specification.getDefaultSpecification();
 </code></pre></div>
 <p>The default specification is the unmodified <code>Specification</code> instances provided by the resol-vbus module. You can later create your own <code>Specification</code> instance allowing you to filter and / or convert values.</p>
 
 <p>Using this <code>Specification</code> instance you can query a list of values that are contained in a <code>Packet</code> instance:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">var onPacket = function(packet) {
+<div class="highlight"><pre><code class="language-text" data-lang="text">var onPacket = function(packet) {
     console.log(&#39;Packet received: &#39; + packet.getId());
 
     var packetFields = spec.getPacketFieldsForHeaders([ packet ]);
     console.log(packetFields);
 };
 </code></pre></div>
-<h2 id="toc_3">Done!</h2>
+<h2 id="done!">Done!</h2>
 
-<h2 id="toc_4">Further reading</h2>
+<h2 id="further-reading">Further reading</h2>
 
     </div>
   </div>

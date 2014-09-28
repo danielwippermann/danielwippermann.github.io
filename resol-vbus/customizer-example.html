@@ -79,34 +79,34 @@
     <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <h1 id="toc_0">Customizer Example</h1>
+      <h1 id="customizer-example">Customizer Example</h1>
 
 <p>This example application loads and saves configuration from and to a VBus enabled controller.</p>
 
-<h2 id="toc_1">General information</h2>
+<h2 id="general-information">General information</h2>
 
 <p>You can find general information about the controller customization process here:</p>
 
 <p><a href="customizer-tutorial.html">Load and Store Controller Configuration Tutorial</a></p>
 
-<h2 id="toc_2">Setup</h2>
+<h2 id="setup">Setup</h2>
 
 <ul>
 <li><p>Install the <code>resol-vbus</code> specific dependencies</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">cd &lt;working directory&gt;
+<div class="highlight"><pre><code class="language-text" data-lang="text">cd &lt;working directory&gt;
 git clone https://github.com/danielwippermann/resol-vbus.git
 cd resol-vbus
 npm install
 </code></pre></div></li>
 <li><p>Install some example app specific dependencies</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">cd examples/customizer
+<div class="highlight"><pre><code class="language-text" data-lang="text">cd examples/customizer
 npm install
 cd ../..
 </code></pre></div></li>
 <li><p>Create or edit the <code>examples/local-config.json</code> to setup up your connection to use</p>
 
 <p>If you want to use a TCP connection to a Datalogger or VBus/LAN adapter:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">{
+<div class="highlight"><pre><code class="language-text" data-lang="text">{
     &quot;customizerOptions&quot;: {
         &quot;connection&quot;: {
             &quot;class&quot;: &quot;TcpConnection&quot;,
@@ -122,32 +122,32 @@ cd ../..
 <p>Change the <code>&quot;host&quot;</code> and <code>&quot;password&quot;</code> values to match your configuration.</p></li>
 </ul>
 
-<h2 id="toc_3">Command line options</h2>
+<h2 id="command-line-options">Command line options</h2>
 
-<h3 id="toc_4"><code>-q</code>: Quiet</h3>
+<h3 id="-q:-quiet"><code>-q</code>: Quiet</h3>
 
 <p>Reduces console output.</p>
 
-<h3 id="toc_5"><code>--loadAll</code>: Load a complete set of adjustable values</h3>
+<h3 id="--loadall:-load-a-complete-set-of-adjustable-values"><code>--loadAll</code>: Load a complete set of adjustable values</h3>
 
 <p>Uses the <code>ConfigurationOptimizer</code> to determine a set of adjustable values that serves as a complete configuration se and loads those values from the controller.</p>
 
-<h3 id="toc_6"><code>--load &lt;file&gt;</code>: Load a specific set of adjustable values from the controller</h3>
+<h3 id="--load-&lt;file&gt;:-load-a-specific-set-of-adjustable-values-from-the-controller"><code>--load &lt;file&gt;</code>: Load a specific set of adjustable values from the controller</h3>
 
 <p>Reads a JSON file <code>&lt;file&gt;</code> containing a list of adjustable values to load from the controller. The resulting list of loaded values can be written to a file again using the <code>--out</code> option.</p>
 
-<h3 id="toc_7"><code>--save &lt;file&gt;</code>: Save a specific set of adjustable values to the controller</h3>
+<h3 id="--save-&lt;file&gt;:-save-a-specific-set-of-adjustable-values-to-the-controller"><code>--save &lt;file&gt;</code>: Save a specific set of adjustable values to the controller</h3>
 
 <p>Reads a JSON file <code>&lt;file&gt;</code> containing a list of adjustable values to save to the controller.</p>
 
-<h3 id="toc_8"><code>--out &lt;file&gt;</code>: Write the set of adjustable values to a file</h3>
+<h3 id="--out-&lt;file&gt;:-write-the-set-of-adjustable-values-to-a-file"><code>--out &lt;file&gt;</code>: Write the set of adjustable values to a file</h3>
 
 <p>Writes the loaded or saved set of adjustable values back to the file <code>&lt;file&gt;</code> as a JSON object. If this option is not given, the loaded or saved set of adjustable values is printed to the console.</p>
 
-<h2 id="toc_9">Examples</h2>
+<h2 id="examples">Examples</h2>
 
 <p>To load a complete set of adjustable values from the controller and write it to a file use the following command:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">⌘  node examples/customizer/index.js --loadAll --out .../complete-config.json
+<div class="highlight"><pre><code class="language-text" data-lang="text">⌘  node examples/customizer/index.js --loadAll --out .../complete-config.json
 Connecting...
 Connection state changed to CONNECTING
 Connection state changed to CONNECTED
@@ -188,7 +188,7 @@ Connection state changed to DISCONNECTED
 <p>Those values are then written to the file by the example app.</p>
 
 <p>To save a specific adjustable value use the following command:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">⌘  cat .../hc-hk1-off.json
+<div class="highlight"><pre><code class="language-text" data-lang="text">⌘  cat .../hc-hk1-off.json
 {&quot;Heizung_Heizkreis1_Aktiviert&quot;:0}
 
 ⌘  node examples/customizer/index.js --save .../hc-hk1-off.json

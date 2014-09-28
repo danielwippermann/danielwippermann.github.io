@@ -97,31 +97,31 @@
 
 <p><a href="customizer-example.html">Customizer Example</a></p>
 
-<h2 id="toc_0">Preparations</h2>
+<h2 id="preparations">Preparations</h2>
 
 <ul>
 <li><a href="installation-tutorial.html">Install the resol-vbus module</a></li>
 <li><a href="connection-tutorial.html">Creating and establishing a connection</a></li>
 </ul>
 
-<h2 id="toc_1">General information</h2>
+<h2 id="general-information">General information</h2>
 
 <p>TBD: How does customization work?</p>
 
-<h2 id="toc_2">Supported controllers</h2>
+<h2 id="supported-controllers">Supported controllers</h2>
 
 <p>The process of customizing a controller&#39;s adjustable values requires a <code>ConfigurationOptimizer</code> sub-class specific for that controller. This sub-class knows about all supported adjustable values in the controller and optionally about their relationship (to allow to find the minimal set of values to transfer).</p>
 
 <p>Please have a look at the <code>src/configuration-optimizer-factory.js</code> file and the <code>src/configuration-optimizers</code> directory for a list of supported controllers.</p>
 
-<h2 id="toc_3">Find out the master controller on the VBus</h2>
+<h2 id="find-out-the-master-controller-on-the-vbus">Find out the master controller on the VBus</h2>
 
 <p>The customization process requires a VBus controller&#39;s device address where the configuration should be loaded from or saved to.</p>
 
 <p>Instead of hard-coding this device address into the source code this tutorial code uses the <code>waitForFreeBus</code> method to find out the device address of the master controller attached to the connection.</p>
 
 <p>If the device address of the controller is known in advance this step can be skipped.</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">    // ...
+<div class="highlight"><pre><code class="language-text" data-lang="text">    // ...
 }).then(function() {
     return connection.waitForFreeBus();
 }).then(function(datagram) {
@@ -135,10 +135,10 @@
 }).then(function() {
     // ...
 </code></pre></div>
-<h2 id="toc_4">Get configuration optimizer for controller</h2>
+<h2 id="get-configuration-optimizer-for-controller">Get configuration optimizer for controller</h2>
 
 <p>Once the controller&#39;s device address is known a corresponding <code>ConfigurationOptimizer</code> instance can be created by calling <code>ConfigurationOptimizerFactor.createOptimizerByDeviceAddress</code>:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">    // ...
+<div class="highlight"><pre><code class="language-text" data-lang="text">    // ...
 }).then(function() {
     return vbus.ConfigurationOptimizerFactory.createOptimizerByDeviceAddress(context.deviceAddress);
 }).then(function(optimizer) {
@@ -150,10 +150,10 @@
 }).then(function() {
     // ...
 </code></pre></div>
-<h2 id="toc_5">Create a ConnectionCustomizer</h2>
+<h2 id="create-a-connectioncustomizer">Create a ConnectionCustomizer</h2>
 
 <p>The sub-classes of the <code>Customizer</code> base class handle all the timing details to load and save configurations from and to a controller. This example uses the <code>ConnectionCustomizer</code> sub-class that in turn uses a <code>Connection</code> instance to get access to a live VBus channel to perform the customization.</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">    // ...
+<div class="highlight"><pre><code class="language-text" data-lang="text">    // ...
 }).then(function(optimizer) {
     context.optimizer = optimizer;
     return new vbus.ConnectionCustomizer({
@@ -166,10 +166,10 @@
 }).then(function() {
     // ...
 </code></pre></div>
-<h2 id="toc_6">Load parts of the configuration</h2>
+<h2 id="load-parts-of-the-configuration">Load parts of the configuration</h2>
 
 <p>Both load and save operations on the <code>Customizer</code> instance take a list of values that shall be transfered. This list of values can be either an array of objects with a <code>valueId</code> or <code>valueIndex</code> key or a object that uses the value IDs as keys and <code>null</code> as values.</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">var configArray = [
+<div class="highlight"><pre><code class="language-text" data-lang="text">var configArray = [
     { valueId: &#39;Relais_Regler_R1_Handbetrieb&#39; },
     { valueId: &#39;Relais_Regler_R2_Handbetrieb&#39; },
     // ...
@@ -182,7 +182,7 @@ var configObject = {
 };
 </code></pre></div>
 <p>The <code>loadConfiguration</code> method takes one of these value lists as the first parameter:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">    // ...
+<div class="highlight"><pre><code class="language-text" data-lang="text">    // ...
 }).then(function(configuration) {
     return context.customizer.loadConfiguration(configuration);
 }).then(function(loadedConfiguration) {
@@ -196,12 +196,12 @@ var configObject = {
 <li><code>value</code>: the value received or <code>null</code> if the value failed to transfer</li>
 </ul>
 
-<h2 id="toc_7">Load the complete configuration</h2>
+<h2 id="load-the-complete-configuration">Load the complete configuration</h2>
 
 <p>To load the complete configuration of the controller a list of all known values must be created. The <code>completeConfiguration</code> method of the <code>ConfigurationOptimizer</code> instance can be used for that. If that method is called without arguments it returns such a list.</p>
 
 <p>Since some controllers know several thousand adjustable values the list can be quiet large. By passing the <code>optimize</code> option to <code>loadConfiguration</code> the <code>Customizer</code> and the <code>ConfigurationOptimizer</code> instances work together to find the minimal set of values really necessary (e.g. by first loading options and then in a later round ignoring additional values that belong to deactivated options):</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">    // ...
+<div class="highlight"><pre><code class="language-text" data-lang="text">    // ...
 }).then(function() {
     return context.optimizer.completeConfiguration();
 }).then(function(completeConfiguration) {
@@ -210,16 +210,16 @@ var configObject = {
     // ...
 </code></pre></div>
 <p>Alternatively calling <code>loadConfiguration</code> without parameters loads the optimized complete configuration as well. That means that the following block of code works exactly like the one above:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">    // ...
+<div class="highlight"><pre><code class="language-text" data-lang="text">    // ...
 }).then(function() {
     return context.customizer.loadConfiguration();
 }).then(function(loadedConfiguration) {
     // ...
 </code></pre></div>
-<h2 id="toc_8">Save the configuration</h2>
+<h2 id="save-the-configuration">Save the configuration</h2>
 
 <p>The <code>saveConfiguration</code> method also takes a list of values to save (just like the value lists for <code>loadConfiguration</code>, but with additional information about what to store). The two possible forms look like this:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">var configArray = [
+<div class="highlight"><pre><code class="language-text" data-lang="text">var configArray = [
     { valueId: &#39;Relais_Regler_R1_Handbetrieb&#39;, value: 2 },
     { valueId: &#39;Relais_Regler_R2_Handbetrieb&#39;, value: 2 },
     // ...
@@ -232,7 +232,7 @@ var configObject = {
 };
 </code></pre></div>
 <p>The <code>saveConfiguration</code> method takes one of these value lists as the first parameter:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">    // ..
+<div class="highlight"><pre><code class="language-text" data-lang="text">    // ..
 }).then(function(configuration) {
     return context.customizer.saveConfiguration(configuration);
 }).then(function(savedConfiguration) {
