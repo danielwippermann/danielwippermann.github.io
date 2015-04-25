@@ -132,6 +132,7 @@
         </ul>
         <h4>Technical Specifications</h4>
         <ul>
+          <li><a href="vbus-packets.html">RESOL VBus Packet List</a></li>
           <li><a href="vbus-recording-file-format.html">VBus Recording File Format</a></li>
           <li><a href="vbus-over-tcp.html">VBus Over TCP</a></li>
           <li><a href="dlx-data-download-api.html">DLx Data Download API</a></li>
@@ -140,7 +141,13 @@
     </div>
     <div class="col-sm-9 doc-main">
       <h1>Converter</h1>
-      <p>Coming soon...</p>
+      <h2 id="basics">Basics</h2>
+
+<p>The <code>Converter</code> sub-classes are designed to generate or decode various file formats, or both.</p>
+
+<p>If a <code>Converter</code> sub-class supports generating data in a given file format it implements the <a href="https://nodejs.org/api/stream.html#stream_class_stream_readable"><code>Readable</code> stream API</a> documented by the Node.js core team. Calling the <code>convertHeaderSet</code> function on this <code>Converter</code> sub-classes generates the appropriately formatted data that then flow out of the readable stream into its consumers. An example for a generating <code>Converter</code> sub-class is the <a href="dlx-json-converter-class.html"><code>DLxJsonConverter</code> class</a>.</p>
+
+<p>If a <code>Converter</code> sub-class supports decoding data in a given file format it implements the <a href="https://nodejs.org/api/stream.html#stream_class_stream_writable"><code>Writable</code> stream API</a> documented by the Node.js core team. Data written to that stream gets decoded and then emits <code>headerSet</code> events providing the decoded <code>HeaderSet</code> instance as a parameter. An example for a decoding <code>Converter</code> sub-class is the <a href="vbus-recording-converter-class.html"><code>VBusRecordingConverter</code> class</a>. That class also supports generating data by implementing the <code>Readable</code> stream API described above.</p>
 
     </div>
   </div>
