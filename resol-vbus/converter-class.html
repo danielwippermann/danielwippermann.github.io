@@ -149,6 +149,36 @@
 
 <p>If a <code>Converter</code> sub-class supports decoding data in a given file format it implements the <a href="https://nodejs.org/api/stream.html#stream_class_stream_writable"><code>Writable</code> stream API</a> documented by the Node.js core team. Data written to that stream gets decoded and then emits <code>headerSet</code> events providing the decoded <code>HeaderSet</code> instance as a parameter. An example for a decoding <code>Converter</code> sub-class is the <a href="vbus-recording-converter-class.html"><code>VBusRecordingConverter</code> class</a>. That class also supports generating data by implementing the <code>Readable</code> stream API described above.</p>
 
+<h2 id="sub-classes">Sub-classes</h2>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Class name</th>
+<th style="text-align: left">File format</th>
+<th style="text-align: center">Readable stream?</th>
+<th style="text-align: center">Writable stream?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><a href="vbus-recording-converter-class.html"><code>VBusRecordingConverter</code></a></td>
+<td style="text-align: left"><a href="vbus-recording-file-format.html">VBus Recording File Format</a></td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="dlx-json-converter-class.html"><code>DLxJsonConverter</code></a></td>
+<td style="text-align: left">Datalogger compatible JSON</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">No</td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="text-converter-class.html"><code>TextConverter</code></a></td>
+<td style="text-align: left">CSV and other text based formats</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">No</td>
+</tr>
+</tbody></table>
+
     </div>
   </div>
 </div>
