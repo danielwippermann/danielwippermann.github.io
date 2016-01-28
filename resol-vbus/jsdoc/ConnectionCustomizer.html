@@ -160,6 +160,14 @@
 							<a href="global.html#extend">extend</a>
 						</li>
 						
+						<li>
+							<a href="global.html#getOptimizerOptions">getOptimizerOptions</a>
+						</li>
+						
+						<li>
+							<a href="global.html#matchOptimizer">matchOptimizer</a>
+						</li>
+						
 
 					</ul>
 				</li>
@@ -1248,6 +1256,76 @@ If no configuration is given a complete configuration set is returned.</p>
         
             
 <dt>
+    <h4 class="name" id="_loadConfiguration"><span class="type-signature"></span>_loadConfiguration<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Load a set of configuration values from a device.</p>
+<p>See <a href="Customizer.html#loadConfiguration">Customizer#loadConfiguration</a> for details.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="connection-customizer.js.html">connection-customizer.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="_optimizeLoadConfiguration"><span class="type-signature"></span>_optimizeLoadConfiguration<span class="signature">(config)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
     
     
@@ -1563,6 +1641,76 @@ If no configuration is given a complete configuration set is returned.</p>
         
             
 <dt>
+    <h4 class="name" id="_saveConfiguration"><span class="type-signature"></span>_saveConfiguration<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Save a set of configuration values to a device.</p>
+<p>See <a href="Customizer.html#saveConfiguration">Customizer#saveConfiguration</a> for details.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="connection-customizer.js.html">connection-customizer.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="loadConfiguration"><span class="type-signature"></span>loadConfiguration<span class="signature">(configuration, options)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
     
     
@@ -1572,6 +1720,13 @@ If no configuration is given a complete configuration set is returned.</p>
     
     <div class="description">
         <p>Load a set of configuration values from a device.</p>
+<p>If the <code>Customizer</code> has an <code>optimizer</code> set, the <code>configuration</code> parameter
+is passed to the optimizer's <code>completeConfiguration</code> method. Otherwise it must be an
+array of <code>ConfigurationValue</code> objects.</p>
+<p>If <code>options.optimize</code> is &quot;truthy&quot; the list of <code>ConfigurationValue</code> objects is passed
+into the optimizer's <code>optimizeLoadConfiguration</code> method to determine the minimal
+set of values to transfer. If <code>options.optimize</code> is &quot;falsy&quot; all of the
+<code>ConfigurationValue</code> objects will be loaded.</p>
     </div>
     
 
@@ -1741,6 +1896,15 @@ If no configuration is given a complete configuration set is returned.</p>
     
     <div class="description">
         <p>Save a set of configuration values to a device.</p>
+<p>If the <code>Customizer</code> has an <code>optimizer</code> set, the <code>newConfiguration</code> parameter
+is passed to the optimizer's <code>completeConfiguration</code> method. Otherwise it must be an
+array of <code>ConfigurationValue</code> objects.</p>
+<p>If a <code>oldConfiguration</code> parameter is given, the same procedure as for the
+<code>newConfiguration</code> is applied to it as well.</p>
+<p>If <code>options.optimize</code> is &quot;truthy&quot; the list of <code>ConfigurationValue</code> objects is passed
+into the optimizer's <code>optimizeLoadConfiguration</code> method to determine the minimal
+set of values to transfer. If <code>options.optimize</code> is &quot;falsy&quot; all of the
+<code>ConfigurationValue</code> objects will be loaded.</p>
     </div>
     
 
@@ -2289,7 +2453,7 @@ If no configuration is given a complete configuration set is returned.</p>
         
             
 <dt>
-    <h4 class="name" id="transceiveValue"><span class="type-signature"></span>transceiveValue<span class="signature">(valueIndex, value, options, state)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    <h4 class="name" id="transceiveValue"><span class="type-signature"></span>transceiveValue<span class="signature">(valueInfoOrIndex, value, options, state)</span><span class="type-signature"> &rarr; {object}</span></h4>
     
     
 </dt>
@@ -2332,7 +2496,33 @@ timeouts, retries etc.</p>
 
         <tr>
             
-                <td class="name"><code>valueIndex</code></td>
+                <td class="name"><code>valueInfoOrIndex</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Value info object or value index</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>valueInfo.valueIndex</code></td>
             
 
             <td class="type">
@@ -2349,6 +2539,29 @@ timeouts, retries etc.</p>
             
 
             <td class="description last"><p>Value index</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>valueInfo.valueIdHash</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Value ID hash</p></td>
         </tr>
 
 	
@@ -2618,7 +2831,7 @@ timeouts, retries etc.</p>
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a>
-		on Sat Apr 25 2015 17:16:10 GMT+0200 (CEST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Thu Jan 28 2016 18:45:29 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>

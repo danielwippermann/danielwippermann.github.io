@@ -160,6 +160,14 @@
 							<a href="global.html#extend">extend</a>
 						</li>
 						
+						<li>
+							<a href="global.html#getOptimizerOptions">getOptimizerOptions</a>
+						</li>
+						
+						<li>
+							<a href="global.html#matchOptimizer">matchOptimizer</a>
+						</li>
+						
 
 					</ul>
 				</li>
@@ -268,17 +276,19 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
         _.extend(this, _.pick(options, optionKeys));
     },
 
-    loadConfiguration: function(configuration, options) {
+    /**
+     * Load a set of configuration values from a device.
+     *
+     * See {@link Customizer#loadConfiguration} for details.
+     */
+    _loadConfiguration: function(configuration, options) {
         var _this = this;
 
         options = _.defaults({}, options, {
-            optimize: true,
             action: 'get',
         });
 
         return Q.fcall(function() {
-            return _this._completeConfiguration(configuration);
-        }).then(function(configuration) {
             var callback = function(config, round) {
                 if (options.optimize) {
                     return _this._optimizeLoadConfiguration(config);
@@ -299,11 +309,15 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
         });
     },
 
-    saveConfiguration: function(newConfiguration, oldConfigurstion, options) {
+    /**
+     * Save a set of configuration values to a device.
+     *
+     * See {@link Customizer#saveConfiguration} for details.
+     */
+    _saveConfiguration: function(newConfiguration, oldConfigurstion, options) {
         var _this = this;
 
         options = _.defaults({}, options, {
-            optimize: true,
             action: 'set',
             actionOptions: {
                 save: true,
@@ -311,8 +325,6 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
         });
 
         return Q.fcall(function() {
-            return _this._completeConfiguration(newConfiguration);
-        }).then(function(newConfiguration) {
             var callback = function(config, round) {
                 if (options.optimize) {
                     if (round === 1) {
@@ -425,7 +437,7 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
                                 var valueInfo = pendingValues [index++];
 
                                 Q.fcall(check).then(function() {
-                                    return _this.transceiveValue(valueInfo.valueIndex, valueInfo.value, {
+                                    return _this.transceiveValue(valueInfo, valueInfo.value, {
                                         triesPerValue: options.triesPerValue,
                                         timeoutPerValue: options.timeoutPerValue,
                                         action: options.action,
@@ -434,6 +446,7 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
                                         progress = _.extend({}, progress, {
                                             valueId: valueInfo.valueId,
                                             valueIndex: valueInfo.valueIndex,
+                                            valueIdHash: valueInfo.valueIdHash,
                                             valueNr: index,
                                             valueCount: pendingValues.length,
                                         });
@@ -482,7 +495,9 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
      * Transceive a controller value over this connection, handling
      * timeouts, retries etc.
      *
-     * @param {number} valueIndex Value index
+     * @param {object|number} valueInfoOrIndex Value info object or value index
+     * @param {number} valueInfo.valueIndex Value index
+     * @param {number} valueInfo.valueIdHash Value ID hash
      * @param {number} value Value
      * @param {object} options Options
      * @param {number} options.triesPerValue {@link ConnectionCustomizer#triesPerValue}
@@ -491,7 +506,13 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
      * @param {object} state State to share between multiple calls to this method.
      * @returns {object} Promise that resolves with the datagram received or `null` on timeout.
      */
-    transceiveValue: function(valueIndex, value, options, state) {
+    transceiveValue: function(valueInfo, value, options, state) {
+        if (!_.isObject(valueInfo)) {
+            valueInfo = {
+                valueIndex: valueInfo,
+            };
+        }
+
         if (state === undefined) {
             state = {};
         }
@@ -548,7 +569,8 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
                 notify({
                     message: message,
                     tries: tries,
-                    valueIndex: valueIndex,
+                    valueIndex: valueInfo.valueIndex,
+                    valueInfo: valueInfo,
                 });
             };
 
@@ -604,14 +626,34 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
                             state.masterLastContacted = Date.now();
                         }
 
-                        if (options.action === 'get') {
+                        if (_.isNumber(valueInfo.valueIndex)) {
+                            // nop
+                        } else if (_.isNumber(valueInfo.valueIdHash)) {
+                            reportProgress('LOOKING_UP_VALUE');
+
+                            return Q.fcall(function() {
+                                return connection.getValueIdByIdHash(address, valueInfo.valueIdHash, options.actionOptions);
+                            }).then(function(datagram) {
+                                if (datagram &amp;&amp; datagram.valueId) {
+                                    valueInfo.valueIndex = datagram.valueId;
+                                }
+                            });
+                        }
+                    }).then(check).then(function() {
+                        if (state.masterAddress === address) {
+                            state.masterLastContacted = Date.now();
+                        }
+
+                        if (!_.isNumber(valueInfo.valueIndex)) {
+                            return null;
+                        } else if (options.action === 'get') {
                             reportProgress('GETTING_VALUE');
 
-                            return connection.getValueById(address, valueIndex, options.actionOptions);
+                            return connection.getValueById(address, valueInfo.valueIndex, options.actionOptions);
                         } else if (options.action === 'set') {
                             reportProgress('SETTING_VALUE');
 
-                            return connection.setValueById(address, valueIndex, value, options.actionOptions);
+                            return connection.setValueById(address, valueInfo.valueIndex, value, options.actionOptions);
                         } else {
                             throw new Error('Unknown action "' + options.action + '"');
                         }
@@ -663,7 +705,7 @@ module.exports = ConnectionCustomizer;
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a>
-		on Sat Apr 25 2015 17:16:10 GMT+0200 (CEST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Thu Jan 28 2016 18:45:29 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>

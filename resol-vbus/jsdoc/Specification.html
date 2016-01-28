@@ -160,6 +160,14 @@
 							<a href="global.html#extend">extend</a>
 						</li>
 						
+						<li>
+							<a href="global.html#getOptimizerOptions">getOptimizerOptions</a>
+						</li>
+						
+						<li>
+							<a href="global.html#matchOptimizer">matchOptimizer</a>
+						</li>
+						
 
 					</ul>
 				</li>
@@ -589,6 +597,60 @@
 <dd>
     
     <div class="description">
+        <p>Gets the PacketSpecification object matching the given packet.</p>
+    </div>
+    
+    
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="specification.js.html">specification.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="specificationData"><span class="type-signature"></span>specificationData<span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
         <p>Gets the PacketFieldSpecification object matching the given arguments.</p>
     </div>
     
@@ -653,60 +715,6 @@ undefined
 ></pre>
 
 
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="specificationData"><span class="type-signature"></span>specificationData<span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>Gets the PacketSpecification object matching the given packet.</p>
-    </div>
-    
-    
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="specification.js.html">specification.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
     
 </dd>
 
@@ -1198,6 +1206,429 @@ undefined
 ></pre>
 
 
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getBlockTypeFieldsForSections"><span class="type-signature"></span>getBlockTypeFieldsForSections<span class="signature">(sections)</span><span class="type-signature"> &rarr; {PacketField[]}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Gets an array of PacketField objects for the provided BlockTypeSection objects.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>sections</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">BlockTypeSection[]</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Array of BlockTypeSection objects.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="specification.js.html">specification.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Array of PacketField objects</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">PacketField[]</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getBlockTypePacketSpecificationsForSections"><span class="type-signature"></span>getBlockTypePacketSpecificationsForSections<span class="signature">(sections)</span><span class="type-signature"> &rarr; {PacketSpecification[]}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Gets the PacketSpecification objects matching the given BlockTypeSection objects.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>sections</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">BlockTypeSection[]</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Array of BlockTypeSection objects</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="specification.js.html">specification.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Array of PacketSpecificationObjects</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">PacketSpecification[]</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getBlockTypeSectionsForHeaders"><span class="type-signature"></span>getBlockTypeSectionsForHeaders<span class="signature">(headers)</span><span class="type-signature"> &rarr; {BlockTypeSection[]}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Gets an array of BlockType sections from a collection of headers.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>headers</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Header[]</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Array of Header objects</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="specification.js.html">specification.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Array of BlockTypeSection objects</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">BlockTypeSection[]</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
     
 </dd>
 
@@ -1779,186 +2210,6 @@ undefined
         
             
 <dt>
-    <h4 class="name" id="getPacketSpecification"><span class="type-signature"></span>getPacketSpecification<span class="signature">(packetSpecId)</span><span class="type-signature"> &rarr; {<a href="global.html#PacketSpecification">PacketSpecification</a>}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Gets the PacketSpecification object matching the given arguments.</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>packetSpecId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>PacketSpecification identifier</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-    
-    
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="specification.js.html">specification.js</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>PacketSpecification object</p>
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type"><a href="global.html#PacketSpecification">PacketSpecification</a></span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-        <h5>Example</h5>
-        
-    <pre class="sunlight-highlight-javascript">> console.log(spec.getPacketSpecification('01_0010_7E21_10_0100'));
-{ packetId: '01_0010_7E21_10_0100',
-  packetFields:
-   [ { fieldId: '000_2_0',
-       name: [Object],
-       type: [Object],
-       getRawValue: [Function] },
-     { fieldId: '002_1_0',
-       name: [Object],
-       type: [Object],
-       getRawValue: [Function] } ],
-  channel: 1,
-  destinationAddress: 16,
-  sourceAddress: 32289,
-  protocolVersion: 16,
-  command: 256,
-  info: 0,
-  destinationDevice:
-   { name: 'DFA',
-     deviceId: '01_0010_7E21',
-     channel: 1,
-     selfAddress: 16,
-     peerAddress: 32289,
-     fullName: 'VBus #1: DFA' },
-  sourceDevice:
-   { name: 'DeltaSol MX [Heizkreis #1]',
-     deviceId: '01_7E21_0010',
-     channel: 1,
-     selfAddress: 32289,
-     peerAddress: 16,
-     fullName: 'VBus #1: DeltaSol MX [Heizkreis #1]' },
-  fullName: 'VBus #1: DeltaSol MX [Heizkreis #1]' }
-undefined
-></pre>
-
-
-    
-</dd>
-
-        
-            
-<dt>
     <h4 class="name" id="getPacketSpecification"><span class="type-signature"></span>getPacketSpecification<span class="signature">(channel, destinationAddress, sourceAddress, command)</span><span class="type-signature"> &rarr; {<a href="global.html#PacketSpecification">PacketSpecification</a>}</span></h4>
     
     
@@ -2167,6 +2418,186 @@ undefined
         <h5>Example</h5>
         
     <pre class="sunlight-highlight-javascript">> console.log(spec.getPacketSpecification(1, 0x0010, 0x7E21, 0x0100));
+{ packetId: '01_0010_7E21_10_0100',
+  packetFields:
+   [ { fieldId: '000_2_0',
+       name: [Object],
+       type: [Object],
+       getRawValue: [Function] },
+     { fieldId: '002_1_0',
+       name: [Object],
+       type: [Object],
+       getRawValue: [Function] } ],
+  channel: 1,
+  destinationAddress: 16,
+  sourceAddress: 32289,
+  protocolVersion: 16,
+  command: 256,
+  info: 0,
+  destinationDevice:
+   { name: 'DFA',
+     deviceId: '01_0010_7E21',
+     channel: 1,
+     selfAddress: 16,
+     peerAddress: 32289,
+     fullName: 'VBus #1: DFA' },
+  sourceDevice:
+   { name: 'DeltaSol MX [Heizkreis #1]',
+     deviceId: '01_7E21_0010',
+     channel: 1,
+     selfAddress: 32289,
+     peerAddress: 16,
+     fullName: 'VBus #1: DeltaSol MX [Heizkreis #1]' },
+  fullName: 'VBus #1: DeltaSol MX [Heizkreis #1]' }
+undefined
+></pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getPacketSpecification"><span class="type-signature"></span>getPacketSpecification<span class="signature">(packetSpecId)</span><span class="type-signature"> &rarr; {<a href="global.html#PacketSpecification">PacketSpecification</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Gets the PacketSpecification object matching the given arguments.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>packetSpecId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>PacketSpecification identifier</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="specification.js.html">specification.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>PacketSpecification object</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="global.html#PacketSpecification">PacketSpecification</a></span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">> console.log(spec.getPacketSpecification('01_0010_7E21_10_0100'));
 { packetId: '01_0010_7E21_10_0100',
   packetFields:
    [ { fieldId: '000_2_0',
@@ -2822,7 +3253,7 @@ undefined
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a>
-		on Sat Apr 25 2015 17:16:10 GMT+0200 (CEST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Thu Jan 28 2016 18:45:29 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>

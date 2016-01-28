@@ -160,6 +160,14 @@
 							<a href="global.html#extend">extend</a>
 						</li>
 						
+						<li>
+							<a href="global.html#getOptimizerOptions">getOptimizerOptions</a>
+						</li>
+						
+						<li>
+							<a href="global.html#matchOptimizer">matchOptimizer</a>
+						</li>
+						
 
 					</ul>
 				</li>
@@ -464,6 +472,357 @@
     
 </dd>
 
+        
+            
+<dt>
+    <h4 class="name" id="getOptimizerOptions"><span class="type-signature"></span>getOptimizerOptions<span class="signature">()</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Get an array of possible options for calling this <code>ConfigurationOptimizer</code>'s constructor.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configuration-optimizer.js.html">configuration-optimizer.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>A promise that resolves to an array of constructor options.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Promise</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="matchOptimizer"><span class="type-signature"></span>matchOptimizer<span class="signature">(options)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Find settings for this <code>ConfigurationOptimizer</code>'s constructor that matches the given options best.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Options to look for while searching a matching configuration optimizer.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The identifier for the <code>ConfigurationOptimizer</code>.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>deviceAddress</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The VBus address of the controller.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>version</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The version of the controller.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>customizer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Customizer.html">Customizer</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A <code>Customizer</code> instance to query additional information with.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configuration-optimizer.js.html">configuration-optimizer.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>A Promise that resolves to the best matching optimizer result or <code>null</code> if no match was found.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Promise</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
         </dl>
     
 
@@ -471,6 +830,325 @@
         <h3 class="subsection-title">Type Definitions</h3>
 
         <dl>
+                
+<dt>
+    <h4 class="name" id="BlockTypeSection">BlockTypeSection</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+        <h5 class="subsection-title">Properties:</h5>
+
+        <dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>sectionId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Section identifier</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>surrogatePacketId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Surrogate packet identifier</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>packet</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Packet.html">Packet</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Packet object</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>packetSpec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#PacketSpecification">PacketSpecification</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>PacketSpecification object</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>startOffset</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Offset of section start within Packet frame data</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>endOffset</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Offset of section end within Packet frame data</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Section type</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>payloadCount</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Count of payload elements</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>frameCount</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Count of frames</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>frameData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Buffer</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Frame data</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="specification.js.html">specification.js</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+</dd>
+
+            
                 
 <dt>
     <h4 class="name" id="Configuration">Configuration</h4>
@@ -2530,7 +3208,7 @@
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a>
-		on Sat Apr 25 2015 17:16:10 GMT+0200 (CEST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Thu Jan 28 2016 18:45:29 GMT+0100 (CET) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>
