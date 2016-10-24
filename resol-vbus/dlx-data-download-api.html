@@ -32,7 +32,7 @@
           <ul class="nav navbar-nav">
             <li><a href="index.html">About</a></li>
             <li><a href="tutorials.html">Tutorials</a></li>
-            <li class="active"><a href="docs.html">Documentation</a></li>
+            <li><a href="docs.html">Documentation</a></li>
             <li><a href="examples.html">Examples</a></li>
             <li><a href="support.html">Support</a></li>
   <!--
@@ -134,6 +134,7 @@
         <ul>
           <li><a href="vbus-packets.html">RESOL VBus Packet List</a></li>
           <li><a href="vbus-recording-file-format.html">VBus Recording File Format</a></li>
+          <li><a href="vbus-specification-file-format-v1.html">VBus Spec. File Format v1</a></li>
           <li><a href="vbus-over-tcp.html">VBus Over TCP</a></li>
           <li><a href="dlx-data-download-api.html">DLx Data Download API</a></li>
         </ul>
@@ -146,266 +147,285 @@
 <h4 id="supported-devices">Supported Devices</h4>
 
 <ul>
-<li>RESOL Datalogger DL2 (version 2.0 or higher)</li>
-<li>RESOL Datalogger DL3 (version 2.0 or higher)</li>
+  <li>RESOL Datalogger DL2 (version 2.0 or higher)</li>
+  <li>RESOL Datalogger DL3 (version 2.0 or higher)</li>
 </ul>
 
 <h4 id="common-parameters">Common parameters</h4>
 
 <ul>
-<li><strong>sessionAuthUsername</strong>: user name for web interface access.</li>
-<li><strong>sessionAuthPassword</strong>: password for web interface access.</li>
+  <li><strong>sessionAuthUsername</strong>: user name for web interface access.</li>
+  <li><strong>sessionAuthPassword</strong>: password for web interface access.</li>
 </ul>
 
 <h2 id="get-live-data-as-json">Get live data as JSON</h2>
-<div class="highlight"><pre><code class="language-text" data-lang="text">GET /dlx/download/live
-</code></pre></div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>GET /dlx/download/live
+</code></pre>
+</div>
+
 <h4 id="parameters">Parameters</h4>
 
 <ul>
-<li><strong>channel</strong> (optional): only include data from given channel.</li>
-<li><strong>filter</strong> (optional): the ID of the filter to apply on the data.</li>
-<li><strong>view</strong> (optional): the ID of the view to apply on the data.</li>
+  <li><strong>channel</strong> (optional): only include data from given channel.</li>
+  <li><strong>filter</strong> (optional): the ID of the filter to apply on the data.</li>
+  <li><strong>view</strong> (optional): the ID of the view to apply on the data.</li>
 </ul>
 
 <h4 id="example">Example</h4>
-<div class="highlight"><pre><code class="language-text" data-lang="text">curl &quot;http://$HOST/dlx/download/live?sessionAuthUsername=admin&amp;sessionAuthPassword=admin&quot;
-</code></pre></div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>curl "http://$HOST/dlx/download/live?sessionAuthUsername=admin&amp;sessionAuthPassword=admin"
+</code></pre>
+</div>
+
 <h4 id="success-response">Success Response</h4>
-<div class="highlight"><pre><code class="language-text" data-lang="text">HTTP/1.1 200 OK
+
+<div class="highlighter-rouge"><pre class="highlight"><code>HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    &quot;language&quot;: &quot;de&quot;,
-    &quot;headers&quot;: [{
-        &quot;id&quot;: &quot;00_0010_0053_0100&quot;,
-        &quot;description&quot;: &quot;VBus 0: DL3&quot;,
-        &quot;channel&quot;: 0,
-        &quot;destination_address&quot;: 16,
-        &quot;source_address&quot;: 83,
-        &quot;protocol_version&quot;: 16,
-        &quot;command&quot;: 256,
-        &quot;info&quot;: 0,
-        &quot;destination_name&quot;: &quot;DFA&quot;,
-        &quot;source_name&quot;: &quot;DL3&quot;,
-        &quot;fields&quot;: [{
-            &quot;id&quot;: &quot;000_4_0&quot;,
-            &quot;name&quot;: &quot;Resistor Sensor 1&quot;,
-            &quot;unit&quot;: &quot; Ohm&quot;,
-            &quot;unit_code&quot;: &quot;Ohms&quot;
+    "language": "de",
+    "headers": [{
+        "id": "00_0010_0053_0100",
+        "description": "VBus 0: DL3",
+        "channel": 0,
+        "destination_address": 16,
+        "source_address": 83,
+        "protocol_version": 16,
+        "command": 256,
+        "info": 0,
+        "destination_name": "DFA",
+        "source_name": "DL3",
+        "fields": [{
+            "id": "000_4_0",
+            "name": "Resistor Sensor 1",
+            "unit": " Ohm",
+            "unit_code": "Ohms"
         }, {
-            &quot;id&quot;: &quot;004_4_0&quot;,
-            &quot;name&quot;: &quot;Resistor Sensor 2&quot;,
-            &quot;unit&quot;: &quot; Ohm&quot;,
-            &quot;unit_code&quot;: &quot;Ohms&quot;
+            "id": "004_4_0",
+            "name": "Resistor Sensor 2",
+            "unit": " Ohm",
+            "unit_code": "Ohms"
         }, {
-            &quot;id&quot;: &quot;008_4_0&quot;,
-            &quot;name&quot;: &quot;Resistor Sensor 3&quot;,
-            &quot;unit&quot;: &quot; Ohm&quot;,
-            &quot;unit_code&quot;: &quot;Ohms&quot;
+            "id": "008_4_0",
+            "name": "Resistor Sensor 3",
+            "unit": " Ohm",
+            "unit_code": "Ohms"
         }, {
-            &quot;id&quot;: &quot;012_4_0&quot;,
-            &quot;name&quot;: &quot;Current Sensor 4&quot;,
-            &quot;unit&quot;: &quot; mA&quot;,
-            &quot;unit_code&quot;: &quot;Milliamperes&quot;
+            "id": "012_4_0",
+            "name": "Current Sensor 4",
+            "unit": " mA",
+            "unit_code": "Milliamperes"
         }, {
-            &quot;id&quot;: &quot;034_2_0&quot;,
-            &quot;name&quot;: &quot;Temperature Sensor 1&quot;,
-            &quot;unit&quot;: &quot; \u00B0C&quot;,
-            &quot;unit_code&quot;: &quot;DegreesCelsius&quot;
+            "id": "034_2_0",
+            "name": "Temperature Sensor 1",
+            "unit": " \u00B0C",
+            "unit_code": "DegreesCelsius"
         }, {
-            &quot;id&quot;: &quot;036_2_0&quot;,
-            &quot;name&quot;: &quot;Temperature Sensor 2&quot;,
-            &quot;unit&quot;: &quot; \u00B0C&quot;,
-            &quot;unit_code&quot;: &quot;DegreesCelsius&quot;
+            "id": "036_2_0",
+            "name": "Temperature Sensor 2",
+            "unit": " \u00B0C",
+            "unit_code": "DegreesCelsius"
         }, {
-            &quot;id&quot;: &quot;038_2_0&quot;,
-            &quot;name&quot;: &quot;Temperature Sensor 3&quot;,
-            &quot;unit&quot;: &quot; \u00B0C&quot;,
-            &quot;unit_code&quot;: &quot;DegreesCelsius&quot;
+            "id": "038_2_0",
+            "name": "Temperature Sensor 3",
+            "unit": " \u00B0C",
+            "unit_code": "DegreesCelsius"
         }]
     }],
-    &quot;headerset_stats&quot;: {
-        &quot;headerset_count&quot;: 1,
-        &quot;min_timestamp&quot;: 1385490534.720000,
-        &quot;max_timestamp&quot;: 1385490534.720000
+    "headerset_stats": {
+        "headerset_count": 1,
+        "min_timestamp": 1385490534.720000,
+        "max_timestamp": 1385490534.720000
     },
-    &quot;headersets&quot;: [{
-        &quot;timestamp&quot;: 1385490534.720000,
-        &quot;packets&quot;: [{
-            &quot;header_index&quot;: 0,
-            &quot;timestamp&quot;: 1385490534.606000,
-            &quot;field_values&quot;: [{
-                &quot;field_index&quot;: 0,
-                &quot;raw_value&quot;: 994.973000,
-                &quot;value&quot;: &quot;994.973&quot;
+    "headersets": [{
+        "timestamp": 1385490534.720000,
+        "packets": [{
+            "header_index": 0,
+            "timestamp": 1385490534.606000,
+            "field_values": [{
+                "field_index": 0,
+                "raw_value": 994.973000,
+                "value": "994.973"
             }, {
-                &quot;field_index&quot;: 1,
-                &quot;raw_value&quot;: 1072.768000,
-                &quot;value&quot;: &quot;1072.768&quot;
+                "field_index": 1,
+                "raw_value": 1072.768000,
+                "value": "1072.768"
             }, {
-                &quot;field_index&quot;: 2,
-                &quot;raw_value&quot;: 1078.975000,
-                &quot;value&quot;: &quot;1078.975&quot;
+                "field_index": 2,
+                "raw_value": 1078.975000,
+                "value": "1078.975"
             }, {
-                &quot;field_index&quot;: 3,
-                &quot;raw_value&quot;: 3.990000,
-                &quot;value&quot;: &quot;3.990&quot;
+                "field_index": 3,
+                "raw_value": 3.990000,
+                "value": "3.990"
             }, {
-                &quot;field_index&quot;: 4,
-                &quot;raw_value&quot;: -1.200000,
-                &quot;value&quot;: &quot;-1.2&quot;
+                "field_index": 4,
+                "raw_value": -1.200000,
+                "value": "-1.2"
             }, {
-                &quot;field_index&quot;: 5,
-                &quot;raw_value&quot;: 18.600000,
-                &quot;value&quot;: &quot;18.6&quot;
+                "field_index": 5,
+                "raw_value": 18.600000,
+                "value": "18.6"
             }, {
-                &quot;field_index&quot;: 6,
-                &quot;raw_value&quot;: 20.200000,
-                &quot;value&quot;: &quot;20.2&quot;
+                "field_index": 6,
+                "raw_value": 20.200000,
+                "value": "20.2"
             }]
         }]
     }]
 }
-</code></pre></div>
-<h4 id="failure-responses-(http-status-code-500)">Failure responses (HTTP status code 500)</h4>
+</code></pre>
+</div>
+
+<h4 id="failure-responses-http-status-code-500">Failure responses (HTTP status code 500)</h4>
 
 <ul>
-<li><strong>InvalidFilterID</strong>: the value of the <code>filter</code> parameter was invalid.</li>
-<li><strong>InvalidViewID</strong>: the value of the <code>view</code> parameter was invalid.</li>
+  <li><strong>InvalidFilterID</strong>: the value of the <code class="highlighter-rouge">filter</code> parameter was invalid.</li>
+  <li><strong>InvalidViewID</strong>: the value of the <code class="highlighter-rouge">view</code> parameter was invalid.</li>
 </ul>
 
 <h2 id="download-data">Download data</h2>
-<div class="highlight"><pre><code class="language-text" data-lang="text">GET /dlx/download/download
-</code></pre></div>
-<h4 id="parameters">Parameters</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>GET /dlx/download/download
+</code></pre>
+</div>
+
+<h4 id="parameters-1">Parameters</h4>
 
 <ul>
-<li><strong>source</strong> (default <code>log</code>): source of the data (can be <code>log</code> for recorded data or <code>current</code> for live data).</li>
-<li><strong>inputType</strong> (default <code>packets</code>): type of data to read from the source (can be <code>packets</code> for VBus v1 packets).</li>
-<li><strong>outputType</strong> (default <code>text-tab-crlf</code>): output file format of the download. Can be:
-
-<ul>
-<li><strong>text-tab-crlf</strong>: Tab separated text file with CR+LF line endings (Windows).</li>
-<li><strong>text-tab-lf</strong>: Tab separated text file with LF line endings (Linux / OSX).</li>
-<li><strong>text-csv-crlf</strong>: Semicolon separated text file with CR+LF line endings (Windows).</li>
-<li><strong>text-csv-lf</strong>: Semicolon separated text file with LF line endings (Linux / OSX).</li>
-<li><strong>json</strong>: JSON encoded text file.</li>
-<li><strong>vbus</strong>: Binary file conforming to VBus Recording File Format.</li>
-</ul></li>
-<li><strong>sieveInterval</strong> (optional): allows filtering the data to be downloaded by specifying an interval in seconds that should be kept between two data records. For example: the DL2 could be configured to store data every 10 seconds, but you can download a file only containing hourly records by specifying <code>3600</code> here.</li>
-<li><strong>ttl</strong> (optional): time-to-live in seconds. Records that have not been refreshed in this time are no longer included in the output.</li>
-<li><strong>startDate</strong> (optional): start date in <code>MM/DD/YYYY</code> format.</li>
-<li><strong>endDate</strong> (optional): end date in <code>MM/DD/YYYY</code> format.</li>
-<li><strong>dataLanguage</strong> (optional): language code (ISO 639-1) to use for the text conversion.</li>
-<li><strong>filter</strong> (optional): the ID of the filter to apply on the data.</li>
+  <li><strong>source</strong> (default <code class="highlighter-rouge">log</code>): source of the data (can be <code class="highlighter-rouge">log</code> for recorded data or <code class="highlighter-rouge">current</code> for live data).</li>
+  <li><strong>inputType</strong> (default <code class="highlighter-rouge">packets</code>): type of data to read from the source (can be <code class="highlighter-rouge">packets</code> for VBus v1 packets).</li>
+  <li><strong>outputType</strong> (default <code class="highlighter-rouge">text-tab-crlf</code>): output file format of the download. Can be:
+    <ul>
+      <li><strong>text-tab-crlf</strong>: Tab separated text file with CR+LF line endings (Windows).</li>
+      <li><strong>text-tab-lf</strong>: Tab separated text file with LF line endings (Linux / OSX).</li>
+      <li><strong>text-csv-crlf</strong>: Semicolon separated text file with CR+LF line endings (Windows).</li>
+      <li><strong>text-csv-lf</strong>: Semicolon separated text file with LF line endings (Linux / OSX).</li>
+      <li><strong>json</strong>: JSON encoded text file.</li>
+      <li><strong>vbus</strong>: Binary file conforming to VBus Recording File Format.</li>
+    </ul>
+  </li>
+  <li><strong>sieveInterval</strong> (optional): allows filtering the data to be downloaded by specifying an interval in seconds that should be kept between two data records. For example: the DL2 could be configured to store data every 10 seconds, but you can download a file only containing hourly records by specifying <code class="highlighter-rouge">3600</code> here.</li>
+  <li><strong>ttl</strong> (optional): time-to-live in seconds. Records that have not been refreshed in this time are no longer included in the output.</li>
+  <li><strong>startDate</strong> (optional): start date in <code class="highlighter-rouge">MM/DD/YYYY</code> format.</li>
+  <li><strong>endDate</strong> (optional): end date in <code class="highlighter-rouge">MM/DD/YYYY</code> format.</li>
+  <li><strong>dataLanguage</strong> (optional): language code (ISO 639-1) to use for the text conversion.</li>
+  <li><strong>filter</strong> (optional): the ID of the filter to apply on the data.</li>
 </ul>
 
-<h4 id="example">Example</h4>
-<div class="highlight"><pre><code class="language-text" data-lang="text">curl &quot;http://$HOST/dlx/download/live?sessionAuthUsername=admin&amp;sessionAuthPassword=admin&amp;outputType=json&amp;source=current&quot;
-</code></pre></div>
+<h4 id="example-1">Example</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>curl "http://$HOST/dlx/download/live?sessionAuthUsername=admin&amp;sessionAuthPassword=admin&amp;outputType=json&amp;source=current"
+</code></pre>
+</div>
+
 <h4 id="sucess-response">Sucess Response</h4>
-<div class="highlight"><pre><code class="language-text" data-lang="text">HTTP/1.1 200 OK
+
+<div class="highlighter-rouge"><pre class="highlight"><code>HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    &quot;language&quot;: &quot;de&quot;,
-    &quot;headers&quot;: [{
-        &quot;id&quot;: &quot;00_0010_0053_0100&quot;,
-        &quot;description&quot;: &quot;VBus 0: DL3&quot;,
-        &quot;channel&quot;: 0,
-        &quot;destination_address&quot;: 16,
-        &quot;source_address&quot;: 83,
-        &quot;protocol_version&quot;: 16,
-        &quot;command&quot;: 256,
-        &quot;info&quot;: 0,
-        &quot;destination_name&quot;: &quot;DFA&quot;,
-        &quot;source_name&quot;: &quot;DL3&quot;,
-        &quot;fields&quot;: [{
-            &quot;id&quot;: &quot;000_4_0&quot;,
-            &quot;name&quot;: &quot;Resistor Sensor 1&quot;,
-            &quot;unit&quot;: &quot; Ohm&quot;,
-            &quot;unit_code&quot;: &quot;Ohms&quot;
+    "language": "de",
+    "headers": [{
+        "id": "00_0010_0053_0100",
+        "description": "VBus 0: DL3",
+        "channel": 0,
+        "destination_address": 16,
+        "source_address": 83,
+        "protocol_version": 16,
+        "command": 256,
+        "info": 0,
+        "destination_name": "DFA",
+        "source_name": "DL3",
+        "fields": [{
+            "id": "000_4_0",
+            "name": "Resistor Sensor 1",
+            "unit": " Ohm",
+            "unit_code": "Ohms"
         }, {
-            &quot;id&quot;: &quot;004_4_0&quot;,
-            &quot;name&quot;: &quot;Resistor Sensor 2&quot;,
-            &quot;unit&quot;: &quot; Ohm&quot;,
-            &quot;unit_code&quot;: &quot;Ohms&quot;
+            "id": "004_4_0",
+            "name": "Resistor Sensor 2",
+            "unit": " Ohm",
+            "unit_code": "Ohms"
         }, {
-            &quot;id&quot;: &quot;008_4_0&quot;,
-            &quot;name&quot;: &quot;Resistor Sensor 3&quot;,
-            &quot;unit&quot;: &quot; Ohm&quot;,
-            &quot;unit_code&quot;: &quot;Ohms&quot;
+            "id": "008_4_0",
+            "name": "Resistor Sensor 3",
+            "unit": " Ohm",
+            "unit_code": "Ohms"
         }, {
-            &quot;id&quot;: &quot;012_4_0&quot;,
-            &quot;name&quot;: &quot;Current Sensor 4&quot;,
-            &quot;unit&quot;: &quot; mA&quot;,
-            &quot;unit_code&quot;: &quot;Milliamperes&quot;
+            "id": "012_4_0",
+            "name": "Current Sensor 4",
+            "unit": " mA",
+            "unit_code": "Milliamperes"
         }, {
-            &quot;id&quot;: &quot;034_2_0&quot;,
-            &quot;name&quot;: &quot;Temperature Sensor 1&quot;,
-            &quot;unit&quot;: &quot; \u00B0C&quot;,
-            &quot;unit_code&quot;: &quot;DegreesCelsius&quot;
+            "id": "034_2_0",
+            "name": "Temperature Sensor 1",
+            "unit": " \u00B0C",
+            "unit_code": "DegreesCelsius"
         }, {
-            &quot;id&quot;: &quot;036_2_0&quot;,
-            &quot;name&quot;: &quot;Temperature Sensor 2&quot;,
-            &quot;unit&quot;: &quot; \u00B0C&quot;,
-            &quot;unit_code&quot;: &quot;DegreesCelsius&quot;
+            "id": "036_2_0",
+            "name": "Temperature Sensor 2",
+            "unit": " \u00B0C",
+            "unit_code": "DegreesCelsius"
         }, {
-            &quot;id&quot;: &quot;038_2_0&quot;,
-            &quot;name&quot;: &quot;Temperature Sensor 3&quot;,
-            &quot;unit&quot;: &quot; \u00B0C&quot;,
-            &quot;unit_code&quot;: &quot;DegreesCelsius&quot;
+            "id": "038_2_0",
+            "name": "Temperature Sensor 3",
+            "unit": " \u00B0C",
+            "unit_code": "DegreesCelsius"
         }]
     }],
-    &quot;headerset_stats&quot;: {
-        &quot;headerset_count&quot;: 1,
-        &quot;min_timestamp&quot;: 1385490534.720000,
-        &quot;max_timestamp&quot;: 1385490534.720000
+    "headerset_stats": {
+        "headerset_count": 1,
+        "min_timestamp": 1385490534.720000,
+        "max_timestamp": 1385490534.720000
     },
-    &quot;headersets&quot;: [{
-        &quot;timestamp&quot;: 1385490534.720000,
-        &quot;packets&quot;: [{
-            &quot;header_index&quot;: 0,
-            &quot;timestamp&quot;: 1385490534.606000,
-            &quot;field_values&quot;: [{
-                &quot;field_index&quot;: 0,
-                &quot;raw_value&quot;: 994.973000,
-                &quot;value&quot;: &quot;994.973&quot;
+    "headersets": [{
+        "timestamp": 1385490534.720000,
+        "packets": [{
+            "header_index": 0,
+            "timestamp": 1385490534.606000,
+            "field_values": [{
+                "field_index": 0,
+                "raw_value": 994.973000,
+                "value": "994.973"
             }, {
-                &quot;field_index&quot;: 1,
-                &quot;raw_value&quot;: 1072.768000,
-                &quot;value&quot;: &quot;1072.768&quot;
+                "field_index": 1,
+                "raw_value": 1072.768000,
+                "value": "1072.768"
             }, {
-                &quot;field_index&quot;: 2,
-                &quot;raw_value&quot;: 1078.975000,
-                &quot;value&quot;: &quot;1078.975&quot;
+                "field_index": 2,
+                "raw_value": 1078.975000,
+                "value": "1078.975"
             }, {
-                &quot;field_index&quot;: 3,
-                &quot;raw_value&quot;: 3.990000,
-                &quot;value&quot;: &quot;3.990&quot;
+                "field_index": 3,
+                "raw_value": 3.990000,
+                "value": "3.990"
             }, {
-                &quot;field_index&quot;: 4,
-                &quot;raw_value&quot;: -1.200000,
-                &quot;value&quot;: &quot;-1.2&quot;
+                "field_index": 4,
+                "raw_value": -1.200000,
+                "value": "-1.2"
             }, {
-                &quot;field_index&quot;: 5,
-                &quot;raw_value&quot;: 18.600000,
-                &quot;value&quot;: &quot;18.6&quot;
+                "field_index": 5,
+                "raw_value": 18.600000,
+                "value": "18.6"
             }, {
-                &quot;field_index&quot;: 6,
-                &quot;raw_value&quot;: 20.200000,
-                &quot;value&quot;: &quot;20.2&quot;
+                "field_index": 6,
+                "raw_value": 20.200000,
+                "value": "20.2"
             }]
         }]
     }]
 }
-</code></pre></div>
-<h4 id="failure-responses-(http-status-code-500)">Failure responses (HTTP status code 500)</h4>
+</code></pre>
+</div>
+
+<h4 id="failure-responses-http-status-code-500-1">Failure responses (HTTP status code 500)</h4>
 
 <ul>
-<li><strong>InvalidFilterID</strong>: the value of the <code>filter</code> parameter was invalid.</li>
+  <li><strong>InvalidFilterID</strong>: the value of the <code class="highlighter-rouge">filter</code> parameter was invalid.</li>
 </ul>
+
 
     </div>
   </div>

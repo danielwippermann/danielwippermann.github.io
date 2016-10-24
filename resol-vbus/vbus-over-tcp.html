@@ -32,7 +32,7 @@
           <ul class="nav navbar-nav">
             <li><a href="index.html">About</a></li>
             <li><a href="tutorials.html">Tutorials</a></li>
-            <li class="active"><a href="docs.html">Documentation</a></li>
+            <li><a href="docs.html">Documentation</a></li>
             <li><a href="examples.html">Examples</a></li>
             <li><a href="support.html">Support</a></li>
   <!--
@@ -134,6 +134,7 @@
         <ul>
           <li><a href="vbus-packets.html">RESOL VBus Packet List</a></li>
           <li><a href="vbus-recording-file-format.html">VBus Recording File Format</a></li>
+          <li><a href="vbus-specification-file-format-v1.html">VBus Spec. File Format v1</a></li>
           <li><a href="vbus-over-tcp.html">VBus Over TCP</a></li>
           <li><a href="dlx-data-download-api.html">DLx Data Download API</a></li>
         </ul>
@@ -145,14 +146,15 @@
 
 <p>All devices mentioned above listen for incoming connections on TCP port 7053. When this port is connected the devices send the characters “+HELLO” followed by the ASCII characters for CR and LF (decimal 13 and 10) to the remote side. The devices will then enter the command mode and wait for incoming commands (listed below), which must be terminated by CR and LF as well.</p>
 
-<p>After each command the devices send an acknowledge message back to the remote side. These acknowledges either start with a &quot;*&quot; character (identifying result payload of the command), “+” character (command executed successfully) or a “-” character (command failed).</p>
+<p>After each command the devices send an acknowledge message back to the remote side. These acknowledges either start with a “*” character (identifying result payload of the command), “+” character (command executed successfully) or a “-” character (command failed).</p>
 
 <p>To get access to the VBus data itself the remote side has to send a command to switch from command to data mode. Once the connection entered data mode, it cannot go back into command mode. In order to do so the remote side has to establish another connection to the device.</p>
 
 <p>A sample session (using telnet) might look like this:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">⌘  telnet vbus.net 7053
+
+<div class="highlighter-rouge"><pre class="highlight"><code>⌘  telnet vbus.net 7053
 Connected to vbus.net.
-Escape character is &#39;^]&#39;.
+Escape character is '^]'.
 +HELLO This is VBus.net on behalf of all its devices, welcome, stranger!
 CONNECT mydatalogger
 +OK: Connection established
@@ -168,34 +170,49 @@ CHANNEL 1
 DATA
 +OK: Data incoming...
 &lt;binary VBus data according to VBus protocol specification&gt;
-</code></pre></div>
+</code></pre>
+</div>
+
 <h2 id="commands">Commands</h2>
 
 <ul>
-<li><p><strong>CONNECT &lt;via tag&gt;</strong></p>
+  <li>
+    <p><strong>CONNECT &lt;via tag&gt;</strong></p>
 
-<p>(VBus.net only) Select the VBus.net connected logger by its via tag.</p></li>
-<li><p><strong>PASS &lt;password&gt;</strong></p>
+    <p>(VBus.net only) Select the VBus.net connected logger by its via tag.</p>
+  </li>
+  <li>
+    <p><strong>PASS &lt;password&gt;</strong></p>
 
-<p>Submits the password needed to switch to data mode. You can configure the
-password in the web interface of the device, it defaults to “vbus”.</p></li>
-<li><p><strong>CHANNELLIST</strong></p>
+    <p>Submits the password needed to switch to data mode. You can configure the
+  password in the web interface of the device, it defaults to “vbus”.</p>
+  </li>
+  <li>
+    <p><strong>CHANNELLIST</strong></p>
 
-<p>(DL3 only) Sends payload back containing a list of used VBus channels
-on this DL3.</p></li>
-<li><p><strong>CHANNEL &lt;channel number&gt;</strong></p>
+    <p>(DL3 only) Sends payload back containing a list of used VBus channels
+  on this DL3.</p>
+  </li>
+  <li>
+    <p><strong>CHANNEL &lt;channel number&gt;</strong></p>
 
-<p>(DL3 only) Select the VBus channel to connect to. This command is only
-supported by the DL3 which has up to six independent VBus channels.</p></li>
-<li><p><strong>QUIT</strong></p>
+    <p>(DL3 only) Select the VBus channel to connect to. This command is only
+  supported by the DL3 which has up to six independent VBus channels.</p>
+  </li>
+  <li>
+    <p><strong>QUIT</strong></p>
 
-<p>Disconnects the remote side.</p></li>
-<li><p><strong>DATA</strong></p>
+    <p>Disconnects the remote side.</p>
+  </li>
+  <li>
+    <p><strong>DATA</strong></p>
 
-<p>Switches from command to data mode. After the acknowledgement line the
-remote side will receive raw VBus data according to the VBus protocol
-specification.</p></li>
+    <p>Switches from command to data mode. After the acknowledgement line the
+  remote side will receive raw VBus data according to the VBus protocol
+  specification.</p>
+  </li>
 </ul>
+
 
     </div>
   </div>

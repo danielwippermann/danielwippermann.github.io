@@ -30,7 +30,7 @@
         </div>
         <div class="navbar-collapse collapse navbar-inverse-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">About</a></li>
+            <li><a href="index.html">About</a></li>
             <li><a href="tutorials.html">Tutorials</a></li>
             <li><a href="docs.html">Documentation</a></li>
             <li><a href="examples.html">Examples</a></li>
@@ -81,26 +81,26 @@
     <div class="col-sm-12">
       <h1 id="resol-vbus">resol-vbus</h1>
 
-<h4 id="a-javascript-library-for-processing-resol-vbus-data.">A JavaScript library for processing RESOL VBus data.</h4>
+<h4 id="a-javascript-library-for-processing-resol-vbus-data">A JavaScript library for processing RESOL VBus data.</h4>
 
-<iframe src="http://ghbtns.com/github-btn.html?user=danielwippermann&repo=resol-vbus&type=watch&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="77" height="30"></iframe>
+<iframe src="http://ghbtns.com/github-btn.html?user=danielwippermann&amp;repo=resol-vbus&amp;type=watch&amp;size=large" allowtransparency="true" frameborder="0" scrolling="0" width="77" height="30"></iframe>
 
-<p><a href="https://npmjs.org/package/resol-vbus"><img src="https://img.shields.io/npm/v/resol-vbus.svg" alt="NPM version"></a>
-<a href="https://travis-ci.org/danielwippermann/resol-vbus"><img src="https://img.shields.io/travis/danielwippermann/resol-vbus.svg" alt="Build Status"></a>
-<a href="https://coveralls.io/r/danielwippermann/resol-vbus"><img src="https://img.shields.io/coveralls/danielwippermann/resol-vbus.svg" alt="Coverage Status"></a>
-<a href="https://david-dm.org/danielwippermann/resol-vbus"><img src="https://img.shields.io/david/danielwippermann/resol-vbus.svg" alt="Dependency Status"></a>
-<a href="https://david-dm.org/danielwippermann/resol-vbus#info=devDependencies"><img src="https://img.shields.io/david/dev/danielwippermann/resol-vbus.svg" alt="devDependency Status"></a>
-<a href="http://opensource.org/licenses/MIT"><img src="https://img.shields.io/npm/l/resol-vbus.svg" alt="License"></a></p>
+<p><a href="https://npmjs.org/package/resol-vbus"><img src="https://img.shields.io/npm/v/resol-vbus.svg" alt="NPM version" /></a>
+<a href="https://travis-ci.org/danielwippermann/resol-vbus"><img src="https://img.shields.io/travis/danielwippermann/resol-vbus.svg" alt="Build Status" /></a>
+<a href="https://coveralls.io/r/danielwippermann/resol-vbus"><img src="https://img.shields.io/coveralls/danielwippermann/resol-vbus.svg" alt="Coverage Status" /></a>
+<a href="https://david-dm.org/danielwippermann/resol-vbus"><img src="https://img.shields.io/david/danielwippermann/resol-vbus.svg" alt="Dependency Status" /></a>
+<a href="https://david-dm.org/danielwippermann/resol-vbus#info=devDependencies"><img src="https://img.shields.io/david/dev/danielwippermann/resol-vbus.svg" alt="devDependency Status" /></a>
+<a href="http://opensource.org/licenses/MIT"><img src="https://img.shields.io/npm/l/resol-vbus.svg" alt="License" /></a></p>
 
 <h2 id="features">Features</h2>
 
 <ul>
-<li>Connects to various RESOL VBus devices</li>
-<li>Processes live and recorded VBus data streams</li>
-<li>Discovers LAN-enabled RESOL devices on the local network</li>
-<li>Allows to send parameterization commands to a controller</li>
-<li>Synchronizes recorded VBus data from a RESOL datalogger to your local file system</li>
-<li>Converts recorded VBus data into human or machine readable formats, optionally allowing to filter the output</li>
+  <li>Connects to various RESOL VBus devices</li>
+  <li>Processes live and recorded VBus data streams</li>
+  <li>Discovers LAN-enabled RESOL devices on the local network</li>
+  <li>Allows to send parameterization commands to a controller</li>
+  <li>Synchronizes recorded VBus data from a RESOL datalogger to your local file system</li>
+  <li>Converts recorded VBus data into human or machine readable formats, optionally allowing to filter the output</li>
 </ul>
 
 <h2 id="documentation">Documentation</h2>
@@ -116,134 +116,168 @@
 <h2 id="installation">Installation</h2>
 
 <p>If you want to use this module in your own application, you can just install it from the npm registry:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">⌘  npm install --save resol-vbus
-</code></pre></div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>⌘  npm install --save resol-vbus
+</code></pre>
+</div>
+
 <p>If you want to contribute to it you might want to check out the latest version from GitHub:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">⌘  git clone https://github.com/danielwippermann/resol-vbus.git
+
+<div class="highlighter-rouge"><pre class="highlight"><code>⌘  git clone https://github.com/danielwippermann/resol-vbus.git
 ⌘  cd resol-vbus
 ⌘  npm install
-</code></pre></div>
+</code></pre>
+</div>
+
 <h2 id="running-the-console-examples">Running the console examples</h2>
-<div class="highlight"><pre><code class="language-text" data-lang="text">⌘  node examples/&lt;name&gt;/index.js
-</code></pre></div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>⌘  node examples/&lt;name&gt;/index.js
+</code></pre>
+</div>
+
 <h2 id="running-the-tests">Running the tests</h2>
 
 <p>To start a single run of the test suite just enter the following command
 into your shell:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">⌘  gulp
-</code></pre></div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>⌘  gulp
+</code></pre>
+</div>
+
 <p>In addition to that the project is configured to watch its own files for
 modification and rerun the documentation generator and test suite every
 time you hit save on a file. To run that just enter the following command
 into your shell:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">⌘  gulp watch
-</code></pre></div>
-<h2 id="supported-devices-&amp;-services">Supported Devices &amp; Services</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>⌘  gulp watch
+</code></pre>
+</div>
+
+<h2 id="supported-devices--services">Supported Devices &amp; Services</h2>
 
 <ul>
-<li><a href="http://www.resol.de/index/produkte/sprache/en">All current RESOL controllers with VBus</a></li>
-<li><a href="http://www.resol.de/index/produktdetail/kategorie/2/sprache/en/id/12">RESOL DL2 Datalogger</a></li>
-<li><a href="http://www.resol.de/index/produktdetail/kategorie/2/sprache/en/id/86">RESOL DL3 Datalogger</a></li>
-<li><a href="http://www.resol.de/index/produktdetail/kategorie/2/id/76/sprache/en">RESOL VBus/LAN interface adapter</a></li>
-<li><a href="http://www.resol.de/index/produktdetail/kategorie/2/id/13/sprache/en">RESOL VBus/USB interface adapter</a></li>
-<li><a href="http://www.vbus.net/">RESOL VBus.net</a></li>
+  <li><a href="http://www.resol.de/index/produkte/sprache/en">All current RESOL controllers with VBus</a></li>
+  <li><a href="http://www.resol.de/index/produktdetail/kategorie/2/sprache/en/id/12">RESOL DL2 Datalogger</a></li>
+  <li><a href="http://www.resol.de/index/produktdetail/kategorie/2/sprache/en/id/86">RESOL DL3 Datalogger</a></li>
+  <li><a href="http://www.resol.de/index/produktdetail/kategorie/2/id/76/sprache/en">RESOL VBus/LAN interface adapter</a></li>
+  <li><a href="http://www.resol.de/index/produktdetail/kategorie/2/id/13/sprache/en">RESOL VBus/USB interface adapter</a></li>
+  <li><a href="http://www.vbus.net/">RESOL VBus.net</a></li>
 </ul>
 
-<h2 id="technical-information-&amp;-specifications"><a name="specs"></a>Technical Information &amp; Specifications</h2>
+<h2 id="a-namespecsatechnical-information--specifications"><a name="specs"></a>Technical Information &amp; Specifications</h2>
 
 <ul>
-<li><a href="https://groups.google.com/forum/#!forum/resol-vbus">RESOL VBus Google Group</a></li>
-<li><a href="https://drive.google.com/file/d/0B4wMTuLGRPi2RnU0Vm1tTG5wM1k/edit?usp=sharing">RESOL VBus Protocol Specification</a></li>
-<li><a href="http://danielwippermann.github.io/resol-vbus/vbus-packets.html">RESOL VBus Packet List</a></li>
-<li><a href="http://danielwippermann.github.io/resol-vbus/vbus-recording-file-format.html">RESOL VBus File Format Specification</a></li>
-<li><a href="http://danielwippermann.github.io/resol-vbus/vbus-over-tcp.html">RESOL VBus over TCP Specification</a></li>
-<li><a href="https://drive.google.com/file/d/0B4wMTuLGRPi2YmM5ZTJiNDQtNjkyMi00ZWYzLTgzYzgtYTdiMjBlZmI5ODgx/edit?usp=sharing">RESOL DL2 (v1) Data Download API</a></li>
-<li><a href="http://danielwippermann.github.io/resol-vbus/dlx-data-download-api.html">RESOL DL2 (v2) &amp; DL3 Data Download API</a></li>
+  <li><a href="https://groups.google.com/forum/#!forum/resol-vbus">RESOL VBus Google Group</a></li>
+  <li><a href="https://drive.google.com/file/d/0B4wMTuLGRPi2RnU0Vm1tTG5wM1k/edit?usp=sharing">RESOL VBus Protocol Specification</a></li>
+  <li><a href="http://danielwippermann.github.io/resol-vbus/vbus-packets.html">RESOL VBus Packet List</a></li>
+  <li><a href="http://danielwippermann.github.io/resol-vbus/vbus-recording-file-format.html">RESOL VBus Recording File Format</a></li>
+  <li><a href="http://danielwippermann.github.io/resol-vbus/vbus-specification-file-format-v1.html">RESOL VBus Specification File Format v1</a></li>
+  <li><a href="http://danielwippermann.github.io/resol-vbus/vbus-over-tcp.html">RESOL VBus over TCP Specification</a></li>
+  <li><a href="https://drive.google.com/file/d/0B4wMTuLGRPi2YmM5ZTJiNDQtNjkyMi00ZWYzLTgzYzgtYTdiMjBlZmI5ODgx/edit?usp=sharing">RESOL DL2 (v1) Data Download API</a></li>
+  <li><a href="http://danielwippermann.github.io/resol-vbus/dlx-data-download-api.html">RESOL DL2 (v2) &amp; DL3 Data Download API</a></li>
+</ul>
+
+<h2 id="known-issues">Known issues</h2>
+
+<ul>
+  <li>The <code class="highlighter-rouge">FileSystemRecorder</code> class sometimes writes invalid JSON into its “SyncState.json” file causing it to not
+being able to restore and recover from that when the app using the recorder restarts (e.g. the “vbustouch-proxy”
+example).</li>
+  <li>The <code class="highlighter-rouge">ConfigurationOptimizers</code> do not yet detect the firmware version running on the controller to be configured.
+That sometimes causes configuration loads and saves to fail because unknown values are read from or written to
+(e.g. using the “customizer” example on a DeltaSol MX with firmware version 1.11 or below).</li>
 </ul>
 
 <h2 id="changelog">Changelog</h2>
 
-<h3 id="version-0.14.0-(2015-10-29)">Version 0.14.0 (2015-10-29)</h3>
+<h3 id="version-0150-2016-03-30">Version 0.15.0 (2016-03-30)</h3>
 
 <ul>
-<li>Improve configuration optimizers and their discovery</li>
-<li>Update VBus specification data</li>
+  <li>Update VBus specification data</li>
+  <li>Several minor bug fixes</li>
 </ul>
 
-<h3 id="version-0.13.0-(2015-05-14)">Version 0.13.0 (2015-05-14)</h3>
+<h3 id="version-0140-2015-10-29">Version 0.14.0 (2015-10-29)</h3>
 
 <ul>
-<li>Add configuration optimizers for RESOL DeltaSol SLT</li>
-<li>Add BlockType support</li>
+  <li>Improve configuration optimizers and their discovery</li>
+  <li>Update VBus specification data</li>
 </ul>
 
-<h3 id="version-0.12.2-(2015-05-05)">Version 0.12.2 (2015-05-05)</h3>
+<h3 id="version-0130-2015-05-14">Version 0.13.0 (2015-05-14)</h3>
 
 <ul>
-<li>Update VBus specification data</li>
+  <li>Add configuration optimizers for RESOL DeltaSol SLT</li>
+  <li>Add BlockType support</li>
 </ul>
 
-<h3 id="version-0.12.1-(2015-04-27)">Version 0.12.1 (2015-04-27)</h3>
+<h3 id="version-0122-2015-05-05">Version 0.12.2 (2015-05-05)</h3>
 
 <ul>
-<li>Add configuration optimizers for RESOL DeltaSol MX and BS/4 v2</li>
-<li>Add a simple JSON live data server example</li>
-<li>Add some documentation</li>
-<li>Several bug fixes</li>
+  <li>Update VBus specification data</li>
 </ul>
 
-<h3 id="version-0.12.0-(2015-02-28)">Version 0.12.0 (2015-02-28)</h3>
+<h3 id="version-0121-2015-04-27">Version 0.12.1 (2015-04-27)</h3>
 
 <ul>
-<li>Add <code>vbustouch-proxy</code> example</li>
-<li>Add support for rounding floating point numbers</li>
+  <li>Add configuration optimizers for RESOL DeltaSol MX and BS/4 v2</li>
+  <li>Add a simple JSON live data server example</li>
+  <li>Add some documentation</li>
+  <li>Several bug fixes</li>
 </ul>
 
-<h3 id="version-0.11.1-(2014-11-04)">Version 0.11.1 (2014-11-04)</h3>
+<h3 id="version-0120-2015-02-28">Version 0.12.0 (2015-02-28)</h3>
 
 <ul>
-<li>Fix a floating point bug caused by <code>setRawValue</code></li>
+  <li>Add <code class="highlighter-rouge">vbustouch-proxy</code> example</li>
+  <li>Add support for rounding floating point numbers</li>
 </ul>
 
-<h3 id="version-0.11.0-(2014-10-29)">Version 0.11.0 (2014-10-29)</h3>
+<h3 id="version-0111-2014-11-04">Version 0.11.1 (2014-11-04)</h3>
 
 <ul>
-<li>Added support for setting packet field values</li>
-<li>Several bug fixes</li>
+  <li>Fix a floating point bug caused by <code class="highlighter-rouge">setRawValue</code></li>
 </ul>
 
-<h3 id="version-0.10.0-(2014-04-26)">Version 0.10.0 (2014-04-26)</h3>
+<h3 id="version-0110-2014-10-29">Version 0.11.0 (2014-10-29)</h3>
 
 <ul>
-<li>Finalized support for customizing controller configuration.</li>
-<li>Several bug fixes.</li>
+  <li>Added support for setting packet field values</li>
+  <li>Several bug fixes</li>
 </ul>
 
-<h3 id="version-0.9.0-(2014-03-16)">Version 0.9.0 (2014-03-16)</h3>
+<h3 id="version-0100-2014-04-26">Version 0.10.0 (2014-04-26)</h3>
 
 <ul>
-<li>Completed Recorder class by adding support for recording</li>
-<li>Added unit conversion to VBus specification</li>
-<li>Several bug fixes.</li>
+  <li>Finalized support for customizing controller configuration.</li>
+  <li>Several bug fixes.</li>
 </ul>
 
-<h3 id="version-0.8.0-(2014-03-03)">Version 0.8.0 (2014-03-03)</h3>
+<h3 id="version-090-2014-03-16">Version 0.9.0 (2014-03-16)</h3>
 
 <ul>
-<li>Extended Converter and VBusRecordingConverter to support object mode in stream (for performance reason)</li>
-<li>Fixed several bugs</li>
-<li>Increased test coverage and completed documentation.</li>
+  <li>Completed Recorder class by adding support for recording</li>
+  <li>Added unit conversion to VBus specification</li>
+  <li>Several bug fixes.</li>
 </ul>
 
-<h3 id="version-0.7.0-(2014-02-17)">Version 0.7.0 (2014-02-17)</h3>
+<h3 id="version-080-2014-03-03">Version 0.8.0 (2014-03-03)</h3>
+
+<ul>
+  <li>Extended Converter and VBusRecordingConverter to support object mode in stream (for performance reason)</li>
+  <li>Fixed several bugs</li>
+  <li>Increased test coverage and completed documentation.</li>
+</ul>
+
+<h3 id="version-070-2014-02-17">Version 0.7.0 (2014-02-17)</h3>
 
 <p>First release to the NPM registry.</p>
 
 <h2 id="contributors">Contributors</h2>
 
 <ul>
-<li>Thorsten Müller</li>
-<li>Paul Hanna</li>
+  <li>Thorsten Müller</li>
+  <li>Paul Hanna</li>
 </ul>
 
 <h2 id="legal-notices">Legal Notices</h2>
@@ -257,10 +291,10 @@ of RESOL - Elektronische Regelungen GmbH.</p>
 
 <p>The MIT License (MIT)</p>
 
-<p>Copyright (c) 2013-2015, Daniel Wippermann.</p>
+<p>Copyright (c) 2013-2016, Daniel Wippermann.</p>
 
 <p>Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the &quot;Software&quot;), to deal
+of this software and associated documentation files (the “Software”), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
@@ -269,7 +303,7 @@ furnished to do so, subject to the following conditions:</p>
 <p>The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.</p>
 
-<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -279,7 +313,7 @@ THE SOFTWARE.</p>
 
 <h2 id="brought-to-you-by">Brought to you by</h2>
 
-<p><a href="http://github.com/danielwippermann"><img src="http://www.gravatar.com/avatar/47da741e6cbac21945a7334f570176f4.png?s=48" alt="Gravatar"> Daniel Wippermann</a></p>
+<p><a href="http://github.com/danielwippermann"><img src="http://www.gravatar.com/avatar/47da741e6cbac21945a7334f570176f4.png?s=48" alt="Gravatar" /> Daniel Wippermann</a></p>
 
     </div>
   </div>

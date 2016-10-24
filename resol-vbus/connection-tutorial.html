@@ -31,7 +31,7 @@
         <div class="navbar-collapse collapse navbar-inverse-collapse">
           <ul class="nav navbar-nav">
             <li><a href="index.html">About</a></li>
-            <li class="active"><a href="tutorials.html">Tutorials</a></li>
+            <li><a href="tutorials.html">Tutorials</a></li>
             <li><a href="docs.html">Documentation</a></li>
             <li><a href="examples.html">Examples</a></li>
             <li><a href="support.html">Support</a></li>
@@ -94,44 +94,57 @@
       <h2 id="preparations">Preparations</h2>
 
 <ul>
-<li><a href="installation-tutorial.html">Install the resol-vbus module</a></li>
+  <li><a href="installation-tutorial.html">Install the resol-vbus module</a></li>
 </ul>
 
 <h2 id="create-a-connection">Create a connection</h2>
 
-<p>The resol-vbus module uses <code>Connection</code> instances to receive and transmit live VBus data. Several implementations exist for different connection types:</p>
+<p>The resol-vbus module uses <code class="highlighter-rouge">Connection</code> instances to receive and transmit live VBus data. Several implementations exist for different connection types:</p>
 
 <h3 id="using-a-serial-port">Using a serial port</h3>
 
-<p>If you want to receive data from a serial port (or a device that acts like one, e.g. the VBus/USB interface adapter), you can use the <code>SerialConnection</code> class to do so:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">var connection = new vbus.SerialConnection({
-    path: &#39;/dev/tty.usbserial&#39;
+<p>If you want to receive data from a serial port (or a device that acts like one, e.g. the VBus/USB interface adapter), you can use the <code class="highlighter-rouge">SerialConnection</code> class to do so:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var connection = new vbus.SerialConnection({
+	path: '/dev/tty.usbserial'
 });
-</code></pre></div>
-<p>The <code>path</code> option is used to specify the serial port to use. On Windows you can use something like &#39;COM3&#39;.</p>
+</code></pre>
+</div>
+
+<p>The <code class="highlighter-rouge">path</code> option is used to specify the serial port to use. On Windows you can use something like ‘COM3’.</p>
 
 <h3 id="using-a-tcp-connection">Using a TCP connection</h3>
 
-<p>If you want to receive data from a TCP enabled data source (e.g. VBus/LAN interface adapter or one of the dataloggers), you can use the <code>TcpConnection</code> class to do so:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">var connection = new vbus.TcpConnection({
-    host: &#39;mydl3.via.vbus.net&#39;,
-    viaTag: &#39;mydl3&#39;,             // only necessary if connected using VBus.net
-    password: &#39;secret&#39;,
-    channel: 1,                  // only necessary if connected to a DL3
+<p>If you want to receive data from a TCP enabled data source (e.g. VBus/LAN interface adapter or one of the dataloggers), you can use the <code class="highlighter-rouge">TcpConnection</code> class to do so:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var connection = new vbus.TcpConnection({
+	host: 'mydl3.via.vbus.net',
+	viaTag: 'mydl3',             // only necessary if connected using VBus.net
+	password: 'secret',
+	channel: 1,                  // only necessary if connected to a DL3
 });
-</code></pre></div>
+</code></pre>
+</div>
+
 <h2 id="establish-the-connection">Establish the connection</h2>
 
-<p>The newly created <code>Connection</code> instances start in <code>DISCONNECTED</code> state (see <code>Connection#connectionState</code> for details). To establish the connection you have to call the <code>connect</code> method:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">var connectPromise = connection.connect();
-</code></pre></div>
-<p>The call to the <code>connect</code> method returns a promise that resolves when the connection is established. If you want to attach a callback to get notified when the connection is established, you can use the promise&#39;s <code>then</code> method to do so:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">connectPromise.then(function() {
-    console.log(&#39;Connected!&#39;);
+<p>The newly created <code class="highlighter-rouge">Connection</code> instances start in <code class="highlighter-rouge">DISCONNECTED</code> state (see <code class="highlighter-rouge">Connection#connectionState</code> for details). To establish the connection you have to call the <code class="highlighter-rouge">connect</code> method:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var connectPromise = connection.connect();
+</code></pre>
+</div>
+
+<p>The call to the <code class="highlighter-rouge">connect</code> method returns a promise that resolves when the connection is established. If you want to attach a callback to get notified when the connection is established, you can use the promise’s <code class="highlighter-rouge">then</code> method to do so:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>connectPromise.then(function() {
+	console.log('Connected!');
 }, function() {
-    console.log(&#39;Connection failed&#39;);
+	console.log('Connection failed');
 });
-</code></pre></div>
+</code></pre>
+</div>
+
+
     </div>
   </div>
 </div>
