@@ -52,16 +52,18 @@
 			</li>
 			
 		</ul>
-		<div class="col-sm-3 col-md-3">
-            <form class="navbar-form" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
+        
 	</div>
 
 </div>
@@ -82,7 +84,7 @@
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2014, Daniel Wippermann | MIT license */
+            class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann | MIT license */
 'use strict';
 
 
@@ -91,8 +93,6 @@ var _ = require('lodash');
 
 
 var Converter = require('./converter');
-var HeaderSet = require('./header-set');
-var Packet = require('./packet');
 var Specification = require('./specification');
 
 
@@ -139,8 +139,6 @@ var TextConverter = Converter.extend(/** @lends TextConverter# */ {
      */
     lastIdList: null,
 
-    knownPackets: null,
-
     /**
      * Create a new TextConverter instance given the set of options.
      * @constructs
@@ -164,24 +162,6 @@ var TextConverter = Converter.extend(/** @lends TextConverter# */ {
                 language: options &amp;&amp; options.language || 'en'
             });
         }
-
-        if (options &amp;&amp; options.knownHeaderSet) {
-            var knownPackets = [];
-            _.forEach(options.knownHeaderSet.getHeaders(), function(header) {
-                if (header instanceof Packet) {
-                    var packet = new Packet({
-                        timestamp: new Date(0),
-                        channel: header.channel,
-                        destinationAddress: header.destinationAddress,
-                        sourceAddress: header.sourceAddress,
-                        command: header.command,
-                        frameCount: 0,
-                    });
-                    knownPackets.push(packet);
-                }
-            });
-            this.knownPackets = knownPackets;
-        }
     },
 
     /**
@@ -197,22 +177,12 @@ var TextConverter = Converter.extend(/** @lends TextConverter# */ {
      *
      * @param {HeaderSet} headerSet
      */
-    convertHeaderSet: function(inHeaderSet) {
+    convertHeaderSet: function(headerSet) {
         var _this = this;
 
         var spec = this.specification;
 
         var i18n = spec.i18n;
-
-        var headerSet;
-        if (this.knownPackets) {
-            headerSet = new HeaderSet();
-            headerSet.addHeaders(this.knownPackets);
-            headerSet.addHeaders(inHeaderSet.getHeaders());
-            headerSet.timestamp = inHeaderSet.timestamp;
-        } else {
-            headerSet = inHeaderSet;
-        }
 
         var headers = headerSet.getSortedHeaders();
 
@@ -327,32 +297,34 @@ module.exports = TextConverter;
 </div>
 </div>
 
-<div class="modal fade" id="searchResults">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Search results</h4>
-      </div>
-      <div class="modal-body"></div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div>
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
 
 <footer>
 
 
 	<span class="copyright">
-	resol-vbus | Copyright (c) 2013-2016, Daniel Wippermann
+	resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on Sun Oct 23rd 2016
+		on Wed Jul 5th 2017
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
@@ -360,7 +332,9 @@ module.exports = TextConverter;
 
 <script src="scripts/docstrap.lib.js"></script>
 <script src="scripts/toc.js"></script>
-<script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
 
 <script>
 $( function () {
@@ -370,7 +344,7 @@ $( function () {
 		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
 	} );
 
-	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
 		var $this = $( this );
 
 		var example = $this.find( "code" );
@@ -406,8 +380,7 @@ $( function () {
 	} );
 	$( "#toc" ).toc( {
 		anchorName  : function ( i, heading, prefix ) {
-			var id = $( heading ).attr( "id" );
-			return id && id.replace(/\~/g, '-inner-').replace(/\./g, '-static-') || ( prefix + i );
+			return $( heading ).attr( "id" ) || ( prefix + i );
 		},
 		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
 		showAndHide : false,
@@ -433,11 +406,13 @@ $( function () {
 <!--Google Analytics-->
 
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		SearcherDisplay.init();
-	});
-</script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
 
 </body>
 </html>

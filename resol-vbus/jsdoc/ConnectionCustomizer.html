@@ -52,16 +52,18 @@
 			</li>
 			
 		</ul>
-		<div class="col-sm-3 col-md-3">
-            <form class="navbar-form" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
+        
 	</div>
 
 </div>
@@ -472,7 +474,7 @@
             
 <hr>
 <dt class="name" id="connection">
-    <h4><span class="type-signature"></span>connection<span class="type-signature"> :<a href="Connection.html">Connection</a></span></h4>
+    <h4 id="connection"><span class="type-signature"></span>connection<span class="type-signature"> :<a href="Connection.html">Connection</a></span></h4>
 
     
 </dt>
@@ -552,7 +554,7 @@
             
 <hr>
 <dt class="name" id="deviceAddress">
-    <h4><span class="type-signature"></span>deviceAddress<span class="type-signature"> :number</span></h4>
+    <h4 id="deviceAddress"><span class="type-signature"></span>deviceAddress<span class="type-signature"> :number</span></h4>
 
     
 </dt>
@@ -641,7 +643,7 @@
             
 <hr>
 <dt class="name" id="id">
-    <h4><span class="type-signature"></span>id<span class="type-signature"> :string</span></h4>
+    <h4 id="id"><span class="type-signature"></span>id<span class="type-signature"> :string</span></h4>
 
     
 </dt>
@@ -730,7 +732,7 @@
             
 <hr>
 <dt class="name" id="masterTimeout">
-    <h4><span class="type-signature"></span>masterTimeout<span class="type-signature"> :number</span></h4>
+    <h4 id="masterTimeout"><span class="type-signature"></span>masterTimeout<span class="type-signature"> :number</span></h4>
 
     
 </dt>
@@ -817,7 +819,7 @@
             
 <hr>
 <dt class="name" id="maxRounds">
-    <h4><span class="type-signature"></span>maxRounds<span class="type-signature"> :number</span></h4>
+    <h4 id="maxRounds"><span class="type-signature"></span>maxRounds<span class="type-signature"> :number</span></h4>
 
     
 </dt>
@@ -904,7 +906,7 @@
             
 <hr>
 <dt class="name" id="optimizer">
-    <h4><span class="type-signature"></span>optimizer<span class="type-signature"> :<a href="ConfigurationOptimizer.html">ConfigurationOptimizer</a></span></h4>
+    <h4 id="optimizer"><span class="type-signature"></span>optimizer<span class="type-signature"> :<a href="ConfigurationOptimizer.html">ConfigurationOptimizer</a></span></h4>
 
     
 </dt>
@@ -993,7 +995,7 @@
             
 <hr>
 <dt class="name" id="timeoutPerValue">
-    <h4><span class="type-signature"></span>timeoutPerValue<span class="type-signature"> :number</span></h4>
+    <h4 id="timeoutPerValue"><span class="type-signature"></span>timeoutPerValue<span class="type-signature"> :number</span></h4>
 
     
 </dt>
@@ -1080,7 +1082,7 @@
             
 <hr>
 <dt class="name" id="triesPerValue">
-    <h4><span class="type-signature"></span>triesPerValue<span class="type-signature"> :number</span></h4>
+    <h4 id="triesPerValue"><span class="type-signature"></span>triesPerValue<span class="type-signature"> :number</span></h4>
 
     
 </dt>
@@ -3105,32 +3107,34 @@
 </div>
 </div>
 
-<div class="modal fade" id="searchResults">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Search results</h4>
-      </div>
-      <div class="modal-body"></div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div>
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
 
 <footer>
 
 
 	<span class="copyright">
-	resol-vbus | Copyright (c) 2013-2016, Daniel Wippermann
+	resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on Sun Oct 23rd 2016
+		on Wed Jul 5th 2017
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
@@ -3138,7 +3142,9 @@
 
 <script src="scripts/docstrap.lib.js"></script>
 <script src="scripts/toc.js"></script>
-<script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
 
 <script>
 $( function () {
@@ -3148,7 +3154,7 @@ $( function () {
 		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
 	} );
 
-	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
 		var $this = $( this );
 
 		var example = $this.find( "code" );
@@ -3184,8 +3190,7 @@ $( function () {
 	} );
 	$( "#toc" ).toc( {
 		anchorName  : function ( i, heading, prefix ) {
-			var id = $( heading ).attr( "id" );
-			return id && id.replace(/\~/g, '-inner-').replace(/\./g, '-static-') || ( prefix + i );
+			return $( heading ).attr( "id" ) || ( prefix + i );
 		},
 		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
 		showAndHide : false,
@@ -3211,11 +3216,13 @@ $( function () {
 <!--Google Analytics-->
 
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		SearcherDisplay.init();
-	});
-</script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
 
 </body>
 </html>

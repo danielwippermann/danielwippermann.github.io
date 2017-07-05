@@ -52,16 +52,18 @@
 			</li>
 			
 		</ul>
-		<div class="col-sm-3 col-md-3">
-            <form class="navbar-form" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
+        
 	</div>
 
 </div>
@@ -312,7 +314,7 @@
             
 <hr>
 <dt class="name" id="channel">
-    <h4><span class="type-signature"></span>channel<span class="type-signature"> :number</span></h4>
+    <h4 id="channel"><span class="type-signature"></span>channel<span class="type-signature"> :number</span></h4>
 
     
 </dt>
@@ -401,7 +403,7 @@
             
 <hr>
 <dt class="name" id="connectionState">
-    <h4><span class="type-signature"></span>connectionState<span class="type-signature"> :string</span></h4>
+    <h4 id="connectionState"><span class="type-signature"></span>connectionState<span class="type-signature"> :string</span></h4>
 
     
 </dt>
@@ -490,7 +492,7 @@
             
 <hr>
 <dt class="name" id="dataSource">
-    <h4><span class="type-signature"></span>dataSource<span class="type-signature"> :DataSource</span></h4>
+    <h4 id="dataSource"><span class="type-signature"></span>dataSource<span class="type-signature"> :DataSource</span></h4>
 
     
 </dt>
@@ -579,7 +581,7 @@
             
 <hr>
 <dt class="name" id="path">
-    <h4><span class="type-signature"></span>path<span class="type-signature"> :string</span></h4>
+    <h4 id="path"><span class="type-signature"></span>path<span class="type-signature"> :string</span></h4>
 
     
 </dt>
@@ -659,7 +661,7 @@
             
 <hr>
 <dt class="name" id="reconnectTimeout">
-    <h4><span class="type-signature"></span>reconnectTimeout<span class="type-signature"> :number</span></h4>
+    <h4 id="reconnectTimeout"><span class="type-signature"></span>reconnectTimeout<span class="type-signature"> :number</span></h4>
 
     
 </dt>
@@ -739,7 +741,7 @@
             
 <hr>
 <dt class="name" id="reconnectTimeoutIncr">
-    <h4><span class="type-signature"></span>reconnectTimeoutIncr<span class="type-signature"> :number</span></h4>
+    <h4 id="reconnectTimeoutIncr"><span class="type-signature"></span>reconnectTimeoutIncr<span class="type-signature"> :number</span></h4>
 
     
 </dt>
@@ -819,7 +821,7 @@
             
 <hr>
 <dt class="name" id="reconnectTimeoutMax">
-    <h4><span class="type-signature"></span>reconnectTimeoutMax<span class="type-signature"> :number</span></h4>
+    <h4 id="reconnectTimeoutMax"><span class="type-signature"></span>reconnectTimeoutMax<span class="type-signature"> :number</span></h4>
 
     
 </dt>
@@ -899,7 +901,7 @@
             
 <hr>
 <dt class="name" id="rxBuffer">
-    <h4><span class="type-signature"></span>rxBuffer<span class="type-signature"> :Buffer</span></h4>
+    <h4 id="rxBuffer"><span class="type-signature"></span>rxBuffer<span class="type-signature"> :Buffer</span></h4>
 
     
 </dt>
@@ -988,7 +990,7 @@
             
 <hr>
 <dt class="name" id="selfAddress">
-    <h4><span class="type-signature"></span>selfAddress<span class="type-signature"> :number</span></h4>
+    <h4 id="selfAddress"><span class="type-signature"></span>selfAddress<span class="type-signature"> :number</span></h4>
 
     
 </dt>
@@ -3791,32 +3793,34 @@
 </div>
 </div>
 
-<div class="modal fade" id="searchResults">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Search results</h4>
-      </div>
-      <div class="modal-body"></div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div>
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
 
 <footer>
 
 
 	<span class="copyright">
-	resol-vbus | Copyright (c) 2013-2016, Daniel Wippermann
+	resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on Sun Oct 23rd 2016
+		on Wed Jul 5th 2017
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
@@ -3824,7 +3828,9 @@
 
 <script src="scripts/docstrap.lib.js"></script>
 <script src="scripts/toc.js"></script>
-<script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
 
 <script>
 $( function () {
@@ -3834,7 +3840,7 @@ $( function () {
 		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
 	} );
 
-	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
 		var $this = $( this );
 
 		var example = $this.find( "code" );
@@ -3870,8 +3876,7 @@ $( function () {
 	} );
 	$( "#toc" ).toc( {
 		anchorName  : function ( i, heading, prefix ) {
-			var id = $( heading ).attr( "id" );
-			return id && id.replace(/\~/g, '-inner-').replace(/\./g, '-static-') || ( prefix + i );
+			return $( heading ).attr( "id" ) || ( prefix + i );
 		},
 		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
 		showAndHide : false,
@@ -3897,11 +3902,13 @@ $( function () {
 <!--Google Analytics-->
 
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		SearcherDisplay.init();
-	});
-</script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
 
 </body>
 </html>

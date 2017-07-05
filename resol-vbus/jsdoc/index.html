@@ -52,16 +52,18 @@
 			</li>
 			
 		</ul>
-		<div class="col-sm-3 col-md-3">
-            <form class="navbar-form" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
+        
 	</div>
 
 </div>
@@ -98,9 +100,7 @@
 
 
     <section class="readme-section">
-        <article><h1>resol-vbus</h1><h4>A JavaScript library for processing RESOL VBus data.</h4><iframe src="http://ghbtns.com/github-btn.html?user=danielwippermann&repo=resol-vbus&type=watch&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="77" height="30"></iframe>
-
-<p><a href="https://npmjs.org/package/resol-vbus"><img src="https://img.shields.io/npm/v/resol-vbus.svg" alt="NPM version"></a><br><a href="https://travis-ci.org/danielwippermann/resol-vbus"><img src="https://img.shields.io/travis/danielwippermann/resol-vbus.svg" alt="Build Status"></a><br><a href="https://coveralls.io/r/danielwippermann/resol-vbus"><img src="https://img.shields.io/coveralls/danielwippermann/resol-vbus.svg" alt="Coverage Status"></a><br><a href="https://david-dm.org/danielwippermann/resol-vbus"><img src="https://img.shields.io/david/danielwippermann/resol-vbus.svg" alt="Dependency Status"></a><br><a href="https://david-dm.org/danielwippermann/resol-vbus#info=devDependencies"><img src="https://img.shields.io/david/dev/danielwippermann/resol-vbus.svg" alt="devDependency Status"></a><br><a href="http://opensource.org/licenses/MIT"><img src="https://img.shields.io/npm/l/resol-vbus.svg" alt="License"></a></p>
+        <article><h1>resol-vbus</h1><h4>A JavaScript library for processing RESOL VBus data.</h4><p><a href="https://npmjs.org/package/resol-vbus"><img src="https://img.shields.io/npm/v/resol-vbus.svg" alt="NPM version"></a><br><a href="https://travis-ci.org/danielwippermann/resol-vbus"><img src="https://img.shields.io/travis/danielwippermann/resol-vbus.svg" alt="Build Status"></a><br><a href="https://coveralls.io/r/danielwippermann/resol-vbus"><img src="https://img.shields.io/coveralls/danielwippermann/resol-vbus.svg" alt="Coverage Status"></a><br><a href="https://david-dm.org/danielwippermann/resol-vbus"><img src="https://img.shields.io/david/danielwippermann/resol-vbus.svg" alt="Dependency Status"></a><br><a href="https://david-dm.org/danielwippermann/resol-vbus#info=devDependencies"><img src="https://img.shields.io/david/dev/danielwippermann/resol-vbus.svg" alt="devDependency Status"></a><br><a href="http://opensource.org/licenses/MIT"><img src="https://img.shields.io/npm/l/resol-vbus.svg" alt="License"></a></p>
 <h2>Features</h2><ul>
 <li>Connects to various RESOL VBus devices</li>
 <li>Processes live and recorded VBus data streams</li>
@@ -141,7 +141,20 @@
 <li>The <code>FileSystemRecorder</code> class sometimes writes invalid JSON into its &quot;SyncState.json&quot; file causing it to not<br>being able to restore and recover from that when the app using the recorder restarts (e.g. the &quot;vbustouch-proxy&quot;<br>example).</li>
 <li>The <code>ConfigurationOptimizers</code> do not yet detect the firmware version running on the controller to be configured.<br>That sometimes causes configuration loads and saves to fail because unknown values are read from or written to<br>(e.g. using the &quot;customizer&quot; example on a DeltaSol MX with firmware version 1.11 or below).</li>
 </ul>
-<h2>Changelog</h2><h3>Version 0.15.0 (2016-03-30)</h3><ul>
+<h2>Changelog</h2><h2>Work in progress</h2><ul>
+<li>Add support to generate and parse &quot;type 9&quot; comment records using <code>VBusRecordingConverter</code>.</li>
+<li>Make it easier to create a <code>Specification</code> from a <code>SpecificationFile</code>.</li>
+<li>Update dependencies.</li>
+<li>Some minor bug fixes.</li>
+</ul>
+<h3>Version 0.16.0 (2017-02-01)</h3><ul>
+<li>Use VSF binary file to load VBus specification data</li>
+<li>Add support to read and write raw data in VBus recordings</li>
+<li>Extend <code>VBusRecordingConverter</code> to support fast topology-only scan</li>
+<li>Code clean up</li>
+<li>Several minor bug fixes</li>
+</ul>
+<h3>Version 0.15.0 (2016-03-30)</h3><ul>
 <li>Update VBus specification data</li>
 <li>Several minor bug fixes</li>
 </ul>
@@ -191,11 +204,12 @@
 <h2>Contributors</h2><ul>
 <li>Thorsten Müller</li>
 <li>Paul Hanna</li>
+<li>Sabine Käß</li>
 </ul>
 <h2>Legal Notices</h2><p>RESOL, VBus, VBus.net and others are trademarks or registered trademarks<br>of RESOL - Elektronische Regelungen GmbH.</p>
 <p>All other trademarks are the property of their respective owners.</p>
 <h2>License</h2><p>The MIT License (MIT)</p>
-<p>Copyright (c) 2013-2016, Daniel Wippermann.</p>
+<p>Copyright (c) 2013-2017, Daniel Wippermann.</p>
 <p>Permission is hereby granted, free of charge, to any person obtaining a copy<br>of this software and associated documentation files (the &quot;Software&quot;), to deal<br>in the Software without restriction, including without limitation the rights<br>to use, copy, modify, merge, publish, distribute, sublicense, and/or sell<br>copies of the Software, and to permit persons to whom the Software is<br>furnished to do so, subject to the following conditions:</p>
 <p>The above copyright notice and this permission notice shall be included in<br>all copies or substantial portions of the Software.</p>
 <p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<br>IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,<br>FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE<br>AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER<br>LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,<br>OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN<br>THE SOFTWARE.</p></article>
@@ -221,32 +235,34 @@
 </div>
 </div>
 
-<div class="modal fade" id="searchResults">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Search results</h4>
-      </div>
-      <div class="modal-body"></div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div>
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
 
 <footer>
 
 
 	<span class="copyright">
-	resol-vbus | Copyright (c) 2013-2016, Daniel Wippermann
+	resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on Sun Oct 23rd 2016
+		on Wed Jul 5th 2017
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
@@ -254,7 +270,9 @@
 
 <script src="scripts/docstrap.lib.js"></script>
 <script src="scripts/toc.js"></script>
-<script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
 
 <script>
 $( function () {
@@ -264,7 +282,7 @@ $( function () {
 		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
 	} );
 
-	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
 		var $this = $( this );
 
 		var example = $this.find( "code" );
@@ -300,8 +318,7 @@ $( function () {
 	} );
 	$( "#toc" ).toc( {
 		anchorName  : function ( i, heading, prefix ) {
-			var id = $( heading ).attr( "id" );
-			return id && id.replace(/\~/g, '-inner-').replace(/\./g, '-static-') || ( prefix + i );
+			return $( heading ).attr( "id" ) || ( prefix + i );
 		},
 		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
 		showAndHide : false,
@@ -327,11 +344,13 @@ $( function () {
 <!--Google Analytics-->
 
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		SearcherDisplay.init();
-	});
-</script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
 
 </body>
 </html>

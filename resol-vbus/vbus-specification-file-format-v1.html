@@ -150,6 +150,13 @@
 
 <p>The VSF format intends to replace those different application-specific formats with one well supported format that combines small overall size and an easy to parse structure to allow as many applications as possible to adapt it.</p>
 
+<p>The following RESOL products currently support the VSF format:</p>
+
+<ul>
+  <li>RESOL DL2 / DL3 / KM1 (starting with version 2.2.0)</li>
+  <li>RESOL KM2 (starting with version 1.0.1)</li>
+</ul>
+
 <h2 id="the-file-structure">The file structure</h2>
 
 <p>The VSF consists of “blocks”, pieces of information that a structured in a certain way. The file always starts with a FILEHEADER block. This block then contains a “VSF offset” to another block of type SPECIFICATION that in turn contains other “VSF offset” values for other types of blocks. Those “VSF offset” values are absolute addresses to the start of the block they are referencing and the value must be inside to bounds of the file size.</p>
@@ -177,41 +184,41 @@
   <thead>
     <tr>
       <th style="text-align: right">Offset</th>
-      <th style="text-align: left">Type</th>
-      <th>Name</th>
-      <th>Description</th>
+      <th style="text-align: right">Type</th>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Description</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align: right">0x00000000</td>
-      <td style="text-align: left">U16</td>
-      <td><code class="highlighter-rouge">ChecksumA</code></td>
-      <td>CRC16 checksum from VSF offset 0x00000004 to the one stored in <code class="highlighter-rouge">TotalLength</code></td>
+      <td style="text-align: right">U16</td>
+      <td style="text-align: left"><code class="highlighter-rouge">ChecksumA</code></td>
+      <td style="text-align: left">CRC16 checksum from VSF offset 0x00000004 to the one stored in <code class="highlighter-rouge">TotalLength</code></td>
     </tr>
     <tr>
       <td style="text-align: right">0x00000002</td>
-      <td style="text-align: left">U16</td>
-      <td><code class="highlighter-rouge">ChecksumB</code></td>
-      <td>CRC16 checksum from VSF offset 0x00000004 to the one stored in <code class="highlighter-rouge">TotalLength</code></td>
+      <td style="text-align: right">U16</td>
+      <td style="text-align: left"><code class="highlighter-rouge">ChecksumB</code></td>
+      <td style="text-align: left">CRC16 checksum from VSF offset 0x00000004 to the one stored in <code class="highlighter-rouge">TotalLength</code></td>
     </tr>
     <tr>
       <td style="text-align: right">0x00000004</td>
-      <td style="text-align: left">I32</td>
-      <td><code class="highlighter-rouge">TotalLength</code></td>
-      <td>Total length of the VSF in bytes</td>
+      <td style="text-align: right">I32</td>
+      <td style="text-align: left"><code class="highlighter-rouge">TotalLength</code></td>
+      <td style="text-align: left">Total length of the VSF in bytes</td>
     </tr>
     <tr>
       <td style="text-align: right">0x00000008</td>
-      <td style="text-align: left">I32</td>
-      <td><code class="highlighter-rouge">DataVersion</code></td>
-      <td>Data version number, must be <code class="highlighter-rouge">1</code></td>
+      <td style="text-align: right">I32</td>
+      <td style="text-align: left"><code class="highlighter-rouge">DataVersion</code></td>
+      <td style="text-align: left">Data version number, must be <code class="highlighter-rouge">1</code></td>
     </tr>
     <tr>
       <td style="text-align: right">0x0000000C</td>
-      <td style="text-align: left">I32</td>
-      <td><code class="highlighter-rouge">SpecificationOffset</code></td>
-      <td>VSF offset of the SPECIFICATION block</td>
+      <td style="text-align: right">I32</td>
+      <td style="text-align: left"><code class="highlighter-rouge">SpecificationOffset</code></td>
+      <td style="text-align: left">VSF offset of the SPECIFICATION block</td>
     </tr>
   </tbody>
 </table>
@@ -232,77 +239,77 @@
   <thead>
     <tr>
       <th style="text-align: right">Offset</th>
-      <th style="text-align: left">Type</th>
+      <th style="text-align: right">Type</th>
       <th style="text-align: left">Name</th>
-      <th>Description</th>
+      <th style="text-align: left">Description</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align: right">Offset + 0x00</td>
-      <td style="text-align: left">I32</td>
+      <td style="text-align: right">I32</td>
       <td style="text-align: left"><code class="highlighter-rouge">Datecode</code></td>
-      <td>Date code (format “YYYYMMDD”) of VSF creation</td>
+      <td style="text-align: left">Date code (format “YYYYMMDD”) of VSF creation</td>
     </tr>
     <tr>
       <td style="text-align: right">Offset + 0x04</td>
-      <td style="text-align: left">I32</td>
+      <td style="text-align: right">I32</td>
       <td style="text-align: left"><code class="highlighter-rouge">TextCount</code></td>
-      <td>Number of TEXT blocks starting at VSF offset <code class="highlighter-rouge">TextTableOffset</code></td>
+      <td style="text-align: left">Number of TEXT blocks starting at VSF offset <code class="highlighter-rouge">TextTableOffset</code></td>
     </tr>
     <tr>
       <td style="text-align: right">Offset + 0x08</td>
-      <td style="text-align: left">I32</td>
+      <td style="text-align: right">I32</td>
       <td style="text-align: left"><code class="highlighter-rouge">TextTableOffset</code></td>
-      <td>VSF offset of the first TEXT block</td>
+      <td style="text-align: left">VSF offset of the first TEXT block</td>
     </tr>
     <tr>
       <td style="text-align: right">Offset + 0x0c</td>
-      <td style="text-align: left">I32</td>
+      <td style="text-align: right">I32</td>
       <td style="text-align: left"><code class="highlighter-rouge">LocalizedTextCount</code></td>
-      <td>Number of LOCALIZEDTEXT blocks starting at VSF offset <code class="highlighter-rouge">LocalizedTextTableOffset</code></td>
+      <td style="text-align: left">Number of LOCALIZEDTEXT blocks starting at VSF offset <code class="highlighter-rouge">LocalizedTextTableOffset</code></td>
     </tr>
     <tr>
       <td style="text-align: right">Offset + 0x10</td>
-      <td style="text-align: left">I32</td>
+      <td style="text-align: right">I32</td>
       <td style="text-align: left"><code class="highlighter-rouge">LocalizedTextTableOffset</code></td>
-      <td>VSF offset of the first LOCALIZEDTEXT block</td>
+      <td style="text-align: left">VSF offset of the first LOCALIZEDTEXT block</td>
     </tr>
     <tr>
       <td style="text-align: right">Offset + 0x14</td>
-      <td style="text-align: left">I32</td>
+      <td style="text-align: right">I32</td>
       <td style="text-align: left"><code class="highlighter-rouge">UnitCount</code></td>
-      <td>Number of UNIT blocks starting at VSF offset <code class="highlighter-rouge">UnitTableOffset</code></td>
+      <td style="text-align: left">Number of UNIT blocks starting at VSF offset <code class="highlighter-rouge">UnitTableOffset</code></td>
     </tr>
     <tr>
       <td style="text-align: right">Offset + 0x18</td>
-      <td style="text-align: left">I32</td>
+      <td style="text-align: right">I32</td>
       <td style="text-align: left"><code class="highlighter-rouge">UnitTableOffset</code></td>
-      <td>VSF offset of the first UNIT block</td>
+      <td style="text-align: left">VSF offset of the first UNIT block</td>
     </tr>
     <tr>
       <td style="text-align: right">Offset + 0x1c</td>
-      <td style="text-align: left">I32</td>
+      <td style="text-align: right">I32</td>
       <td style="text-align: left"><code class="highlighter-rouge">DeviceTemplateCount</code></td>
-      <td>Number of DEVICETEMPLATE blocks starting at VSF offset <code class="highlighter-rouge">DeviceTemplateTableOffset</code></td>
+      <td style="text-align: left">Number of DEVICETEMPLATE blocks starting at VSF offset <code class="highlighter-rouge">DeviceTemplateTableOffset</code></td>
     </tr>
     <tr>
       <td style="text-align: right">Offset + 0x20</td>
-      <td style="text-align: left">I32</td>
+      <td style="text-align: right">I32</td>
       <td style="text-align: left"><code class="highlighter-rouge">DeviceTemplateTableOffset</code></td>
-      <td>VSF offset of the first DEVICETEMPLATE block</td>
+      <td style="text-align: left">VSF offset of the first DEVICETEMPLATE block</td>
     </tr>
     <tr>
       <td style="text-align: right">Offset + 0x24</td>
-      <td style="text-align: left">I32</td>
+      <td style="text-align: right">I32</td>
       <td style="text-align: left"><code class="highlighter-rouge">PacketTemplateCount</code></td>
-      <td>Number of PACKETTEMPLATE blocks starting at VSF offset <code class="highlighter-rouge">PacketTemplateTableOffset</code></td>
+      <td style="text-align: left">Number of PACKETTEMPLATE blocks starting at VSF offset <code class="highlighter-rouge">PacketTemplateTableOffset</code></td>
     </tr>
     <tr>
       <td style="text-align: right">Offset + 0x28</td>
-      <td style="text-align: left">I32</td>
+      <td style="text-align: right">I32</td>
       <td style="text-align: left"><code class="highlighter-rouge">PacketTemplateTableOffset</code></td>
-      <td>VSF offset of the first PACKETTEMPLATE block</td>
+      <td style="text-align: left">VSF offset of the first PACKETTEMPLATE block</td>
     </tr>
   </tbody>
 </table>
@@ -472,6 +479,309 @@
 <p>The <code class="highlighter-rouge">UnitTextTextIndex</code> field references a TEXT block containing a human readable representation for this physical unit. Examples include: <code class="highlighter-rouge">"%"</code>, <code class="highlighter-rouge">" °C"</code>, <code class="highlighter-rouge">" W/m²"</code> etc.</p>
 
 <p>Other blocks reference UNIT blocks using a “Unit Identifier”. This identifier can be used to lookup the corresponding UNIT block that uses the same value in its <code class="highlighter-rouge">UnitId</code> field.</p>
+
+<p>The following units are currently known:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right"><code class="highlighter-rouge">UnitId</code></th>
+      <th style="text-align: right"><code class="highlighter-rouge">UnitFamilyId</code></th>
+      <th style="text-align: left"><code class="highlighter-rouge">UnitCode</code></th>
+      <th style="text-align: left"><code class="highlighter-rouge">UnitText</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">-1</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: left">None</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: left">SquareMeters</td>
+      <td style="text-align: left">m²</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: left">Milliamperes</td>
+      <td style="text-align: left">mA</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">4</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: left">Ohms</td>
+      <td style="text-align: left">Ω</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">5</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: left">Volts</td>
+      <td style="text-align: left">V</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">18</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">WattHours</td>
+      <td style="text-align: left">Wh</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">19</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">KilowattHours</td>
+      <td style="text-align: left">kWh</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">20</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">Btus</td>
+      <td style="text-align: left">BTU</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">27</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: left">Hertz</td>
+      <td style="text-align: left">Hz</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">35</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: left">WattsPerSquareMeter</td>
+      <td style="text-align: left">W/m²</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">44</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: left">KilogramsPerHour</td>
+      <td style="text-align: left">kg/h</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">47</td>
+      <td style="text-align: right">6</td>
+      <td style="text-align: left">Watts</td>
+      <td style="text-align: left">W</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">48</td>
+      <td style="text-align: right">6</td>
+      <td style="text-align: left">Kilowatts</td>
+      <td style="text-align: left">kW</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">55</td>
+      <td style="text-align: right">3</td>
+      <td style="text-align: left">Bars</td>
+      <td style="text-align: left">bar</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">56</td>
+      <td style="text-align: right">3</td>
+      <td style="text-align: left">PoundsForcePerSquareInch</td>
+      <td style="text-align: left">psi</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">62</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: left">DegreesCelsius</td>
+      <td style="text-align: left">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">63</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: left">DegreesKelvin</td>
+      <td style="text-align: left">K</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">64</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: left">DegreesFahrenheit</td>
+      <td style="text-align: left">°F</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">70</td>
+      <td style="text-align: right">5</td>
+      <td style="text-align: left">Days</td>
+      <td style="text-align: left">d</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">71</td>
+      <td style="text-align: right">5</td>
+      <td style="text-align: left">Hours</td>
+      <td style="text-align: left">h</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">72</td>
+      <td style="text-align: right">5</td>
+      <td style="text-align: left">Minutes</td>
+      <td style="text-align: left">min</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">73</td>
+      <td style="text-align: right">5</td>
+      <td style="text-align: left">Seconds</td>
+      <td style="text-align: left">s</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">74</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: left">MetersPerSecond</td>
+      <td style="text-align: left">m/s</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">80</td>
+      <td style="text-align: right">4</td>
+      <td style="text-align: left">CubicMeters</td>
+      <td style="text-align: left">m³</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">82</td>
+      <td style="text-align: right">4</td>
+      <td style="text-align: left">Liters</td>
+      <td style="text-align: left">l</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">88</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: left">LitersPerMinute</td>
+      <td style="text-align: left">l/min</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">90</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: left">DegreesAngular</td>
+      <td style="text-align: left">°</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">98</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: left">Percent</td>
+      <td style="text-align: left">%</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">133</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: left">Hectopascals</td>
+      <td style="text-align: left">hPa</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">135</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: left">CubicMetersPerHour</td>
+      <td style="text-align: left">m³/h</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">136</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: left">LitersPerHour</td>
+      <td style="text-align: left">l/h</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">146</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">MegawattHours</td>
+      <td style="text-align: left">MWh</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">159</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: left">Milliseconds</td>
+      <td style="text-align: left">ms</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">186</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: left">KilogramsPerCubicMeter</td>
+      <td style="text-align: left">kg/m³</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">1024</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: left">KiloWattHoursPerSquareMeterPerDay</td>
+      <td style="text-align: left">kWh/(m²*d)</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">1025</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: left">LitersPerSquareMeterPerDay</td>
+      <td style="text-align: left">l/(m²*d)</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">1030</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">KiloBtus</td>
+      <td style="text-align: left">MBTU</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">1031</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">MegaBtus</td>
+      <td style="text-align: left">MMBTU</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">1032</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">GramsCO2Oil</td>
+      <td style="text-align: left">g CO₂ (Oil)</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">1033</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">KilogramsCO2Oil</td>
+      <td style="text-align: left">kg CO₂ (Oil)</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">1034</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">TonsCO2Oil</td>
+      <td style="text-align: left">t CO₂ (Oil)</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">1035</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">GramsCO2Gas</td>
+      <td style="text-align: left">g CO₂ (Gas)</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">1036</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">KilogramsCO2Gas</td>
+      <td style="text-align: left">kg CO₂ (Gas)</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">1037</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">TonsCO2Gas</td>
+      <td style="text-align: left">t CO₂ (Gas)</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">1040</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: left">GallonsPerMinute</td>
+      <td style="text-align: left">gal/min</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">1041</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: left">GallonsPerHour</td>
+      <td style="text-align: left">gal/h</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">1042</td>
+      <td style="text-align: right">4</td>
+      <td style="text-align: left">Gallons</td>
+      <td style="text-align: left">gal</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">1043</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: left">Microvolts</td>
+      <td style="text-align: left">µV</td>
+    </tr>
+  </tbody>
+</table>
 
 <h3 id="the-devicetemplate-block">The DEVICETEMPLATE block</h3>
 
@@ -1726,7 +2036,7 @@ if (PACKETTEMPLATEFIELDPART.Factor != 1) {
   </tbody>
 </table>
 
-<p>The <code class="highlighter-rouge">IdTextIndex</code> field references the string <code class="highlighter-rouge">"068\_2\_0"</code>. The <code class="highlighter-rouge">NameLocalizedTextIndex</code> field references the strings <code class="highlighter-rouge">"Solar heat"</code>, <code class="highlighter-rouge">"Solarwärme"</code> and <code class="highlighter-rouge">"Chaleur solaire"</code>. The <code class="highlighter-rouge">UnitId</code> field references the unit <code class="highlighter-rouge">"WattHours"</code>.</p>
+<p>The <code class="highlighter-rouge">IdTextIndex</code> field references the string <code class="highlighter-rouge">"068_2_0"</code>. The <code class="highlighter-rouge">NameLocalizedTextIndex</code> field references the strings <code class="highlighter-rouge">"Solar heat"</code>, <code class="highlighter-rouge">"Solarwärme"</code> and <code class="highlighter-rouge">"Chaleur solaire"</code>. The <code class="highlighter-rouge">UnitId</code> field references the unit <code class="highlighter-rouge">"WattHours"</code>.</p>
 
 <h3 id="the-packettemplatefieldpart-blocks">The PACKETTEMPLATEFIELDPART blocks</h3>
 

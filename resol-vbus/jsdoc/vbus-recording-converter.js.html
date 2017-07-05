@@ -52,16 +52,18 @@
 			</li>
 			
 		</ul>
-		<div class="col-sm-3 col-md-3">
-            <form class="navbar-form" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
+        
 	</div>
 
 </div>
@@ -82,7 +84,7 @@
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2014, Daniel Wippermann | MIT license */
+            class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann | MIT license */
 'use strict';
 
 
@@ -194,6 +196,37 @@ var VBusRecordingConverter = Converter.extend(/** @lends VBusRecordingConverter#
             buffer = createBuffer(8, 22 + rawData.buffer.length, rawData.startTimestamp);
             moreints.writeUInt64LE(buffer, rawData.endTimestamp.getTime(), 14);
             rawData.buffer.copy(buffer, 22, 0, rawData.buffer.length);
+            buffers.push(buffer);
+
+            buffer = Buffer.concat(buffers);
+            return this.push(buffer);
+        }
+    },
+
+    convertComment: function(timestamp, comment) {
+        if (this.objectMode) {
+            return Converter.prototype.convertRawData.apply(this, arguments);
+        } else {
+            var buffers = [];
+
+            var createBuffer = function(type, length, timestamp) {
+                var buffer = new Buffer(length);
+                buffer.fill(0);
+
+                buffer [0] = 0xA5;
+                buffer [1] = (type &amp; 0x0F) | ((type &amp; 0x0F) &lt;&lt; 4);
+                buffer.writeUInt16LE(length, 2);
+                buffer.writeUInt16LE(length, 4);
+                moreints.writeUInt64LE(buffer, timestamp.getTime(), 6);
+
+                return buffer;
+            };
+
+            var rawData = Buffer.from(comment.toString());
+
+            var buffer;
+            buffer = createBuffer(9, 14 + rawData.length, timestamp);
+            rawData.copy(buffer, 14, 0, rawData.length);
             buffers.push(buffer);
 
             buffer = Buffer.concat(buffers);
@@ -439,6 +472,13 @@ var VBusRecordingConverter = Converter.extend(/** @lends VBusRecordingConverter#
                 channel: this.currentChannel,
                 buffer: rawBuffer,
             });
+        } else if ((type === 9) &amp;&amp; (buffer.length >= 14)) {
+            var comment = buffer.slice(14).toString();
+
+            this.emit('comment', {
+                timestamp: new Date(timestamp),
+                comment: comment,
+            });
         }
     },
 
@@ -518,6 +558,18 @@ var VBusRecordingConverter = Converter.extend(/** @lends VBusRecordingConverter#
             this.currentChannel = 0;
         } else if ((type === 7) &amp;&amp; (buffer.length >= 16)) {
             this.currentChannel = buffer [14];
+        } else if ((type === 8) &amp;&amp; (buffer.length >= 22)) {
+            var startTimestamp = moreints.readUInt64LE(buffer, 6);
+            var endTimestamp = moreints.readUInt64LE(buffer, 14);
+            var rawBuffer = new Buffer(buffer.length - 22);
+            buffer.copy(rawBuffer, 0, 22, buffer.length);
+
+            this.emit('rawData', {
+                startTimestamp: new Date(startTimestamp),
+                endTimestamp: new Date(endTimestamp),
+                channel: this.currentChannel,
+                buffer: rawBuffer,
+            });
         }
 
         if (hasHeader) {
@@ -593,32 +645,34 @@ module.exports = VBusRecordingConverter;
 </div>
 </div>
 
-<div class="modal fade" id="searchResults">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Search results</h4>
-      </div>
-      <div class="modal-body"></div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div>
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
 
 <footer>
 
 
 	<span class="copyright">
-	resol-vbus | Copyright (c) 2013-2016, Daniel Wippermann
+	resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on Sun Oct 23rd 2016
+		on Wed Jul 5th 2017
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
@@ -626,7 +680,9 @@ module.exports = VBusRecordingConverter;
 
 <script src="scripts/docstrap.lib.js"></script>
 <script src="scripts/toc.js"></script>
-<script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
 
 <script>
 $( function () {
@@ -636,7 +692,7 @@ $( function () {
 		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
 	} );
 
-	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
 		var $this = $( this );
 
 		var example = $this.find( "code" );
@@ -672,8 +728,7 @@ $( function () {
 	} );
 	$( "#toc" ).toc( {
 		anchorName  : function ( i, heading, prefix ) {
-			var id = $( heading ).attr( "id" );
-			return id && id.replace(/\~/g, '-inner-').replace(/\./g, '-static-') || ( prefix + i );
+			return $( heading ).attr( "id" ) || ( prefix + i );
 		},
 		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
 		showAndHide : false,
@@ -699,11 +754,13 @@ $( function () {
 <!--Google Analytics-->
 
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		SearcherDisplay.init();
-	});
-</script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
 
 </body>
 </html>

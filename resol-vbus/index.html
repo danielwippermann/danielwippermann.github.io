@@ -83,8 +83,6 @@
 
 <h4 id="a-javascript-library-for-processing-resol-vbus-data">A JavaScript library for processing RESOL VBus data.</h4>
 
-<iframe src="http://ghbtns.com/github-btn.html?user=danielwippermann&amp;repo=resol-vbus&amp;type=watch&amp;size=large" allowtransparency="true" frameborder="0" scrolling="0" width="77" height="30"></iframe>
-
 <p><a href="https://npmjs.org/package/resol-vbus"><img src="https://img.shields.io/npm/v/resol-vbus.svg" alt="NPM version" /></a>
 <a href="https://travis-ci.org/danielwippermann/resol-vbus"><img src="https://img.shields.io/travis/danielwippermann/resol-vbus.svg" alt="Build Status" /></a>
 <a href="https://coveralls.io/r/danielwippermann/resol-vbus"><img src="https://img.shields.io/coveralls/danielwippermann/resol-vbus.svg" alt="Coverage Status" /></a>
@@ -164,7 +162,7 @@ into your shell:</p>
   <li><a href="http://www.vbus.net/">RESOL VBus.net</a></li>
 </ul>
 
-<h2 id="a-namespecsatechnical-information--specifications"><a name="specs"></a>Technical Information &amp; Specifications</h2>
+<h2 id="technical-information--specifications"><a name="specs"></a>Technical Information &amp; Specifications</h2>
 
 <ul>
   <li><a href="https://groups.google.com/forum/#!forum/resol-vbus">RESOL VBus Google Group</a></li>
@@ -189,6 +187,25 @@ That sometimes causes configuration loads and saves to fail because unknown valu
 </ul>
 
 <h2 id="changelog">Changelog</h2>
+
+<h2 id="work-in-progress">Work in progress</h2>
+
+<ul>
+  <li>Add support to generate and parse “type 9” comment records using <code class="highlighter-rouge">VBusRecordingConverter</code>.</li>
+  <li>Make it easier to create a <code class="highlighter-rouge">Specification</code> from a <code class="highlighter-rouge">SpecificationFile</code>.</li>
+  <li>Update dependencies.</li>
+  <li>Some minor bug fixes.</li>
+</ul>
+
+<h3 id="version-0160-2017-02-01">Version 0.16.0 (2017-02-01)</h3>
+
+<ul>
+  <li>Use VSF binary file to load VBus specification data</li>
+  <li>Add support to read and write raw data in VBus recordings</li>
+  <li>Extend <code class="highlighter-rouge">VBusRecordingConverter</code> to support fast topology-only scan</li>
+  <li>Code clean up</li>
+  <li>Several minor bug fixes</li>
+</ul>
 
 <h3 id="version-0150-2016-03-30">Version 0.15.0 (2016-03-30)</h3>
 
@@ -278,6 +295,7 @@ That sometimes causes configuration loads and saves to fail because unknown valu
 <ul>
   <li>Thorsten Müller</li>
   <li>Paul Hanna</li>
+  <li>Sabine Käß</li>
 </ul>
 
 <h2 id="legal-notices">Legal Notices</h2>
@@ -291,7 +309,7 @@ of RESOL - Elektronische Regelungen GmbH.</p>
 
 <p>The MIT License (MIT)</p>
 
-<p>Copyright (c) 2013-2016, Daniel Wippermann.</p>
+<p>Copyright (c) 2013-2017, Daniel Wippermann.</p>
 
 <p>Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the “Software”), to deal
