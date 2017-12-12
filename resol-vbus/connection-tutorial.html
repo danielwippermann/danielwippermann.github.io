@@ -118,7 +118,7 @@
 <p>If you want to receive data from a TCP enabled data source (e.g. VBus/LAN interface adapter or one of the dataloggers), you can use the <code class="highlighter-rouge">TcpConnection</code> class to do so:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>var connection = new vbus.TcpConnection({
-	host: 'mydl3.via.vbus.net',
+	host: 'mydl3.vbus.io',
 	viaTag: 'mydl3',             // only necessary if connected using VBus.net
 	password: 'secret',
 	channel: 1,                  // only necessary if connected to a DL3
@@ -143,7 +143,6 @@
 });
 </code></pre>
 </div>
-
 
     </div>
   </div>
