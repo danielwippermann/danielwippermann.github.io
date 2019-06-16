@@ -84,27 +84,24 @@
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann | MIT license */
+            class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann | MIT license */
 'use strict';
 
 
 
-var EventEmitter = require('events').EventEmitter;
+const EventEmitter = require('events').EventEmitter;
 
 
-var _ = require('lodash');
-var Q = require('q');
-
-
-var extend = require('./extend');
-var Header = require('./header');
-var HeaderSet = require('./header-set');
-var HeaderSetConsolidator = require('./header-set-consolidator');
-var utils = require('./utils');
+const extend = require('./extend');
+const Header = require('./header');
+const HeaderSet = require('./header-set');
+const HeaderSetConsolidator = require('./header-set-consolidator');
+const _ = require('./lodash');
+const { generateGUID } = require('./utils');
 
 
 
-var optionKeys = [
+const optionKeys = [
     'id',
     'minTimestamp',
     'maxTimestamp',
@@ -114,7 +111,7 @@ var optionKeys = [
 
 
 
-var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
+const Recorder = extend(EventEmitter, /** @lends Recorder# */ {
 
     /**
      * Identifier for this recorder instance. It may be used to reference
@@ -174,13 +171,13 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
      * The storage mechanism and format of the Recorder sub-classes is
      * implementation-specific to this class.
      */
-    constructor: function(options) {
+    constructor(options) {
         EventEmitter.call(this);
 
         _.extend(this, _.pick(options, optionKeys));
 
         if (!this.id) {
-            this.id = utils.generateGUID();
+            this.id = generateGUID();
         }
         if (!this.minTimestamp) {
             this.minTimestamp = new Date(Date.UTC(2001, 0));
@@ -190,7 +187,7 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
         }
     },
 
-    _getOptions: function() {
+    _getOptions() {
         return _.extend({}, _.pick(this, optionKeys));
     },
 
@@ -204,8 +201,8 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
      * @param {number} [options.interval] {@link Recorder#interval}
      * @param {boolean} [options.end=true] Whether the stream should be `end()`ed when the playback is complete
      */
-    playback: function(stream, options) {
-        var _this = this;
+    async playback(stream, options) {
+        const _this = this;
 
         options = _.defaults({}, options, this._getOptions(), {
             end: true
@@ -215,18 +212,18 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
             throw new Error('Stream must be in object mode');
         }
 
-        var headerSetConsolidator = new HeaderSetConsolidator({
+        const headerSetConsolidator = new HeaderSetConsolidator({
             minTimestamp: options.minTimestamp,
             maxTimestamp: options.maxTimestamp,
             interval: options.interval,
         });
 
-        var playedBackRanges = [];
+        let playedBackRanges = [];
 
-        headerSetConsolidator.on('headerSet', function(headerSet) {
-            var timestamp = headerSet.timestamp;
+        headerSetConsolidator.on('headerSet', (headerSet) => {
+            const timestamp = headerSet.timestamp;
 
-            var headerSetRange = {
+            const headerSetRange = {
                 minTimestamp: timestamp,
                 maxTimestamp: timestamp,
             };
@@ -236,22 +233,20 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
             stream.write(headerSet);
         });
 
-        return Q.fcall(function() {
-            return _this._playback(headerSetConsolidator, options);
-        }).then(function() {
-            if (options.end) {
-                return utils.promise(function(resolve) {
-                    stream.end(function() {
-                        resolve();
-                    });
+        await _this._playback(headerSetConsolidator, options);
+
+        if (options.end) {
+            await new Promise((resolve) => {
+                stream.end(() => {
+                    resolve();
                 });
-            }
-        }).then(function() {
-            return playedBackRanges;
-        });
+            });
+        }
+
+        return playedBackRanges;
     },
 
-    _playback: function(headerSetConsolidator, options) {
+    _playback(headerSetConsolidator, options) {
         throw new Error('Must be implemented by sub-class');
     },
 
@@ -265,8 +260,8 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
      * @param {number} [options.interval] See {@link Recorder#interval}
      * @return {Promise} A Promise that resolves to the recorded ranges.
      */
-    record: function(stream, options) {
-        var _this = this;
+    async record(stream, options) {
+        const _this = this;
 
         options = _.defaults({}, options, this._getOptions(), {
         });
@@ -275,19 +270,19 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
             throw new Error('Stream must be in object mode');
         }
 
-        var headerSetConsolidator = new HeaderSetConsolidator({
+        const headerSetConsolidator = new HeaderSetConsolidator({
             minTimestamp: options.minTimestamp,
             maxTimestamp: options.maxTimestamp,
             interval: options.interval,
             timeToLive: options.timeToLive,
         });
 
-        var recordedRanges = [];
+        let recordedRanges = [];
 
-        headerSetConsolidator.on('headerSet', function(headerSet) {
-            var timestamp = headerSet.timestamp;
+        headerSetConsolidator.on('headerSet', (headerSet) => {
+            const timestamp = headerSet.timestamp;
 
-            var headerSetRange = {
+            const headerSetRange = {
                 minTimestamp: timestamp,
                 maxTimestamp: timestamp,
             };
@@ -295,63 +290,61 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
             recordedRanges = Recorder.performRangeSetOperation(recordedRanges, [ headerSetRange ], options.interval, 'union');
         });
 
-        var recordingJob = _.defaults({}, options, {
-            recordedRanges: recordedRanges,
+        const recordingJob = _.defaults({}, options, {
+            recordedRanges,
         });
 
-        return Q.fcall(function() {
-            return _this._startRecording(headerSetConsolidator, recordingJob);
-        }).then(function(recording) {
-            return Q.fcall(function() {
-                return utils.promise(function(resolve, reject) {
-                    var onData, onEnd, onError;
+        const recording = await _this._startRecording(headerSetConsolidator, recordingJob);
 
-                    var cleanup = function() {
-                        stream.removeListener('data', onData);
-                        stream.removeListener('end', onEnd);
-                        stream.removeListener('error', onError);
-                    };
+        try {
+            await new Promise((resolve, reject) => {
+                let onData = undefined, onEnd = undefined, onError = undefined;
 
-                    onData = function(obj) {
-                        if (obj instanceof Header) {
-                            headerSetConsolidator.addHeader(obj);
-                        } else if (obj instanceof HeaderSet) {
-                            headerSetConsolidator.processHeaderSet(obj);
-                        } else {
-                            throw new Error('Unsupported object received by Recorder');
-                        }
-                    };
+                const cleanup = function() {
+                    stream.removeListener('data', onData);
+                    stream.removeListener('end', onEnd);
+                    stream.removeListener('error', onError);
+                };
 
-                    onEnd = function() {
-                        cleanup();
+                onData = function(obj) {
+                    if (obj instanceof Header) {
+                        headerSetConsolidator.addHeader(obj);
+                    } else if (obj instanceof HeaderSet) {
+                        headerSetConsolidator.processHeaderSet(obj);
+                    } else {
+                        throw new Error('Unsupported object received by Recorder');
+                    }
+                };
 
-                        resolve();
-                    };
+                onEnd = function() {
+                    cleanup();
 
-                    onError = function(err) {
-                        cleanup();
+                    resolve();
+                };
 
-                        reject(err);
-                    };
+                onError = function(err) {
+                    cleanup();
 
-                    stream.on('data', onData);
-                    stream.on('end', onEnd);
-                    stream.on('error', onError);
-                    stream.resume();
-                });
-            }).finally(function() {
-                return _this._endRecording(headerSetConsolidator, recordingJob, recording);
+                    reject(err);
+                };
+
+                stream.on('data', onData);
+                stream.on('end', onEnd);
+                stream.on('error', onError);
+                stream.resume();
             });
-        }).then(function() {
-            return recordedRanges;
-        });
+        } finally {
+            await _this._endRecording(headerSetConsolidator, recordingJob, recording);
+        }
+
+        return recordedRanges;
     },
 
-    _startRecording: function(headerSetConsolidator, recordingJob) {
+    _startRecording(headerSetConsolidator, recordingJob) {
         throw new Error('Must be implemented by sub-class');
     },
 
-    _endRecording: function(headerSetConsolidator, recordingJob, recording) {
+    _endRecording(headerSetConsolidator, recordingJob, recording) {
         throw new Error('Must be implemented by sub-class');
     },
 
@@ -365,44 +358,42 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
      * @param {number} [options.interval] {@link Recorder#interval}
      * @returns {Promise} Promise resolving with a list of ranges that were synchronized.
      */
-    synchronizeTo: function(recorder, options) {
-        var _this = this;
+    async synchronizeTo(recorder, options) {
+        const _this = this;
 
         options = _.extend({}, this._getOptions(), options);
 
-        return Q.fcall(function() {
-            return recorder._getCurrentSyncState(options);
-        }).then(function(oldSyncState) {
-            oldSyncState = _.cloneDeep(oldSyncState);
+        let oldSyncState = await recorder._getCurrentSyncState(options);
 
-            if (!oldSyncState.sourceSyncState) {
-                oldSyncState.sourceSyncState = {};
-            }
-            if (!oldSyncState.destinationSyncState) {
-                oldSyncState.destinationSyncState = {};
-            }
+        oldSyncState = _.cloneDeep(oldSyncState);
 
-            return _this._getSyncJob(oldSyncState, options);
-        }).then(function(syncJob) {
-            return recorder._recordSyncJob(_this, syncJob);
-        });
+        if (!oldSyncState.sourceSyncState) {
+            oldSyncState.sourceSyncState = {};
+        }
+        if (!oldSyncState.destinationSyncState) {
+            oldSyncState.destinationSyncState = {};
+        }
+
+        const syncJob = await _this._getSyncJob(oldSyncState, options);
+
+        return recorder._recordSyncJob(_this, syncJob);
     },
 
-    _getCurrentSyncState: function(options) {
+    _getCurrentSyncState(options) {
         throw new Error('Must be implemented by sub-class');
     },
 
-    _getSyncJob: function(oldSyncState, options) {
-        var syncJob = _.extend({}, options, {
-            syncId: utils.generateGUID(),
+    _getSyncJob(oldSyncState, options) {
+        const syncJob = _.extend({}, options, {
+            syncId: generateGUID(),
             syncState: oldSyncState,
             syncStateDiffs: [],
         });
 
-        var syncState = this._getSyncState(syncJob, 'source', 'Recorder');
+        const syncState = this._getSyncState(syncJob, 'source', 'Recorder');
 
         // migrate
-        var syncVersion = syncState.version || 0;
+        let syncVersion = syncState.version || 0;
         if (syncVersion === 0) {
             syncVersion = 1;
             syncState.rangesByInterval = {};
@@ -414,16 +405,16 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
         }
 
         // find diffs
-        var syncStateDiffs = syncJob.syncStateDiffs;
+        let syncStateDiffs = syncJob.syncStateDiffs;
         syncStateDiffs.push({
             minTimestamp: options.minTimestamp,
             maxTimestamp: options.maxTimestamp,
         });
 
-        _.forEach(syncState.rangesByInterval, function(ranges, rangesKey) {
-            var interval = rangesKey | 0;
+        _.forEach(syncState.rangesByInterval, (ranges, rangesKey) => {
+            const interval = rangesKey | 0;
             if ((options.interval % interval) === 0) {
-                ranges = _.map(ranges, function(range) {
+                ranges = _.map(ranges, (range) => {
                     return {
                         minTimestamp: Recorder.alignTimestampToInterval(range.minTimestamp, interval),
                         maxTimestamp: Recorder.alignTimestampToInterval(range.maxTimestamp, interval) + interval,
@@ -436,7 +427,7 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
 
         syncJob.syncStateDiffs = syncStateDiffs;
 
-        return Q(syncJob);
+        return Promise.resolve(syncJob);
     },
 
     /**
@@ -447,7 +438,7 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
      * @param {RecorderSyncJob} syncJob The synchronization job to perform.
      * @returns {Promise} Promise resolving with a list of ranges that were synchronized.
      */
-    _recordSyncJob: function(recorder, syncJob) {
+    _recordSyncJob(recorder, syncJob) {
         throw new Error('Must be implemented by sub-class');
     },
 
@@ -459,25 +450,25 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
      * @param {RecorderSyncJob} syncJob The synchronization job to perform.
      * @returns {Promise} Promise resolving with a list of ranges that were synchronized.
      */
-    _playbackSyncJob: function(stream, syncJob) {
+    _playbackSyncJob(stream, syncJob) {
         throw new Error('Must be implemented by sub-class');
     },
 
-    _getSyncState: function(syncJobOrState, which, type) {
-        var syncState;
+    _getSyncState(syncJobOrState, which, type) {
+        let syncState;
         if (_.has(syncJobOrState, 'syncState') &amp;&amp; _.has(syncJobOrState, 'syncId')) {
             syncState = syncJobOrState.syncState;
         } else {
             syncState = syncJobOrState;
         }
 
-        var syncStateKey = which + 'SyncState';
+        const syncStateKey = which + 'SyncState';
 
         if (!_.has(syncState, syncStateKey)) {
             syncState [syncStateKey] = {};
         }
 
-        var syncStateRoot = syncState [syncStateKey];
+        const syncStateRoot = syncState [syncStateKey];
 
         if (!_.has(syncStateRoot, type)) {
             syncStateRoot [type] = {};
@@ -486,10 +477,10 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
         return syncStateRoot [type];
     },
 
-    _markSourceSyncRanges: function(ranges, syncJob) {
-        var syncState = this._getSyncState(syncJob, 'source', 'Recorder');
+    _markSourceSyncRanges(ranges, syncJob) {
+        const syncState = this._getSyncState(syncJob, 'source', 'Recorder');
 
-        var handledRanges = syncState.rangesByInterval [syncJob.interval];
+        let handledRanges = syncState.rangesByInterval [syncJob.interval];
 
         handledRanges = Recorder.performRangeSetOperation(handledRanges, ranges, syncJob.interval, 'union');
 
@@ -498,7 +489,7 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
 
 }, /** @lends Recorder. */ {
 
-    alignTimestampToInterval: function(timestamp, interval) {
+    alignTimestampToInterval(timestamp, interval) {
         if (typeof timestamp.getTime === 'function') {
             timestamp = timestamp.getTime();
         } else if (typeof timestamp === 'string') {
@@ -530,10 +521,10 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
      * @param {string} operation Operation to perform, can be `'union'`, `'difference'` or `'intersection'`
      * @returns {Array} Set containing timestamp ranges after the operation
      */
-    performRangeSetOperation: function(rangesA, rangesB, interval, operation) {
-        var newInfos = [];
+    performRangeSetOperation(rangesA, rangesB, interval, operation) {
+        let newInfos = [];
 
-        var calcBaseTimestamp = function(timestamp) {
+        const calcBaseTimestamp = function(timestamp) {
             if (interval > 0) {
                 return Math.floor(timestamp / interval) * interval;
             } else {
@@ -541,8 +532,8 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
             }
         };
 
-        var rangeToInfo = function(range) {
-            var minTimestamp = range.minTimestamp;
+        const rangeToInfo = function(range) {
+            let minTimestamp = range.minTimestamp;
             if (typeof minTimestamp.getTime === 'function') {
                 minTimestamp = minTimestamp.getTime();
             } else if (typeof minTimestamp === 'string') {
@@ -551,7 +542,7 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
                 throw new Error('Invalid minTimestamp "' + minTimestamp + '" (type "' + typeof minTimestamp + '"');
             }
 
-            var maxTimestamp = range.maxTimestamp;
+            let maxTimestamp = range.maxTimestamp;
             if (typeof maxTimestamp.getTime === 'function') {
                 maxTimestamp = maxTimestamp.getTime();
             } else if (typeof maxTimestamp === 'string') {
@@ -560,20 +551,20 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
                 throw new Error('Invalid maxTimestamp "' + maxTimestamp + '" (type "' + typeof maxTimestamp + '"');
             }
 
-            var minBaseTimestamp = calcBaseTimestamp(minTimestamp);
-            var maxBaseTimestamp = calcBaseTimestamp(maxTimestamp + interval);
+            const minBaseTimestamp = calcBaseTimestamp(minTimestamp);
+            const maxBaseTimestamp = calcBaseTimestamp(maxTimestamp + interval);
 
             return {
-                minTimestamp: minTimestamp,
-                maxTimestamp: maxTimestamp,
-                minBaseTimestamp: minBaseTimestamp,
-                maxBaseTimestamp: maxBaseTimestamp,
+                minTimestamp,
+                maxTimestamp,
+                minBaseTimestamp,
+                maxBaseTimestamp,
                 valid: true,
             };
         };
 
-        var infoToRange = function(info) {
-            var range;
+        const infoToRange = function(info) {
+            let range;
             if (info &amp;&amp; info.valid) {
                 range = {
                     minTimestamp: new Date(info.minTimestamp),
@@ -583,23 +574,23 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
             return range;
         };
 
-        var processInfo = function(refInfo, operation) {
+        const processInfo = function(refInfo, operation) {
             if (!refInfo || !refInfo.valid || (refInfo.minTimestamp > refInfo.maxTimestamp)) {
                 return;
             }
 
-            for (var i = 0; i &lt;= newInfos.length; i++) {
-                var newInfo = newInfos [i];
+            let nextInfo;
+            for (let i = 0; i &lt;= newInfos.length; i++) {
+                const newInfo = newInfos [i];
 
-                var nextInfo;
-                for (var j = i + 1; j &lt; newInfos.length; j++) {
+                for (let j = i + 1; j &lt; newInfos.length; j++) {
                     if (newInfos [j].valid) {
                         nextInfo = newInfos [j];
                         break;
                     }
                 }
 
-                var insert = false, deleteThis = false;
+                let insert = false, deleteThis = false;
                 if (newInfo &amp;&amp; !newInfo.valid) {
                     // skip
                 } else if (operation === 'union') {
@@ -659,7 +650,7 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
                         newInfo.maxBaseTimestamp = refInfo.minBaseTimestamp - 1;
                     } else {
                         // split
-                        var splitInfo = {
+                        const splitInfo = {
                             minTimestamp: newInfo.minTimestamp,
                             maxTimestamp: refInfo.minTimestamp - 1,
                             minBaseTimestamp: newInfo.minBaseTimestamp,
@@ -686,27 +677,27 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
             }
         };
 
-        var processInfos = function(infos, operation) {
-            _.forEach(_.clone(infos), function(info, index) {
+        const processInfos = function(infos, operation) {
+            _.forEach(_.clone(infos), (info, index) => {
                 processInfo(info, operation);
             });
         };
 
-        var infosA = _.map(rangesA, rangeToInfo);
+        const infosA = _.map(rangesA, rangeToInfo);
 
-        var infosB = _.map(rangesB, rangeToInfo);
+        const infosB = _.map(rangesB, rangeToInfo);
 
         if (operation === 'intersection') {
             processInfos(infosA, 'union');
             processInfos(infosB, 'difference');
 
-            var infosAMinusB = newInfos;
+            const infosAMinusB = newInfos;
             newInfos = [];
 
             processInfos(infosB, 'union');
             processInfos(infosA, 'difference');
 
-            var infosBMinusA = newInfos;
+            const infosBMinusA = newInfos;
             newInfos = [];
 
             processInfos(infosA, 'union');
@@ -715,18 +706,18 @@ var Recorder = extend(EventEmitter, /** @lends Recorder# */ {
             processInfos(infosAMinusB, 'difference');
             processInfos(infosBMinusA, 'difference');
         } else {
-            _.forEach(infosA, function(info) {
+            _.forEach(infosA, (info) => {
                 processInfo(info, 'union');
             });
 
-            _.forEach(infosB, function(info) {
+            _.forEach(infosB, (info) => {
                 processInfo(info, operation);
             });
         }
 
-        var newRanges = [];
-        _.forEach(newInfos, function(newInfo) {
-            var newRange = infoToRange(newInfo);
+        const newRanges = [];
+        _.forEach(newInfos, (newInfo) => {
+            const newRange = infoToRange(newInfo);
             if (newRange) {
                 newRanges.push(newRange);
             }
@@ -779,13 +770,13 @@ module.exports = Recorder;
 
 
 	<span class="copyright">
-	resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann
+	resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a>
 	
-		on Wed Jul 5th 2017
+		on Sun Jun 16th 2019
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

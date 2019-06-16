@@ -100,8 +100,17 @@
 
 
     <section class="readme-section">
-        <article><h1>resol-vbus</h1><h4>A JavaScript library for processing RESOL VBus data.</h4><p><a href="https://npmjs.org/package/resol-vbus"><img src="https://img.shields.io/npm/v/resol-vbus.svg" alt="NPM version"></a><br><a href="https://travis-ci.org/danielwippermann/resol-vbus"><img src="https://img.shields.io/travis/danielwippermann/resol-vbus.svg" alt="Build Status"></a><br><a href="https://coveralls.io/r/danielwippermann/resol-vbus"><img src="https://img.shields.io/coveralls/danielwippermann/resol-vbus.svg" alt="Coverage Status"></a><br><a href="https://david-dm.org/danielwippermann/resol-vbus"><img src="https://img.shields.io/david/danielwippermann/resol-vbus.svg" alt="Dependency Status"></a><br><a href="https://david-dm.org/danielwippermann/resol-vbus#info=devDependencies"><img src="https://img.shields.io/david/dev/danielwippermann/resol-vbus.svg" alt="devDependency Status"></a><br><a href="http://opensource.org/licenses/MIT"><img src="https://img.shields.io/npm/l/resol-vbus.svg" alt="License"></a></p>
-<h2>Features</h2><ul>
+        <article><h1>resol-vbus</h1>
+<h4>A JavaScript library for processing RESOL VBus data.</h4>
+<p><a href="https://npmjs.org/package/resol-vbus"><img src="https://img.shields.io/npm/v/resol-vbus.svg" alt="NPM version"></a><br>
+<a href="https://travis-ci.org/danielwippermann/resol-vbus"><img src="https://img.shields.io/travis/danielwippermann/resol-vbus.svg" alt="Build Status"></a><br>
+<a href="https://coveralls.io/r/danielwippermann/resol-vbus"><img src="https://img.shields.io/coveralls/danielwippermann/resol-vbus.svg" alt="Coverage Status"></a><br>
+<a href="https://david-dm.org/danielwippermann/resol-vbus"><img src="https://img.shields.io/david/danielwippermann/resol-vbus.svg" alt="Dependency Status"></a><br>
+<a href="https://david-dm.org/danielwippermann/resol-vbus#info=devDependencies"><img src="https://img.shields.io/david/dev/danielwippermann/resol-vbus.svg" alt="devDependency Status"></a><br>
+<a href="http://opensource.org/licenses/MIT"><img src="https://img.shields.io/npm/l/resol-vbus.svg" alt="License"></a><br>
+<a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fdanielwippermann%2Fresol-vbus?ref=badge_shield"><img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdanielwippermann%2Fresol-vbus.svg?type=shield" alt="FOSSA Status"></a></p>
+<h2>Features</h2>
+<ul>
 <li>Connects to various RESOL VBus devices</li>
 <li>Processes live and recorded VBus data streams</li>
 <li>Discovers LAN-enabled RESOL devices on the local network</li>
@@ -109,25 +118,46 @@
 <li>Synchronizes recorded VBus data from a RESOL datalogger to your local file system</li>
 <li>Converts recorded VBus data into human or machine readable formats, optionally allowing to filter the output</li>
 </ul>
-<h2>Documentation</h2><p>You can find the work-in-progress documentation for this project here:</p>
+<h2>Documentation</h2>
+<p>You can find the work-in-progress documentation for this project here:</p>
 <p><a href="http://danielwippermann.github.io/resol-vbus/">http://danielwippermann.github.io/resol-vbus/</a></p>
 <p>The JSDoc-generated documentation is located here:</p>
 <p><a href="http://danielwippermann.github.io/resol-vbus/jsdoc/classes.list.html">http://danielwippermann.github.io/resol-vbus/jsdoc/classes.list.html</a></p>
-<h2>Installation</h2><p>If you want to use this module in your own application, you can just install it from the npm registry:</p>
-<pre class="prettyprint source"><code>⌘  npm install --save resol-vbus</code></pre><p>If you want to contribute to it you might want to check out the latest version from GitHub:</p>
-<pre class="prettyprint source"><code>⌘  git clone https://github.com/danielwippermann/resol-vbus.git
+<h2>Installation</h2>
+<p>If you want to use this module in your own application, you can just install it from the npm registry:</p>
+<pre><code>⌘  npm install --save resol-vbus
+</code></pre>
+<p>If you want to contribute to it you might want to check out the latest version from GitHub:</p>
+<pre><code>⌘  git clone https://github.com/danielwippermann/resol-vbus.git
 ⌘  cd resol-vbus
-⌘  npm install</code></pre><h2>Running the console examples</h2><pre class="prettyprint source"><code>⌘  node examples/&lt;name>/index.js</code></pre><h2>Running the tests</h2><p>To start a single run of the test suite just enter the following command<br>into your shell:</p>
-<pre class="prettyprint source"><code>⌘  gulp</code></pre><p>In addition to that the project is configured to watch its own files for<br>modification and rerun the documentation generator and test suite every<br>time you hit save on a file. To run that just enter the following command<br>into your shell:</p>
-<pre class="prettyprint source"><code>⌘  gulp watch</code></pre><h2>Supported Devices &amp; Services</h2><ul>
+⌘  npm install
+</code></pre>
+<h2>Running the console examples</h2>
+<pre><code>⌘  node examples/&lt;name&gt;/index.js
+</code></pre>
+<h2>Running the tests</h2>
+<p>To start a single run of the test suite just enter the following command<br>
+into your shell:</p>
+<pre><code>⌘  gulp
+</code></pre>
+<p>In addition to that the project is configured to watch its own files for<br>
+modification and rerun the documentation generator and test suite every<br>
+time you hit save on a file. To run that just enter the following command<br>
+into your shell:</p>
+<pre><code>⌘  gulp watch
+</code></pre>
+<h2>Supported Devices &amp; Services</h2>
+<ul>
 <li><a href="http://www.resol.de/index/produkte/sprache/en">All current RESOL controllers with VBus</a></li>
 <li><a href="http://www.resol.de/index/produktdetail/kategorie/2/sprache/en/id/12">RESOL DL2 Datalogger</a></li>
 <li><a href="http://www.resol.de/index/produktdetail/kategorie/2/sprache/en/id/86">RESOL DL3 Datalogger</a></li>
+<li><a href="http://www.resol.de/index/produktdetail/kategorie/2/id/209/sprache/en">RESOL KM2 Communication module</a></li>
 <li><a href="http://www.resol.de/index/produktdetail/kategorie/2/id/76/sprache/en">RESOL VBus/LAN interface adapter</a></li>
 <li><a href="http://www.resol.de/index/produktdetail/kategorie/2/id/13/sprache/en">RESOL VBus/USB interface adapter</a></li>
 <li><a href="http://www.vbus.net/">RESOL VBus.net</a></li>
 </ul>
-<h2><a name="specs"></a>Technical Information &amp; Specifications</h2><ul>
+<h2><a name="specs"></a>Technical Information &amp; Specifications</h2>
+<ul>
 <li><a href="https://groups.google.com/forum/#!forum/resol-vbus">RESOL VBus Google Group</a></li>
 <li><a href="https://drive.google.com/file/d/0B4wMTuLGRPi2RnU0Vm1tTG5wM1k/edit?usp=sharing">RESOL VBus Protocol Specification</a></li>
 <li><a href="http://danielwippermann.github.io/resol-vbus/vbus-packets.html">RESOL VBus Packet List</a></li>
@@ -137,82 +167,143 @@
 <li><a href="https://drive.google.com/file/d/0B4wMTuLGRPi2YmM5ZTJiNDQtNjkyMi00ZWYzLTgzYzgtYTdiMjBlZmI5ODgx/edit?usp=sharing">RESOL DL2 (v1) Data Download API</a></li>
 <li><a href="http://danielwippermann.github.io/resol-vbus/dlx-data-download-api.html">RESOL DL2 (v2) &amp; DL3 Data Download API</a></li>
 </ul>
-<h2>Known issues</h2><ul>
-<li>The <code>FileSystemRecorder</code> class sometimes writes invalid JSON into its &quot;SyncState.json&quot; file causing it to not<br>being able to restore and recover from that when the app using the recorder restarts (e.g. the &quot;vbustouch-proxy&quot;<br>example).</li>
-<li>The <code>ConfigurationOptimizers</code> do not yet detect the firmware version running on the controller to be configured.<br>That sometimes causes configuration loads and saves to fail because unknown values are read from or written to<br>(e.g. using the &quot;customizer&quot; example on a DeltaSol MX with firmware version 1.11 or below).</li>
+<h2>Known issues</h2>
+<ul>
+<li>The <code>FileSystemRecorder</code> class sometimes writes invalid JSON into its &quot;SyncState.json&quot; file causing it to not<br>
+being able to restore and recover from that when the app using the recorder restarts (e.g. the &quot;vbustouch-proxy&quot;<br>
+example).</li>
+<li>The <code>ConfigurationOptimizers</code> do not yet detect the firmware version running on the controller to be configured.<br>
+That sometimes causes configuration loads and saves to fail because unknown values are read from or written to<br>
+(e.g. using the &quot;customizer&quot; example on a DeltaSol MX with firmware version 1.11 or below).</li>
 </ul>
-<h2>Changelog</h2><h2>Work in progress</h2><ul>
+<h2>Short-term plans</h2>
+<ul>
+<li>Remove current <code>ConfigurationOptimizer</code> constructs in favor of RESOL's official support.</li>
+</ul>
+<h2>Changelog</h2>
+<h2>Work in progress</h2>
+<h2>Version 0.20.0 (2019-06-15)</h2>
+<ul>
+<li>This version contains several breaking changes! You have been warned...
+<ul>
+<li>Refactor code to make use of ES2018 features (using Babel to back-support up to Node.js 6)</li>
+<li>Remove custom <code>Promise</code> implementation in favor of built-in, native one.</li>
+<li><code>Promise</code> return values no longer provide the <code>finally</code> and <code>done</code> methods.</li>
+<li>Remove <code>utils.promise</code>, <code>utils.Promise</code> and <code>utils.cancelablePromise</code>.</li>
+<li>Add <code>reportProgress</code> and <code>checkCanceled</code> options to <code>ConnectionCustomizer#transceive{Configuration,Value}</code> as a replacement to the previously used <code>cancelablePromise</code> solution.</li>
+</ul>
+</li>
+<li>Add RESOL DeltaSol C configuration optimizer.</li>
+<li>Add support for VBus-over-TCP wrapped in TLS.</li>
+</ul>
+<h2>Version 0.17.0 (2018-02-10)</h2>
+<ul>
+<li>Add <code>Buffer</code> support to <code>Connection#(get|set)ValueById</code> for values larger than 32-bit.</li>
+<li>Add <code>Connection#getCaps1</code>.</li>
+<li>Add bulk value transaction support to <code>Connection</code> class.</li>
 <li>Add support to generate and parse &quot;type 9&quot; comment records using <code>VBusRecordingConverter</code>.</li>
 <li>Make it easier to create a <code>Specification</code> from a <code>SpecificationFile</code>.</li>
+<li>Extend <code>vbustouch-proxy</code> example with text data logging feature.</li>
 <li>Update dependencies.</li>
 <li>Some minor bug fixes.</li>
 </ul>
-<h3>Version 0.16.0 (2017-02-01)</h3><ul>
+<h3>Version 0.16.0 (2017-02-01)</h3>
+<ul>
 <li>Use VSF binary file to load VBus specification data</li>
 <li>Add support to read and write raw data in VBus recordings</li>
 <li>Extend <code>VBusRecordingConverter</code> to support fast topology-only scan</li>
 <li>Code clean up</li>
 <li>Several minor bug fixes</li>
 </ul>
-<h3>Version 0.15.0 (2016-03-30)</h3><ul>
+<h3>Version 0.15.0 (2016-03-30)</h3>
+<ul>
 <li>Update VBus specification data</li>
 <li>Several minor bug fixes</li>
 </ul>
-<h3>Version 0.14.0 (2015-10-29)</h3><ul>
+<h3>Version 0.14.0 (2015-10-29)</h3>
+<ul>
 <li>Improve configuration optimizers and their discovery</li>
 <li>Update VBus specification data</li>
 </ul>
-<h3>Version 0.13.0 (2015-05-14)</h3><ul>
+<h3>Version 0.13.0 (2015-05-14)</h3>
+<ul>
 <li>Add configuration optimizers for RESOL DeltaSol SLT</li>
 <li>Add BlockType support</li>
 </ul>
-<h3>Version 0.12.2 (2015-05-05)</h3><ul>
+<h3>Version 0.12.2 (2015-05-05)</h3>
+<ul>
 <li>Update VBus specification data</li>
 </ul>
-<h3>Version 0.12.1 (2015-04-27)</h3><ul>
+<h3>Version 0.12.1 (2015-04-27)</h3>
+<ul>
 <li>Add configuration optimizers for RESOL DeltaSol MX and BS/4 v2</li>
 <li>Add a simple JSON live data server example</li>
 <li>Add some documentation</li>
 <li>Several bug fixes</li>
 </ul>
-<h3>Version 0.12.0 (2015-02-28)</h3><ul>
+<h3>Version 0.12.0 (2015-02-28)</h3>
+<ul>
 <li>Add <code>vbustouch-proxy</code> example</li>
 <li>Add support for rounding floating point numbers</li>
 </ul>
-<h3>Version 0.11.1 (2014-11-04)</h3><ul>
+<h3>Version 0.11.1 (2014-11-04)</h3>
+<ul>
 <li>Fix a floating point bug caused by <code>setRawValue</code></li>
 </ul>
-<h3>Version 0.11.0 (2014-10-29)</h3><ul>
+<h3>Version 0.11.0 (2014-10-29)</h3>
+<ul>
 <li>Added support for setting packet field values</li>
 <li>Several bug fixes</li>
 </ul>
-<h3>Version 0.10.0 (2014-04-26)</h3><ul>
+<h3>Version 0.10.0 (2014-04-26)</h3>
+<ul>
 <li>Finalized support for customizing controller configuration.</li>
 <li>Several bug fixes.</li>
 </ul>
-<h3>Version 0.9.0 (2014-03-16)</h3><ul>
+<h3>Version 0.9.0 (2014-03-16)</h3>
+<ul>
 <li>Completed Recorder class by adding support for recording</li>
 <li>Added unit conversion to VBus specification</li>
 <li>Several bug fixes.</li>
 </ul>
-<h3>Version 0.8.0 (2014-03-03)</h3><ul>
+<h3>Version 0.8.0 (2014-03-03)</h3>
+<ul>
 <li>Extended Converter and VBusRecordingConverter to support object mode in stream (for performance reason)</li>
 <li>Fixed several bugs</li>
 <li>Increased test coverage and completed documentation.</li>
 </ul>
-<h3>Version 0.7.0 (2014-02-17)</h3><p>First release to the NPM registry.</p>
-<h2>Contributors</h2><ul>
+<h3>Version 0.7.0 (2014-02-17)</h3>
+<p>First release to the NPM registry.</p>
+<h2>Contributors</h2>
+<ul>
 <li>Thorsten Müller</li>
 <li>Paul Hanna</li>
 <li>Sabine Käß</li>
+<li>Andrew Thompson (@thompsa)</li>
 </ul>
-<h2>Legal Notices</h2><p>RESOL, VBus, VBus.net and others are trademarks or registered trademarks<br>of RESOL - Elektronische Regelungen GmbH.</p>
+<h2>Legal Notices</h2>
+<p>RESOL, VBus, VBus.net and others are trademarks or registered trademarks<br>
+of RESOL - Elektronische Regelungen GmbH.</p>
 <p>All other trademarks are the property of their respective owners.</p>
-<h2>License</h2><p>The MIT License (MIT)</p>
-<p>Copyright (c) 2013-2017, Daniel Wippermann.</p>
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy<br>of this software and associated documentation files (the &quot;Software&quot;), to deal<br>in the Software without restriction, including without limitation the rights<br>to use, copy, modify, merge, publish, distribute, sublicense, and/or sell<br>copies of the Software, and to permit persons to whom the Software is<br>furnished to do so, subject to the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be included in<br>all copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<br>IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,<br>FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE<br>AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER<br>LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,<br>OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN<br>THE SOFTWARE.</p></article>
+<h2>License</h2>
+<p>The MIT License (MIT)</p>
+<p>Copyright (c) 2013-2018, Daniel Wippermann.</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy<br>
+of this software and associated documentation files (the &quot;Software&quot;), to deal<br>
+in the Software without restriction, including without limitation the rights<br>
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell<br>
+copies of the Software, and to permit persons to whom the Software is<br>
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in<br>
+all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<br>
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,<br>
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE<br>
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER<br>
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,<br>
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN<br>
+THE SOFTWARE.</p>
+<p><a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fdanielwippermann%2Fresol-vbus?ref=badge_large"><img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdanielwippermann%2Fresol-vbus.svg?type=large" alt="FOSSA Status"></a></p></article>
     </section>
 
 
@@ -256,13 +347,13 @@
 
 
 	<span class="copyright">
-	resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann
+	resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a>
 	
-		on Wed Jul 5th 2017
+		on Sun Jun 16th 2019
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

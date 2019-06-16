@@ -88,7 +88,8 @@
 <a href="https://coveralls.io/r/danielwippermann/resol-vbus"><img src="https://img.shields.io/coveralls/danielwippermann/resol-vbus.svg" alt="Coverage Status" /></a>
 <a href="https://david-dm.org/danielwippermann/resol-vbus"><img src="https://img.shields.io/david/danielwippermann/resol-vbus.svg" alt="Dependency Status" /></a>
 <a href="https://david-dm.org/danielwippermann/resol-vbus#info=devDependencies"><img src="https://img.shields.io/david/dev/danielwippermann/resol-vbus.svg" alt="devDependency Status" /></a>
-<a href="http://opensource.org/licenses/MIT"><img src="https://img.shields.io/npm/l/resol-vbus.svg" alt="License" /></a></p>
+<a href="http://opensource.org/licenses/MIT"><img src="https://img.shields.io/npm/l/resol-vbus.svg" alt="License" /></a>
+<a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fdanielwippermann%2Fresol-vbus?ref=badge_shield"><img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdanielwippermann%2Fresol-vbus.svg?type=shield" alt="FOSSA Status" /></a></p>
 
 <h2 id="features">Features</h2>
 
@@ -157,6 +158,7 @@ into your shell:</p>
   <li><a href="http://www.resol.de/index/produkte/sprache/en">All current RESOL controllers with VBus</a></li>
   <li><a href="http://www.resol.de/index/produktdetail/kategorie/2/sprache/en/id/12">RESOL DL2 Datalogger</a></li>
   <li><a href="http://www.resol.de/index/produktdetail/kategorie/2/sprache/en/id/86">RESOL DL3 Datalogger</a></li>
+  <li><a href="http://www.resol.de/index/produktdetail/kategorie/2/id/209/sprache/en">RESOL KM2 Communication module</a></li>
   <li><a href="http://www.resol.de/index/produktdetail/kategorie/2/id/76/sprache/en">RESOL VBus/LAN interface adapter</a></li>
   <li><a href="http://www.resol.de/index/produktdetail/kategorie/2/id/13/sprache/en">RESOL VBus/USB interface adapter</a></li>
   <li><a href="http://www.vbus.net/">RESOL VBus.net</a></li>
@@ -186,13 +188,41 @@ That sometimes causes configuration loads and saves to fail because unknown valu
 (e.g. using the “customizer” example on a DeltaSol MX with firmware version 1.11 or below).</li>
 </ul>
 
+<h2 id="short-term-plans">Short-term plans</h2>
+
+<ul>
+  <li>Remove current <code class="highlighter-rouge">ConfigurationOptimizer</code> constructs in favor of RESOL’s official support.</li>
+</ul>
+
 <h2 id="changelog">Changelog</h2>
 
 <h2 id="work-in-progress">Work in progress</h2>
 
+<h2 id="version-0200-2019-06-15">Version 0.20.0 (2019-06-15)</h2>
+
 <ul>
+  <li>This version contains several breaking changes! You have been warned…
+    <ul>
+      <li>Refactor code to make use of ES2018 features (using Babel to back-support up to Node.js 6)</li>
+      <li>Remove custom <code class="highlighter-rouge">Promise</code> implementation in favor of built-in, native one.</li>
+      <li><code class="highlighter-rouge">Promise</code> return values no longer provide the <code class="highlighter-rouge">finally</code> and <code class="highlighter-rouge">done</code> methods.</li>
+      <li>Remove <code class="highlighter-rouge">utils.promise</code>, <code class="highlighter-rouge">utils.Promise</code> and <code class="highlighter-rouge">utils.cancelablePromise</code>.</li>
+      <li>Add <code class="highlighter-rouge">reportProgress</code> and <code class="highlighter-rouge">checkCanceled</code> options to <code class="highlighter-rouge">ConnectionCustomizer#transceive{Configuration,Value}</code> as a replacement to the previously used <code class="highlighter-rouge">cancelablePromise</code> solution.</li>
+    </ul>
+  </li>
+  <li>Add RESOL DeltaSol C configuration optimizer.</li>
+  <li>Add support for VBus-over-TCP wrapped in TLS.</li>
+</ul>
+
+<h2 id="version-0170-2018-02-10">Version 0.17.0 (2018-02-10)</h2>
+
+<ul>
+  <li>Add <code class="highlighter-rouge">Buffer</code> support to <code class="highlighter-rouge">Connection#(get|set)ValueById</code> for values larger than 32-bit.</li>
+  <li>Add <code class="highlighter-rouge">Connection#getCaps1</code>.</li>
+  <li>Add bulk value transaction support to <code class="highlighter-rouge">Connection</code> class.</li>
   <li>Add support to generate and parse “type 9” comment records using <code class="highlighter-rouge">VBusRecordingConverter</code>.</li>
   <li>Make it easier to create a <code class="highlighter-rouge">Specification</code> from a <code class="highlighter-rouge">SpecificationFile</code>.</li>
+  <li>Extend <code class="highlighter-rouge">vbustouch-proxy</code> example with text data logging feature.</li>
   <li>Update dependencies.</li>
   <li>Some minor bug fixes.</li>
 </ul>
@@ -296,6 +326,7 @@ That sometimes causes configuration loads and saves to fail because unknown valu
   <li>Thorsten Müller</li>
   <li>Paul Hanna</li>
   <li>Sabine Käß</li>
+  <li>Andrew Thompson (@thompsa)</li>
 </ul>
 
 <h2 id="legal-notices">Legal Notices</h2>
@@ -309,7 +340,7 @@ of RESOL - Elektronische Regelungen GmbH.</p>
 
 <p>The MIT License (MIT)</p>
 
-<p>Copyright (c) 2013-2017, Daniel Wippermann.</p>
+<p>Copyright (c) 2013-2018, Daniel Wippermann.</p>
 
 <p>Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the “Software”), to deal
@@ -328,6 +359,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.</p>
+
+<p><a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fdanielwippermann%2Fresol-vbus?ref=badge_large"><img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdanielwippermann%2Fresol-vbus.svg?type=large" alt="FOSSA Status" /></a></p>
 
 <h2 id="brought-to-you-by">Brought to you by</h2>
 

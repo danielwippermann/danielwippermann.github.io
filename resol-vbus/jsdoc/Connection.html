@@ -88,9 +88,16 @@
         Connection
         </h2>
         
-            <div class="class-description"><p>The <code>Connection</code> class is the abstract base class for all VBus live data connections.<br>It extends the <code>Duplex</code> stream class. Any data written to a <code>Connection</code> instance is<br>parsed according to the VBus Protocol Specification. Once a valid instance of one of the<br><code>Header</code> sub-classes (<code>Packet</code>, <code>Datagram</code> or <code>Telegram</code>)<br>is created from the binary data stream, the respective event is emitted on<br>the <code>Connection</code> instance.</p>
-<p>In addition to receiving incoming data the <code>Connection</code> class<br>offers several helper methods e.g. to send data to the underlying VBus connection.</p>
-<p>The <code>Connection</code> class itself has no knowledge about the underlying VBus connection.<br>Several sub-classes exist that know how to contact different types of VBus live streams.</p>
+            <div class="class-description"><p>The <code>Connection</code> class is the abstract base class for all VBus live data connections.<br>
+It extends the <code>Duplex</code> stream class. Any data written to a <code>Connection</code> instance is<br>
+parsed according to the VBus Protocol Specification. Once a valid instance of one of the<br>
+<code>Header</code> sub-classes (<code>Packet</code>, <code>Datagram</code> or <code>Telegram</code>)<br>
+is created from the binary data stream, the respective event is emitted on<br>
+the <code>Connection</code> instance.</p>
+<p>In addition to receiving incoming data the <code>Connection</code> class<br>
+offers several helper methods e.g. to send data to the underlying VBus connection.</p>
+<p>The <code>Connection</code> class itself has no knowledge about the underlying VBus connection.<br>
+Several sub-classes exist that know how to contact different types of VBus live streams.</p>
 <p>See <code>SerialConnection</code> or <code>TcpConnection</code> for concrete implementations.</p></div>
         
     
@@ -364,7 +371,9 @@ connection.connect();</pre>
 <dd>
     
     <div class="description">
-        <p>The VBus channel that this connection is established to.<br>All <code>Header</code> instances created by this <code>Connection</code> instance will be assigned<br>this VBus channel.</p>
+        <p>The VBus channel that this connection is established to.<br>
+All <code>Header</code> instances created by this <code>Connection</code> instance will be assigned<br>
+this VBus channel.</p>
     </div>
     
 
@@ -763,6 +772,638 @@ connection.connect();</pre>
             
 <hr>
 <dt>
+    <h4 class="name" id="beginBulkValueTransaction"><span class="type-signature"></span>beginBulkValueTransaction(address, txTimeout, options)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Sends a Datagram to begin a bulk valke transaction.<br>
+Returns a Promise that resolves to the answer Datagram or <code>null</code> on timeout.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>address</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The VBus address of the device to begin the transaction on.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>txTimeout</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The number of seconds of inactivity after which the transaction is rolled back.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6 class="method-params-label method-subparams-label">Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>timeout</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    500
+                
+                </td>
+            
+
+            <td class="description last"><p>Time in milliseconds between tries.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>timeoutIncr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    500
+                
+                </td>
+            
+
+            <td class="description last"><p>Additional time in milliseconds to increase the timeout per try.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tries</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    3
+                
+                </td>
+            
+
+            <td class="description last"><p>Number of tries to lookup the value.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="connection.js.html">connection.js</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>A Promise the resolves to the received Datagram or <code>null</code> on timeout.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="commitBulkValueTransaction"><span class="type-signature"></span>commitBulkValueTransaction(address, options)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Sends a Datagram to commit a bulk valke transaction.<br>
+Returns a Promise that resolves to the answer Datagram or <code>null</code> on timeout.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>address</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The VBus address of the device to commit the transaction on.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6 class="method-params-label method-subparams-label">Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>timeout</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    500
+                
+                </td>
+            
+
+            <td class="description last"><p>Time in milliseconds between tries.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>timeoutIncr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    500
+                
+                </td>
+            
+
+            <td class="description last"><p>Additional time in milliseconds to increase the timeout per try.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tries</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    3
+                
+                </td>
+            
+
+            <td class="description last"><p>Number of tries to lookup the value.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="connection.js.html">connection.js</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>A Promise the resolves to the received Datagram or <code>null</code> on timeout.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
     <h4 class="name" id="connect"><span class="type-signature">&lt;abstract> </span>connect()</h4>
     
     
@@ -771,7 +1412,8 @@ connection.connect();</pre>
 
     
     <div class="description">
-        <p>Establish underlying connection and start streaming data to the writable side<br>of this <code>Connection</code> instance's stream.</p>
+        <p>Establish underlying connection and start streaming data to the writable side<br>
+of this <code>Connection</code> instance's stream.</p>
     </div>
     
 
@@ -882,7 +1524,10 @@ connection.connect();</pre>
 
     
     <div class="description">
-        <p>Creates a promise that resolves when this Connection<br>instance is connected and rejects if it is disconnected.<br>If it is neither connected nor disconnected the promise<br>will stay pending until one of the states is entered.</p>
+        <p>Creates a promise that resolves when this Connection<br>
+instance is connected and rejects if it is disconnected.<br>
+If it is neither connected nor disconnected the promise<br>
+will stay pending until one of the states is entered.</p>
     </div>
     
 
@@ -1068,6 +1713,310 @@ connection.connect();</pre>
             
 <hr>
 <dt>
+    <h4 class="name" id="getCaps1"><span class="type-signature"></span>getCaps1(address, options)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Sends a Datagram to lookup the controller's capabilities (part 1).<br>
+Returns a Promise that resolves to the answer Datagram or <code>null</code> on timeout.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>address</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The VBus address of the device to get the capabilities from.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6 class="method-params-label method-subparams-label">Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>timeout</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    500
+                
+                </td>
+            
+
+            <td class="description last"><p>Time in milliseconds between tries.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>timeoutIncr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    500
+                
+                </td>
+            
+
+            <td class="description last"><p>Additional time in milliseconds to increase the timeout per try.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tries</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    3
+                
+                </td>
+            
+
+            <td class="description last"><p>Number of tries to lookup the value.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="connection.js.html">connection.js</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>A Promise the resolves to the received Datagram or <code>null</code> on timeout.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
     <h4 class="name" id="getValueById"><span class="type-signature"></span>getValueById(address, valueId, options)</h4>
     
     
@@ -1076,7 +2025,8 @@ connection.connect();</pre>
 
     
     <div class="description">
-        <p>Sends a Datagram to get a value from a device.<br>Returns a Promise that resolves to the answer Datagram or <code>null</code> on timeout.</p>
+        <p>Sends a Datagram to get a value from a device.<br>
+Returns a Promise that resolves to the answer Datagram or <code>null</code> on timeout.</p>
     </div>
     
 
@@ -1403,7 +2353,8 @@ connection.connect();</pre>
 
     
     <div class="description">
-        <p>Sends a Datagram to lookup a value ID in a device.<br>Returns a Promise that resolves to the answer Datagram or <code>null</code> on timeout.</p>
+        <p>Sends a Datagram to lookup a value ID in a device.<br>
+Returns a Promise that resolves to the answer Datagram or <code>null</code> on timeout.</p>
     </div>
     
 
@@ -1730,7 +2681,8 @@ connection.connect();</pre>
 
     
     <div class="description">
-        <p>Sends a Datagram to lookup a value ID hash in a device.<br>Returns a Promise that resolves to the answer Datagram or <code>null</code> on timeout.</p>
+        <p>Sends a Datagram to lookup a value ID hash in a device.<br>
+Returns a Promise that resolves to the answer Datagram or <code>null</code> on timeout.</p>
     </div>
     
 
@@ -2057,7 +3009,8 @@ connection.connect();</pre>
 
     
     <div class="description">
-        <p>Sends a VBus bus release datagram (Command 0x0600).<br>Returns a Promise that resolves with the first VBus packet received after the release or <code>null</code> on timeout.</p>
+        <p>Sends a VBus bus release datagram (Command 0x0600).<br>
+Returns a Promise that resolves with the first VBus packet received after the release or <code>null</code> on timeout.</p>
     </div>
     
 
@@ -2298,6 +3251,310 @@ connection.connect();</pre>
             
 <hr>
 <dt>
+    <h4 class="name" id="rollbackBulkValueTransaction"><span class="type-signature"></span>rollbackBulkValueTransaction(address, options)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Sends a Datagram to rollback a bulk valke transaction.<br>
+Returns a Promise that resolves to the answer Datagram or <code>null</code> on timeout.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>address</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The VBus address of the device to perform the rollback on.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6 class="method-params-label method-subparams-label">Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>timeout</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    500
+                
+                </td>
+            
+
+            <td class="description last"><p>Time in milliseconds between tries.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>timeoutIncr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    500
+                
+                </td>
+            
+
+            <td class="description last"><p>Additional time in milliseconds to increase the timeout per try.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tries</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    3
+                
+                </td>
+            
+
+            <td class="description last"><p>Number of tries to lookup the value.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="connection.js.html">connection.js</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>A Promise the resolves to the received Datagram or <code>null</code> on timeout.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
     <h4 class="name" id="send"><span class="type-signature"></span>send(data)</h4>
     
     
@@ -2438,6 +3695,358 @@ connection.connect();</pre>
             
 <hr>
 <dt>
+    <h4 class="name" id="setBulkValueById"><span class="type-signature"></span>setBulkValueById(address, valueId, value, options)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Sends a Datagram to set a value during a bulk value transaction.<br>
+Returns a Promise that resolves to the answer Datagram or <code>null</code> on timeout.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>address</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The VBus address of the device to set the value on.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>valueId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the value to write to the device.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The value to write to the device.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6 class="method-params-label method-subparams-label">Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>timeout</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    500
+                
+                </td>
+            
+
+            <td class="description last"><p>Time in milliseconds between tries.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>timeoutIncr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    500
+                
+                </td>
+            
+
+            <td class="description last"><p>Additional time in milliseconds to increase the timeout per try.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tries</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    3
+                
+                </td>
+            
+
+            <td class="description last"><p>Number of tries to lookup the value.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="connection.js.html">connection.js</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>A Promise the resolves to the received Datagram or <code>null</code> on timeout.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
     <h4 class="name" id="setValueById"><span class="type-signature"></span>setValueById(address, valueId, value, options)</h4>
     
     
@@ -2446,7 +4055,8 @@ connection.connect();</pre>
 
     
     <div class="description">
-        <p>Sends a Datagram to set a value in a device.<br>Returns a Promise that resolves to the answer Datagram or <code>null</code> on timeout.</p>
+        <p>Sends a Datagram to set a value in a device.<br>
+Returns a Promise that resolves to the answer Datagram or <code>null</code> on timeout.</p>
     </div>
     
 
@@ -3383,13 +4993,13 @@ connection.connect();</pre>
 
 
 	<span class="copyright">
-	resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann
+	resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a>
 	
-		on Wed Jul 5th 2017
+		on Sun Jun 16th 2019
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

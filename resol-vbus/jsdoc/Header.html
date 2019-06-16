@@ -88,8 +88,12 @@
         Header
         </h2>
         
-            <div class="class-description"><p>All VBus models are sub-classes of this Header class. The Header class provides<br>a generic interface and the common properties that all (currently three)<br>different types of VBus models can use.</p>
-<p>Header instances can either be created by calling the constructor function or<br>by passing a Buffer object containing the binary VBus data to the class method<br><code>HeaderSubClass.fromLiveBuffer</code>.</p></div>
+            <div class="class-description"><p>All VBus models are sub-classes of this Header class. The Header class provides<br>
+a generic interface and the common properties that all (currently three)<br>
+different types of VBus models can use.</p>
+<p>Header instances can either be created by calling the constructor function or<br>
+by passing a Buffer object containing the binary VBus data to the class method<br>
+<code>HeaderSubClass.fromLiveBuffer</code>.</p></div>
         
     
 </header>
@@ -109,7 +113,8 @@
 
     
     <div class="description">
-        <p>Creates a new Header instance and optionally initializes its members<br>with the given values</p>
+        <p>Creates a new Header instance and optionally initializes its members<br>
+with the given values</p>
     </div>
     
 
@@ -796,7 +801,9 @@
 
     
     <div class="description">
-        <p>Calculates the VBus checksum (according to version x.0 specification)<br>over a part of a Buffer instance and compares it the checksum byte<br>stored at the <code>end</code> position.</p>
+        <p>Calculates the VBus checksum (according to version x.0 specification)<br>
+over a part of a Buffer instance and compares it the checksum byte<br>
+stored at the <code>end</code> position.</p>
     </div>
     
 
@@ -1005,7 +1012,8 @@
 
     
     <div class="description">
-        <p>Calculates the VBus checksum (according to version x.0 specification)<br>over a part of the Buffer instance and stores it at the <code>end</code> position.</p>
+        <p>Calculates the VBus checksum (according to version x.0 specification)<br>
+over a part of the Buffer instance and stores it at the <code>end</code> position.</p>
     </div>
     
 
@@ -1214,7 +1222,8 @@
 
     
     <div class="description">
-        <p>Calculates the VBus checksum (according to version x.0 specification)<br>over a part of a Buffer instance.</p>
+        <p>Calculates the VBus checksum (according to version x.0 specification)<br>
+over a part of a Buffer instance.</p>
     </div>
     
 
@@ -1423,7 +1432,9 @@
 
     
     <div class="description">
-        <p>Copies a part of the source Buffer instance to the destination Buffer<br>instance, extracting the MSBs during the process and storing the septett<br>byte to the destination buffer's end position.</p>
+        <p>Copies a part of the source Buffer instance to the destination Buffer<br>
+instance, extracting the MSBs during the process and storing the septett<br>
+byte to the destination buffer's end position.</p>
     </div>
     
 
@@ -1656,7 +1667,8 @@
 
     
     <div class="description">
-        <p>Creates a Header instance from a representation that was<br>received over a Connection.</p>
+        <p>Creates a Header instance from a representation that was<br>
+received over a Connection.</p>
 <p>Must be implemented by sub-class.</p>
     </div>
     
@@ -1866,7 +1878,8 @@
 
     
     <div class="description">
-        <p>Copies a part of the source Buffer instance to the destination Buffer<br>instance, injecting the MSBs stored in the septett byte during the process.</p>
+        <p>Copies a part of the source Buffer instance to the destination Buffer<br>
+instance, injecting the MSBs stored in the septett byte during the process.</p>
     </div>
     
 
@@ -2100,7 +2113,8 @@
     
     <div class="description">
         <p>Compares this Header instance to another one.</p>
-<p>Sub-classes can extend the comparison to include specific<br>information.</p>
+<p>Sub-classes can extend the comparison to include specific<br>
+information.</p>
     </div>
     
 
@@ -2266,14 +2280,16 @@
 
     
     <div class="description">
-        <p>Returns a string identifier describing this Header instance.<br>It contains at least:</p>
+        <p>Returns a string identifier describing this Header instance.<br>
+It contains at least:</p>
 <ul>
 <li>channel</li>
 <li>destination address</li>
 <li>source address</li>
 <li>protocol version</li>
 </ul>
-<p>Sub-classes can extend that information. The structure of this<br>identifier is implementation specific, do not rely on it!</p>
+<p>Sub-classes can extend that information. The structure of this<br>
+identifier is implementation specific, do not rely on it!</p>
     </div>
     
 
@@ -2384,7 +2400,9 @@
 
     
     <div class="description">
-        <p>Returns an info number about this Header instance. It can be used<br>for sorting purposes (to distinguish Header objects that would<br>otherwise compare as equal).</p>
+        <p>Returns an info number about this Header instance. It can be used<br>
+for sorting purposes (to distinguish Header objects that would<br>
+otherwise compare as equal).</p>
     </div>
     
 
@@ -2495,7 +2513,10 @@
 
     
     <div class="description">
-        <p>Returns the protocol version of this Header instance as a 8-bit<br>number. The high nibble is used for the major version, the low<br>nibble for the minor version. For example: a header with protocol<br>version 2.0 would return <code>0x20</code>.</p>
+        <p>Returns the protocol version of this Header instance as a 8-bit<br>
+number. The high nibble is used for the major version, the low<br>
+nibble for the minor version. For example: a header with protocol<br>
+version 2.0 would return <code>0x20</code>.</p>
 <p>Must be implemented by sub-class.</p>
     </div>
     
@@ -2607,7 +2628,10 @@
 
     
     <div class="description">
-        <p>Creates a representation of this Header instance that can be<br>transmitted over a Connection. If no buffer is given as an<br>arguments, it creates a new one that is big enough to hold<br>the representation.</p>
+        <p>Creates a representation of this Header instance that can be<br>
+transmitted over a Connection. If no buffer is given as an<br>
+arguments, it creates a new one that is big enough to hold<br>
+the representation.</p>
 <p>Must be implemented by sub-class.</p>
     </div>
     
@@ -2885,13 +2909,13 @@
 
 
 	<span class="copyright">
-	resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann
+	resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a>
 	
-		on Wed Jul 5th 2017
+		on Sun Jun 16th 2019
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

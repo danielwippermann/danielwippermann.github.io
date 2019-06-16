@@ -88,7 +88,8 @@
         ConnectionCustomizer
         </h2>
         
-            <div class="class-description"><p>A ConnectionCustomizer uses an established connection to a device<br>to transfer sets of configuration values over it.</p></div>
+            <div class="class-description"><p>A ConnectionCustomizer uses an established connection to a device<br>
+to transfer sets of configuration values over it.</p></div>
         
     
 </header>
@@ -108,7 +109,8 @@
 
     
     <div class="description">
-        <p>Constructs a new ConnectionCustomizer instance and optionally initializes its<br>members with the given values.</p>
+        <p>Constructs a new ConnectionCustomizer instance and optionally initializes its<br>
+members with the given values.</p>
     </div>
     
 
@@ -739,7 +741,8 @@
 <dd>
     
     <div class="description">
-        <p>Interval in milliseconds in which<br>the VBus master is contacted to reissue the VBus clearance.</p>
+        <p>Interval in milliseconds in which<br>
+the VBus master is contacted to reissue the VBus clearance.</p>
     </div>
     
 
@@ -1089,7 +1092,8 @@
 <dd>
     
     <div class="description">
-        <p>Amount of retries to transceive one value.<br>Between two tries the VBus is released and then re-acquired.</p>
+        <p>Amount of retries to transceive one value.<br>
+Between two tries the VBus is released and then re-acquired.</p>
     </div>
     
 
@@ -1183,7 +1187,10 @@
 
     
     <div class="description">
-        <p>Converts the configuration provided into an array of {@see ConfigurationValue} objects.<br>The provided configuration can be either an array of partially initialized ConfigurationValue<br>objects or an object mapping value IDs as keys to values.<br>If no configuration is given a complete configuration set is returned.</p>
+        <p>Converts the configuration provided into an array of {@see ConfigurationValue} objects.<br>
+The provided configuration can be either an array of partially initialized ConfigurationValue<br>
+objects or an object mapping value IDs as keys to values.<br>
+If no configuration is given a complete configuration set is returned.</p>
     </div>
     
 
@@ -1903,8 +1910,13 @@
     
     <div class="description">
         <p>Load a set of configuration values from a device.</p>
-<p>If the <code>Customizer</code> has an <code>optimizer</code> set, the <code>configuration</code> parameter<br>is passed to the optimizer's <code>completeConfiguration</code> method. Otherwise it must be an<br>array of <code>ConfigurationValue</code> objects.</p>
-<p>If <code>options.optimize</code> is &quot;truthy&quot; the list of <code>ConfigurationValue</code> objects is passed<br>into the optimizer's <code>optimizeLoadConfiguration</code> method to determine the minimal<br>set of values to transfer. If <code>options.optimize</code> is &quot;falsy&quot; all of the<br><code>ConfigurationValue</code> objects will be loaded.</p>
+<p>If the <code>Customizer</code> has an <code>optimizer</code> set, the <code>configuration</code> parameter<br>
+is passed to the optimizer's <code>completeConfiguration</code> method. Otherwise it must be an<br>
+array of <code>ConfigurationValue</code> objects.</p>
+<p>If <code>options.optimize</code> is &quot;truthy&quot; the list of <code>ConfigurationValue</code> objects is passed<br>
+into the optimizer's <code>optimizeLoadConfiguration</code> method to determine the minimal<br>
+set of values to transfer. If <code>options.optimize</code> is &quot;falsy&quot; all of the<br>
+<code>ConfigurationValue</code> objects will be loaded.</p>
     </div>
     
 
@@ -2099,9 +2111,15 @@
     
     <div class="description">
         <p>Save a set of configuration values to a device.</p>
-<p>If the <code>Customizer</code> has an <code>optimizer</code> set, the <code>newConfiguration</code> parameter<br>is passed to the optimizer's <code>completeConfiguration</code> method. Otherwise it must be an<br>array of <code>ConfigurationValue</code> objects.</p>
-<p>If a <code>oldConfiguration</code> parameter is given, the same procedure as for the<br><code>newConfiguration</code> is applied to it as well.</p>
-<p>If <code>options.optimize</code> is &quot;truthy&quot; the list of <code>ConfigurationValue</code> objects is passed<br>into the optimizer's <code>optimizeLoadConfiguration</code> method to determine the minimal<br>set of values to transfer. If <code>options.optimize</code> is &quot;falsy&quot; all of the<br><code>ConfigurationValue</code> objects will be loaded.</p>
+<p>If the <code>Customizer</code> has an <code>optimizer</code> set, the <code>newConfiguration</code> parameter<br>
+is passed to the optimizer's <code>completeConfiguration</code> method. Otherwise it must be an<br>
+array of <code>ConfigurationValue</code> objects.</p>
+<p>If a <code>oldConfiguration</code> parameter is given, the same procedure as for the<br>
+<code>newConfiguration</code> is applied to it as well.</p>
+<p>If <code>options.optimize</code> is &quot;truthy&quot; the list of <code>ConfigurationValue</code> objects is passed<br>
+into the optimizer's <code>optimizeLoadConfiguration</code> method to determine the minimal<br>
+set of values to transfer. If <code>options.optimize</code> is &quot;falsy&quot; all of the<br>
+<code>ConfigurationValue</code> objects will be loaded.</p>
     </div>
     
 
@@ -2311,7 +2329,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="transceiveConfiguration"><span class="type-signature"></span>transceiveConfiguration(options)</h4>
+    <h4 class="name" id="transceiveConfiguration"><span class="type-signature"></span>transceiveConfiguration(options, optimizerCallback)</h4>
     
     
 </dt>
@@ -2541,7 +2559,7 @@
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">string</span>
 
 
 
@@ -2573,7 +2591,7 @@
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">object</span>
 
 
 
@@ -2598,10 +2616,102 @@
         </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>reportProgress</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Callback to inform about progress.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>checkCanceled</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Callback to check whether the operation should be canceled.</p></td>
+        </tr>
+
+    
     </tbody>
 </table>
 
             </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>optimizerCallback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Callback to optimize configuration between rounds.</p></td>
         </tr>
 
     
@@ -2710,7 +2820,8 @@
 
     
     <div class="description">
-        <p>Transceive a controller value over this connection, handling<br>timeouts, retries etc.</p>
+        <p>Transceive a controller value over this connection, handling<br>
+timeouts, retries etc.</p>
     </div>
     
 
@@ -2875,6 +2986,8 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
         
 
@@ -2901,6 +3014,14 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -2924,6 +3045,14 @@
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -2949,10 +3078,152 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
             <td class="description last"><p><a href="ConnectionCustomizer.html#masterTimeout">ConnectionCustomizer#masterTimeout</a></p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>action</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Action to perform, can be <code>'get'</code> or <code>'set'</code>.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>actionOptions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Options object to forward to the action to perform.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reportProgress</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Callback to inform about progress.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>checkCanceled</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Callback to check whether the operation should be canceled.</p></td>
         </tr>
 
     
@@ -3128,13 +3399,13 @@
 
 
 	<span class="copyright">
-	resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann
+	resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a>
 	
-		on Wed Jul 5th 2017
+		on Sun Jun 16th 2019
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

@@ -88,8 +88,11 @@
         TextConverter
         </h2>
         
-            <div class="class-description"><p>The TextConverter class takes header sets, converts them into text<br>representation and then publishes that on the readable stream side<br>of itself.</p>
-<p>It does not support parsing text content back into header sets (the<br>writable stream side).</p></div>
+            <div class="class-description"><p>The TextConverter class takes header sets, converts them into text<br>
+representation and then publishes that on the readable stream side<br>
+of itself.</p>
+<p>It does not support parsing text content back into header sets (the<br>
+writable stream side).</p></div>
         
     
 </header>
@@ -294,6 +297,91 @@
         
             
 <hr>
+<dt class="name" id="dateFormat">
+    <h4 id="dateFormat"><span class="type-signature"></span>dateFormat<span class="type-signature"> :string|function</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Date to string formatting for the first column. Can either be a<br>
+string to use in <code>moment(...).format()</code> or a function that returns<br>
+the formatted date string.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">function</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="text-converter.js.html">text-converter.js</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<hr>
 <dt class="name" id="lastIdList">
     <h4 id="lastIdList"><span class="type-signature"></span>lastIdList<span class="type-signature"> :string</span></h4>
 
@@ -302,7 +390,8 @@
 <dd>
     
     <div class="description">
-        <p>List of packet IDs converted last time, enables decision whether a<br>new header line pair must be output.</p>
+        <p>List of packet IDs converted last time, enables decision whether a<br>
+new header line pair must be output.</p>
     </div>
     
 
@@ -700,6 +789,91 @@
     
 </dd>
 
+        
+            
+<hr>
+<dt class="name" id="timeFormat">
+    <h4 id="timeFormat"><span class="type-signature"></span>timeFormat<span class="type-signature"> :string|function</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Time to string formatting for the first column. Can either be a<br>
+string to use in <code>moment(...).format()</code> or a function that returns<br>
+the formatted time string.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">function</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="text-converter.js.html">text-converter.js</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
         </dl>
     
 
@@ -718,7 +892,8 @@
 
     
     <div class="description">
-        <p>This method queues a VBus Header model (Packet, Datagram or Telegram) for conversion.<br>Not all Converter sub-classes support this method.</p>
+        <p>This method queues a VBus Header model (Packet, Datagram or Telegram) for conversion.<br>
+Not all Converter sub-classes support this method.</p>
     </div>
     
 
@@ -1006,7 +1181,8 @@
 
     
     <div class="description">
-        <p>This method queues a VBus raw data chunk from conversion.<br>Not all Converter sub-classes support this method.</p>
+        <p>This method queues a VBus raw data chunk from conversion.<br>
+Not all Converter sub-classes support this method.</p>
     </div>
     
 
@@ -1152,7 +1328,9 @@
 
     
     <div class="description">
-        <p>This method signals that no additional VBus Header or HeaderSet models will<br>be converted. It returns a promise that resolves when all data has been<br>consumed.</p>
+        <p>This method signals that no additional VBus Header or HeaderSet models will<br>
+be converted. It returns a promise that resolves when all data has been<br>
+consumed.</p>
     </div>
     
 
@@ -1264,6 +1442,196 @@
             
 <hr>
 <dt>
+    <h4 class="name" id="formatDateAndTime"><span class="type-signature"></span>formatDateAndTime(now, format)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Format a <code>Date</code> object into a string.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>now</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Moment</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Moment.js timestamp to format.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>format</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Date formatter. Can either be a<br>
+string to use in <code>moment(...).format()</code> or a function that returns<br>
+the formatted date/time string.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="text-converter.js.html">text-converter.js</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The formatted date/time as a string.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
     <h4 class="name" id="reset"><span class="type-signature"></span>reset()</h4>
     
     
@@ -1272,7 +1640,8 @@
 
     
     <div class="description">
-        <p>Resets the converter, resulting in a ne pair of header lines<br>generated on next header set conversion.</p>
+        <p>Resets the converter, resulting in a ne pair of header lines<br>
+generated on next header set conversion.</p>
     </div>
     
 
@@ -1400,13 +1769,13 @@
 
 
 	<span class="copyright">
-	resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann
+	resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a>
 	
-		on Wed Jul 5th 2017
+		on Sun Jun 16th 2019
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

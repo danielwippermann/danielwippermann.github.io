@@ -84,51 +84,46 @@
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann | MIT license */
+            class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann | MIT license */
 'use strict';
 
 
 
-var EventEmitter = require('events').EventEmitter;
-var Duplex = require('stream').Duplex;
+const Duplex = require('stream').Duplex;
 
 
-var _ = require('lodash');
-var Q = require('q');
+const extend = require('./extend');
+const _ = require('./lodash');
 
-
-var extend = require('./extend');
-
-var Header = require('./header');
-var Packet = require('./packet');
-var Datagram = require('./datagram');
-var Telegram = require('./telegram');
-var utils = require('./utils');
+const Header = require('./header');
+const Packet = require('./packet');
+const Datagram = require('./datagram');
+const Telegram = require('./telegram');
 
 
 
-var states = _.reduce([
+const states = _.reduce([
     'DISCONNECTED',
     'CONNECTING',
     'CONNECTED',
     'INTERRUPTED',
     'RECONNECTING',
     'DISCONNECTING',
-], function(memo, state) {
+], (memo, state) => {
     memo ['STATE_' + state] = state;
     return memo;
 }, {});
 
 
 
-var optionKeys = [
+const optionKeys = [
     'channel',
     'selfAddress',
 ];
 
 
 
-var Connection = extend(Duplex, /** @lends Connection# */ {
+const Connection = extend(Duplex, /** @lends Connection# */ {
 
     /**
      * Creates a new Connection instance and optionally initializes its member with the given values.
@@ -168,7 +163,7 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
      * });
      * connection.connect();
      */
-    constructor: function(options) {
+    constructor(options) {
         Duplex.call(this);
 
         _.extend(this, _.pick(options, optionKeys));
@@ -213,7 +208,7 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
      * @abstract
      * @returns {Promise} A promise that resolves once the connection has been established.
      */
-    connect: function(force) {
+    connect(force) {
         throw new Error('Must be implemented by sub-class');
     },
 
@@ -221,11 +216,11 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
      * Diconnect this instance.
      * @abstract
      */
-    disconnect: function() {
+    disconnect() {
         throw new Error('Must be implemented by sub-class');
     },
 
-    _write: function(chunk, encoding, callback) {
+    _write(chunk, encoding, callback) {
         this.receive(new Date(), chunk);
 
         if (callback) {
@@ -233,26 +228,26 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
         }
     },
 
-    receive: function(timestamp, chunk) {
-        var _this = this;
+    receive(timestamp, chunk) {
+        const _this = this;
 
-        if (EventEmitter.listenerCount(this, 'rawData') > 0) {
+        if (this.listenerCount('rawData') > 0) {
             this.emit('rawData', chunk, timestamp);
         }
 
-        var buffer;
+        let buffer;
         if (this.rxBuffer) {
             buffer = Buffer.concat([ this.rxBuffer, chunk ]);
         } else {
             buffer = chunk;
         }
 
-        var processed = 0;
+        let processed = 0;
 
-        var reportJunk = function(index) {
+        const reportJunk = function(index) {
             if (index > processed) {
-                if (EventEmitter.listenerCount(_this, 'junkData') > 0) {
-                    var junkData = buffer.slice(processed, index);
+                if (_this.listenerCount('junkData') > 0) {
+                    const junkData = buffer.slice(processed, index);
                     _this.emit('junkData', junkData, timestamp);
                 }
             }
@@ -260,9 +255,9 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
 
         // console.log('_write (start):', this.rxBuffer, chunk);
 
-        var index = 0, start = null;
+        let index = 0, start = null;
         while (index &lt; buffer.length) {
-            var b = buffer [index] &amp; 255;
+            const b = buffer [index] &amp; 255;
             if (b === 0xAA) {
                 reportJunk(index);
 
@@ -273,9 +268,9 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
             } else if (start === null) {
                 // skip junk
             } else if (index >= start + 5) {
-                var version = buffer [start + 5] &amp; 255;
-                var majorVersion = version >> 4;
-                var length;
+                const version = buffer [start + 5] &amp; 255;
+                const majorVersion = version >> 4;
+                let length;
                 if (majorVersion === 1) {
                     if (index >= start + 8) {
                         length = 10 + buffer [start + 8] * 6;
@@ -295,14 +290,14 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
                 }
 
                 if (index === start + length - 1) {
-                    var valid = true, frameIndex;
+                    let valid = true;
                     if (version === 0x10) {
                         if (!Header.calcAndCompareChecksumV0(buffer, start + 1, start + 9)) {
                             // console.log('checksum error in header');
                             valid = false;
                         }
 
-                        frameIndex = start + 10;
+                        let frameIndex = start + 10;
                         while (valid &amp;&amp; (frameIndex &lt; start + length)) {
                             if (!Header.calcAndCompareChecksumV0(buffer, frameIndex, frameIndex + 5)) {
                                 // console.log('checksum error in frame index ' + frameIndex);
@@ -319,7 +314,7 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
                             valid = false;
                         }
 
-                        frameIndex = start + 8;
+                        let frameIndex = start + 8;
                         while (valid &amp;&amp; (frameIndex &lt; start + length)) {
                             if (!Header.calcAndCompareChecksumV0(buffer, frameIndex, frameIndex + 8)) {
                                 valid = false;
@@ -332,22 +327,22 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
 
                     if (valid) {
                         if (majorVersion === 1) {
-                            if (EventEmitter.listenerCount(this, 'packet') > 0) {
-                                var packet = Packet.fromLiveBuffer(buffer, start, index);
+                            if (this.listenerCount('packet') > 0) {
+                                const packet = Packet.fromLiveBuffer(buffer, start, index);
                                 packet.timestamp = new Date(timestamp);
                                 packet.channel = this.channel;
                                 this.emit('packet', packet);
                             }
                         } else if (majorVersion === 2) {
-                            if (EventEmitter.listenerCount(this, 'datagram') > 0) {
-                                var datagram = Datagram.fromLiveBuffer(buffer, start, index);
+                            if (this.listenerCount('datagram') > 0) {
+                                const datagram = Datagram.fromLiveBuffer(buffer, start, index);
                                 datagram.timestamp = new Date(timestamp);
                                 datagram.channel = this.channel;
                                 this.emit('datagram', datagram);
                             }
                         } else if (majorVersion === 3) {
-                            if (EventEmitter.listenerCount(this, 'telegram') > 0) {
-                                var telegram = Telegram.fromLiveBuffer(buffer, start, index);
+                            if (this.listenerCount('telegram') > 0) {
+                                const telegram = Telegram.fromLiveBuffer(buffer, start, index);
                                 telegram.timestamp = new Date(timestamp);
                                 telegram.channel = this.channel;
                                 this.emit('telegram', telegram);
@@ -365,7 +360,7 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
             index++;
         }
 
-        var minProcessed = buffer.length - 1024;
+        const minProcessed = buffer.length - 1024;
         if (processed &lt; minProcessed) {
             reportJunk(minProcessed);
             processed = minProcessed;
@@ -378,17 +373,17 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
         }
     },
 
-    _read: function() {
+    _read() {
         // nop
     },
 
-    _setConnectionState: function(newState) {
+    _setConnectionState(newState) {
         if (this.connectionState !== newState) {
             this.connectionState = newState;
 
             this.rxBuffer = null;
 
-            if (EventEmitter.listenerCount(this, 'connectionState') > 0) {
+            if (this.listenerCount('connectionState') > 0) {
                 this.emit('connectionState', newState);
             }
         }
@@ -399,7 +394,7 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
      *
      * @param {Header|Buffer} data The Header or Buffer instance to be sent.
      */
-    send: function(data) {
+    send(data) {
         if (data instanceof Header) {
             data = data.toLiveBuffer();
         }
@@ -418,8 +413,8 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
      * @param {?function} options.filterDatagram Will be called when a Datagram has been received with the Datagram and a callback as arguments.
      * @returns {Promise} A Promise that either resolves to the VBus data selected by one of the filter callbacks or `null` on timeout.
      */
-    transceive: function(txData, options) {
-        var _this = this;
+    transceive(txData, options) {
+        const _this = this;
 
         options = _.defaults({}, options, {
             timeout: 500,
@@ -427,74 +422,68 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
             tries: 1,
         });
 
-        var deferred = Q.defer();
-        var promise = deferred.promise;
+        return new Promise((resolve, reject) => {
+            let timer, onPacket, onDatagram;
 
-        var timer, onPacket, onDatagram;
+            const done = function(err, result) {
+                if (timer) {
+                    clearTimeout(timer);
+                    timer = null;
+                }
 
-        var done = function(err, result) {
-            if (timer) {
-                clearTimeout(timer);
-                timer = null;
-            }
+                if (onPacket) {
+                    _this.removeListener('packet', onPacket);
+                    onPacket = null;
+                }
 
-            if (onPacket) {
-                _this.removeListener('packet', onPacket);
-                onPacket = null;
-            }
+                if (onDatagram) {
+                    _this.removeListener('datagram', onDatagram);
+                    onDatagram = null;
+                }
 
-            if (onDatagram) {
-                _this.removeListener('datagram', onDatagram);
-                onDatagram = null;
-            }
-
-            if (deferred) {
                 if (err) {
-                    deferred.reject(err);
+                    reject(err);
                 } else {
-                    deferred.resolve(result);
+                    resolve(result);
                 }
-                deferred = null;
-            }
-        };
-
-        if (options.filterPacket) {
-            onPacket = function(rxPacket) {
-                options.filterPacket(rxPacket, done);
             };
 
-            this.on('packet', onPacket);
-        }
+            if (options.filterPacket) {
+                onPacket = function(rxPacket) {
+                    options.filterPacket(rxPacket, done);
+                };
 
-        if (options.filterDatagram) {
-            onDatagram = function(rxDatagram) {
-                options.filterDatagram(rxDatagram, done);
+                this.on('packet', onPacket);
+            }
+
+            if (options.filterDatagram) {
+                onDatagram = function(rxDatagram) {
+                    options.filterDatagram(rxDatagram, done);
+                };
+
+                this.on('datagram', onDatagram);
+            }
+
+            let tries = options.tries, timeout = options.timeout;
+
+            const nextTry = function() {
+                if (tries > 0) {
+                    tries--;
+
+                    timer = setTimeout(nextTry, timeout);
+
+                    timeout += options.timeoutIncr;
+
+                    if (txData) {
+                        _this.send(txData);
+                    }
+                } else {
+                    done(null, null);
+                }
             };
 
-            this.on('datagram', onDatagram);
-        }
-
-        var tries = options.tries, timeout = options.timeout;
-
-        var nextTry = function() {
-            if (tries > 0) {
-                tries--;
-
-                timer = setTimeout(nextTry, timeout);
-
-                timeout += options.timeoutIncr;
-
-                if (txData) {
-                    _this.send(txData);
-                }
-            } else {
-                done(null, null);
-            }
-        };
-
-        process.nextTick(nextTry);
-
-        return promise;
+            process.nextTick(nextTry);
+        });
     },
 
     /**
@@ -504,8 +493,8 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
      * @param {number} timeout=20000 Timeout in milliseconds
      * @returns {Promise} A Promise that resolves to the bus offering Datagram or `null` on timeout.
      */
-    waitForFreeBus: function(timeout) {
-        var options = {
+    waitForFreeBus(timeout) {
+        const options = {
             tries: 1,
             timeout: timeout || 20000,
         };
@@ -528,13 +517,13 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
      * @param {number} options.tries=2 Number of tries to give the bus ownership back.
      * @param {number} options.timeout=1500 Time in milliseconds to wait between tries.
      */
-    releaseBus: function(address, options) {
+    releaseBus(address, options) {
         options = _.defaults({}, options, {
             tries: 2,
             timeout: 1500
         });
 
-        var txDatagram = new Datagram({
+        const txDatagram = new Datagram({
             destinationAddress: address,
             sourceAddress: this.selfAddress,
             command: 0x0600,
@@ -561,8 +550,8 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
      * @param {number} options.tries=3 Number of tries to get the value.
      * @returns {Promise} A promise that resolves to the received Datagram or `null` on timeout.
      */
-    getValueById: function(address, valueId, options) {
-        var _this = this;
+    getValueById(address, valueId, options) {
+        const _this = this;
 
         options = _.defaults({}, options, {
             timeout: 500,
@@ -570,11 +559,14 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
             tries: 3,
         });
 
-        var txDatagram = new Datagram({
+        const subIndex = (valueId >> 16) &amp; 0x7F;
+        valueId = valueId &amp; 0xFFFF;
+
+        const txDatagram = new Datagram({
             destinationAddress: address,
             sourceAddress: this.selfAddress,
-            command: 0x0300,
-            valueId: valueId,
+            command: 0x0300 | subIndex,
+            valueId,
             value: 0
         }).toLiveBuffer();
 
@@ -583,7 +575,7 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
                 // nop
             } else if (rxDatagram.sourceAddress !== address) {
                 // nop
-            } else if (rxDatagram.command !== 0x0100) {
+            } else if (rxDatagram.command !== (0x0100 | subIndex)) {
                 // nop
             } else if (rxDatagram.valueId !== valueId) {
                 // nop
@@ -608,22 +600,25 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
      * @param {number} options.tries=3 Number of tries to get the value.
      * @returns {Promise} A promise that resolves to the received Datagram or `null` on timeout.
      */
-    setValueById: function(address, valueId, value, options) {
-        var _this = this;
+    setValueById(address, valueId, value, options) {
+        const _this = this;
 
         options = _.defaults({}, options, {
             timeout: 500,
             timeoutIncr: 500,
             tries: 3,
-            save: false
+            save: false,
         });
 
-        var txDatagram = new Datagram({
+        const subIndex = (valueId >> 16) &amp; 0x7F;
+        valueId = valueId &amp; 0xFFFF;
+
+        const txDatagram = new Datagram({
             destinationAddress: address,
             sourceAddress: this.selfAddress,
-            command: options.save ? 0x0400 : 0x0200,
-            valueId: valueId,
-            value: value
+            command: (options.save ? 0x0400 : 0x0200) | subIndex,
+            valueId,
+            value
         }).toLiveBuffer();
 
         options.filterDatagram = function(rxDatagram, done) {
@@ -631,7 +626,7 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
                 // nop
             } else if (rxDatagram.sourceAddress !== address) {
                 // nop
-            } else if (rxDatagram.command !== 0x0100) {
+            } else if (rxDatagram.command !== (0x0100 | subIndex)) {
                 // nop
             } else if (rxDatagram.valueId !== valueId) {
                 // nop
@@ -655,8 +650,8 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
      * @param  {number} options.tries=3 Number of tries to lookup the value.
      * @return {Promise} A Promise the resolves to the received Datagram or `null` on timeout.
      */
-    getValueIdHashById: function(address, valueId, options) {
-        var _this = this;
+    getValueIdHashById(address, valueId, options) {
+        const _this = this;
 
         options = _.defaults({}, options, {
             timeout: 500,
@@ -664,11 +659,11 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
             tries: 3,
         });
 
-        var txDatagram = new Datagram({
+        const txDatagram = new Datagram({
             destinationAddress: address,
             sourceAddress: this.selfAddress,
             command: 0x1000,
-            valueId: valueId,
+            valueId,
             value: 0
         }).toLiveBuffer();
 
@@ -701,8 +696,8 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
      * @param  {number} options.tries=3 Number of tries to lookup the value.
      * @return {Promise} A Promise the resolves to the received Datagram or `null` on timeout.
      */
-    getValueIdByIdHash: function(address, valueIdHash, options) {
-        var _this = this;
+    getValueIdByIdHash(address, valueIdHash, options) {
+        const _this = this;
 
         options = _.defaults({}, options, {
             timeout: 500,
@@ -710,7 +705,7 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
             tries: 3,
         });
 
-        var txDatagram = new Datagram({
+        const txDatagram = new Datagram({
             destinationAddress: address,
             sourceAddress: this.selfAddress,
             command: 0x1100,
@@ -736,6 +731,229 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
     },
 
     /**
+     * Sends a Datagram to lookup the controller's capabilities (part 1).
+     * Returns a Promise that resolves to the answer Datagram or `null` on timeout.
+     *
+     * @param  {number} address The VBus address of the device to get the capabilities from.
+     * @param  {object} options
+     * @param  {number} options.timeout=500 Time in milliseconds between tries.
+     * @param  {number} options.timeoutIncr=500 Additional time in milliseconds to increase the timeout per try.
+     * @param  {number} options.tries=3 Number of tries to lookup the value.
+     * @return {Promise} A Promise the resolves to the received Datagram or `null` on timeout.
+     */
+    getCaps1(address, options) {
+        const _this = this;
+
+        options = _.defaults({}, options, {
+            timeout: 500,
+            timeoutIncr: 500,
+            tries: 3,
+        });
+
+        const txDatagram = new Datagram({
+            destinationAddress: address,
+            sourceAddress: this.selfAddress,
+            command: 0x1300,
+            valueId: 0,
+            value: 0,
+        }).toLiveBuffer();
+
+        options.filterDatagram = function(rxDatagram, done) {
+            if (rxDatagram.destinationAddress !== _this.selfAddress) {
+                // nop
+            } else if (rxDatagram.sourceAddress !== address) {
+                // nop
+            } else if (rxDatagram.command !== 0x1301) {
+                // nop
+            } else {
+                done(null, rxDatagram);
+            }
+        };
+
+        return this.transceive(txDatagram, options);
+    },
+
+    /**
+     * Sends a Datagram to begin a bulk valke transaction.
+     * Returns a Promise that resolves to the answer Datagram or `null` on timeout.
+     *
+     * @param  {number} address The VBus address of the device to begin the transaction on.
+     * @param  {number} txTimeout The number of seconds of inactivity after which the transaction is rolled back.
+     * @param  {object} options
+     * @param  {number} options.timeout=500 Time in milliseconds between tries.
+     * @param  {number} options.timeoutIncr=500 Additional time in milliseconds to increase the timeout per try.
+     * @param  {number} options.tries=3 Number of tries to lookup the value.
+     * @return {Promise} A Promise the resolves to the received Datagram or `null` on timeout.
+     */
+    beginBulkValueTransaction(address, txTimeout, options) {
+        const _this = this;
+
+        options = _.defaults({}, options, {
+            timeout: 500,
+            timeoutIncr: 500,
+            tries: 3,
+        });
+
+        const txDatagram = new Datagram({
+            destinationAddress: address,
+            sourceAddress: this.selfAddress,
+            command: 0x1400,
+            valueId: 0,
+            value: txTimeout
+        }).toLiveBuffer();
+
+        options.filterDatagram = function(rxDatagram, done) {
+            if (rxDatagram.destinationAddress !== _this.selfAddress) {
+                // nop
+            } else if (rxDatagram.sourceAddress !== address) {
+                // nop
+            } else if (rxDatagram.command !== 0x1401) {
+                // nop
+            } else {
+                done(null, rxDatagram);
+            }
+        };
+
+        return this.transceive(txDatagram, options);
+    },
+
+    /**
+     * Sends a Datagram to commit a bulk valke transaction.
+     * Returns a Promise that resolves to the answer Datagram or `null` on timeout.
+     *
+     * @param  {number} address The VBus address of the device to commit the transaction on.
+     * @param  {object} options
+     * @param  {number} options.timeout=500 Time in milliseconds between tries.
+     * @param  {number} options.timeoutIncr=500 Additional time in milliseconds to increase the timeout per try.
+     * @param  {number} options.tries=3 Number of tries to lookup the value.
+     * @return {Promise} A Promise the resolves to the received Datagram or `null` on timeout.
+     */
+    commitBulkValueTransaction(address, options) {
+        const _this = this;
+
+        options = _.defaults({}, options, {
+            timeout: 500,
+            timeoutIncr: 500,
+            tries: 3,
+        });
+
+        const txDatagram = new Datagram({
+            destinationAddress: address,
+            sourceAddress: this.selfAddress,
+            command: 0x1402,
+            valueId: 0,
+            value: 0
+        }).toLiveBuffer();
+
+        options.filterDatagram = function(rxDatagram, done) {
+            if (rxDatagram.destinationAddress !== _this.selfAddress) {
+                // nop
+            } else if (rxDatagram.sourceAddress !== address) {
+                // nop
+            } else if (rxDatagram.command !== 0x1403) {
+                // nop
+            } else {
+                done(null, rxDatagram);
+            }
+        };
+
+        return this.transceive(txDatagram, options);
+    },
+
+    /**
+     * Sends a Datagram to rollback a bulk valke transaction.
+     * Returns a Promise that resolves to the answer Datagram or `null` on timeout.
+     *
+     * @param  {number} address The VBus address of the device to perform the rollback on.
+     * @param  {object} options
+     * @param  {number} options.timeout=500 Time in milliseconds between tries.
+     * @param  {number} options.timeoutIncr=500 Additional time in milliseconds to increase the timeout per try.
+     * @param  {number} options.tries=3 Number of tries to lookup the value.
+     * @return {Promise} A Promise the resolves to the received Datagram or `null` on timeout.
+     */
+    rollbackBulkValueTransaction(address, options) {
+        const _this = this;
+
+        options = _.defaults({}, options, {
+            timeout: 500,
+            timeoutIncr: 500,
+            tries: 3,
+        });
+
+        const txDatagram = new Datagram({
+            destinationAddress: address,
+            sourceAddress: this.selfAddress,
+            command: 0x1404,
+            valueId: 0,
+            value: 0
+        }).toLiveBuffer();
+
+        options.filterDatagram = function(rxDatagram, done) {
+            if (rxDatagram.destinationAddress !== _this.selfAddress) {
+                // nop
+            } else if (rxDatagram.sourceAddress !== address) {
+                // nop
+            } else if (rxDatagram.command !== 0x1405) {
+                // nop
+            } else {
+                done(null, rxDatagram);
+            }
+        };
+
+        return this.transceive(txDatagram, options);
+    },
+
+    /**
+     * Sends a Datagram to set a value during a bulk value transaction.
+     * Returns a Promise that resolves to the answer Datagram or `null` on timeout.
+     *
+     * @param  {number} address The VBus address of the device to set the value on.
+     * @param  {number} valueId The ID of the value to write to the device.
+     * @param  {number} value The value to write to the device.
+     * @param  {object} options
+     * @param  {number} options.timeout=500 Time in milliseconds between tries.
+     * @param  {number} options.timeoutIncr=500 Additional time in milliseconds to increase the timeout per try.
+     * @param  {number} options.tries=3 Number of tries to lookup the value.
+     * @return {Promise} A Promise the resolves to the received Datagram or `null` on timeout.
+     */
+    setBulkValueById(address, valueId, value, options) {
+        const _this = this;
+
+        options = _.defaults({}, options, {
+            timeout: 500,
+            timeoutIncr: 500,
+            tries: 3,
+        });
+
+        const subIndex = (valueId >> 16) &amp; 0x7F;
+        valueId = valueId &amp; 0xFFFF;
+
+        const txDatagram = new Datagram({
+            destinationAddress: address,
+            sourceAddress: this.selfAddress,
+            command: 0x1500 | subIndex,
+            valueId,
+            value
+        }).toLiveBuffer();
+
+        options.filterDatagram = function(rxDatagram, done) {
+            if (rxDatagram.destinationAddress !== _this.selfAddress) {
+                // nop
+            } else if (rxDatagram.sourceAddress !== address) {
+                // nop
+            } else if (rxDatagram.command !== (0x1600 | subIndex)) {
+                // nop
+            } else if (rxDatagram.valueId !== valueId) {
+                // nop
+            } else {
+                done(null, rxDatagram);
+            }
+        };
+
+        return this.transceive(txDatagram, options);
+    },
+
+    /**
      * Creates a promise that resolves when this Connection
      * instance is connected and rejects if it is disconnected.
      * If it is neither connected nor disconnected the promise
@@ -743,11 +961,11 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
      *
      * @returns {Promise}
      */
-    createConnectedPromise: function() {
-        var _this = this;
+    createConnectedPromise() {
+        const _this = this;
 
-        return utils.promise(function(resolve, reject) {
-            var checkConnectionState = function(state) {
+        return new Promise((resolve, reject) => {
+            const checkConnectionState = function(state) {
                 if (state === Connection.STATE_DISCONNECTED) {
                     reject(new Error(state));
                     return true;
@@ -760,7 +978,7 @@ var Connection = extend(Duplex, /** @lends Connection# */ {
             };
 
             if (!checkConnectionState(_this.connectionState)) {
-                var onConnectionState = function(state) {
+                const onConnectionState = function(state) {
                     if (checkConnectionState(state)) {
                         _this.removeListener('connectionState', onConnectionState);
                     }
@@ -815,13 +1033,13 @@ module.exports = Connection;
 
 
 	<span class="copyright">
-	resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann
+	resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a>
 	
-		on Wed Jul 5th 2017
+		on Sun Jun 16th 2019
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

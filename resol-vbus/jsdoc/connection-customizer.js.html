@@ -84,22 +84,16 @@
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann | MIT license */
+            class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann | MIT license */
 'use strict';
 
 
 
-var _ = require('lodash');
-var Q = require('q');
+const Customizer = require('./customizer');
+const _ = require('./lodash');
 
 
-var utils = require('./utils');
-
-var Customizer = require('./customizer');
-
-
-
-var optionKeys = [
+const optionKeys = [
     'connection',
     'maxRounds',
     'triesPerValue',
@@ -109,7 +103,7 @@ var optionKeys = [
 
 
 
-var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */ {
+const ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */ {
 
     /**
      * The connection to use for transfer of the configuration values.
@@ -164,7 +158,7 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
      * A ConnectionCustomizer uses an established connection to a device
      * to transfer sets of configuration values over it.
      */
-    constructor: function(options) {
+    constructor(options) {
         Customizer.apply(this, arguments);
 
         _.extend(this, _.pick(options, optionKeys));
@@ -175,32 +169,28 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
      *
      * See {@link Customizer#loadConfiguration} for details.
      */
-    _loadConfiguration: function(configuration, options) {
-        var _this = this;
-
+    async _loadConfiguration(configuration, options) {
         options = _.defaults({}, options, {
             action: 'get',
         });
 
-        return Q.fcall(function() {
-            var callback = function(config, round) {
-                if (options.optimize) {
-                    return _this._optimizeLoadConfiguration(config);
+        const callback = (config, round) => {
+            if (options.optimize) {
+                return this._optimizeLoadConfiguration(config);
+            } else {
+                if (round === 1) {
+                    _.forEach(configuration, (value) => {
+                        value.pending = true;
+                    });
+
+                    return configuration;
                 } else {
-                    if (round === 1) {
-                        _.forEach(configuration, function(value) {
-                            value.pending = true;
-                        });
-
-                        return configuration;
-                    } else {
-                        return config;
-                    }
+                    return config;
                 }
-            };
+            }
+        };
 
-            return _this.transceiveConfiguration(options, callback);
-        });
+        return this.transceiveConfiguration(options, callback);
     },
 
     /**
@@ -208,9 +198,7 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
      *
      * See {@link Customizer#saveConfiguration} for details.
      */
-    _saveConfiguration: function(newConfiguration, oldConfigurstion, options) {
-        var _this = this;
-
+    async _saveConfiguration(newConfiguration, oldConfigurstion, options) {
         options = _.defaults({}, options, {
             action: 'set',
             actionOptions: {
@@ -218,29 +206,27 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
             },
         });
 
-        return Q.fcall(function() {
-            var callback = function(config, round) {
-                if (options.optimize) {
-                    if (round === 1) {
-                        return _this._optimizeSaveConfiguration(newConfiguration, oldConfigurstion);
-                    } else {
-                        return _this._optimizeSaveConfiguration(newConfiguration, config);
-                    }
+        const callback = (config, round) => {
+            if (options.optimize) {
+                if (round === 1) {
+                    return this._optimizeSaveConfiguration(newConfiguration, oldConfigurstion);
                 } else {
-                    if (round === 1) {
-                        _.forEach(newConfiguration, function(value) {
-                            value.pending = true;
-                        });
-
-                        return newConfiguration;
-                    } else {
-                        return config;
-                    }
+                    return this._optimizeSaveConfiguration(newConfiguration, config);
                 }
-            };
+            } else {
+                if (round === 1) {
+                    _.forEach(newConfiguration, (value) => {
+                        value.pending = true;
+                    });
 
-            return _this.transceiveConfiguration(options, callback);
-        });
+                    return newConfiguration;
+                } else {
+                    return config;
+                }
+            }
+        };
+
+        return this.transceiveConfiguration(options, callback);
     },
 
     /**
@@ -251,15 +237,16 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
      * @param {number} [options.triesPerValue] {@link ConnectionCustomizer#triesPerValue}
      * @param {number} [options.timeoutPerValue] {@link ConnectionCustomizer#timeoutPerValue}
      * @param {number} [options.masterTimeout] {@link ConnectionCustomizer#masterTimeout}
-     * @param {number} options.action Action to perform, can be `'get'` or `'set'`.
-     * @param {number} [options.actionOptions] Options object to forward to the action to perform.
+     * @param {string} options.action Action to perform, can be `'get'` or `'set'`.
+     * @param {object} [options.actionOptions] Options object to forward to the action to perform.
+     * @param {function} [options.reportProgress] Callback to inform about progress.
+     * @param {function} [options.checkCanceled] Callback to check whether the operation should be canceled.
+     * @param {function} optimizerCallback Callback to optimize configuration between rounds.
      * @return {object} Promise that resolves to the configuration or `null` on timeout.
      */
-    transceiveConfiguration: function(options, callback) {
-        var _this = this;
-
+    async transceiveConfiguration(options, optimizerCallback) {
         if (_.isFunction(options)) {
-            callback = options;
+            optimizerCallback = options;
             options = null;
         }
 
@@ -270,119 +257,102 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
             masterTimeout: this.masterTimeout,
             action: null,
             actionOptions: null,
+            reportProgress: null,
+            checkCanceled: null,
         });
 
-        var connection = this.connection;
-        var address = this.deviceAddress;
+        const connection = this.connection;
+        const address = this.deviceAddress;
 
-        return utils.cancelablePromise(function(resolve, reject, notify, checkCanceled) {
-            var check = function(result) {
-                return Q.fcall(function() {
-                    return checkCanceled();
-                }).then(function() {
-                    return connection.createConnectedPromise();
-                }).then(function() {
-                    return result;
-                });
-            };
-
-            var config = null;
-
-            var state = {
-                masterAddress: null,
-                masterLastContacted: null,
-            };
-
-            var round = 0;
-
-            var reportProgress = function(progress) {
-                if (_.isString(progress)) {
-                    progress = {
-                        message: progress,
-                    };
+        async function check() {
+            if (options.checkCanceled) {
+                if (await options.checkCanceled()) {
+                    throw new Error('Canceled');
                 }
+            }
 
-                _.extend(progress, {
-                    round: round,
-                });
+            await connection.createConnectedPromise();
+        }
 
-                notify(progress);
-            };
+        let config = null;
 
-            var nextRound = function() {
-                if (round &lt; options.maxRounds) {
-                    round++;
+        const state = {
+            masterAddress: null,
+            masterLastContacted: null,
+        };
 
-                    Q.fcall(check).then(function() {
-                        reportProgress('OPTIMIZING_VALUES');
+        const reportProgress = function(progress) {
+            if (options.reportProgress) {
+                options.reportProgress(progress);
+            }
+        };
 
-                        return callback(config, round);
-                    }).then(check).then(function(newConfig) {
-                        config = newConfig;
+        for (let round = 1; round &lt;= options.maxRounds; round++) {
+            await check();
 
-                        var pendingValues = _.filter(config, function(value) {
-                            return value.pending;
-                        });
+            reportProgress({
+                message: 'OPTIMIZING_VALUES',
+                round,
+            });
 
-                        var index = 0;
+            config = await optimizerCallback(config, round);
 
-                        var nextValue = function() {
-                            if (index &lt; pendingValues.length) {
-                                var valueInfo = pendingValues [index++];
+            await check();
 
-                                Q.fcall(check).then(function() {
-                                    return _this.transceiveValue(valueInfo, valueInfo.value, {
-                                        triesPerValue: options.triesPerValue,
-                                        timeoutPerValue: options.timeoutPerValue,
-                                        action: options.action,
-                                        actionOptions: options.actionOptions,
-                                    }, state).progress(function(progress) {
-                                        progress = _.extend({}, progress, {
-                                            valueId: valueInfo.valueId,
-                                            valueIndex: valueInfo.valueIndex,
-                                            valueIdHash: valueInfo.valueIdHash,
-                                            valueNr: index,
-                                            valueCount: pendingValues.length,
-                                        });
+            const pendingValues = config.filter((value) => {
+                return value.pending;
+            });
 
-                                        reportProgress(progress);
-                                    });
-                                }).then(function(datagram) {
-                                    valueInfo.pending = false;
-                                    valueInfo.transceived = !!datagram;
+            if (pendingValues.length > 0) {
+                for (let index = 0; index &lt; pendingValues.length; index++) {
+                    const valueInfo = pendingValues [index++];
 
-                                    if (datagram) {
-                                        valueInfo.value = datagram.value;
-                                    }
+                    let reportProgress;
+                    if (options.reportProgress) {
+                        reportProgress = (progress) => {
+                            progress = _.extend({}, progress, {
+                                valueId: valueInfo.valueId,
+                                valueIndex: valueInfo.valueIndex,
+                                valueIdHash: valueInfo.valueIdHash,
+                                valueNr: index,
+                                valueCount: pendingValues.length,
+                            });
 
-                                    nextValue();
-                                }).done();
-                            } else {
-                                nextRound(config);
-                            }
+                            return options.reportProgress(progress);
                         };
+                    }
 
-                        if (pendingValues.length > 0) {
-                            process.nextTick(nextValue);
-                        } else {
-                            Q.fcall(function() {
-                                if (state.masterLastContacted !== null) {
-                                    reportProgress('RELEASING_BUS');
+                    await check();
 
-                                    return connection.releaseBus(address);
-                                }
-                            }).then(function() {
-                                resolve(config);
-                            }).done();
-                        }
-                    }).fail(reject).done();
-                } else {
-                    resolve(null);
+                    const datagram = await this.transceiveValue(valueInfo, valueInfo.value, {
+                        triesPerValue: options.triesPerValue,
+                        timeoutPerValue: options.timeoutPerValue,
+                        action: options.action,
+                        actionOptions: options.actionOptions,
+                        reportProgress,
+                    }, state);
+
+                    valueInfo.pending = false;
+                    valueInfo.transceived = !!datagram;
+
+                    if (datagram) {
+                        valueInfo.value = datagram.value;
+                    }
                 }
-            };
+            } else {
+                break;
+            }
+        }
 
-            process.nextTick(nextRound);
-        });
+        if (state.masterLastContacted !== null) {
+            reportProgress({
+                message: 'RELEASING_BUS',
+            });
+
+            await connection.releaseBus(address);
+        }
+
+        return config;
     },
 
     /**
@@ -397,47 +367,21 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
      * @param {number} options.triesPerValue {@link ConnectionCustomizer#triesPerValue}
      * @param {number} options.timeoutPerValue {@link ConnectionCustomizer#timeoutPerValue}
      * @param {number} options.masterTimeout {@link ConnectionCustomizer#masterTimeout}
+     * @param {string} options.action Action to perform, can be `'get'` or `'set'`.
+     * @param {object} [options.actionOptions] Options object to forward to the action to perform.
+     * @param {function} [options.reportProgress] Callback to inform about progress.
+     * @param {function} [options.checkCanceled] Callback to check whether the operation should be canceled.
      * @param {object} state State to share between multiple calls to this method.
      * @returns {object} Promise that resolves with the datagram received or `null` on timeout.
      */
-    transceiveValue: function(valueInfo, value, options, state) {
-        if (!_.isObject(valueInfo)) {
-            valueInfo = {
-                valueIndex: valueInfo,
-            };
-        }
+    async transceiveValue(valueInfo, value, options, state) {
+        const doWork = async (resolve, reject) => {
+            let timer;
 
-        if (state === undefined) {
-            state = {};
-        }
-
-        options = _.defaults({}, options, {
-            triesPerValue: this.triesPerValue,
-            timeoutPerValue: this.timeoutPerValue,
-            masterTimeout: this.masterTimeout,
-            action: null,
-            actionOptions: null,
-        });
-
-        state = _.defaults(state, {
-            masterAddress: this.deviceAddress,
-            masterLastContacted: Date.now(),
-        });
-
-        var connection = this.connection;
-        var address = this.deviceAddress;
-
-        return utils.cancelablePromise(function(resolve, reject, notify, checkCanceled) {
-            var timer, onConnectionState;
-
-            var done = function(err, result) {
+            const done = function(err, result) {
                 if (timer) {
                     clearTimeout(timer);
                     timer = null;
-                }
-
-                if (onConnectionState) {
-                    connection.removeListener('connectionState', onConnectionState);
                 }
 
                 if (err) {
@@ -447,130 +391,160 @@ var ConnectionCustomizer = Customizer.extend(/** @lends ConnectionCustomizer# */
                 }
             };
 
-            var check = function(result) {
-                return Q.fcall(function() {
-                    return checkCanceled();
-                }).then(function() {
-                    return connection.createConnectedPromise();
-                }).then(function() {
-                    return result;
-                });
-            };
+            if (!_.isObject(valueInfo)) {
+                valueInfo = {
+                    valueIndex: valueInfo,
+                };
+            }
 
-            var tries = 0;
+            if (state === undefined) {
+                state = {};
+            }
 
-            var reportProgress = function(message) {
-                notify({
-                    message: message,
-                    tries: tries,
-                    valueIndex: valueInfo.valueIndex,
-                    valueInfo: valueInfo,
-                });
-            };
+            options = _.defaults({}, options, {
+                triesPerValue: this.triesPerValue,
+                timeoutPerValue: this.timeoutPerValue,
+                masterTimeout: this.masterTimeout,
+                action: null,
+                actionOptions: null,
+                reportProgress: null,
+                checkCanceled: null,
+            });
 
-            var nextTry = function() {
-                if (tries &lt; options.triesPerValue) {
-                    tries++;
+            state = _.defaults(state, {
+                masterAddress: this.deviceAddress,
+                masterLastContacted: Date.now(),
+            });
 
-                    Q.fcall(check).then(function() {
-                        if ((tries > 1) &amp;&amp; (state.masterLastContacted !== null)) {
-                            reportProgress('RELEASING_BUS');
+            const connection = this.connection;
+            const address = this.deviceAddress;
 
-                            state.masterLastContacted = null;
-
-                            return connection.releaseBus(state.masterAddress);
-                        }
-                    }).then(check).then(function() {
-                        if ((state.masterLastContacted === null) &amp;&amp; (options.masterTimeout !== null)) {
-                            reportProgress('WAITING_FOR_FREE_BUS');
-
-                            return connection.waitForFreeBus().then(function(datagram) { // TODO: optional timeout?
-                                if (datagram) {
-                                    state.masterAddress = datagram.sourceAddress;
-                                } else {
-                                    state.masterAddress = null;
-                                }
-                            });
-                        }
-                    }).then(check).then(function() {
-                        var contactMaster;
-                        if (state.masterAddress === null) {
-                            contactMaster = false;
-                        } else if (state.masterAddress === address) {
-                            contactMaster = false;
-                        } else if (state.masterLastContacted === null) {
-                            contactMaster = true;
-                        } else if ((Date.now() - state.masterLastContacted) >= options.masterTimeout) {
-                            contactMaster = true;
-                        } else {
-                            contactMaster = false;
-                        }
-                        if (contactMaster) {
-                            reportProgress('CONTACTING_MASTER');
-
-                            state.masterLastContacted = Date.now();
-
-                            return connection.getValueById(state.masterAddress, 0, {
-                                timeout: 500,
-                                tries: 1,
-                            });
-                        }
-                    }).then(check).then(function() {
-                        if (state.masterAddress === address) {
-                            state.masterLastContacted = Date.now();
-                        }
-
-                        if (_.isNumber(valueInfo.valueIndex)) {
-                            // nop
-                        } else if (_.isNumber(valueInfo.valueIdHash)) {
-                            reportProgress('LOOKING_UP_VALUE');
-
-                            return Q.fcall(function() {
-                                return connection.getValueIdByIdHash(address, valueInfo.valueIdHash, options.actionOptions);
-                            }).then(function(datagram) {
-                                if (datagram &amp;&amp; datagram.valueId) {
-                                    valueInfo.valueIndex = datagram.valueId;
-                                }
-                            });
-                        }
-                    }).then(check).then(function() {
-                        if (state.masterAddress === address) {
-                            state.masterLastContacted = Date.now();
-                        }
-
-                        if (!_.isNumber(valueInfo.valueIndex)) {
-                            return null;
-                        } else if (options.action === 'get') {
-                            reportProgress('GETTING_VALUE');
-
-                            return connection.getValueById(address, valueInfo.valueIndex, options.actionOptions);
-                        } else if (options.action === 'set') {
-                            reportProgress('SETTING_VALUE');
-
-                            return connection.setValueById(address, valueInfo.valueIndex, value, options.actionOptions);
-                        } else {
-                            throw new Error('Unknown action "' + options.action + '"');
-                        }
-                    }).then(function(datagram) {
-                        if (datagram) {
-                            done(null, datagram);
-                        } else {
-                            return nextTry();
-                        }
-                    }).fail(function(reason) {
-                        done(reason);
-                    }).done();
-                } else {
-                    done(null, null);
+            async function check() {
+                if (options.checkCanceled) {
+                    if (await options.checkCanceled()) {
+                        reject(new Error('Canceled'));
+                    }
                 }
-            };
 
-            var onTimeout = function() {
+                await connection.createConnectedPromise();
+            }
+
+            const onTimeout = function() {
                 done(null, null);
             };
 
-            process.nextTick(nextTry);
             timer = setTimeout(onTimeout, options.timeoutPerValue);
+
+            let result;
+            for (let tries = 1; tries &lt;= options.triesPerValue; tries++) {
+                const reportProgress = function(message) {
+                    if (options.reportProgress) {
+                        options.reportProgress({
+                            message,
+                            tries,
+                            valueIndex: valueInfo.valueIndex,
+                            valueInfo,
+                        });
+                    }
+                };
+
+                await check();
+
+                if ((tries > 1) &amp;&amp; (state.masterLastContacted !== null)) {
+                    reportProgress('RELEASING_BUS');
+
+                    state.masterLastContacted = null;
+
+                    await connection.releaseBus(state.masterAddress);
+                }
+
+                await check();
+
+                if ((state.masterLastContacted === null) &amp;&amp; (options.masterTimeout !== null)) {
+                    reportProgress('WAITING_FOR_FREE_BUS');
+
+                    const datagram = await connection.waitForFreeBus();  // TODO: optional timeout?
+
+                    if (datagram) {
+                        state.masterAddress = datagram.sourceAddress;
+                    } else {
+                        state.masterAddress = null;
+                    }
+                }
+
+                await check();
+
+                let contactMaster;
+                if (state.masterAddress === null) {
+                    contactMaster = false;
+                } else if (state.masterAddress === address) {
+                    contactMaster = false;
+                } else if (state.masterLastContacted === null) {
+                    contactMaster = true;
+                } else if ((Date.now() - state.masterLastContacted) >= options.masterTimeout) {
+                    contactMaster = true;
+                } else {
+                    contactMaster = false;
+                }
+                if (contactMaster) {
+                    reportProgress('CONTACTING_MASTER');
+
+                    state.masterLastContacted = Date.now();
+
+                    await connection.getValueById(state.masterAddress, 0, {
+                        timeout: 500,
+                        tries: 1,
+                    });
+                }
+
+                await check();
+
+                if (state.masterAddress === address) {
+                    state.masterLastContacted = Date.now();
+                }
+
+                if (_.isNumber(valueInfo.valueIndex)) {
+                    // nop
+                } else if (_.isNumber(valueInfo.valueIdHash)) {
+                    reportProgress('LOOKING_UP_VALUE');
+
+                    const datagram = await connection.getValueIdByIdHash(address, valueInfo.valueIdHash, options.actionOptions);
+
+                    if (datagram &amp;&amp; datagram.valueId) {
+                        valueInfo.valueIndex = datagram.valueId;
+                    }
+                }
+
+                await check();
+
+                if (state.masterAddress === address) {
+                    state.masterLastContacted = Date.now();
+                }
+
+                if (!_.isNumber(valueInfo.valueIndex)) {
+                    result = null;
+                } else if (options.action === 'get') {
+                    reportProgress('GETTING_VALUE');
+
+                    result = await connection.getValueById(address, valueInfo.valueIndex, options.actionOptions);
+                } else if (options.action === 'set') {
+                    reportProgress('SETTING_VALUE');
+
+                    result = await connection.setValueById(address, valueInfo.valueIndex, value, options.actionOptions);
+                } else {
+                    throw new Error('Unknown action "' + options.action + '"');
+                }
+
+                if (result) {
+                    break;
+                }
+            }
+
+            return result;
+        };
+
+        return new Promise((resolve, reject) => {
+            doWork(resolve, reject).then(resolve, reject);
         });
     }
 });
@@ -617,13 +591,13 @@ module.exports = ConnectionCustomizer;
 
 
 	<span class="copyright">
-	resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann
+	resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a>
 	
-		on Wed Jul 5th 2017
+		on Sun Jun 16th 2019
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

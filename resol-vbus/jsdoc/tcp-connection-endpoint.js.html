@@ -84,31 +84,28 @@
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann | MIT license */
+            class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann | MIT license */
 'use strict';
 
 
 
-var EventEmitter = require('events').EventEmitter;
-var net = require('net');
+const EventEmitter = require('events').EventEmitter;
+const net = require('net');
 
 
-var _ = require('lodash');
-var Q = require('q');
-
-
-var extend = require('./extend');
+const extend = require('./extend');
+const _ = require('./lodash');
 
 
 
-var optionKeys = [
+const optionKeys = [
     'port',
     'channels',
 ];
 
 
 
-var TcpConnectionEndpoint = extend(EventEmitter, /** @lends TcpConnectionEndpoint# */ {
+const TcpConnectionEndpoint = extend(EventEmitter, /** @lends TcpConnectionEndpoint# */ {
 
     /**
      * The port number to listen on for incoming connections.
@@ -145,7 +142,7 @@ var TcpConnectionEndpoint = extend(EventEmitter, /** @lends TcpConnectionEndpoin
      * A `connection` event is emitted whenever an incoming connection passes
      * the VBus-over-TCP handshake.
      */
-    constructor: function(options) {
+    constructor(options) {
         EventEmitter.call(this);
 
         _.extend(this, _.pick(options, optionKeys));
@@ -160,44 +157,38 @@ var TcpConnectionEndpoint = extend(EventEmitter, /** @lends TcpConnectionEndpoin
      *
      * @return {Promise} A promise that resolves when the server is started.
      */
-    start: function() {
-        var _this = this;
+    start() {
+        const _this = this;
 
-        var deferred = Q.defer();
-        var promise = deferred.promise;
-
-        var done = function(err, result) {
-            if (deferred) {
+        return new Promise((resolve, reject) => {
+            const done = function(err, result) {
                 if (err) {
-                    deferred.reject(err);
+                    reject(err);
                 } else {
-                    deferred.resolve(result);
+                    resolve(result);
                 }
-                deferred = null;
-            }
-        };
+            };
 
-        var server = net.createServer(function(socket) {
-            _this._onConnection(socket);
+            const server = net.createServer((socket) => {
+                _this._onConnection(socket);
+            });
+
+            server.listen(this.port, () => {
+                if (_this.port === 0) {
+                    _this.port = server.address().port;
+                }
+                done(null, true);
+            });
+
+            server.on('error', (err) => {
+                done(err);
+            });
+
+            this.server = server;
         });
-
-        server.listen(this.port, function() {
-            if (_this.port === 0) {
-                _this.port = server.address().port;
-            }
-            done(null, true);
-        });
-
-        server.on('error', function(err) {
-            done(err);
-        });
-
-        this.server = server;
-
-        return promise;
     },
 
-    stop: function() {
+    stop() {
         if (this.server) {
             this.server.close();
 
@@ -205,34 +196,34 @@ var TcpConnectionEndpoint = extend(EventEmitter, /** @lends TcpConnectionEndpoin
         }
     },
 
-    _onConnection: function(socket) {
-        var _this = this;
+    _onConnection(socket) {
+        const _this = this;
 
-        var connectionInfo = {
-            socket: socket,
+        const connectionInfo = {
+            socket,
         };
 
-        var phase = 0;
-        var rxBuffer = null;
+        let phase = 0;
+        let rxBuffer = null;
 
-        var write = function() {
+        const write = function() {
             return socket.write.apply(socket, arguments);
         };
 
-        var onData = function(chunk) {
+        const onData = function(chunk) {
             if (phase &lt; 1000) {
-                var buffer;
+                let buffer;
                 if (rxBuffer) {
                     buffer = Buffer.concat([ rxBuffer, chunk ]);
                 } else {
                     buffer = chunk;
                 }
 
-                var start = 0, index = 0;
+                let start = 0, index = 0;
 
-                var processNextLine;
+                let processNextLine = undefined;
 
-                var callback = function(err, result, transition) {
+                const callback = function(err, result, transition) {
                     if (err) {
                         write('-ERROR: ' + JSON.stringify(err.toString()) + '\r\n');
                     } else {
@@ -251,8 +242,8 @@ var TcpConnectionEndpoint = extend(EventEmitter, /** @lends TcpConnectionEndpoin
                     }
                 };
 
-                var processLine = function(line) {
-                    var md;
+                const processLine = function(line) {
+                    let md;
                     if ((md = /^CONNECT (.*)$/.exec(line))) {
                         connectionInfo.viaTag = md [1];
                         callback(null, '+OK');
@@ -260,7 +251,7 @@ var TcpConnectionEndpoint = extend(EventEmitter, /** @lends TcpConnectionEndpoin
                         connectionInfo.password = md [1];
                         callback(null, '+OK');
                     } else if ((md = /^CHANNELLIST$/.exec(line))) {
-                        var response = _.reduce(_this.channels, function(memo, channel, index) {
+                        const response = _.reduce(_this.channels, (memo, channel, index) => {
                             if (channel) {
                                 memo.push('*' + index + ':' + channel);
                             }
@@ -276,7 +267,7 @@ var TcpConnectionEndpoint = extend(EventEmitter, /** @lends TcpConnectionEndpoin
                     } else if ((md = /^DATA$/.exec(line))) {
                         callback(null, '+OK', true);
                     } else {
-                        callback('Unknown command');
+                        callback(new Error('Unknown command'));
                     }
                 };
 
@@ -285,7 +276,7 @@ var TcpConnectionEndpoint = extend(EventEmitter, /** @lends TcpConnectionEndpoin
                         while (index &lt; buffer.length) {
                             if ((buffer [index] === 13) || (buffer [index] === 10)) {
                                 if (start &lt; index) {
-                                    var line = buffer.toString('utf8', start, index);
+                                    const line = buffer.toString('utf8', start, index);
                                     start = index + 1;
                                     processLine(line);
                                     break;
@@ -317,15 +308,15 @@ var TcpConnectionEndpoint = extend(EventEmitter, /** @lends TcpConnectionEndpoin
             }
         };
 
-        var onEnd = function() {
+        const onEnd = function() {
 
         };
 
-        var onError = function() {
+        const onError = function() {
 
         };
 
-        var onTimeout = function() {
+        const onTimeout = function() {
 
         };
 
@@ -382,13 +373,13 @@ module.exports = TcpConnectionEndpoint;
 
 
 	<span class="copyright">
-	resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann
+	resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a>
 	
-		on Wed Jul 5th 2017
+		on Sun Jun 16th 2019
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

@@ -84,23 +84,20 @@
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann | MIT license */
+            class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann | MIT license */
 'use strict';
 
 
 
-var EventEmitter = require('events').EventEmitter;
+const EventEmitter = require('events').EventEmitter;
 
 
-var _ = require('lodash');
-var Q = require('q');
-
-
-var extend = require('./extend');
+const extend = require('./extend');
+const _ = require('./lodash');
 
 
 
-var optionKeys = [
+const optionKeys = [
     'id',
     'deviceAddress',
     'optimizer',
@@ -108,7 +105,7 @@ var optionKeys = [
 
 
 
-var Customizer = extend(EventEmitter, /** @lends Customizer# */ {
+const Customizer = extend(EventEmitter, /** @lends Customizer# */ {
 
     /**
      * An identifier for this customizer.
@@ -142,7 +139,7 @@ var Customizer = extend(EventEmitter, /** @lends Customizer# */ {
      * A Customizer provides functionality to transfer a set of configuration
      * values from or to a device.
      */
-    constructor: function(options) {
+    constructor(options) {
         EventEmitter.call(this);
 
         _.extend(this, _.pick(options, optionKeys));
@@ -164,21 +161,17 @@ var Customizer = extend(EventEmitter, /** @lends Customizer# */ {
      * @param {object} options
      * @returns {Promise} A Promise that resolves to the set of values transfered.
      */
-    loadConfiguration: function(configuration, options) {
-        var _this = this;
-
+    async loadConfiguration(configuration, options) {
         options = _.defaults({}, options, {
             optimize: true,
         });
 
-        return Q.fcall(function() {
-            return _this._completeConfiguration(configuration);
-        }).then(function(configuration) {
-            return _this._loadConfiguration(configuration, options);
-        });
+        configuration = await this._completeConfiguration(configuration);
+
+        return this._loadConfiguration(configuration, options);
     },
 
-    _loadConfiguration: function(configuration, options) {
+    _loadConfiguration(configuration, options) {
         throw new Error('Must be implemented by sub-class');
     },
 
@@ -202,29 +195,21 @@ var Customizer = extend(EventEmitter, /** @lends Customizer# */ {
      * @param {object} options
      * @returns {Promise} A Promise that resolves to the set of values transfered.
      */
-    saveConfiguration: function(newConfiguration, oldConfiguration, options) {
-        var _this = this;
-
+    async saveConfiguration(newConfiguration, oldConfiguration, options) {
         options = _.defaults({}, options, {
             optimize: true,
         });
 
-        return Q.fcall(function() {
-            return _this._completeConfiguration(newConfiguration);
-        }).then(function(newConfiguration) {
-            return Q.fcall(function() {
-                if (oldConfiguration) {
-                    return _this._completeConfiguration(oldConfiguration);
-                } else {
-                    return null;
-                }
-            }).then(function(oldConfiguration) {
-                return _this._saveConfiguration(newConfiguration, oldConfiguration, options);
-            });
-        });
+        newConfiguration = await this._completeConfiguration(newConfiguration);
+
+        if (oldConfiguration) {
+            oldConfiguration = await this._completeConfiguration(oldConfiguration);
+        }
+
+        return this._saveConfiguration(newConfiguration, oldConfiguration, options);
     },
 
-    _saveConfiguration: function(newConfiguration, oldConfiguration, options) {
+    _saveConfiguration(newConfiguration, oldConfiguration, options) {
         throw new Error('Must be implemented by sub-class');
     },
 
@@ -237,11 +222,11 @@ var Customizer = extend(EventEmitter, /** @lends Customizer# */ {
      * @param {undefined|null|array|object} config Configuration to complete.
      * @returns {Promise} A Promise that resolves to the completed array of values.
      */
-    _completeConfiguration: function(config) {
+    _completeConfiguration(config) {
         if (this.optimizer) {
             return this.optimizer.completeConfiguration(config);
         } else {
-            return Q(config);
+            return Promise.resolve(config);
         }
     },
 
@@ -251,7 +236,7 @@ var Customizer = extend(EventEmitter, /** @lends Customizer# */ {
      * @param {array} config The array of values that has already been loaded.
      * @returns {Promise} A Promise that resolves to the array of values to load next.
      */
-    _optimizeLoadConfiguration: function(config) {
+    _optimizeLoadConfiguration(config) {
         return this.optimizer.optimizeLoadConfiguration(config);
     },
 
@@ -262,7 +247,7 @@ var Customizer = extend(EventEmitter, /** @lends Customizer# */ {
      * @param {array} oldConfig The array of values that are assumed to be currently stored in the device.
      * @returns {Promise} A Promise that resolves to the array of values to save.
      */
-    _optimizeSaveConfiguration: function(newConfig, oldConfig) {
+    _optimizeSaveConfiguration(newConfig, oldConfig) {
         return this.optimizer.optimizeSaveConfiguration(newConfig, oldConfig);
     },
 
@@ -310,13 +295,13 @@ module.exports = Customizer;
 
 
 	<span class="copyright">
-	resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann
+	resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a>
 	
-		on Wed Jul 5th 2017
+		on Sun Jun 16th 2019
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

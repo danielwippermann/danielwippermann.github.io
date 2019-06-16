@@ -84,20 +84,20 @@
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann | MIT license */
+            class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann | MIT license */
 'use strict';
 
 
 
-var _ = require('lodash');
-var sprintf = require('sprintf').sprintf;
+const sprintf = require('sprintf-js').sprintf;
 
 
-var extend = require('./extend');
+const extend = require('./extend');
+const _ = require('./lodash');
 
 
 
-var optionKeys = [
+const optionKeys = [
     'timestamp',
     'channel',
     'destinationAddress',
@@ -106,7 +106,7 @@ var optionKeys = [
 
 
 
-var Header = extend(null, /** @lends Header# */ {
+const Header = extend(null, /** @lends Header# */ {
 
     /**
      * Timestamp of this header
@@ -160,7 +160,7 @@ var Header = extend(null, /** @lends Header# */ {
      * @see Datagram
      * @see Telegram
      */
-    constructor: function(options) {
+    constructor(options) {
         _.extend(this, _.pick(options, optionKeys));
 
         if (!this.timestamp) {
@@ -182,7 +182,7 @@ var Header = extend(null, /** @lends Header# */ {
      * @param {number} [end] End index in the buffer
      * @returns {Buffer} Buffer object containing the data
      */
-    toLiveBuffer: function(/* buffer, start, end */) {
+    toLiveBuffer(/* buffer, start, end */) {
         throw new Error('Must be implemented by sub-class');
     },
 
@@ -197,7 +197,7 @@ var Header = extend(null, /** @lends Header# */ {
      * @abstract
      * @returns {number} Protocol version
      */
-    getProtocolVersion: function() {
+    getProtocolVersion() {
         throw new Error('Must be implemented by sub-class');
     },
 
@@ -208,7 +208,7 @@ var Header = extend(null, /** @lends Header# */ {
      *
      * @returns {number} Info value
      */
-    getInfo: function() {
+    getInfo() {
         return 0;
     },
 
@@ -226,7 +226,7 @@ var Header = extend(null, /** @lends Header# */ {
      *
      * @returns {string} Identifier
      */
-    getId: function() {
+    getId() {
         return sprintf('%02X_%04X_%04X_%02X', this.channel, this.destinationAddress, this.sourceAddress, this.getProtocolVersion());
     },
 
@@ -243,8 +243,8 @@ var Header = extend(null, /** @lends Header# */ {
      *   - greater than 0 if `this > that`
      *   - equal to to if `this == that`
      */
-    compareTo: function(that) {
-        var result = this.channel - that.channel;
+    compareTo(that) {
+        let result = this.channel - that.channel;
         if (result === 0) {
             result = this.destinationAddress - that.destinationAddress;
         }
@@ -271,7 +271,7 @@ var Header = extend(null, /** @lends Header# */ {
      * @param {number} end End index in the buffer
      * @returns {Header} Header instance created from the representation
      */
-    fromLiveBuffer: function(/* buffer, start, end */) {
+    fromLiveBuffer(/* buffer, start, end */) {
         throw new Error('Must be implemented by sub-class');
     },
 
@@ -284,9 +284,9 @@ var Header = extend(null, /** @lends Header# */ {
      * @param {number} end End index in the buffer
      * @returns {number} Calculated checksum
      */
-    calcChecksumV0: function(buffer, start, end) {
-        var checksum = 0;
-        for (var index = start; index &lt; end; index++) {
+    calcChecksumV0(buffer, start, end) {
+        let checksum = 0;
+        for (let index = start; index &lt; end; index++) {
             checksum = (checksum + buffer [index]) &amp; 0x7F;
         }
         checksum = (0x7F - checksum);
@@ -303,8 +303,8 @@ var Header = extend(null, /** @lends Header# */ {
      * @param {number} end End index in the buffer
      * @returns {boolean} Result whether calculated and stored checksum match
      */
-    calcAndCompareChecksumV0: function(buffer, start, end) {
-        var checksum = this.calcChecksumV0(buffer, start, end);
+    calcAndCompareChecksumV0(buffer, start, end) {
+        const checksum = this.calcChecksumV0(buffer, start, end);
         return (buffer [end] === checksum);
     },
 
@@ -317,8 +317,8 @@ var Header = extend(null, /** @lends Header# */ {
      * @param {number} end End index in the buffer
      * @returns {number} Calculated checksum
      */
-    calcAndSetChecksumV0: function(buffer, start, end) {
-        var checksum = this.calcChecksumV0(buffer, start, end);
+    calcAndSetChecksumV0(buffer, start, end) {
+        const checksum = this.calcChecksumV0(buffer, start, end);
         buffer [end] = checksum;
         return checksum;
     },
@@ -333,10 +333,11 @@ var Header = extend(null, /** @lends Header# */ {
      * @param {Buffer} dstBuffer Buffer to copy to
      * @param {number} dstStart Start index in the destination buffer
      */
-    injectSeptett: function(srcBuffer, srcStart, srcEnd, dstBuffer, dstStart) {
-        var srcIndex = srcStart, dstIndex = dstStart, mask = 1, septett = srcBuffer [srcEnd];
+    injectSeptett(srcBuffer, srcStart, srcEnd, dstBuffer, dstStart) {
+        const septett = srcBuffer [srcEnd];
+        let srcIndex = srcStart, dstIndex = dstStart, mask = 1;
         while (srcIndex &lt; srcEnd) {
-            var b = srcBuffer [srcIndex];
+            let b = srcBuffer [srcIndex];
             if (septett &amp; mask) {
                 b |= 0x80;
             }
@@ -359,10 +360,10 @@ var Header = extend(null, /** @lends Header# */ {
      * @param {Buffer} dstBuffer Buffer to copy to
      * @param {number} dstStart Start index in the destination buffer
      */
-    extractSeptett: function(srcBuffer, srcStart, srcEnd, dstBuffer, dstStart) {
-        var srcIndex = srcStart, dstIndex = dstStart, mask = 1, septett = 0;
+    extractSeptett(srcBuffer, srcStart, srcEnd, dstBuffer, dstStart) {
+        let srcIndex = srcStart, dstIndex = dstStart, mask = 1, septett = 0;
         while (srcIndex &lt; srcEnd) {
-            var b = srcBuffer [srcIndex];
+            let b = srcBuffer [srcIndex];
             if (b &amp; 0x80) {
                 b &amp;= 0x7F;
                 septett |= mask;
@@ -421,13 +422,13 @@ module.exports = Header;
 
 
 	<span class="copyright">
-	resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann
+	resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a>
 	
-		on Wed Jul 5th 2017
+		on Sun Jun 16th 2019
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

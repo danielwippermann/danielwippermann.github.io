@@ -84,29 +84,29 @@
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann | MIT license */
+            class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann | MIT license */
 'use strict';
 
 
 
-var _ = require('lodash');
-
-
-var Converter = require('./converter');
-var Specification = require('./specification');
+const Converter = require('./converter');
+const _ = require('./lodash');
+const Specification = require('./specification');
 
 
 
-var optionKeys = [
+const optionKeys = [
     'columnSeparator',
     'lineSeparator',
     'separateDateAndTime',
     'specification',
+    'dateFormat',
+    'timeFormat',
 ];
 
 
 
-var TextConverter = Converter.extend(/** @lends TextConverter# */ {
+const TextConverter = Converter.extend(/** @lends TextConverter# */ {
 
     /**
      * Column separator, defaults to tab
@@ -133,6 +133,22 @@ var TextConverter = Converter.extend(/** @lends TextConverter# */ {
     specification: null,
 
     /**
+     * Date to string formatting for the first column. Can either be a
+     * string to use in `moment(...).format()` or a function that returns
+     * the formatted date string.
+     * @type {string|function}
+     */
+    dateFormat: 'L',
+
+    /**
+     * Time to string formatting for the first column. Can either be a
+     * string to use in `moment(...).format()` or a function that returns
+     * the formatted time string.
+     * @type {string|function}
+     */
+    timeFormat: 'HH:mm:ss',
+
+    /**
      * List of packet IDs converted last time, enables decision whether a
      * new header line pair must be output.
      * @type {string}
@@ -152,14 +168,14 @@ var TextConverter = Converter.extend(/** @lends TextConverter# */ {
      * It does not support parsing text content back into header sets (the
      * writable stream side).
      */
-    constructor: function(options) {
+    constructor(options) {
         Converter.call(this, options);
 
         _.extend(this, _.pick(options, optionKeys));
 
         if (!this.specification) {
             this.specification = new Specification({
-                language: options &amp;&amp; options.language || 'en'
+                language: (options &amp;&amp; options.language) || 'en'
             });
         }
     },
@@ -168,7 +184,7 @@ var TextConverter = Converter.extend(/** @lends TextConverter# */ {
      * Resets the converter, resulting in a ne pair of header lines
      * generated on next header set conversion.
      */
-    reset: function() {
+    reset() {
         this.lastIdList = null;
     },
 
@@ -177,24 +193,24 @@ var TextConverter = Converter.extend(/** @lends TextConverter# */ {
      *
      * @param {HeaderSet} headerSet
      */
-    convertHeaderSet: function(headerSet) {
-        var _this = this;
+    convertHeaderSet(headerSet) {
+        const _this = this;
 
-        var spec = this.specification;
+        const spec = this.specification;
 
-        var i18n = spec.i18n;
+        const i18n = spec.i18n;
 
-        var headers = headerSet.getSortedHeaders();
+        const headers = headerSet.getSortedHeaders();
 
-        var packetFields = spec.getPacketFieldsForHeaders(headers);
+        const packetFields = spec.getPacketFieldsForHeaders(headers);
 
-        var now = i18n.moment(headerSet.timestamp);
+        const now = i18n.moment(headerSet.timestamp);
 
-        var idList = _.pluck(packetFields, 'id').join(',');
+        const idList = _.map(packetFields, 'id').join(',');
 
-        var content = '', columns;
+        let content = '', columns;
 
-        var appendDateAndTimeColumns = function(date, time, join) {
+        const appendDateAndTimeColumns = function(date, time, join) {
             columns = [];
             if (_this.separateDateAndTime) {
                 columns.push(date);
@@ -204,11 +220,11 @@ var TextConverter = Converter.extend(/** @lends TextConverter# */ {
             }
         };
 
-        var appendColumnsToContent = function() {
+        const appendColumnsToContent = function() {
             content += columns.join(_this.columnSeparator) + _this.lineSeparator;
         };
 
-        var needHeaderLines = false;
+        let needHeaderLines = false;
         if (this.lastIdList !== idList) {
             this.lastIdList = idList;
             needHeaderLines = true;
@@ -216,12 +232,12 @@ var TextConverter = Converter.extend(/** @lends TextConverter# */ {
 
         if (needHeaderLines) {
             // packet spec header line
-            var lastPacketSpec = null;
+            let lastPacketSpec = null;
 
             appendDateAndTimeColumns('', '', '');
 
-            _.forEach(packetFields, function(packetField) {
-                var packetDesc;
+            _.forEach(packetFields, (packetField) => {
+                let packetDesc;
                 if (lastPacketSpec !== packetField.packetSpec) {
                     lastPacketSpec = packetField.packetSpec;
 
@@ -241,10 +257,10 @@ var TextConverter = Converter.extend(/** @lends TextConverter# */ {
             // packet field spec header line
             appendDateAndTimeColumns(i18n.t('textConverter.date'), i18n.t('textConverter.time'), ' / ');
 
-            _.forEach(packetFields, function(packetField) {
-                var columnDesc = packetField.name;
+            _.forEach(packetFields, (packetField) => {
+                let columnDesc = packetField.name;
                 if (packetField.packetFieldSpec) {
-                    var type = packetField.packetFieldSpec.type;
+                    const type = packetField.packetFieldSpec.type;
                     if (type &amp;&amp; type.unit &amp;&amp; type.unit.unitText) {
                         columnDesc += ' [' + type.unit.unitText + ']';
                     }
@@ -258,10 +274,12 @@ var TextConverter = Converter.extend(/** @lends TextConverter# */ {
         }
 
         // value line
-        appendDateAndTimeColumns(now.format('L'), now.format('HH:mm:ss'), ' ');
+        const dateString = this.formatDateAndTime(now, this.dateFormat);
+        const timeString = this.formatDateAndTime(now, this.timeFormat);
+        appendDateAndTimeColumns(dateString, timeString, ' ');
 
-        _.forEach(packetFields, function(packetField) {
-            var textValue = packetField.formatTextValue('None');
+        _.forEach(packetFields, (packetField) => {
+            const textValue = packetField.formatTextValue('None');
             columns.push(textValue);
         });
 
@@ -270,7 +288,26 @@ var TextConverter = Converter.extend(/** @lends TextConverter# */ {
         return this.push(content);
     },
 
-    _read: function() {
+    /**
+     * Format a `Date` object into a string.
+     *
+     * @param {Moment} now The Moment.js timestamp to format.
+     * @param {string|function} format Date formatter. Can either be a
+     * string to use in `moment(...).format()` or a function that returns
+     * the formatted date/time string.
+     * @returns {string} The formatted date/time as a string.
+     */
+    formatDateAndTime(now, format) {
+        if (typeof format === 'string') {
+            return now.format(format);
+        } else if (typeof format === 'function') {
+            return format(now);
+        } else {
+            throw new Error(`Unsupported format specifier`);
+        }
+    },
+
+    _read() {
         // nop
     },
 
@@ -318,13 +355,13 @@ module.exports = TextConverter;
 
 
 	<span class="copyright">
-	resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann
+	resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a>
 	
-		on Wed Jul 5th 2017
+		on Sun Jun 16th 2019
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

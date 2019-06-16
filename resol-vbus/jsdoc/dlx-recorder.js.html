@@ -84,25 +84,23 @@
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann | MIT license */
+            class="sunlight-highlight-javascript ">/*! resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann | MIT license */
 'use strict';
 
 
 
-var _ = require('lodash');
-var moment = require('moment');
-var Q = require('q');
-var request = require('request');
+const moment = require('moment');
+const request = require('request');
 
 
-var utils = require('./utils');
-var VBusRecordingConverter = require('./vbus-recording-converter');
+const _ = require('./lodash');
+const VBusRecordingConverter = require('./vbus-recording-converter');
 
-var Recorder = require('./recorder');
+const Recorder = require('./recorder');
 
 
 
-var optionKeys = [
+const optionKeys = [
     'urlPrefix',
     'username',
     'password',
@@ -110,7 +108,7 @@ var optionKeys = [
 
 
 
-var DLxRecorder = Recorder.extend( /** @lends DLxRecorder# */ {
+const DLxRecorder = Recorder.extend(/** @lends DLxRecorder# */ {
 
     /**
      * The root URL to access the DLx.
@@ -138,81 +136,71 @@ var DLxRecorder = Recorder.extend( /** @lends DLxRecorder# */ {
      * @classdesc
      * DLxRecorder is a recorder that can play back data recorded by a Datalogger.
      */
-    constructor: function(options) {
+    constructor(options) {
         Recorder.call(this, options);
 
         _.extend(this, _.pick(options, optionKeys));
     },
 
-    _getOptions: function() {
-        var options = Recorder.prototype._getOptions.call(this);
+    _getOptions() {
+        const options = Recorder.prototype._getOptions.call(this);
         return _.extend(options, _.pick(this, optionKeys));
     },
 
-    _playback: function(headerSetConsolidator, options) {
-        var _this = this;
+    async _playback(headerSetConsolidator, options) {
+        const _this = this;
 
-        var converter = new VBusRecordingConverter();
+        const converter = new VBusRecordingConverter();
 
-        converter.on('headerSet', function(headerSet) {
+        converter.on('headerSet', (headerSet) => {
             headerSetConsolidator.processHeaderSet(headerSet);
         });
 
-        return Q.fcall(function() {
-            if (options.apiAccess) {
-                return _this._playbackApi(converter, options);
-            } else {
-                return _this._playbackRaw(converter, options);
+        if (options.apiAccess) {
+            await _this._playbackApi(converter, options);
+        } else {
+            await _this._playbackRaw(converter, options);
+        }
+
+        converter.end();
+    },
+
+    async _playbackRaw(converter, options) {
+        const _this = this;
+
+        const minFilename = moment.utc(options.minTimestamp).format('[/log/]YYYYMMDD');
+        const maxFilename = moment.utc(options.maxTimestamp).format('[/log/]YYYYMMDD');
+
+        const filenames = await _this.getRecordingFilenames(options);
+
+        const matchingFilenames = filenames.reduce((memo, filename) => {
+            const filenamePrefix = filename.slice(0, minFilename.length);
+
+            if ((filenamePrefix >= minFilename) &amp;&amp; (filenamePrefix &lt;= maxFilename)) {
+                memo.push(filename);
             }
-        }).then(function() {
-            converter.end();
-        });
+
+            return memo;
+        }, []);
+
+        for (const filename of matchingFilenames) {
+            const urlString = options.urlPrefix + filename;
+
+            const urlOptions = {
+                auth: {
+                    username: options.username,
+                    password: options.password,
+                },
+            };
+
+            await _this.downloadToStream(urlString, urlOptions, converter);
+        }
     },
 
-    _playbackRaw: function(converter, options) {
-        var _this = this;
+    async _playbackApi(converter, options) {
+        const urlString = options.urlPrefix + '/dlx/download/download';
 
-        var minFilename = moment.utc(options.minTimestamp).format('[/log/]YYYYMMDD');
-        var maxFilename = moment.utc(options.maxTimestamp).format('[/log/]YYYYMMDD');
-
-        return Q.fcall(function() {
-            return _this.getRecordingFilenames(options);
-        }).then(function(filenames) {
-            return _.reduce(filenames, function(memo, filename) {
-                var filenamePrefix = filename.slice(0, minFilename.length);
-
-                if ((filenamePrefix >= minFilename) &amp;&amp; (filenamePrefix &lt;= maxFilename)) {
-                    memo.push(filename);
-                }
-
-                return memo;
-            }, []);
-        }).then(function(filenames) {
-            var promise = Q();
-
-            _.forEach(filenames, function(filename) {
-                promise = promise.then(function() {
-                    var urlString = options.urlPrefix + filename;
-
-                    var urlOptions = {
-                        auth: {
-                            username: options.username,
-                            password: options.password,
-                        },
-                    };
-
-                    return _this.downloadToStream(urlString, urlOptions, converter);
-                });
-            });
-
-            return promise;
-        });
-    },
-
-    _playbackApi: function(converter, options) {
-        var urlString = options.urlPrefix + '/dlx/download/download';
-
-        var urlOptions = {
+        const urlOptions = {
             qs: {
                 sessionAuthUsername: options.username,
                 sessionAuthPassword: options.password,
@@ -230,114 +218,100 @@ var DLxRecorder = Recorder.extend( /** @lends DLxRecorder# */ {
             },
         };
 
-        return Q.fcall(function() {
-            return this.downloadToStream(urlString, urlOptions, converter);
-        });
+        return this.downloadToStream(urlString, urlOptions, converter);
     },
 
-    _playbackSyncJob: function(stream, syncJob) {
-        var _this = this;
+    async _playbackSyncJob(stream, syncJob) {
+        const _this = this;
 
         if (!stream.objectMode) {
             throw new Error('Stream must be in object mode');
         }
 
-        /*var syncState =*/ this._getSyncState(syncJob, 'source', 'DLxRecorder');
+        /* var syncState = */ this._getSyncState(syncJob, 'source', 'DLxRecorder');
 
-        return Q.fcall(function() {
-            return _this.getLazyRecordingRanges();
-        }).then(function(availableRanges) {
-            var ranges = Recorder.performRangeSetOperation(availableRanges, syncJob.syncStateDiffs, syncJob.interval, 'intersection');
+        const availableRanges = await _this.getLazyRecordingRanges();
 
-            var playedBackRanges = [];
+        const ranges = Recorder.performRangeSetOperation(availableRanges, syncJob.syncStateDiffs, syncJob.interval, 'intersection');
 
-            var promise = Q();
+        let playedBackRanges = [];
 
-            _.forEach(ranges, function(range) {
-                var options = _.extend({}, syncJob, {
-                    minTimestamp: range.minTimestamp,
-                    maxTimestamp: range.maxTimestamp,
-                    end: false,
-                });
-
-                promise = promise.then(function() {
-                    return _this.playback(stream, options);
-                }).then(function(ranges) {
-                    playedBackRanges = Recorder.performRangeSetOperation(playedBackRanges, ranges, syncJob.interval, 'union');
-                });
+        for (const range of ranges) {
+            const options = _.extend({}, syncJob, {
+                minTimestamp: range.minTimestamp,
+                maxTimestamp: range.maxTimestamp,
+                end: false,
             });
 
-            promise = promise.then(function() {
-                var handledRanges = playedBackRanges;
+            const newRanges = await _this.playback(stream, options);
 
-                if (handledRanges.length > 0) {
-                    var maxTimestamp;
-                    if (syncJob.markGapsAsUnsynced) {
-                        maxTimestamp = handledRanges [0].minTimestamp;
-                    } else {
-                        maxTimestamp = handledRanges [handledRanges.length - 1].minTimestamp;
-                    }
+            playedBackRanges = Recorder.performRangeSetOperation(playedBackRanges, newRanges, syncJob.interval, 'union');
+        }
 
-                    var notAvailableRanges = [{
-                        minTimestamp: new Date(Date.UTC(2001, 0)),
-                        maxTimestamp: maxTimestamp,
-                    }];
+        let handledRanges = playedBackRanges;
 
-                    handledRanges = Recorder.performRangeSetOperation(handledRanges, notAvailableRanges, syncJob.interval, 'union');
-                }
+        if (handledRanges.length > 0) {
+            let maxTimestamp;
+            if (syncJob.markGapsAsUnsynced) {
+                maxTimestamp = handledRanges [0].minTimestamp;
+            } else {
+                maxTimestamp = handledRanges [handledRanges.length - 1].minTimestamp;
+            }
 
-                _this._markSourceSyncRanges(handledRanges, syncJob);
+            const notAvailableRanges = [{
+                minTimestamp: new Date(Date.UTC(2001, 0)),
+                maxTimestamp,
+            }];
 
-                return playedBackRanges;
-            });
+            handledRanges = Recorder.performRangeSetOperation(handledRanges, notAvailableRanges, syncJob.interval, 'union');
+        }
 
-            return promise;
-        });
+        _this._markSourceSyncRanges(handledRanges, syncJob);
+
+        return playedBackRanges;
     },
 
-    getLazyRecordingRanges: function() {
-        var _this = this;
+    async getLazyRecordingRanges() {
+        const _this = this;
 
-        return Q.fcall(function() {
-            return _this.getRecordingFilenames();
-        }).then(function(filenames) {
-            var ranges = _.map(filenames, function(filename) {
-                var minTimestamp = moment.utc(filename.slice(5, 13), 'YYYYMMDD');
-                var maxTimestamp = moment.utc(minTimestamp).add({ hours: 24 });
-                return {
-                    minTimestamp: minTimestamp.toDate(),
-                    maxTimestamp: maxTimestamp.toDate(),
-                };
-            });
+        const filenames = await _this.getRecordingFilenames();
 
-            ranges = Recorder.performRangeSetOperation(ranges, [], 86400000, 'union');
-
-            return ranges;
+        let ranges = _.map(filenames, (filename) => {
+            const minTimestamp = moment.utc(filename.slice(5, 13), 'YYYYMMDD');
+            const maxTimestamp = moment.utc(minTimestamp).add({ hours: 24 });
+            return {
+                minTimestamp: minTimestamp.toDate(),
+                maxTimestamp: maxTimestamp.toDate(),
+            };
         });
+
+        ranges = Recorder.performRangeSetOperation(ranges, [], 86400000, 'union');
+
+        return ranges;
     },
 
-    getRecordingFilenames: function() {
-        return utils.promise(function(resolve, reject) {
-            var rxBuffer = null;
+    getRecordingFilenames() {
+        return new Promise((resolve, reject) => {
+            let rxBuffer = null;
 
-            var filenames = [];
+            const filenames = [];
 
-            var onResponse = function(res) {
+            const onResponse = function(res) {
             };
 
-            var onData = function(chunk) {
-                var buffer;
+            const onData = function(chunk) {
+                let buffer;
                 if (rxBuffer) {
                     buffer = Buffer.concat([ rxBuffer, chunk ]);
                 } else {
                     buffer = chunk;
                 }
 
-                var string = buffer.toString('utf8');
+                let string = buffer.toString('utf8');
 
-                var re = /&lt;a href="([0-9]{8}_[a-z]+.vbus)">/g;
+                const re = /&lt;a href="([0-9]{8}_[a-z]+.vbus)">/g;
 
-                var md, index;
+                let md, index;
                 while ((md = re.exec(string)) !== null) {
                     filenames.push('/log/' + md [1]);
                     index = re.lastIndex;
@@ -345,50 +319,50 @@ var DLxRecorder = Recorder.extend( /** @lends DLxRecorder# */ {
 
                 string = string.slice(index);
 
-                rxBuffer = new Buffer(string, 'utf8');
+                rxBuffer = Buffer.from(string, 'utf8');
             };
 
-            var onEnd = function() {
+            const onEnd = function() {
                 resolve(filenames.sort());
             };
 
-            var onError = function(err) {
+            const onError = function(err) {
                 reject(err);
             };
 
-            var urlOptions = {
+            const urlOptions = {
                 auth: {
                     username: this.username,
                     password: this.password,
                 },
             };
 
-            var stream = this._request(this.urlPrefix + '/log/', urlOptions);
+            const stream = this._request(this.urlPrefix + '/log/', urlOptions);
             stream.on('response', onResponse);
             stream.on('data', onData);
             stream.on('end', onEnd);
             stream.on('error', onError);
-        }, this);
+        });
     },
 
-    getRecordingInfo: function(filename) {
-        return utils.promise(function(resolve, reject) {
-            var info = {};
+    getRecordingInfo(filename) {
+        return new Promise((resolve, reject) => {
+            const info = {};
 
-            var onResponse = function(res) {
+            const onResponse = function(res) {
                 info.size = res.headers ['content-length'] | 0;
                 info.etag = res.headers.etag;
             };
 
-            var onEnd = function() {
+            const onEnd = function() {
                 resolve(info);
             };
 
-            var onError = function(err) {
+            const onError = function(err) {
                 reject(err);
             };
 
-            var urlOptions = {
+            const urlOptions = {
                 method: 'HEAD',
                 auth: {
                     username: this.username,
@@ -396,32 +370,32 @@ var DLxRecorder = Recorder.extend( /** @lends DLxRecorder# */ {
                 },
             };
 
-            var stream = this._request(this.urlPrefix + filename, urlOptions);
+            const stream = this._request(this.urlPrefix + filename, urlOptions);
             stream.resume();
             stream.on('response', onResponse);
             stream.on('end', onEnd);
             stream.on('error', onError);
-        }, this);
+        });
     },
 
-    downloadToStream: function(urlString, urlOptions, stream) {
-        return utils.promise(function(resolve, reject) {
-            var onEnd = function() {
+    downloadToStream(urlString, urlOptions, stream) {
+        return new Promise((resolve, reject) => {
+            const onEnd = function() {
                 resolve();
             };
 
-            var onError = function(err) {
+            const onError = function(err) {
                 reject(err);
             };
 
-            var req = this._request(urlString, urlOptions);
+            const req = this._request(urlString, urlOptions);
             req.pipe(stream, { end: false });
             req.on('end', onEnd);
             req.on('error', onError);
-        }, this);
+        });
     },
 
-    _request: function() {
+    _request() {
         return request.apply(undefined, arguments);
     },
 
@@ -469,13 +443,13 @@ module.exports = DLxRecorder;
 
 
 	<span class="copyright">
-	resol-vbus | Copyright (c) 2013-2017, Daniel Wippermann
+	resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a>
 	
-		on Wed Jul 5th 2017
+		on Sun Jun 16th 2019
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
