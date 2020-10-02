@@ -132,6 +132,7 @@
         </ul>
         <h4>Technical Specifications</h4>
         <ul>
+          <li><a href="vbus-specification.html">RESOL VBus Specification</a></li>
           <li><a href="vbus-packets.html">RESOL VBus Packet List</a></li>
           <li><a href="vbus-recording-file-format.html">VBus Recording File Format</a></li>
           <li><a href="vbus-specification-file-format-v1.html">VBus Spec. File Format v1</a></li>
@@ -341,9 +342,8 @@
 
 <p>Other blocks reference TEXT blocks using a “TEXT index” ranging from <code class="highlighter-rouge">0</code> to <code class="highlighter-rouge">(SPECIFICATION.TextCount - 1)</code>. This index can be used to calculate the VSF offset of the corresponding TEXT block as follows:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>TextBlockOffset = SPECIFICATION.TextTableOffset + TextIndex * 4
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TextBlockOffset = SPECIFICATION.TextTableOffset + TextIndex * 4
+</code></pre></div></div>
 
 <h3 id="the-localizedtext-block">The LOCALIZEDTEXT block</h3>
 
@@ -382,9 +382,8 @@
 
 <p>Other blocks reference LOCALIZEDTEXT blocks using a “LOCALIZEDTEXT index” ranging from <code class="highlighter-rouge">0</code> to <code class="highlighter-rouge">(SPECIFICATION.LocalizedTextCount - 1)</code>. This index can be used to calculate the VSF offset of the corresponding LOCALIZEDTEXT block as follows:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>LocalizedTextBlockOffset = Specification.LocalizedTextTableOffset + LocalizedTextIndex * 12
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LocalizedTextBlockOffset = Specification.LocalizedTextTableOffset + LocalizedTextIndex * 12
+</code></pre></div></div>
 
 <h3 id="the-unit-block">The UNIT block</h3>
 
@@ -832,15 +831,14 @@
 
 <p>The <code class="highlighter-rouge">...Address</code> and <code class="highlighter-rouge">...Mask</code> field pairs can be used to determine whether a given address received over the VBus matches a DEVICETEMPLATE block:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>if (((SelfAddress ^ DEVICETEMPLATE.SelfAddress) &amp; DEVICETEMPLATE.SelfMask) != 0) {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if (((SelfAddress ^ DEVICETEMPLATE.SelfAddress) &amp; DEVICETEMPLATE.SelfMask) != 0) {
 	// self address does not match
 } else if (((PeerAddress ^ DEVICETEMPLATE.PeerAddress) &amp; DEVICETEMPLATE.PeerMask) != 0) {
 	// peer address does not match
 } else {
 	// both addresses match, DEVICETEMPLATE found!
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The <code class="highlighter-rouge">SelfAddress</code> variable in the example above is the address of the device being searched for, the <code class="highlighter-rouge">PeerAddress</code> variable is the address of the communication counterpart device (e.g. the destination address of a VBus version 1 packet if information about the source address is being requested).</p>
 
@@ -911,7 +909,7 @@
 
 <p>The <code class="highlighter-rouge">...Address</code> and <code class="highlighter-rouge">...Mask</code> field pairs can be used to determine whether a given address received as part of a VBus version 1 packet matches a PACKETTEMPLATE block:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>if (((DestinationAddress ^ PACKETTEMPLATE.DestinationAddress) &amp; PACKETTEMPLATE.DestinationMask) != 0) {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if (((DestinationAddress ^ PACKETTEMPLATE.DestinationAddress) &amp; PACKETTEMPLATE.DestinationMask) != 0) {
 	// destination address does not match
 } else if (((SourceAddress ^ PACKETTEMPLATE.SourceAddress) &amp; PACKETTEMPLATE.SourceMask) != 0) {
 	// source address does not match
@@ -920,8 +918,7 @@
 } else {
 	// all fields match, PACKETTEMPLATE found!
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The <code class="highlighter-rouge">DestinationAddress</code>, <code class="highlighter-rouge">SourceAddress</code> and <code class="highlighter-rouge">Command</code> variables in the example above are the corresponding values from the VBus version 1 packet.</p>
 
@@ -1094,7 +1091,7 @@
 
 <p>The following pseudo-code demonstrated how all those fields must be used:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>I64 PartValue;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I64 PartValue;
 if (PACKETTEMPLATEFIELDPART.IsSigned) {
 	PartValue = (I8) Buffer [PACKETTEMPLATEFIELDPART.Offset];
 } else {
@@ -1110,14 +1107,13 @@ if (PACKETTEMPLATEFIELDPART.Factor != 1) {
 	PartValue = PartValue * PACKETTEMPLATEFIELDPART.Factor;
 }
 // ...
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="example-vsf-file">Example VSF file</h2>
 
 <p>Throughout the following section an example VSF is used to illustrate the file format on a real-world example (although a very small one). Since the various sections of the documentation only reproduce the necessary parts to support the section’s explanation, the contents of the whole file is reproduced below for reference:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>00000000: 6c 64 6c 64 14 1c 00 00 01 00 00 00 e8 1b 00 00
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00000000: 6c 64 6c 64 14 1c 00 00 01 00 00 00 e8 1b 00 00
 00000010: 00 20 42 54 55 00 20 48 7a 00 20 4b 00 20 4d 42
 00000020: 54 55 00 20 4d 4d 42 54 55 00 20 4d 57 68 00 20
 00000030: 56 00 20 57 00 20 57 2f 6d c2 b2 00 20 57 68 00
@@ -1567,16 +1563,14 @@ if (PACKETTEMPLATEFIELDPART.Factor != 1) {
 00001bf0: 04 09 00 00 2d 00 00 00 f4 0b 00 00 30 00 00 00
 00001c00: 10 0e 00 00 12 00 00 00 10 11 00 00 02 00 00 00
 00001c10: c0 1b 00 00                                    
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="the-fileheader-block-1">The FILEHEADER block</h3>
 
 <p>The FILEHEADER block is located at VSF offset 0x00000000. The block in the example VSF looks like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>00000000: 6c 64 6c 64 14 1c 00 00 01 00 00 00 e8 1b 00 00
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00000000: 6c 64 6c 64 14 1c 00 00 01 00 00 00 e8 1b 00 00
+</code></pre></div></div>
 
 <p>It contains the following values:</p>
 
@@ -1621,12 +1615,11 @@ if (PACKETTEMPLATEFIELDPART.Factor != 1) {
 
 <p>According to the <code class="highlighter-rouge">SpecificationOffset</code> field of the FILEHEADER block the SPECIFICATION block of the example VSF is located at VSF offset 0x00001be8. The block in the example VSF looks like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>00001be0:                         ef a1 33 01 bc 00 00 00
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00001be0:                         ef a1 33 01 bc 00 00 00
 00001bf0: 04 09 00 00 2d 00 00 00 f4 0b 00 00 30 00 00 00
 00001c00: 10 0e 00 00 12 00 00 00 10 11 00 00 02 00 00 00
 00001c10: c0 1b 00 00
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>It contains the following values:</p>
 
@@ -1703,15 +1696,13 @@ if (PACKETTEMPLATEFIELDPART.Factor != 1) {
 
 <p>Other blocks reference TEXT blocks using a “TEXT index”. This index can be used to calculate the VSF offset of the corresponding TEXT block as follows:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>TextBlockOffset = SPECIFICATION.TextTableOffset + TextIndex * 4
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TextBlockOffset = SPECIFICATION.TextTableOffset + TextIndex * 4
+</code></pre></div></div>
 
 <p>For example: the TEXT block referenced by TEXT index 0x00000050 (80) is located at VSF offset 0x00000a44. The block in the example VSF looks like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>00000a40:             95 02 00 00
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00000a40:             95 02 00 00
+</code></pre></div></div>
 
 <p>It contains the following value:</p>
 
@@ -1734,10 +1725,9 @@ if (PACKETTEMPLATEFIELDPART.Factor != 1) {
 
 <p>The UTF-8 encoded, NUL-terminated sequence of characters starting at VSF offset 0x00000295 looks like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>00000290:                44 65 67 72 65 65 73 43 65 6c 73         DegreesCels
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00000290:                44 65 67 72 65 65 73 43 65 6c 73         DegreesCels
 000002a0: 69 75 73 00                                        ius.
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The TEXT block referenced by TEXT index 0x00000050 (80) hence references the string <code class="highlighter-rouge">"DegreesCelsius"</code>.</p>
 
@@ -1747,9 +1737,8 @@ if (PACKETTEMPLATEFIELDPART.Factor != 1) {
 
 <p>Other blocks reference LOCALIZEDTEXT blocks using a “LOCALIZEDTEXT index”. This index can be used to calculate the VSF offset of the corresponding LOCALIZEDTEXT block as follows:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>LocalizedTextBlockOffset = SPECIFICATION.LocalizedTextTableOffset + LocalizedTextIndex * 12
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LocalizedTextBlockOffset = SPECIFICATION.LocalizedTextTableOffset + LocalizedTextIndex * 12
+</code></pre></div></div>
 
 <p>For example: the LOCALIZEDTEXT block referenced by LOCALIZEDTEXT index 0x0000001a (26) is located at VSF offset 0x00000d2c. The block in the example VSF looks like this:</p>
 
@@ -1795,15 +1784,13 @@ if (PACKETTEMPLATEFIELDPART.Factor != 1) {
 
 <p>Each block has a size of 16 bytes. To calculate the VSF offset of a UNIT block the following formula can be used:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>UnitBlockOffset = SPECIFICATION.UnitTableOffset + UnitIndex * 16
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UnitBlockOffset = SPECIFICATION.UnitTableOffset + UnitIndex * 16
+</code></pre></div></div>
 
 <p>For example: the UNIT block referenced by UNIT identifier 0x0000003e (62) is located at UNIT index 0x00000006 (6) and VSF offset 0x00000e70. The block in the example VSF looks like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>00000e70: 3e 00 00 00 00 00 00 00 50 00 00 00 2b 00 00 00
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00000e70: 3e 00 00 00 00 00 00 00 50 00 00 00 2b 00 00 00
+</code></pre></div></div>
 
 <p>It contains the following values:</p>
 
@@ -1847,16 +1834,14 @@ if (PACKETTEMPLATEFIELDPART.Factor != 1) {
 
 <p>Each block has a size of 12 bytes. To calculate the VSF offset of a DEVICETEMPLATE block the following formula can be used:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>DeviceTemplateBlockOffset = SPECIFICATION.DeviceTemplateTableOffset + DeviceTemplateIndex * 12
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DeviceTemplateBlockOffset = SPECIFICATION.DeviceTemplateTableOffset + DeviceTemplateIndex * 12
+</code></pre></div></div>
 
 <p>For example: the DEVICETEMPLATE block at DEVICETEMPLATE index 0x00000001 (1) is located at VSF offset 0x0000111c. The block in the example VSF looks like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>00001110:                                     30 7e ff ff
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00001110:                                     30 7e ff ff
 00001120: 00 00 00 00 03 00 00 00
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>It contains the following values:</p>
 
@@ -1905,16 +1890,14 @@ if (PACKETTEMPLATEFIELDPART.Factor != 1) {
 
 <p>Each block has a size of 20 bytes. To calculate the VSF offset of a PACKETTEMPLATE block the following formula can be used:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>PacketTemplateBlockOffst = SPECIFICATION.PacketTemplateTableOffset + PacketTemplateIndex * 20
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PacketTemplateBlockOffst = SPECIFICATION.PacketTemplateTableOffset + PacketTemplateIndex * 20
+</code></pre></div></div>
 
 <p>For example: the PACKETTEMPLATE block at PACKETTEMPLATE index 0x00000001 (1) is located at VSF offset 0x00001bd4. The block in the example VSF looks like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>00001bd0:             10 00 ff ff 61 7f ff ff 00 01 00 00
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00001bd0:             10 00 ff ff 61 7f ff ff 00 01 00 00
 00001be0: 12 00 00 00 c8 19 00 00
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>It contains the following values:</p>
 
@@ -1975,17 +1958,15 @@ if (PACKETTEMPLATEFIELDPART.Factor != 1) {
 
 <p>Each block has a size of 28 bytes. To calculate the VSF offset of a PACKETTEMPLATEFIELD block the following formula can be used:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>PacketTemplateFieldBlockOffset = PACKETTEMPLATE.FieldTableOffset + PacketTemplateFieldIndex * 28
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PacketTemplateFieldBlockOffset = PACKETTEMPLATE.FieldTableOffset + PacketTemplateFieldIndex * 28
+</code></pre></div></div>
 
 <p>For example: the PACKETTEMPLATEFIELD block at PACKETTEMPLATEFIELD index 0x00000010 (16) is located at VSF offset 0x00001b88. The block in the example VSF looks like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>00001b80:                         41 00 00 00 1a 00 00 00
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00001b80:                         41 00 00 00 1a 00 00 00
 00001b90: 12 00 00 00 00 00 00 00 01 00 00 00 08 00 00 00
 00001ba0: 08 19 00 00                                    
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>It contains the following values:</p>
 
@@ -2046,16 +2027,14 @@ if (PACKETTEMPLATEFIELDPART.Factor != 1) {
 
 <p>Each block has a size of 16 bytes. To calculate the VSF offset of a PACKETTEMPLATEFIELDPART block the following formula can be used:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>PacketTemplateFieldPartBlockOffset = PACKETTEMPLATEFIELD.PartTableOffset + PacketTemplateFieldPartIndex * 16
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PacketTemplateFieldPartBlockOffset = PACKETTEMPLATEFIELD.PartTableOffset + PacketTemplateFieldPartIndex * 16
+</code></pre></div></div>
 
 <p>For example: the PACKETTEMPLATEFIELDPART block at index 0x00000004 (4) is located at VSF offset 0x00001948. The block in the example VSF looks like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>00001940:                         48 00 00 00 00 ff 00 00
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00001940:                         48 00 00 00 00 ff 00 00
 00001950: 40 42 0f 00 00 00 00 00                        
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>It contains the following values:</p>
 

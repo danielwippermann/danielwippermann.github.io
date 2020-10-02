@@ -116,41 +116,34 @@
 
 <p>If you want to use this module in your own application, you can just install it from the npm registry:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>⌘  npm install --save resol-vbus
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⌘  npm install --save resol-vbus
+</code></pre></div></div>
 
 <p>If you want to contribute to it you might want to check out the latest version from GitHub:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>⌘  git clone https://github.com/danielwippermann/resol-vbus.git
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⌘  git clone https://github.com/danielwippermann/resol-vbus.git
 ⌘  cd resol-vbus
 ⌘  npm install
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="running-the-console-examples">Running the console examples</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>⌘  node examples/&lt;name&gt;/index.js
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⌘  node examples/&lt;name&gt;/index.js
+</code></pre></div></div>
 
 <h2 id="running-the-tests">Running the tests</h2>
 
 <p>To start a single run of the test suite just enter the following command
 into your shell:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>⌘  gulp
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⌘  npm test
+</code></pre></div></div>
 
-<p>In addition to that the project is configured to watch its own files for
-modification and rerun the documentation generator and test suite every
-time you hit save on a file. To run that just enter the following command
-into your shell:</p>
+<p>To run the tests after each change to the source just enter the
+following command into your shell:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>⌘  gulp watch
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⌘  npm test -- --watch
+</code></pre></div></div>
 
 <h2 id="supported-devices--services">Supported Devices &amp; Services</h2>
 
@@ -168,7 +161,7 @@ into your shell:</p>
 
 <ul>
   <li><a href="https://groups.google.com/forum/#!forum/resol-vbus">RESOL VBus Google Group</a></li>
-  <li><a href="https://drive.google.com/file/d/0B4wMTuLGRPi2RnU0Vm1tTG5wM1k/edit?usp=sharing">RESOL VBus Protocol Specification</a></li>
+  <li><a href="http://danielwippermann.github.io/resol-vbus/vbus-specification.html">RESOL VBus Protocol Specification</a></li>
   <li><a href="http://danielwippermann.github.io/resol-vbus/vbus-packets.html">RESOL VBus Packet List</a></li>
   <li><a href="http://danielwippermann.github.io/resol-vbus/vbus-recording-file-format.html">RESOL VBus Recording File Format</a></li>
   <li><a href="http://danielwippermann.github.io/resol-vbus/vbus-specification-file-format-v1.html">RESOL VBus Specification File Format v1</a></li>
@@ -197,6 +190,34 @@ That sometimes causes configuration loads and saves to fail because unknown valu
 <h2 id="changelog">Changelog</h2>
 
 <h2 id="work-in-progress">Work in progress</h2>
+
+<h2 id="version-0210-2020-05-02">Version 0.21.0 (2020-05-02)</h2>
+
+<ul>
+  <li>
+    <p>[BREAKING CHANGE] Returning a <code class="highlighter-rouge">Promise</code> from <code class="highlighter-rouge">filterPacket</code> or <code class="highlighter-rouge">filterDatagram</code> callbacks
+  The <code class="highlighter-rouge">Connection#transceive</code> method and many of the helper methods that use it
+  accept a <code class="highlighter-rouge">filterPacket</code> and/or <code class="highlighter-rouge">filterDatagram</code> callback. Those callbacks get called
+  with the data to filter and a <code class="highlighter-rouge">done</code> callback.</p>
+
+    <p>Up to this version the return value of the filter callbacks was ignored. Starting with
+  this version this behaviour is changed if the return value of the filter callbacks is
+  a <code class="highlighter-rouge">Promise</code>:</p>
+    <ul>
+      <li>if the <code class="highlighter-rouge">Promise</code> rejects, the <code class="highlighter-rouge">done</code> callback is automatically called with <code class="highlighter-rouge">done(reason)</code></li>
+      <li>if the <code class="highlighter-rouge">Promise</code> resolves with <code class="highlighter-rouge">null</code> or <code class="highlighter-rouge">undefined</code>, the <code class="highlighter-rouge">done</code> callback is not called</li>
+      <li>if the <code class="highlighter-rouge">Promise</code> resolves with any other result, the <code class="highlighter-rouge">done</code> callback is automatically
+called with <code class="highlighter-rouge">done(null, result)</code></li>
+    </ul>
+
+    <p>This allows <code class="highlighter-rouge">async</code> filter callbacks!</p>
+  </li>
+  <li>Add <code class="highlighter-rouge">SerialConnection#baudrate</code> option.</li>
+  <li>Stop running Travis tests under Node 6.
+  Some dependency of <code class="highlighter-rouge">jest</code> does not work under Node 6 making tests break
+  for that target. The <code class="highlighter-rouge">resol-vbus</code> library itself might still work under
+  Node 6, but there is no guarantee…</li>
+</ul>
 
 <h2 id="version-0200-2019-06-15">Version 0.20.0 (2019-06-15)</h2>
 
@@ -327,6 +348,7 @@ That sometimes causes configuration loads and saves to fail because unknown valu
   <li>Paul Hanna</li>
   <li>Sabine Käß</li>
   <li>Andrew Thompson (@thompsa)</li>
+  <li>@t9zx</li>
 </ul>
 
 <h2 id="legal-notices">Legal Notices</h2>
@@ -340,7 +362,7 @@ of RESOL - Elektronische Regelungen GmbH.</p>
 
 <p>The MIT License (MIT)</p>
 
-<p>Copyright (c) 2013-2018, Daniel Wippermann.</p>
+<p>Copyright (c) 2013-2020, Daniel Wippermann.</p>
 
 <p>Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the “Software”), to deal

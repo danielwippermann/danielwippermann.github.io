@@ -132,6 +132,7 @@
         </ul>
         <h4>Technical Specifications</h4>
         <ul>
+          <li><a href="vbus-specification.html">RESOL VBus Specification</a></li>
           <li><a href="vbus-packets.html">RESOL VBus Packet List</a></li>
           <li><a href="vbus-recording-file-format.html">VBus Recording File Format</a></li>
           <li><a href="vbus-specification-file-format-v1.html">VBus Spec. File Format v1</a></li>
@@ -146,7 +147,7 @@
 
 <p>The file’s content is a stream of records. Each record consists of a header and optional payload data. The header looks like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Offset 0x00: Start-Of-Record marker (always 0xA5)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Offset 0x00: Start-Of-Record marker (always 0xA5)
 Offset 0x01: Record type (will come to that later)
 Offset 0x02: Length (Bits 0-7)
 Offset 0x03: Length (Bits 8-15)
@@ -160,16 +161,14 @@ Offset 0x0A: Timestamp (Bits 32-39)
 Offset 0x0B: Timestamp (Bits 40-47)
 Offset 0x0C: Timestamp (Bits 48-55)
 Offset 0x0D: Timestamp (Bits 56-63)
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>That header is followed by the payload data for the record (beginning at offset 0x0E). The structure of the payload varies depending on the “Record type” field of the header.</p>
 
 <p>The field “Length” appears in the header twice. Both fields must contain the same value. In addition to that the “Start-Of-Record marker” of the next record must be located according to the formula:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Offset next "S-O-R marker" = (Offset current "S-O-R marker" + "Length" field)
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Offset next "S-O-R marker" = (Offset current "S-O-R marker" + "Length" field)
+</code></pre></div></div>
 
 <p>The field “Timestamp” contains the time in milliseconds since January 1st, 1970 00:00:00 GMT.</p>
 
@@ -183,7 +182,7 @@ Offset 0x0D: Timestamp (Bits 56-63)
 
 <p>The “VBus data” record contains a minimum payload of 12 bytes which contain a slightly modified representation of a VBus packet header.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Offset 0x0E: VBus destination address (Bits 0-7)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Offset 0x0E: VBus destination address (Bits 0-7)
 Offset 0x0F: VBus destination address (Bits 8-15)
 Offset 0x10: VBus source address (Bits 0-7)
 Offset 0x11: VBus source address (Bits 8-15)
@@ -196,8 +195,7 @@ Offset 0x17: VBus frame data length (Bits 8-15)
 Offset 0x18: VBus additional info (Bits 0-7)
 Offset 0x19: VBus additional info (Bits 8-15)
 Offset 0x1A and following: optional VBus frame data
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>For a description of the fields “VBus destination address” , “VBus source address”, “VBus protocol version”, “VBus command” and the “VBus frame data” please consult the official VBus protocol specification document.</p>
 
@@ -207,19 +205,18 @@ Offset 0x1A and following: optional VBus frame data
 
 <p>With this knowledge let’s take a look on a beginning of a sample file’s hexdump:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Offset 0x00: A5 44 0E 00 0E 00 00 63 D6 CA 27 01 00 00 A5 66
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Offset 0x00: A5 44 0E 00 0E 00 00 63 D6 CA 27 01 00 00 A5 66
 Offset 0x10: 36 00 36 00 18 5F D6 CA 27 01 00 00 10 00 21 42
 Offset 0x20: 10 00 00 01 1C 00 00 00 2D 00 40 01 93 01 31 00
 Offset 0x30: 00 00 00 00 03 00 03 00 5A 0F 81 06 00 00 00 00
 Offset 0x40: 00 00 64 00 A5 44 0E 00 0E 00 E0 F6 DA CA 27 01
 Offset 0x50: 00 00 A5 66 36 00 36 00 F8 F2 DA CA 27 01 00 00
 &lt;file goes on after here...&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Beginning at offset 0x00 and applying the formula to calculate “Start-Of-Record markers” we can identify the following records:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Offset 0x00: Type 0x44, Length 0x000E, Timestamp 0x00000127CAD66300
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Offset 0x00: Type 0x44, Length 0x000E, Timestamp 0x00000127CAD66300
 
 Offset 0x0E: Type 0x66, Length 0x0036, Timestamp 0x00000127CAD65F18
 	VBus destination address = 0x0010 (DFA)
@@ -236,8 +233,7 @@ Offset 0x44: Type 0x44, Length 0x000E, Timestamp 0x00000127CADAF6E0
 
 Offset 0x52: Type 0x66, Length 0x0036, Timestamp 0x00000127CADAF2F8
 &lt;record payload was behind the truncation...&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>And we would expect the next record to start at offset 0x88.</p>
 
@@ -251,21 +247,19 @@ Offset 0x52: Type 0x66, Length 0x0036, Timestamp 0x00000127CADAF2F8
 
 <p>If the DL3 received two packets on channel 1 and one packet on channel 3 the sequence written to file would be similar to:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>S-O-H-S marker
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>S-O-H-S marker
 VBus channel marker [channel 1]
 VBus data [packet on channel 1]
 VBus data [packet on channel 1]
 VBus channel marker [channel 3]
 VBus data [packet on channel 3]
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The “VBus channel marker” record contains a payload of 2 bytes.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Offset 0x0E: VBus channel (Bits 0-7)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Offset 0x0E: VBus channel (Bits 0-7)
 Offset 0x0F: VBus channel (Bits 8-15)
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The field “VBus channel” contains a numeric identifier for the VBus channel. On the DL3 the range between 1 and 6 is used to distinguish the six independent VBus terminals.</p>
 

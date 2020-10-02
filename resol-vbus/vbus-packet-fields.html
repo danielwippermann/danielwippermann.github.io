@@ -132,6 +132,7 @@
         </ul>
         <h4>Technical Specifications</h4>
         <ul>
+          <li><a href="vbus-specification.html">RESOL VBus Specification</a></li>
           <li><a href="vbus-packets.html">RESOL VBus Packet List</a></li>
           <li><a href="vbus-recording-file-format.html">VBus Recording File Format</a></li>
           <li><a href="vbus-specification-file-format-v1.html">VBus Spec. File Format v1</a></li>
@@ -187,14 +188,17 @@
   <li><a href="#0010_1160_0100">DFA (0x0010) &lt;= MFR [Regler] (0x1160), command 0x0100</a></li>
   <li><a href="#0010_1161_0100">DFA (0x0010) &lt;= MFR [Module] (0x1161), command 0x0100</a></li>
   <li><a href="#0010_1162_0100">DFA (0x0010) &lt;= MFR [Frischwasser] (0x1162), command 0x0100</a></li>
+  <li><a href="#0010_1170_0100">DFA (0x0010) &lt;= SolarVenti SControl (0x1170), command 0x0100</a></li>
   <li><a href="#0010_1200_0100">DFA (0x0010) &lt;= MFR [WMZ] (0x1200 - 0x120F), command 0x0100</a></li>
   <li><a href="#0010_1210_0100">DFA (0x0010) &lt;= MFR [Heizkreis] (0x1210 - 0x121F), command 0x0100</a></li>
   <li><a href="#0010_1220_0100">DFA (0x0010) &lt;= Regudis H-HT [Übergabestation] (0x1220 - 0x122F), command 0x0100</a></li>
-  <li><a href="#0010_1230_0100">DFA (0x0010) &lt;= Regudis H-HT [BW-Erwärmung] (0x1230 - 0x123F), command 0x0100</a></li>
+  <li><a href="#0010_1230_0100">DFA (0x0010) &lt;= DeltaTherm HC [BW-Erwärmung] (0x1230 - 0x123F), command 0x0100</a></li>
   <li><a href="#0010_1240_0100">DFA (0x0010) &lt;= Wagner Sungo 100 [Regler] (0x1240), command 0x0100</a></li>
   <li><a href="#0010_1241_0100">DFA (0x0010) &lt;= Wagner Sungo 100 [WMZ1] (0x1241), command 0x0100</a></li>
   <li><a href="#0010_1250_0100">DFA (0x0010) &lt;= Viessmann Vitotrans 353 2017 (0x1250), command 0x0100</a></li>
   <li><a href="#0010_1260_0100">DFA (0x0010) &lt;= Viessmann Vitotrans 353 2017 Broadcast (0x1260), command 0x0100</a></li>
+  <li><a href="#0010_1330_0100">DFA (0x0010) &lt;= controller S/L (0x1330), command 0x0100</a></li>
+  <li><a href="#0010_1400_0100">DFA (0x0010) &lt;= WMZ Plus (0x1400 - 0x140F), command 0x0100</a></li>
   <li><a href="#0010_1410_0100">DFA (0x0010) &lt;= THERMUfloor ER (0x1410), command 0x0100</a></li>
   <li><a href="#0010_1420_0100">DFA (0x0010) &lt;= Apricus DeltaSol AL E HE (0x1420), command 0x0100</a></li>
   <li><a href="#0010_1510_0100">DFA (0x0010) &lt;= DeltaSol Fresh 2018 (0x1510), command 0x0100</a></li>
@@ -204,6 +208,7 @@
   <li><a href="#0010_1720_0100">DFA (0x0010) &lt;= DeltaTherm HC max [Heizkreis] (0x1720 - 0x172F), command 0x0100</a></li>
   <li><a href="#0010_1730_0100">DFA (0x0010) &lt;= DeltaTherm HC max [WMZ] (0x1730 - 0x173F), command 0x0100</a></li>
   <li><a href="#0010_1740_0100">DFA (0x0010) &lt;= DeltaTherm HC max [Modul] (0x1740 - 0x174F), command 0x0100</a></li>
+  <li><a href="#0010_1800_0100">DFA (0x0010) &lt;= DeltaSol MX [Impulszähler] (0x1800 - 0x180F), command 0x0100</a></li>
   <li><a href="#0010_2211_0100">DFA (0x0010) &lt;= DeltaSol CS Plus (0x2211), command 0x0100</a></li>
   <li><a href="#0010_2213_0100">DFA (0x0010) &lt;= DeltaSol CS Plus 2.x (0x2213), command 0x0100</a></li>
   <li><a href="#0010_2231_0100">DFA (0x0010) &lt;= Oranier HK [Regler] (0x2231), command 0x0100</a></li>
@@ -318,6 +323,7 @@
   <li><a href="#0010_7442_0100">DFA (0x0010) &lt;= ZEN DT6 [WMZ1] (0x7442), command 0x0100</a></li>
   <li><a href="#0010_7511_0100">DFA (0x0010) &lt;= SOLTEX-Regler [Teil 1] (0x7511), command 0x0100</a></li>
   <li><a href="#0010_7512_0100">DFA (0x0010) &lt;= SOLTEX-Regler [Teil 2] (0x7512), command 0x0100</a></li>
+  <li><a href="#0010_7513_0100">DFA (0x0010) &lt;= SOLTEX 5VH3 (0x7513), command 0x0100</a></li>
   <li><a href="#0010_7521_0100">DFA (0x0010) &lt;= Oventrop RQ-B / RQ-B HE (0x7521), command 0x0100</a></li>
   <li><a href="#0010_7522_0100">DFA (0x0010) &lt;= Regtronic RX-B [Regler] (0x7522), command 0x0100</a></li>
   <li><a href="#0010_7523_0100">DFA (0x0010) &lt;= Regtronic RX-B [Module] (0x7523), command 0x0100</a></li>
@@ -677,6 +683,10 @@
       <td style="text-align: center">MFR [Frischwasser]</td>
     </tr>
     <tr>
+      <td style="text-align: center">0x1170</td>
+      <td style="text-align: center">SolarVenti SControl</td>
+    </tr>
+    <tr>
       <td style="text-align: center">0x1200</td>
       <td style="text-align: center">MFR [WMZ #0]</td>
     </tr>
@@ -870,67 +880,67 @@
     </tr>
     <tr>
       <td style="text-align: center">0x1230</td>
-      <td style="text-align: center">Regudis H-HT [BW-Erwärmung #0]</td>
+      <td style="text-align: center">DeltaTherm HC [BW-Erwärmung #0]</td>
     </tr>
     <tr>
       <td style="text-align: center">0x1231</td>
-      <td style="text-align: center">Regudis H-HT [BW-Erwärmung #1]</td>
+      <td style="text-align: center">DeltaTherm HC [BW-Erwärmung #1]</td>
     </tr>
     <tr>
       <td style="text-align: center">0x1232</td>
-      <td style="text-align: center">Regudis H-HT [BW-Erwärmung #2]</td>
+      <td style="text-align: center">DeltaTherm HC [BW-Erwärmung #2]</td>
     </tr>
     <tr>
       <td style="text-align: center">0x1233</td>
-      <td style="text-align: center">Regudis H-HT [BW-Erwärmung #3]</td>
+      <td style="text-align: center">DeltaTherm HC [BW-Erwärmung #3]</td>
     </tr>
     <tr>
       <td style="text-align: center">0x1234</td>
-      <td style="text-align: center">Regudis H-HT [BW-Erwärmung #4]</td>
+      <td style="text-align: center">DeltaTherm HC [BW-Erwärmung #4]</td>
     </tr>
     <tr>
       <td style="text-align: center">0x1235</td>
-      <td style="text-align: center">Regudis H-HT [BW-Erwärmung #5]</td>
+      <td style="text-align: center">DeltaTherm HC [BW-Erwärmung #5]</td>
     </tr>
     <tr>
       <td style="text-align: center">0x1236</td>
-      <td style="text-align: center">Regudis H-HT [BW-Erwärmung #6]</td>
+      <td style="text-align: center">DeltaTherm HC [BW-Erwärmung #6]</td>
     </tr>
     <tr>
       <td style="text-align: center">0x1237</td>
-      <td style="text-align: center">Regudis H-HT [BW-Erwärmung #7]</td>
+      <td style="text-align: center">DeltaTherm HC [BW-Erwärmung #7]</td>
     </tr>
     <tr>
       <td style="text-align: center">0x1238</td>
-      <td style="text-align: center">Regudis H-HT [BW-Erwärmung #8]</td>
+      <td style="text-align: center">DeltaTherm HC [BW-Erwärmung #8]</td>
     </tr>
     <tr>
       <td style="text-align: center">0x1239</td>
-      <td style="text-align: center">Regudis H-HT [BW-Erwärmung #9]</td>
+      <td style="text-align: center">DeltaTherm HC [BW-Erwärmung #9]</td>
     </tr>
     <tr>
       <td style="text-align: center">0x123A</td>
-      <td style="text-align: center">Regudis H-HT [BW-Erwärmung #10]</td>
+      <td style="text-align: center">DeltaTherm HC [BW-Erwärmung #10]</td>
     </tr>
     <tr>
       <td style="text-align: center">0x123B</td>
-      <td style="text-align: center">Regudis H-HT [BW-Erwärmung #11]</td>
+      <td style="text-align: center">DeltaTherm HC [BW-Erwärmung #11]</td>
     </tr>
     <tr>
       <td style="text-align: center">0x123C</td>
-      <td style="text-align: center">Regudis H-HT [BW-Erwärmung #12]</td>
+      <td style="text-align: center">DeltaTherm HC [BW-Erwärmung #12]</td>
     </tr>
     <tr>
       <td style="text-align: center">0x123D</td>
-      <td style="text-align: center">Regudis H-HT [BW-Erwärmung #13]</td>
+      <td style="text-align: center">DeltaTherm HC [BW-Erwärmung #13]</td>
     </tr>
     <tr>
       <td style="text-align: center">0x123E</td>
-      <td style="text-align: center">Regudis H-HT [BW-Erwärmung #14]</td>
+      <td style="text-align: center">DeltaTherm HC [BW-Erwärmung #14]</td>
     </tr>
     <tr>
       <td style="text-align: center">0x123F</td>
-      <td style="text-align: center">Regudis H-HT [BW-Erwärmung #15]</td>
+      <td style="text-align: center">DeltaTherm HC [BW-Erwärmung #15]</td>
     </tr>
     <tr>
       <td style="text-align: center">0x1240</td>
@@ -963,6 +973,50 @@
     <tr>
       <td style="text-align: center">0x1264</td>
       <td style="text-align: center">Viessmann Vitotrans 353 2017 Slave 3</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x1330</td>
+      <td style="text-align: center">controller S/L</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x1400</td>
+      <td style="text-align: center">WMZ Plus</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x1401</td>
+      <td style="text-align: center">WMZ Plus Master</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x1402</td>
+      <td style="text-align: center">WMZ Plus Master</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x1403</td>
+      <td style="text-align: center">WMZ Plus Slave 1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x1404</td>
+      <td style="text-align: center">WMZ Plus Slave 2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x1405</td>
+      <td style="text-align: center">WMZ Plus Slave 3</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x1406</td>
+      <td style="text-align: center">WMZ Plus Slave 4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x1407</td>
+      <td style="text-align: center">WMZ Plus Slave 5</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x1408</td>
+      <td style="text-align: center">WMZ Plus Slave 6</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x1409</td>
+      <td style="text-align: center">WMZ Plus Slave 7</td>
     </tr>
     <tr>
       <td style="text-align: center">0x1410</td>
@@ -1191,6 +1245,70 @@
     <tr>
       <td style="text-align: center">0x174F</td>
       <td style="text-align: center">DeltaTherm HC max [Modul #15]</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x1800</td>
+      <td style="text-align: center">DeltaSol MX [Impulszähler #0]</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x1801</td>
+      <td style="text-align: center">DeltaSol MX [Impulszähler #1]</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x1802</td>
+      <td style="text-align: center">DeltaSol MX [Impulszähler #2]</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x1803</td>
+      <td style="text-align: center">DeltaSol MX [Impulszähler #3]</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x1804</td>
+      <td style="text-align: center">DeltaSol MX [Impulszähler #4]</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x1805</td>
+      <td style="text-align: center">DeltaSol MX [Impulszähler #5]</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x1806</td>
+      <td style="text-align: center">DeltaSol MX [Impulszähler #6]</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x1807</td>
+      <td style="text-align: center">DeltaSol MX [Impulszähler #7]</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x1808</td>
+      <td style="text-align: center">DeltaSol MX [Impulszähler #8]</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x1809</td>
+      <td style="text-align: center">DeltaSol MX [Impulszähler #9]</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x180A</td>
+      <td style="text-align: center">DeltaSol MX [Impulszähler #10]</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x180B</td>
+      <td style="text-align: center">DeltaSol MX [Impulszähler #11]</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x180C</td>
+      <td style="text-align: center">DeltaSol MX [Impulszähler #12]</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x180D</td>
+      <td style="text-align: center">DeltaSol MX [Impulszähler #13]</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x180E</td>
+      <td style="text-align: center">DeltaSol MX [Impulszähler #14]</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0x180F</td>
+      <td style="text-align: center">DeltaSol MX [Impulszähler #15]</td>
     </tr>
     <tr>
       <td style="text-align: center">0x2000</td>
@@ -3077,6 +3195,10 @@
       <td style="text-align: center">SOLTEX-Regler [Teil 2]</td>
     </tr>
     <tr>
+      <td style="text-align: center">0x7513</td>
+      <td style="text-align: center">SOLTEX 5VH3</td>
+    </tr>
+    <tr>
       <td style="text-align: center">0x7521</td>
       <td style="text-align: center">Oventrop RQ-B / RQ-B HE</td>
     </tr>
@@ -4511,7 +4633,7 @@
   </tbody>
 </table>
 
-<h3 id="dfa-0x0010--noventec-Übergabestation-regler-0x1020-command-0x0100"><a name="0010_1020_0100"></a>DFA (0x0010) &lt;= Noventec Übergabestation [Regler] (0x1020), command 0x0100</h3>
+<h3 id="dfa-0x0010--noventec-übergabestation-regler-0x1020-command-0x0100"><a name="0010_1020_0100"></a>DFA (0x0010) &lt;= Noventec Übergabestation [Regler] (0x1020), command 0x0100</h3>
 
 <table>
   <thead>
@@ -7362,6 +7484,12 @@
       <td style="text-align: center"> </td>
     </tr>
     <tr>
+      <td style="text-align: left">00_0010_111E_10_0100_000_1_64</td>
+      <td style="text-align: left">Funktionsstatus Nachheizung</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
       <td style="text-align: left">00_0010_111E_10_0100_002_4_0</td>
       <td style="text-align: left">Leistung Überschuss</td>
       <td style="text-align: center">0.001</td>
@@ -7372,6 +7500,12 @@
       <td style="text-align: left">Leistung Heizung</td>
       <td style="text-align: center">0.001</td>
       <td style="text-align: center">W</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_111E_10_0100_068_2_0</td>
+      <td style="text-align: left">DCIn</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">V</td>
     </tr>
     <tr>
       <td style="text-align: left">00_0010_111E_10_0100_010_2_0</td>
@@ -7406,6 +7540,18 @@
     <tr>
       <td style="text-align: left">00_0010_111E_10_0100_032_4_0</td>
       <td style="text-align: left">Betriebsstunden Heizung</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">h</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_111E_10_0100_056_4_0</td>
+      <td style="text-align: left">Nachheizung</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">Wh</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_111E_10_0100_064_4_0</td>
+      <td style="text-align: left">Betriebsstunden Nachheizung</td>
       <td style="text-align: center">1</td>
       <td style="text-align: center">h</td>
     </tr>
@@ -9155,6 +9301,339 @@
   </tbody>
 </table>
 
+<h3 id="dfa-0x0010--solarventi-scontrol-0x1170-command-0x0100"><a name="0010_1170_0100"></a>DFA (0x0010) &lt;= SolarVenti SControl (0x1170), command 0x0100</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">ID</th>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: center">Factor</th>
+      <th style="text-align: center">Unit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_000_4_0</td>
+      <td style="text-align: left">ChangeSetId</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_004_4_0</td>
+      <td style="text-align: left">Systemdatum</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_008_4_0</td>
+      <td style="text-align: left">Software-Artikelnummer</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_050_2_0</td>
+      <td style="text-align: left">Systemspannung</td>
+      <td style="text-align: center">0.01</td>
+      <td style="text-align: center">V</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_052_2_0</td>
+      <td style="text-align: left">VIN 1</td>
+      <td style="text-align: center">0.01</td>
+      <td style="text-align: center">V</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_054_2_0</td>
+      <td style="text-align: left">VIN 2</td>
+      <td style="text-align: center">0.01</td>
+      <td style="text-align: center">V</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_056_2_0</td>
+      <td style="text-align: left">VOut</td>
+      <td style="text-align: center">0.01</td>
+      <td style="text-align: center">V</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_012_1_0</td>
+      <td style="text-align: left">System</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_013_1_0</td>
+      <td style="text-align: left">Regelstatus</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_014_1_0</td>
+      <td style="text-align: left">Betriebsart</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_016_1_2</td>
+      <td style="text-align: left">Meldungen: Datum/Uhrzeit</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_016_1_8</td>
+      <td style="text-align: left">Meldungen: Handbetrieb</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_016_1_16</td>
+      <td style="text-align: left">Meldungen: Sensorfehler Kollektor</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_016_1_32</td>
+      <td style="text-align: left">Meldungen: Sensorfehler Raum</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_016_1_64</td>
+      <td style="text-align: left">Meldungen: Sensorfehler Gerät</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_016_1_128</td>
+      <td style="text-align: left">Meldungen: Sensorfehler Aussen</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_016_1_256</td>
+      <td style="text-align: left">Meldungen: Systemspannung</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_020_2_0</td>
+      <td style="text-align: left">Sensor: S1</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_022_2_0</td>
+      <td style="text-align: left">Sensor: S2</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_026_2_0</td>
+      <td style="text-align: left">Sensor: K1 - Temperatur</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_028_2_0</td>
+      <td style="text-align: left">Sensor: K1 - Relative Luftfeuchtigkeit</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_030_2_0</td>
+      <td style="text-align: left">Sensor: K1 - Berechnete Taupunkttemperatur</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_032_2_0</td>
+      <td style="text-align: left">Sensor: K2 - Temperatur</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_034_2_0</td>
+      <td style="text-align: left">Sensor: K2 - Relative Luftfeuchtigkeit</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_036_2_0</td>
+      <td style="text-align: left">Sensor: K2 - Berechnete Taupunkttemperatur</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_038_2_0</td>
+      <td style="text-align: left">Sensor: K3 - Temperatur</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_040_2_0</td>
+      <td style="text-align: left">Sensor: K3 - Relative Luftfeuchtigkeit</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_042_2_0</td>
+      <td style="text-align: left">Sensor: K3 - Berechnete Taupunkttemperatur</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_058_2_0</td>
+      <td style="text-align: left">Tauspunktsperre: Dynamische Kollektortemperatur</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_044_2_0</td>
+      <td style="text-align: left">Ausgang Ventilator</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_046_2_0</td>
+      <td style="text-align: left">Ausgang 0-10V</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_048_2_0</td>
+      <td style="text-align: left">Relais</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_064_1_64</td>
+      <td style="text-align: left">Kollektormaximaltemperatur erreicht</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_064_1_128</td>
+      <td style="text-align: left">Frostschutzfunktion aktiv</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_064_1_256</td>
+      <td style="text-align: left">Taupunktsperre aktiv</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_064_1_512</td>
+      <td style="text-align: left">Freigabe aufgrund der Dynamik</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_064_1_1024</td>
+      <td style="text-align: left">Thermische Freigabe erteilt</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_064_1_2048</td>
+      <td style="text-align: left">Freigabe durch Starttemperatur</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_064_1_4096</td>
+      <td style="text-align: left">Freigabe durch Differenztemperatur</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_064_1_8192</td>
+      <td style="text-align: left">Freigabe durch Raumtemperatur</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_064_1_16384</td>
+      <td style="text-align: left">Sperrzeit der Temperaturfunktion aktiv</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_064_1_32768</td>
+      <td style="text-align: left">Intervallfunktion der Timerfunktion ist aus</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_064_1_65536</td>
+      <td style="text-align: left">Intervallfunktion der Timerfunktion ist im Pausenbetrieb</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_064_1_131072</td>
+      <td style="text-align: left">Intervallfunktion der Timerfunktion ist aktiv</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_064_1_262144</td>
+      <td style="text-align: left">Schaltuhrenstatus der Timerfunktion aktiv</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_064_1_524288</td>
+      <td style="text-align: left">Kuehlfunktion aktiv</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_064_1_1048576</td>
+      <td style="text-align: left">Raumfreigabe der Kuehlfunktion</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_064_1_2097152</td>
+      <td style="text-align: left">Aussentemperaturfreigabe der Kuehlfunktion</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_064_1_4194304</td>
+      <td style="text-align: left">Timer der Kuehlfunktion aktiv</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_064_1_8388608</td>
+      <td style="text-align: left">Feuchtigkeitsfunktion aktiv</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_064_1_16777216</td>
+      <td style="text-align: left">Feuchtigkeitsfunktion durch Raumklima angefordert</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_064_1_33554432</td>
+      <td style="text-align: left">Sperrzeit der Feuchtigkeitsfunktion aktiv</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1170_10_0100_064_1_67108864</td>
+      <td style="text-align: left">Die ChangeSet-ID des Regler</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
 <h3 id="dfa-0x0010--mfr-wmz-0x1200---0x120f-command-0x0100"><a name="0010_1200_0100"></a>DFA (0x0010) &lt;= MFR [WMZ] (0x1200 - 0x120F), command 0x0100</h3>
 
 <table>
@@ -9215,7 +9694,7 @@
   </tbody>
 </table>
 
-<h3 id="dfa-0x0010--regudis-h-ht-Übergabestation-0x1220---0x122f-command-0x0100"><a name="0010_1220_0100"></a>DFA (0x0010) &lt;= Regudis H-HT [Übergabestation] (0x1220 - 0x122F), command 0x0100</h3>
+<h3 id="dfa-0x0010--regudis-h-ht-übergabestation-0x1220---0x122f-command-0x0100"><a name="0010_1220_0100"></a>DFA (0x0010) &lt;= Regudis H-HT [Übergabestation] (0x1220 - 0x122F), command 0x0100</h3>
 
 <table>
   <thead>
@@ -9278,7 +9757,7 @@
   </tbody>
 </table>
 
-<h3 id="dfa-0x0010--regudis-h-ht-bw-erwärmung-0x1230---0x123f-command-0x0100"><a name="0010_1230_0100"></a>DFA (0x0010) &lt;= Regudis H-HT [BW-Erwärmung] (0x1230 - 0x123F), command 0x0100</h3>
+<h3 id="dfa-0x0010--deltatherm-hc-bw-erwärmung-0x1230---0x123f-command-0x0100"><a name="0010_1230_0100"></a>DFA (0x0010) &lt;= DeltaTherm HC [BW-Erwärmung] (0x1230 - 0x123F), command 0x0100</h3>
 
 <table>
   <thead>
@@ -9829,6 +10308,504 @@
       <td style="text-align: left">Betriebszeit Gesamt</td>
       <td style="text-align: center">1</td>
       <td style="text-align: center">s</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="dfa-0x0010--controller-sl-0x1330-command-0x0100"><a name="0010_1330_0100"></a>DFA (0x0010) &lt;= controller S/L (0x1330), command 0x0100</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">ID</th>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: center">Factor</th>
+      <th style="text-align: center">Unit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_004_4_0</td>
+      <td style="text-align: left">Systemdatum</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_016_2_0</td>
+      <td style="text-align: left">Warmwasser: Primärpumpendrehzahl</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_018_2_0</td>
+      <td style="text-align: left">Warmwasser: Solltemperatur</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_020_1_0</td>
+      <td style="text-align: left">Warmwasser: Notdrehzahl</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_021_1_0</td>
+      <td style="text-align: left">Warmwasser: Handbetrieb Primärpumpe</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_032_2_0</td>
+      <td style="text-align: left">Zirkulation: Pumpendrehzahl</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_037_1_0</td>
+      <td style="text-align: left">Desinfektion: Handstartschalter</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_039_1_0</td>
+      <td style="text-align: left">Desinfektion: Ergebnis</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_040_4_0</td>
+      <td style="text-align: left">Desinfektion: Letzte Desinfektion</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_044_2_0</td>
+      <td style="text-align: left">Desinfektion: Startzeit</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_046_1_1</td>
+      <td style="text-align: left">Desinfektion: Montag</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_046_1_2</td>
+      <td style="text-align: left">Desinfektion: Dienstag</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_046_1_4</td>
+      <td style="text-align: left">Desinfektion: Mittwoch</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_046_1_8</td>
+      <td style="text-align: left">Desinfektion: Donnerstag</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_046_1_16</td>
+      <td style="text-align: left">Desinfektion: Freitag</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_046_1_32</td>
+      <td style="text-align: left">Desinfektion: Samstag</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_046_1_64</td>
+      <td style="text-align: left">Desinfektion: Sonntag</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_051_1_0</td>
+      <td style="text-align: left">RL-Einschichtung: Ventilzustand</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_056_1_0</td>
+      <td style="text-align: left">Fehlerrelais: Zustand</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_064_2_0</td>
+      <td style="text-align: left">Sensor: S1</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_066_2_0</td>
+      <td style="text-align: left">Sensor: S2</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_068_2_0</td>
+      <td style="text-align: left">Sensor: S3</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_070_2_0</td>
+      <td style="text-align: left">Sensor: S4</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_072_2_0</td>
+      <td style="text-align: left">Sensor: S5</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_074_2_0</td>
+      <td style="text-align: left">Sensor: S6</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_076_2_0</td>
+      <td style="text-align: left">Sensor: S7</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_084_4_0</td>
+      <td style="text-align: left">Sensor: S9 Volumenstrom</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">l/h</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_088_4_0</td>
+      <td style="text-align: left">Sensor: S10 Volumenstrom</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">l/h</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_092_4_0</td>
+      <td style="text-align: left">Sensor: S14 Kaskade - Gesamtvolumenstrom</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">l/h</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_100_1_0</td>
+      <td style="text-align: left">Kaskade: Grundlaststation</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_112_2_0</td>
+      <td style="text-align: left">Kaskade: Station 2 TVL</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_114_2_0</td>
+      <td style="text-align: left">Kaskade: Station 2 TWW</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_116_4_0</td>
+      <td style="text-align: left">Kaskade: Station 2 Volumenstrom</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">l/min</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_120_4_0</td>
+      <td style="text-align: left">Kaskade: Station 2 Meldungen</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_124_2_0</td>
+      <td style="text-align: left">Kaskade: Station 3 TVL</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_126_2_0</td>
+      <td style="text-align: left">Kaskade: Station 3 TWW</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_128_4_0</td>
+      <td style="text-align: left">Kaskade: Station 3 Volumenstrom</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">l/min</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_132_4_0</td>
+      <td style="text-align: left">Kaskade: Station 3 Meldungen</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_136_2_0</td>
+      <td style="text-align: left">Kaskade: Station 4 TVL</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_138_2_0</td>
+      <td style="text-align: left">Kaskade: Station 4 TWW</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_140_4_0</td>
+      <td style="text-align: left">Kaskade: Station 4 Volumenstrom</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">l/min</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_144_4_0</td>
+      <td style="text-align: left">Kaskade: Station 4 Meldungen</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_168_2_0</td>
+      <td style="text-align: left">Kaskade: Station 5 TVL</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_170_2_0</td>
+      <td style="text-align: left">Kaskade: Station 5 TWW</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_172_4_0</td>
+      <td style="text-align: left">Kaskade: Station 5 Volumenstrom</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">l/min</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_176_4_0</td>
+      <td style="text-align: left">Kaskade: Station 5 Meldungen</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_180_2_0</td>
+      <td style="text-align: left">Kaskade: Station 6 TVL</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_182_2_0</td>
+      <td style="text-align: left">Kaskade: Station 6 TWW</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_184_4_0</td>
+      <td style="text-align: left">Kaskade: Station 6 Volumenstrom</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">l/min</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_188_4_0</td>
+      <td style="text-align: left">Kaskade: Station 6 Meldungen</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_148_2_0</td>
+      <td style="text-align: left">Kaskade: Station 2 Primärpumpendrehzahl</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_150_2_0</td>
+      <td style="text-align: left">Kaskade: Station 3 Primärpumpendrehzahl</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_152_2_0</td>
+      <td style="text-align: left">Kaskade: Station 4 Primärpumpendrehzahl</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_192_2_0</td>
+      <td style="text-align: left">Kaskade: Station 5 Primärpumpendrehzahl</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1330_10_0100_194_2_0</td>
+      <td style="text-align: left">Kaskade: Station 6 Primärpumpendrehzahl</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="dfa-0x0010--wmz-plus-0x1400---0x140f-command-0x0100"><a name="0010_1400_0100"></a>DFA (0x0010) &lt;= WMZ Plus (0x1400 - 0x140F), command 0x0100</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">ID</th>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: center">Factor</th>
+      <th style="text-align: center">Unit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_022_4_0</td>
+      <td style="text-align: left">Datum</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_026_2_0</td>
+      <td style="text-align: left">Vorlauf WMZ 1</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_028_2_0</td>
+      <td style="text-align: left">Rücklauf WMZ 1</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_030_2_0</td>
+      <td style="text-align: left">Volumenstrom WMZ 1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">l/h</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_032_4_0</td>
+      <td style="text-align: left">Wärmemenge WMZ 1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">Wh</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_036_4_0</td>
+      <td style="text-align: left">Kältemenge WMZ 1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">Wh</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_040_4_0</td>
+      <td style="text-align: left">Gesamtenergie WMZ 1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">Wh</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_044_4_0</td>
+      <td style="text-align: left">Gesamtvolumen WMZ 1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">l</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_048_4_0</td>
+      <td style="text-align: left">Leistung WMZ 1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">W</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_052_1_0</td>
+      <td style="text-align: left">Status WMZ 1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_056_2_0</td>
+      <td style="text-align: left">Vorlauf WMZ 2</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_058_2_0</td>
+      <td style="text-align: left">Rücklauf WMZ 2</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_060_2_0</td>
+      <td style="text-align: left">Volumenstrom WMZ 2</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">l/h</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_062_4_0</td>
+      <td style="text-align: left">Wärmemenge WMZ 2</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">Wh</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_066_4_0</td>
+      <td style="text-align: left">Kältemenge WMZ 2</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">Wh</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_070_4_0</td>
+      <td style="text-align: left">Gesamtenergie WMZ 2</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">Wh</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_074_4_0</td>
+      <td style="text-align: left">Gesamtvolumen WMZ 2</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">l</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_078_4_0</td>
+      <td style="text-align: left">Leistung WMZ 2</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">W</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_082_1_0</td>
+      <td style="text-align: left">Status WMZ 2</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_008_4_0</td>
+      <td style="text-align: left">Warnungsmaske</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_012_4_0</td>
+      <td style="text-align: left">Fehlermaske</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_016_4_0</td>
+      <td style="text-align: left">Hinweismaske</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1400_10_0100_020_2_0</td>
+      <td style="text-align: left">SW-Version</td>
+      <td style="text-align: center">0.01</td>
+      <td style="text-align: center"> </td>
     </tr>
   </tbody>
 </table>
@@ -10934,6 +11911,57 @@
   </tbody>
 </table>
 
+<h3 id="dfa-0x0010--deltasol-mx-impulszähler-0x1800---0x180f-command-0x0100"><a name="0010_1800_0100"></a>DFA (0x0010) &lt;= DeltaSol MX [Impulszähler] (0x1800 - 0x180F), command 0x0100</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">ID</th>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: center">Factor</th>
+      <th style="text-align: center">Unit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">00_0010_1800_10_0100_000_4_0</td>
+      <td style="text-align: left">Zählerstand</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1800_10_0100_004_4_0</td>
+      <td style="text-align: left">Impulsrate</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">Imp/h</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1800_10_0100_008_4_0</td>
+      <td style="text-align: left">Zählerstand heute</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1800_10_0100_012_4_0</td>
+      <td style="text-align: left">Zählerstand Woche</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1800_10_0100_016_4_0</td>
+      <td style="text-align: left">Zählerstand Monat</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_1800_10_0100_020_4_0</td>
+      <td style="text-align: left">Zählerstand Jahr</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
 <h3 id="dfa-0x0010--deltasol-cs-plus-0x2211-command-0x0100"><a name="0010_2211_0100"></a>DFA (0x0010) &lt;= DeltaSol CS Plus (0x2211), command 0x0100</h3>
 
 <table>
@@ -11802,9 +12830,9 @@
       <td style="text-align: center">Wh</td>
     </tr>
     <tr>
-      <td style="text-align: left">00_0010_2251_10_0100_044_1_1</td>
+      <td style="text-align: left">00_0010_2251_10_0100_044_2_0</td>
       <td style="text-align: left">SW-Version</td>
-      <td style="text-align: center">1</td>
+      <td style="text-align: center">0.01</td>
       <td style="text-align: center"> </td>
     </tr>
     <tr>
@@ -23990,6 +25018,201 @@
   </tbody>
 </table>
 
+<h3 id="dfa-0x0010--soltex-5vh3-0x7513-command-0x0100"><a name="0010_7513_0100"></a>DFA (0x0010) &lt;= SOLTEX 5VH3 (0x7513), command 0x0100</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">ID</th>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: center">Factor</th>
+      <th style="text-align: center">Unit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_000_2_0</td>
+      <td style="text-align: left">T,Ko</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_002_2_0</td>
+      <td style="text-align: left">T,Sp</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_004_2_0</td>
+      <td style="text-align: left">T,Ss</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_006_2_0</td>
+      <td style="text-align: left">T,Kr</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_008_2_0</td>
+      <td style="text-align: left">T,R</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_010_2_0</td>
+      <td style="text-align: left">T,V</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_024_2_0</td>
+      <td style="text-align: left">T,Erd</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_026_2_0</td>
+      <td style="text-align: left">Volumenstrom Ko</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">l/min</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_032_1_0</td>
+      <td style="text-align: left">Leistung P,Ko</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_033_1_0</td>
+      <td style="text-align: left">Leistung P,S</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_030_1_4</td>
+      <td style="text-align: left">Relais P,W</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_030_1_8</td>
+      <td style="text-align: left">Relais WP</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_030_1_16</td>
+      <td style="text-align: left">Relais V,WP</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_030_1_32</td>
+      <td style="text-align: left">Relais V,SW</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_030_1_64</td>
+      <td style="text-align: left">Relais V,Ko</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_030_1_128</td>
+      <td style="text-align: left">Relais V,So</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_030_1_256</td>
+      <td style="text-align: left">Relais V,Sp</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_036_4_0</td>
+      <td style="text-align: left">Fehlermaske</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_035_1_0</td>
+      <td style="text-align: left">P,Ko Nennleistung</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_040_4_0</td>
+      <td style="text-align: left">Q S,p</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">kWh</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_044_4_0</td>
+      <td style="text-align: left">Q S,s</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">kWh</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_016_2_0</td>
+      <td style="text-align: left">T,HR</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_018_2_0</td>
+      <td style="text-align: left">T,HV</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_030_1_512</td>
+      <td style="text-align: left">Relais V,TH</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_030_1_1024</td>
+      <td style="text-align: left">Relais V,SH</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_034_1_0</td>
+      <td style="text-align: left">Leistung P,H</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">%</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_048_2_0</td>
+      <td style="text-align: left">Systemzeit</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_020_2_0</td>
+      <td style="text-align: left">T,x</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_022_2_0</td>
+      <td style="text-align: left">T,xx</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">°C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">00_0010_7513_10_0100_050_2_0</td>
+      <td style="text-align: left">C1</td>
+      <td style="text-align: center">0.01</td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
 <h3 id="dfa-0x0010--oventrop-rq-b--rq-b-he-0x7521-command-0x0100"><a name="0010_7521_0100"></a>DFA (0x0010) &lt;= Oventrop RQ-B / RQ-B HE (0x7521), command 0x0100</h3>
 
 <table>
@@ -34749,7 +35972,7 @@
 </table>
 
 <blockquote>
-  <p>Based on VSF dated 20190202</p>
+  <p>Based on VSF dated 20191129</p>
 </blockquote>
 
 

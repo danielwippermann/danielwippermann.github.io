@@ -122,7 +122,7 @@
 
 <p>If the device address of the controller is known in advance this step can be skipped.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>	// ...
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	// ...
 }).then(function() {
 	return connection.waitForFreeBus();
 }).then(function(datagram) {
@@ -135,14 +135,13 @@
 	context.deviceAddress = deviceAddress;
 }).then(function() {
 	// ...
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="get-configuration-optimizer-for-controller">Get configuration optimizer for controller</h2>
 
 <p>Once the controller’s device address is known a corresponding <code class="highlighter-rouge">ConfigurationOptimizer</code> instance can be created by calling <code class="highlighter-rouge">ConfigurationOptimizerFactor.createOptimizerByDeviceAddress</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>	// ...
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	// ...
 }).then(function() {
 	return vbus.ConfigurationOptimizerFactory.createOptimizerByDeviceAddress(context.deviceAddress);
 }).then(function(optimizer) {
@@ -153,14 +152,13 @@
 	}
 }).then(function() {
 	// ...
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="create-a-connectioncustomizer">Create a ConnectionCustomizer</h2>
 
 <p>The sub-classes of the <code class="highlighter-rouge">Customizer</code> base class handle all the timing details to load and save configurations from and to a controller. This example uses the <code class="highlighter-rouge">ConnectionCustomizer</code> sub-class that in turn uses a <code class="highlighter-rouge">Connection</code> instance to get access to a live VBus channel to perform the customization.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>	// ...
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	// ...
 }).then(function(optimizer) {
 	context.optimizer = optimizer;
 	return new vbus.ConnectionCustomizer({
@@ -172,14 +170,13 @@
 	context.customizer = customizer;
 }).then(function() {
 	// ...
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="load-parts-of-the-configuration">Load parts of the configuration</h2>
 
 <p>Both load and save operations on the <code class="highlighter-rouge">Customizer</code> instance take a list of values that shall be transfered. This list of values can be either an array of objects with a <code class="highlighter-rouge">valueId</code> or <code class="highlighter-rouge">valueIndex</code> key or a object that uses the value IDs as keys and <code class="highlighter-rouge">null</code> as values.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>var configArray = [
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var configArray = [
 	{ valueId: 'Relais_Regler_R1_Handbetrieb' },
 	{ valueId: 'Relais_Regler_R2_Handbetrieb' },
 	// ...
@@ -190,18 +187,16 @@ var configObject = {
 	Relais_Regler_R2_Handbetrieb: null,
 	// ...
 };
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The <code class="highlighter-rouge">loadConfiguration</code> method takes one of these value lists as the first parameter:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>	// ...
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	// ...
 }).then(function(configuration) {
 	return context.customizer.loadConfiguration(configuration);
 }).then(function(loadedConfiguration) {
 	// ...
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Once the transfer is complete the Promise resolves with an array of transfered values objects. Those objects contain several keys:</p>
 
@@ -217,31 +212,29 @@ var configObject = {
 
 <p>Since some controllers know several thousand adjustable values the list can be quiet large. By passing the <code class="highlighter-rouge">optimize</code> option to <code class="highlighter-rouge">loadConfiguration</code> the <code class="highlighter-rouge">Customizer</code> and the <code class="highlighter-rouge">ConfigurationOptimizer</code> instances work together to find the minimal set of values really necessary (e.g. by first loading options and then in a later round ignoring additional values that belong to deactivated options):</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>	// ...
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	// ...
 }).then(function() {
 	return context.optimizer.completeConfiguration();
 }).then(function(completeConfiguration) {
 	return context.customizer.loadConfiguration(completeConfiguration, { optimize: true });
 }).then(function(loadedConfiguration) {
 	// ...
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Alternatively calling <code class="highlighter-rouge">loadConfiguration</code> without parameters loads the optimized complete configuration as well. That means that the following block of code works exactly like the one above:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>	// ...
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	// ...
 }).then(function() {
 	return context.customizer.loadConfiguration();
 }).then(function(loadedConfiguration) {
 	// ...
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="save-the-configuration">Save the configuration</h2>
 
 <p>The <code class="highlighter-rouge">saveConfiguration</code> method also takes a list of values to save (just like the value lists for <code class="highlighter-rouge">loadConfiguration</code>, but with additional information about what to store). The two possible forms look like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>var configArray = [
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var configArray = [
 	{ valueId: 'Relais_Regler_R1_Handbetrieb', value: 2 },
 	{ valueId: 'Relais_Regler_R2_Handbetrieb', value: 2 },
 	// ...
@@ -252,18 +245,16 @@ var configObject = {
 	Relais_Regler_R2_Handbetrieb: 2,
 	// ...
 };
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The <code class="highlighter-rouge">saveConfiguration</code> method takes one of these value lists as the first parameter:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>	// ..
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	// ..
 }).then(function(configuration) {
 	return context.customizer.saveConfiguration(configuration);
 }).then(function(savedConfiguration) {
 	// ...
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Once the transfer is complete the Promise resolves with an array of transfered values objects. Those objects contain several keys:</p>
 

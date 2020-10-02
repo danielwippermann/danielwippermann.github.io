@@ -132,6 +132,7 @@
         </ul>
         <h4>Technical Specifications</h4>
         <ul>
+          <li><a href="vbus-specification.html">RESOL VBus Specification</a></li>
           <li><a href="vbus-packets.html">RESOL VBus Packet List</a></li>
           <li><a href="vbus-recording-file-format.html">VBus Recording File Format</a></li>
           <li><a href="vbus-specification-file-format-v1.html">VBus Spec. File Format v1</a></li>
@@ -152,7 +153,7 @@
 
 <p>A sample session (using telnet) might look like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>⌘  telnet vbus.net 7053
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⌘  telnet vbus.net 7053
 Connected to vbus.net.
 Escape character is '^]'.
 +HELLO This is VBus.net on behalf of all its devices, welcome, stranger!
@@ -170,8 +171,7 @@ CHANNEL 1
 DATA
 +OK: Data incoming...
 &lt;binary VBus data according to VBus protocol specification&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="commands">Commands</h2>
 

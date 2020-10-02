@@ -132,6 +132,7 @@
         </ul>
         <h4>Technical Specifications</h4>
         <ul>
+          <li><a href="vbus-specification.html">RESOL VBus Specification</a></li>
           <li><a href="vbus-packets.html">RESOL VBus Packet List</a></li>
           <li><a href="vbus-recording-file-format.html">VBus Recording File Format</a></li>
           <li><a href="vbus-specification-file-format-v1.html">VBus Spec. File Format v1</a></li>
@@ -160,9 +161,8 @@
 
 <h2 id="get-live-data-as-json">Get live data as JSON</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>GET /dlx/download/live
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /dlx/download/live
+</code></pre></div></div>
 
 <h4 id="parameters">Parameters</h4>
 
@@ -174,13 +174,12 @@
 
 <h4 id="example">Example</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>curl "http://$HOST/dlx/download/live?sessionAuthUsername=admin&amp;sessionAuthPassword=admin"
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl "http://$HOST/dlx/download/live?sessionAuthUsername=admin&amp;sessionAuthPassword=admin"
+</code></pre></div></div>
 
 <h4 id="success-response">Success Response</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>HTTP/1.1 200 OK
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
@@ -275,8 +274,7 @@ Content-Type: application/json
         }]
     }]
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="failure-responses-http-status-code-500">Failure responses (HTTP status code 500)</h4>
 
@@ -287,9 +285,8 @@ Content-Type: application/json
 
 <h2 id="download-data">Download data</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>GET /dlx/download/download
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /dlx/download/download
+</code></pre></div></div>
 
 <h4 id="parameters-1">Parameters</h4>
 
@@ -316,13 +313,12 @@ Content-Type: application/json
 
 <h4 id="example-1">Example</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>curl "http://$HOST/dlx/download/live?sessionAuthUsername=admin&amp;sessionAuthPassword=admin&amp;outputType=json&amp;source=current"
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl "http://$HOST/dlx/download/live?sessionAuthUsername=admin&amp;sessionAuthPassword=admin&amp;outputType=json&amp;source=current"
+</code></pre></div></div>
 
 <h4 id="sucess-response">Sucess Response</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>HTTP/1.1 200 OK
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
@@ -417,8 +413,7 @@ Content-Type: application/json
         }]
     }]
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="failure-responses-http-status-code-500-1">Failure responses (HTTP status code 500)</h4>
 
