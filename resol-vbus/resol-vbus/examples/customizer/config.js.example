@@ -1,0 +1,31 @@
+/*! resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann | MIT license */
+
+
+
+const config = {
+
+    /**
+     * The name of the `Connection` subclass to use for connecting to the VBus.
+     * @type {String}
+     */
+    connectionClassName: 'TcpConnection',
+
+    connectionOptions: {
+        /**
+         * The host name / IP address of the VBus/LAN or Datalogger device.
+         * @type {String}
+         */
+        host: '192.168.13.21',
+
+        /**
+         * The password for the VBus/LAN or Datalogger device.
+         * @type {String}
+         */
+        password: 'vbus',
+    },
+
+};
+
+
+
+module.exports = config;

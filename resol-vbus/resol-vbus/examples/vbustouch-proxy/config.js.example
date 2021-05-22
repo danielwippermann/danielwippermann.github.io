@@ -1,0 +1,147 @@
+/*! resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann | MIT license */
+'use strict';
+
+
+
+const path = require('path');
+
+
+
+module.exports = {
+
+    /**
+     * Name of the Connection class to use to connect.
+     */
+    connectionClassName: 'TcpConnection',
+
+    /**
+     * Options for the Connection instance.
+     */
+    connectionOptions: {
+        host: '192.168.14.100',
+        password: 'vbus',
+    },
+
+    /**
+     * Logging interval in milliseconds.
+     */
+    loggingInterval: 10000,
+
+    /**
+     * Logging time to live in milliseconds.
+     */
+    loggingTimeToLive: 60000,
+
+    /**
+     * Logging directory.
+     */
+    loggingPath: path.resolve(__dirname, 'cache'),
+
+    /**
+     * Text file logging interval in milliseconds. A value of zero disables this functionality.
+     */
+    textLoggingInterval: 0,
+
+    /**
+     * Text file logging time to live in milliseconds.
+     */
+    textLoggingTimeToLive: 60000,
+
+    /**
+     * Text file logging directory.
+     */
+    textLoggingPath: path.resolve(__dirname, 'log'),
+
+    /**
+     * Text file logging options, passed to the `TextConverter` constructor.
+     */
+    textLoggingOptions: {
+        columnSeparator: '\t',
+        lineSeparator: '\r\n',
+        separateDateAndTime: false,
+    },
+
+    /**
+     * Port number to bind the web server to.
+     */
+    webServerPort: 3000,
+
+    /**
+     * If your controller is not supported by the VBusTouch app directly, enable this
+     * option and implement the rewrite behavoiur in the `rewriteHeaderSet` function.
+     */
+    rewriteWebHeaderSets: false,
+
+    /**
+     * Interval (milliseconds) in which data will be uploaded to MQTT. A value of zero disables this functionality.
+     */
+    mqttInterval: 5000,
+
+    /**
+     * MQTT connect parameters, https://github.com/mqttjs/MQTT.js#connect
+     */
+    mqttConnect: {
+        host: 'mqtt://localhost',
+        username: 'mosquitto',
+        password: 'secret',
+    },
+
+    /**
+     * MQTT topic to publish to.
+     */
+    mqttTopic: 'home/resol',
+
+    /**
+     * Specifies how the MQTT payload is encoded. Supports 'json' (default) and 'urlencoded'.
+     */
+    mqttEncoding: 'json',
+
+    /**
+     * A map of MQTT message attributes to VBus packet field IDs.
+     *
+     * An example sensor in Home Assistant would be:
+     * - platform: mqtt
+     *    name: "Resol Collector Temp"
+     *    state_topic: "home/resol"
+     *    unit_of_measurement: '°C'
+     *    value_template: "{{ value_json.temp1 }}"
+     */
+    mqttPacketFieldMap: {
+        temp1: '00_0010_427B_10_0100_000_2_0',
+        temp2: '00_0010_427B_10_0100_002_2_0',
+        temp3: '00_0010_427B_10_0100_004_2_0',
+        temp4: '00_0010_427B_10_0100_006_2_0',
+        relay1: '00_0010_427B_10_0100_008_1_0',
+        relay2: '00_0010_427B_10_0100_012_1_0',
+        relay1hrs: '00_0010_427B_10_0100_010_2_0',
+        relay2hrs: '00_0010_427B_10_0100_014_2_0'
+    },
+
+    /**
+     * Interval (milliseconds) in which data will be uploaded to PvOutput.org. A value of zero disables this functionality.
+     */
+    pvOutputOrgInterval: 0,
+
+    /**
+     * PvOutput.org API key
+     */
+    pvOutputOrgApiKey: 'secret',
+
+    /**
+     * PvOutput.org System ID
+     */
+    pvOutputOrgSystemId: 'insert here',
+
+    /**
+     * A map of PvOutput.org parameters to VBus packet field IDs.
+     *
+     * See https://pvoutput.org/help.html#api-addstatus for possible keys.
+     */
+    pvOutputOrgPacketFieldMap: {
+        v1: '00_0010_111F_10_0100_020_4_0',
+        v2: '00_0010_111F_10_0100_004_4_0',
+        v3: '00_0010_111F_10_0100_028_4_0',
+        v4: '00_0010_111F_10_0100_008_4_0',
+    },
+
+};

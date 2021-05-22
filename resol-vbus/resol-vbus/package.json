@@ -1,0 +1,52 @@
+{
+  "name": "resol-vbus",
+  "version": "0.23.0",
+  "description": "A JavaScript library for processing RESOL VBus data",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint src test/specs examples tools",
+    "test": "jest -i --verbose",
+    "coverage": "jest -i --coverage",
+    "coveralls": "jest -i --coverage --coverageReporters=text-lcov | coveralls",
+    "jsdoc": "jsdoc -t node_modules/ink-docstrap/template/ -c jsdoc.json -d .docs/jsdoc/ -R README.md src",
+    "vsf-doc": "node tools/specification-documentor/main.js --packetStructure > docs/vbus-packets.md && node tools/specification-documentor/main.js --packetFields > docs/vbus-packet-fields.md",
+    "jekyll": "(cd docs; jekyll build && rsync -a _site/ ../.docs/)"
+  },
+  "homepage": "https://github.com/danielwippermann/resol-vbus",
+  "repository": "https://github.com/danielwippermann/resol-vbus.git",
+  "bugs": "https://github.com/danielwippermann/resol-vbus/issues",
+  "author": "Daniel Wippermann <Daniel.Wippermann@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "coveralls": "^3.1.0",
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-semistandard": "^15.0.1",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-standard": "^4.1.0",
+    "ink-docstrap": "^1.3.2",
+    "jest": "^26.6.3",
+    "jsdoc": "^3.6.6",
+    "sinon": "^10.0.0"
+  },
+  "dependencies": {
+    "buffer-more-ints": "^1.0.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.33",
+    "numeral": "^2.0.6",
+    "request": "^2.88.2",
+    "sprintf-js": "^1.1.2"
+  },
+  "optionalDependencies": {
+    "serialport": "^9.0.7"
+  },
+  "engines": {
+    "node": ">= 12"
+  }
+}

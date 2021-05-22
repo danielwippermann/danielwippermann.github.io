@@ -1,0 +1,18 @@
+{
+  "name": "vbustouch-proxy",
+  "version": "0.16.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Wippermann <Daniel.Wippermann@gmail.com> (http://danielwippermann.github.io/)",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "mqtt": "^4.2.1",
+    "qs": "^6.9.4",
+    "winston": "^3.3.3"
+  }
+}

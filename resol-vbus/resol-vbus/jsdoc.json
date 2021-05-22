@@ -1,0 +1,30 @@
+{
+    "tags": {
+        "allowUnknownTags": true
+    },
+    "plugins": ["plugins/markdown"],
+    "templates": {
+        "logoFile": "",
+        "cleverLinks": false,
+        "monospaceLinks": false,
+        "dateFormat": "ddd MMM Do YYYY",
+        "outputSourceFiles": true,
+        "outputSourcePath": true,
+        "systemName": "resol-vbus",
+        "footer": "",
+        "copyright": "resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann",
+        "navType": "vertical",
+        "theme": "spacelab",
+        "linenums": false,
+        "collapseSymbols": false,
+        "inverseNav": true,
+        "protocol": "html://",
+        "methodHeadingReturns": false
+    },
+    "markdown": {
+        "parser": "gfm",
+        "hardwrap": true,
+        "githubRepoOwner": "danielwippermann",
+        "githubRepoName": "resol-vbus"
+    }
+}
