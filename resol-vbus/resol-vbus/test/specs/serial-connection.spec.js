@@ -9,12 +9,15 @@ const { Duplex } = require('stream');
 const {
     Connection,
     SerialConnection,
-    utils: { promisify },
 } = require('./resol-vbus');
 
 
+const jestExpect = global.expect;
 const expect = require('./expect');
 const testUtils = require('./test-utils');
+
+
+const { wrapAsPromise } = testUtils;
 
 
 
@@ -57,7 +60,7 @@ const testConnection = function(done, callback) {
         path: testUtils.serialPortPath,
     });
 
-    promisify(() => {
+    wrapAsPromise(() => {
         expect(connection.connectionState).to.equal(SerialConnection.STATE_DISCONNECTED);
 
         return callback(connection);
@@ -113,7 +116,7 @@ describe('SerialConnection', () => {
 
                 connection.on('connectionState', onConnectionState);
 
-                return promisify(() => {
+                return wrapAsPromise(() => {
                     return connection.connect();
                 }).then(() => {
                     expect(connection.connectionState).to.equal(SerialConnection.STATE_CONNECTED);
@@ -128,7 +131,7 @@ describe('SerialConnection', () => {
 
         ifHasSerialPortIt('should throw if not disconnected', (done) => {
             testConnection(done, (connection, endpoint) => {
-                return promisify(() => {
+                return wrapAsPromise(() => {
                     return connection.connect();
                 }).then(() => {
                     expect(() => {
@@ -160,7 +163,7 @@ describe('SerialConnection', () => {
 
                 connection.on('connectionState', onConnectionState);
 
-                return promisify(() => {
+                return wrapAsPromise(() => {
                     return connection.connect();
                 }).then(() => {
                     return connection.disconnect();
@@ -180,7 +183,7 @@ describe('SerialConnection', () => {
 
                 connection.on('connectionState', onConnectionState);
 
-                return promisify(() => {
+                return wrapAsPromise(() => {
                     return connection.connect();
                 }).then(() => {
                     return connection.createConnectedPromise();
@@ -221,7 +224,7 @@ describe('SerialConnection', () => {
         _connect: Function,
         _createSerialPort: Function,
     }, {
-        hasSerialPortSupport: true,
+        hasSerialPortSupport: jestExpect.any(Boolean),
     });
 
 });

@@ -253,67 +253,61 @@ class ConnectionCustomizer extends Customizer {
      * @returns {object} Promise that resolves with the datagram received or `null` on timeout.
      */
     async transceiveValue(valueInfo, value, options, state) {
-        const doWork = async (resolve, reject) => {
-            let timer;
-
-            const done = function(err, result) {
-                if (timer) {
-                    clearTimeout(timer);
-                    timer = null;
-                }
-
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(result);
-                }
+        if (!_.isObject(valueInfo)) {
+            valueInfo = {
+                valueIndex: valueInfo,
             };
+        }
 
-            if (!_.isObject(valueInfo)) {
-                valueInfo = {
-                    valueIndex: valueInfo,
-                };
-            }
+        if (state === undefined) {
+            state = {};
+        }
 
-            if (state === undefined) {
-                state = {};
-            }
+        options = _.defaults({}, options, {
+            triesPerValue: this.triesPerValue,
+            timeoutPerValue: this.timeoutPerValue,
+            masterTimeout: this.masterTimeout,
+            action: null,
+            actionOptions: null,
+            reportProgress: null,
+            checkCanceled: null,
+        });
 
-            options = _.defaults({}, options, {
-                triesPerValue: this.triesPerValue,
-                timeoutPerValue: this.timeoutPerValue,
-                masterTimeout: this.masterTimeout,
-                action: null,
-                actionOptions: null,
-                reportProgress: null,
-                checkCanceled: null,
-            });
+        state = _.defaults(state, {
+            masterAddress: this.deviceAddress,
+            masterLastContacted: Date.now(),
+        });
 
-            state = _.defaults(state, {
-                masterAddress: this.deviceAddress,
-                masterLastContacted: Date.now(),
-            });
+        let isTimedOut = false;
 
+        let timer = setTimeout(() => {
+            timer = null;
+            isTimedOut = true;
+        }, options.timeoutPerValue);
+
+        try {
             const { connection } = this;
             const address = this.deviceAddress;
 
+            let result;
+
             async function check() {
+                if (isTimedOut) {
+                    result = null;
+                    return false;
+                }
+
                 if (options.checkCanceled) {
                     if (await options.checkCanceled()) {
-                        reject(new Error('Canceled'));
+                        throw new Error('Canceled');
                     }
                 }
 
                 await connection.createConnectedPromise();
+
+                return true;
             }
 
-            const onTimeout = function() {
-                done(null, null);
-            };
-
-            timer = setTimeout(onTimeout, options.timeoutPerValue);
-
-            let result;
             for (let tries = 1; tries <= options.triesPerValue; tries++) {
                 const reportProgress = function(message) {
                     if (options.reportProgress) {
@@ -326,7 +320,9 @@ class ConnectionCustomizer extends Customizer {
                     }
                 };
 
-                await check();
+                if (!await check()) {
+                    break;
+                }
 
                 if ((tries > 1) && (state.masterLastContacted !== null)) {
                     reportProgress('RELEASING_BUS');
@@ -336,7 +332,9 @@ class ConnectionCustomizer extends Customizer {
                     await connection.releaseBus(state.masterAddress);
                 }
 
-                await check();
+                if (!await check()) {
+                    break;
+                }
 
                 if ((state.masterLastContacted === null) && (options.masterTimeout !== null)) {
                     reportProgress('WAITING_FOR_FREE_BUS');
@@ -350,7 +348,9 @@ class ConnectionCustomizer extends Customizer {
                     }
                 }
 
-                await check();
+                if (!await check()) {
+                    break;
+                }
 
                 let contactMaster;
                 if (state.masterAddress === null) {
@@ -375,7 +375,9 @@ class ConnectionCustomizer extends Customizer {
                     });
                 }
 
-                await check();
+                if (!await check()) {
+                    break;
+                }
 
                 if (state.masterAddress === address) {
                     state.masterLastContacted = Date.now();
@@ -393,7 +395,9 @@ class ConnectionCustomizer extends Customizer {
                     }
                 }
 
-                await check();
+                if (!await check()) {
+                    break;
+                }
 
                 if (state.masterAddress === address) {
                     state.masterLastContacted = Date.now();
@@ -419,11 +423,12 @@ class ConnectionCustomizer extends Customizer {
             }
 
             return result;
-        };
-
-        return new Promise((resolve, reject) => {
-            doWork(resolve, reject).then(resolve, reject);
-        });
+        } finally {
+            if (timer) {
+                clearTimeout(timer);
+                timer = null;
+            }
+        }
     }
 }
 
