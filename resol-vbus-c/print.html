@@ -1,0 +1,466 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>resol-vbus-c</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="Details.html"><strong aria-hidden="true">2.</strong> Details</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ErrorHandling.html"><strong aria-hidden="true">2.1.</strong> Error handling</a></li><li class="chapter-item expanded "><a href="LiveEncoder.html"><strong aria-hidden="true">2.2.</strong> LiveEncoder</a></li><li class="chapter-item expanded "><a href="LiveDecoder.html"><strong aria-hidden="true">2.3.</strong> LiveDecoder</a></li><li class="chapter-item expanded "><a href="Debugging.html"><strong aria-hidden="true">2.4.</strong> Debugging</a></li></ol></li><li class="chapter-item expanded "><a href="Examples.html"><strong aria-hidden="true">3.</strong> Examples</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="MasterExample.html"><strong aria-hidden="true">3.1.</strong> Master</a></li><li class="chapter-item expanded "><a href="MinionExample.html"><strong aria-hidden="true">3.2.</strong> Minion</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">resol-vbus-c</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="resol-vbus-c"><a class="header" href="#resol-vbus-c">resol-vbus-c</a></h1>
+<p>A C library for processing RESOL VBus data.</p>
+<h2 id="features"><a class="header" href="#features">Features</a></h2>
+<ul>
+<li>Encoding and decoding VBus data according to the protocol specification</li>
+</ul>
+<h2 id="contributors"><a class="header" href="#contributors">Contributors</a></h2>
+<ul>
+<li><a href="https://github.com/danielwippermann">Daniel Wippermann</a></li>
+<li><a href="https://github.com/Rapp2">Rapp2</a></li>
+</ul>
+<h2 id="legal-notices"><a class="header" href="#legal-notices">Legal Notices</a></h2>
+<p>RESOL, VBus, VBus.net and others are trademarks or registered trademarks of RESOL - Elektronische Regelungen GmbH.</p>
+<p>All other trademarks are the property of their respective owners.</p>
+<h2 id="license"><a class="header" href="#license">License</a></h2>
+<p><code>resol-vbus-c</code> is distributed under the terms of both the MIT license and the Apache License (Version 2.0).</p>
+<p>See LICENSE.txt for details.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="details"><a class="header" href="#details">Details</a></h1>
+<p>This section describes details about some of the library's modules.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="error-handling"><a class="header" href="#error-handling">Error handling</a></h1>
+<p>Most of the functions in this library return a <code>RESOLVBUS_RESULT</code> which is an integer type under the hood. If the function did not encounter any error, the result will be <code>RESOLVBUS_OK</code> which is guaranteed to be <code>0</code>. All other values are positive integers greater than zero. See <code>include/ResolVBus.h</code> for a list of possible values.</p>
+<p>Error propagation could look like this:</p>
+<pre><code>RESOLVBUS_RESULT SomeEventHandler(...)
+{
+    RESOLVBUS_RESULT Result = 0;
+
+    if (Result == 0) {
+        Result = DoFirstThing();
+    }
+
+    if (Result == 0) {
+        Result = DoSecondThing();
+    }
+
+    // ...
+
+    return Result;
+}
+</code></pre>
+<p>Internally the library uses a macro for error propagation: <code>__WRAP(Expression)</code>, defined in the respective <code>src/Debug{On,Off}.h</code>. It:</p>
+<ul>
+<li>does nothing if the <code>Result</code> local variable already is not equal to <code>RESOLVBUS_OK</code></li>
+<li>otherwise:
+<ul>
+<li>executes the expression and assigns its result to the <code>Result</code> local variable</li>
+<li>if debugging is enabled and executing the expression resulted in an error, adds a backtrace info</li>
+</ul>
+</li>
+</ul>
+<p>See <a href="./Debugging.html">Debugging</a> for details.</p>
+<p>Inside the library the example above would look like this:</p>
+<pre><code>RESOLVBUS_RESULT SomeEventHandler(...)
+{
+    RESOLVBUS_RESULT Result = 0;
+
+    __WRAP(DoFirstThing());
+
+    __WRAP(DoSecondThing());
+
+    // ...
+
+    return Result;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="liveencoder"><a class="header" href="#liveencoder">LiveEncoder</a></h1>
+<p>The &quot;LiveEncoder&quot; module implements the <code>RESOLVBUS_LIVEENCODER</code> type and its associated functions, which can be used to convert VBus primitives (like e.g. packets) into their over-the-wire representation.</p>
+<p>In addition to that it also supports energy management functions and timeout handling.</p>
+<h2 id="initialization-and-integration"><a class="header" href="#initialization-and-integration">Initialization and integration</a></h2>
+<p>Before the encoder can be used, it must be initialized by calling <code>ResolVBus_LiveEncoder_Initialize</code>:</p>
+<pre><code>// ...
+RESOLVBUS_LIVEENCODER Encoder = RESOLVBUS_LIVEENCODER_INITIALIZER;
+uint8_t Buffer [512] = { 0 };
+if (Result == RESOLVBUS_OK) {
+    Result = ResolVBus_LiveEncoder_Initialize(&amp;Encoder, Buffer, sizeof (Buffer), LiveEncoderEventHandler));
+}
+// ...
+</code></pre>
+<p>The function takes four arguments: the encoder instance itself, a transmission buffer as well as its length and an event handler function.</p>
+<p>The transmission buffer is used by the <code>ResolVBus_LiveEncoder_Queue...</code> functions to store the over-the-wire representation of the VBus primitives. It must be large enough to hold the largest VBus primitive that is expected to be transmitted.</p>
+<p>The event handler is a function that is called whenever the encoder wants to inform its user about an event:</p>
+<ul>
+<li><code>RESOLVBUS_LIVEENCODEREVENTTYPE_IDLE</code>: the encoder is idle and would accept queueing VBus primitives for transmission</li>
+<li><code>RESOLVBUS_LIVEENCODEREVENTTYPE_TRANSMIT</code>: the encoder wants to transmit a chunk of a VBus primitive</li>
+</ul>
+<p>The event handler is called from the event pump implemented in <code>ResolVBus_LiveEncoder_HandleTimer</code>. This function must be called &quot;frequently&quot; (see its documentation for details). The function takes the time that has passed since the last call as its second argument. That time is used to drive forward the internal state machine.</p>
+<h2 id="the-state-machine-and-its-phases"><a class="header" href="#the-state-machine-and-its-phases">The state machine and its phases</a></h2>
+<p>The encoder contains a state machine that can be in one of the following phases:</p>
+<ul>
+<li><code>RESOLVBUS_LIVEENCODERPHASE_IDLE</code>: nothing to do yet, can be used to queue VBus primitives for transmission, emits <code>RESOLVBUS_LIVEENCODEREVENTTYPE_IDLE</code> event</li>
+<li><code>RESOLVBUS_LIVEENCODERPHASE_TRANSMITTING</code>: currently transmitting VBus data, emits <code>RESOLVBUS_LIVEENCODEREVENTTYPE_TRANSMIT</code> event</li>
+<li><code>RESOLVBUS_LIVEENCODERPHASE_GAININGENERGY</code>: used to regain energy after transmitting VBus data</li>
+<li><code>RESOLVBUS_LIVEENCODERPHASE_SUSPENDED</code>: suspended until manually resumed</li>
+<li><code>RESOLVBUS_LIVEENCODERPHASE_SUSPENDEDWITHTIMEOUT</code>: suspended until manually resumed or timeout elapses</li>
+</ul>
+<h2 id="queuing-vbus-primitives-for-transmission"><a class="header" href="#queuing-vbus-primitives-for-transmission">Queuing VBus primitives for transmission</a></h2>
+<p>The encoder provides several <code>ResolVBus_LiveEncoder_Queue...</code> functions to queue VBus primitives into its internal transmit buffer. On the next call to <code>ResolVBus_LiveEncoder_HandleTimer</code> the actual transmission is started.</p>
+<p>Queuing VBus primitives is only allowed while the encoder is idle. If the encoder is used in a VBus master context, it is recommended to queue VBus primitives for the <code>RESOLVBUS_LIVEENCODEREVENTTYPE_IDLE</code> event handling code. If the encoder is used in a VBus minion context, it is recommended to manually resume the encoder from its <code>RESOLVBUS_LIVEENCODERPHASE_SUSPENDED</code> phase before actually queueing the response.</p>
+<h2 id="energy-management"><a class="header" href="#energy-management">Energy management</a></h2>
+<p>The VBus transports both information and electrical energy. Since transmitting information disrupts transporting energy, care must be taken to not transmit too much data at once. For that purpose the encoder implements a basic energy management functionality.</p>
+<p>That functionality can be configured using three configuration fields:</p>
+<ul>
+<li><code>MaxEnergy</code>: maximum amount of energy that can be consume before a transmission must be segmented into multiple parts</li>
+<li><code>EnergyLossPerByte</code>: assumed loss of energy per transmitted byte</li>
+<li><code>EnergyGainPerUs</code>: assumed gain of energy per microsecond in the <code>RESOLVBUS_LIVEENCODERPHASE_GAININGENERGY</code> phase</li>
+</ul>
+<p>When the encoder is in its idle phase the energy level is assumed to be at its maximum capacity. When data is queued into the transmit buffer, the encoder switches into its <code>RESOLVBUS_LIVEENCODERPHASE_TRANSMITTING</code> phase. It then transmits as many bytes as possible, summing up the energy loss accordingly, but not exceeding the <code>MaxEnergy</code> value. After the bytes have been transmitted the encoder switches into the <code>RESOLVBUS_LIVEENCODERPHASE_GAININGENERGY</code> phase, waiting for the consumed energy to refill. Once the energy level is back at full capacity the encoder either continues transmitting the remaining bytes from the buffer or switches into one of the suspended or idle phases.</p>
+<p>Setting <code>MaxEnergy</code> to zero disables the energy management functionality.</p>
+<h2 id="suspension-and-timeout-handling"><a class="header" href="#suspension-and-timeout-handling">Suspension and timeout handling</a></h2>
+<p>The VBus uses a single-master topology. Only the master is allowed to transmit at any time. Minions attached to the VBus must not transmit unless they have been requested to do so by the master. In those situations the master has to grant the minion a predefined time period to transmit its reply.</p>
+<p>The encoder supports both the VBus master and VBus minion contexts.</p>
+<p>In a VBus master context the user of the encoder can queue a VBus request primitive and then use <code>ResolVBus_LiveEncoder_SuspendWithTimeout</code> to request that the encoder enters a suspended state for a predefined period of time after the request was transmitted, giving the minion enough time to respond to the request.</p>
+<p>In a VBus minion context the user of the encoder can immediately use <code>ResolVBus_LiveEncoder_Suspend</code> to switch the encoder into a suspended state for an indefinite period of time. Once the request has been received, the encoder can be manually resumed using <code>ResolVBus_LiveEncoder_Resume</code>, the reply can be queued for transmission and then <code>ResolVBus_LiveEncoder_Suspend</code> can be used to request entering the suspended state again after the transmission.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="livedecoder"><a class="header" href="#livedecoder">LiveDecoder</a></h1>
+<p>The &quot;LiveDecoder&quot; module implements the <code>RESOLVBUS_LIVEDECODER</code> type and its associated functions, which can be used to parse a stream of over-the-wire VBus bytes into their respective primitives (like e.g. packets).</p>
+<h2 id="initialization-and-integration-1"><a class="header" href="#initialization-and-integration-1">Initialization and integration</a></h2>
+<p>Before the decoder can be used, it must be initialized by calling <code>ResolVBus_LiveDecoder_Initialize</code>:</p>
+<pre><code>// ...
+RESOLVBUS_LIVEDECODER Decoder = RESOLVBUS_LIVEDECODER_INITIALIZER;
+uint8_t FrameDataBuffer [512] = { 0 };
+if (Result == RESOLVBUS_OK) {
+    Result = ResolVBus_LiveDecoder_Initialize(Decoder, FrameDataBuffer, sizeof (FrameDataBuffer), LiveDecoderEventHandler);
+}
+// ...
+</code></pre>
+<p>The function takes four arguments: the decoder instance itself, an optional buffer for holding decoded frame data as well as its length and an event handler function.</p>
+<p>The optional frame data buffer is used to reassemble the contents of multiple VBus packet or telegram frames. If no buffer is provided, the reassembly must be done manually.</p>
+<p>The event handler is a function that is called whenever the decoder wants to inform its user about an event:</p>
+<ul>
+<li><code>RESOLVBUS_LIVEDECODEREVENTTYPE_PACKETHEADER</code>: a VBus version 1.x packet header has been decoded</li>
+<li><code>RESOLVBUS_LIVEDECODEREVENTTYPE_PACKETFRAME</code>: a VBus version 1.x packet frame has been decoded</li>
+<li><code>RESOLVBUS_LIVEDECODEREVENTTYPE_PACKETEND</code>: a VBus version 1.x packet (consisting of the header and all associated frames) has been decoded</li>
+<li><code>RESOLVBUS_LIVEDECODEREVENTTYPE_DATAGRAM</code>: a VBus version 2.x datagram has been decoded</li>
+<li><code>RESOLVBUS_LIVEDECODEREVENTTYPE_TELEGRAMHEADER</code>: a VBus version 3.x telegram header has been decoded</li>
+<li><code>RESOLVBUS_LIVEDECODEREVENTTYPE_TELEGRAMFRAME</code>: a VBus version 3.x telegram frame has been decoded</li>
+<li><code>RESOLVBUS_LIVEDECODEREVENTTYPE_TELEGRAMEND</code>: a VBus version  3.x telegram (consisting of the header and all associated frames) has been decoded</li>
+</ul>
+<p>The event handler is called from the <code>ResolVBus_LiveDecoder_Decode</code> function which should be called whenever VBus bytes have been received.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="debugging"><a class="header" href="#debugging">Debugging</a></h1>
+<p>The library includes a minimal debugging functionality that can be enabled by compiling the library with the define <code>RESOLVBUS_DEBUG=1</code>.</p>
+<p>Every module in the library includes <code>src/Debug.h</code>. That file simply checks <code>RESOLVBUS_DEBUG</code> and either includes <code>src/DebugOn.h</code> (if <code>RESOLVBUS_DEBUG &gt;= 1</code>) or <code>src/DebugOff.h</code>.</p>
+<p>Both <code>src/Debug{On,Off}.h</code> provide the same set of macros:</p>
+<ul>
+<li><code>__FAIL(ErrorSuffix)</code></li>
+<li><code>__WRAP(Expression)</code></li>
+<li><code>__ASSERT_WITH(ErrorSuffix, Expression)</code></li>
+<li><code>__DLOG(FormatString, ...)</code></li>
+</ul>
+<p>All of those macros first check, whether the local variable <code>Result</code> is still set to <code>RESOLVBUS_OK</code>. If it is not, the macro does nothing.</p>
+<h2 id="__failerrorsuffix"><a class="header" href="#__failerrorsuffix"><code>__FAIL(ErrorSuffix)</code></a></h2>
+<p>The <code>__FAIL</code> macro:</p>
+<ul>
+<li>checks the local variable <code>Result</code> as described above, optionally skipping the other steps below</li>
+<li>sets the local variable <code>Result</code> to <code>RESOLVBUS_ERROR_##ErrorSuffix</code></li>
+<li>replaces the contents in the backtrace buffer with information about the failure (if debugging is enabled)</li>
+</ul>
+<h2 id="__wrapexpression"><a class="header" href="#__wrapexpression"><code>__WRAP(Expression)</code></a></h2>
+<p>The <code>__WRAP</code> macro:</p>
+<ul>
+<li>checks the local variable <code>Result</code> as described above, optionally skipping the other steps below</li>
+<li>executes the expression</li>
+<li>stores the result of the expression into the local variable <code>Result</code></li>
+<li>if the local variable <code>Result</code> now is not <code>RESOLVBUS_OK</code> it adds information about the call site to the backtrace buffer (if debugging is enabled)</li>
+</ul>
+<h2 id="__assert_witherrorsuffix-expression"><a class="header" href="#__assert_witherrorsuffix-expression"><code>__ASSERT_WITH(ErrorSuffix, Expression)</code></a></h2>
+<p>The <code>__ASSERT_WITH</code> macro:</p>
+<ul>
+<li>checks the local variable <code>Result</code> as described above, optionally skipping the other steps below</li>
+<li>executes the expression</li>
+<li>if the result of the expression is false:
+<ul>
+<li>sets the local variable <code>Result</code> to <code>RESOLVBUS_ERROR_##ErrorSuffix</code></li>
+<li>replaces the contents in the backtrace buffer with information about the failure (if debugging is enabled)</li>
+</ul>
+</li>
+</ul>
+<h2 id="__dlogformatstring-"><a class="header" href="#__dlogformatstring-"><code>__DLOG(FormatString, ...)</code></a></h2>
+<p>The <code>__DLOG</code> macro:</p>
+<ul>
+<li>checks the local variable <code>Result</code> as described above, optionally skipping the other steps below</li>
+<li>uses <code>printf</code> to print the formatted string to stdout (if debugging is enabled)</li>
+</ul>
+<h2 id="the-internal-backtrace-buffer"><a class="header" href="#the-internal-backtrace-buffer">The internal backtrace buffer</a></h2>
+<p>Enabling the debugging functionality adds a library-internal backtrace buffer. That buffer is used by the macros <code>__FAIL</code>, <code>__WRAP</code> and <code>__ASSERT_WITH</code> in case an error occurred to track the error's reason and call stack.</p>
+<p>Along with that buffer a set of functions is added to work with the backtrace buffer:</p>
+<pre><code>void ResolVBus_ResetBacktrace(const char *Message, const char *Expression, const char *File, int Line, const char *Func);
+void ResolVBus_AddBacktrace(const char *Expression, const char *File, int Line, const char *Func);
+const char *ResolVBus_GetBacktrace(void);
+void ResolVBus_PrintBacktrace(void);
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="examples"><a class="header" href="#examples">Examples</a></h1>
+<p>This section describes the examples provided with this library.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="master-example"><a class="header" href="#master-example">Master example</a></h1>
+<p>A minimal VBus master is implemented in the <code>examples/Master.c</code> example. It features:</p>
+<ul>
+<li>a LiveDecoder instance for decoding incoming VBus bytes</li>
+<li>a LiveEncoder instance for transmitting VBus primitives</li>
+<li>a minimal state machine for repeatedly transmitting information</li>
+</ul>
+<h2 id="the-main-function"><a class="header" href="#the-main-function">The <code>main</code> function</a></h2>
+<p>The <code>main</code> function:</p>
+<ul>
+<li>initializes both the LiveDecoder and LiveEncoder instances using the <code>__Initialize</code> function</li>
+<li>opens a serial port / network socket / ...</li>
+<li>enters a loop
+<ul>
+<li>reads from the serial port / network socket / ... with a small timeout / non-blocking</li>
+<li>calculates the time passed since the last loop cycle</li>
+<li>decides whether it would be a appropriate time to start sending information (e.g. once every second)</li>
+<li>calls <code>__HandleLoopCycle</code> handing over that information for state machine handling</li>
+</ul>
+</li>
+</ul>
+<h2 id="initialization"><a class="header" href="#initialization">Initialization</a></h2>
+<p>The <code>__Initialize</code> function:</p>
+<ul>
+<li>intializes both the LiveDecoder and LiveEncoder instances</li>
+<li>suspends the LiveEncoder (it will be resumed once it is supposed to transmit information)</li>
+</ul>
+<h2 id="handling-state-machine"><a class="header" href="#handling-state-machine">Handling state machine</a></h2>
+<p>The <code>__HandleLoopCycle</code> function:</p>
+<ul>
+<li>starts the internal state machine if requested and possible (because the LiveEncoder is idle)</li>
+<li>decodes received VBus bytes using the LiveDecoder, calling <code>__DecoderHandler</code> if an event occurred</li>
+<li>advances the LiveEncoder's state machine, calling <code>__EncoderHandler</code> if an event occurred</li>
+</ul>
+<h2 id="reacting-to-livedecoder-events"><a class="header" href="#reacting-to-livedecoder-events">Reacting to LiveDecoder events</a></h2>
+<p>The <code>__DecoderHandler</code> function is called whenever the LiveDecoder emits an event. This function can be used to store received information from VBus minions.</p>
+<h2 id="reacting-to-liveencoder-events"><a class="header" href="#reacting-to-liveencoder-events">Reacting to LiveEncoder events</a></h2>
+<p>The <code>__EncoderHandler</code> function is called whenever the LiveEncoder emits an event:</p>
+<ul>
+<li><code>RESOLVBUS_LIVEENCODEREVENTTYPE_IDLE</code> can be used to advance the internal state machine</li>
+<li><code>RESOLVBUS_LIVEENCODEREVENTTYPE_TRANSMIT</code> must be used to transmit the provided bytes over the serial port / network socket / ...</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="minion-example"><a class="header" href="#minion-example">Minion Example</a></h1>
+<p>A minimal VBus minion is implemented in the <code>examples/Minion.c</code> example. It features:</p>
+<ul>
+<li>a LiveDecoder instance for decoding incoming VBus bytes</li>
+<li>a LiveEncoder instance for transmitting VBus primitives</li>
+</ul>
+<h2 id="the-main-function-1"><a class="header" href="#the-main-function-1">The <code>main</code> function</a></h2>
+<p>The <code>main</code> functoin:</p>
+<ul>
+<li>initializes both the LiveDecoder and LiveEnceder instances using the <code>__Initialize</code> function</li>
+<li>opens a serial port / network socket / ...</li>
+<li>enters a loop
+<ul>
+<li>reads from the serial port / network socket / ... with a small timeout / non-blocking</li>
+<li>calculates the time passed since the last loop cycle</li>
+<li>calls <code>__HandleLoopCycle</code> handing over that information for state machine handling</li>
+</ul>
+</li>
+</ul>
+<h2 id="initialization-1"><a class="header" href="#initialization-1">Initialization</a></h2>
+<p>The <code>__Initialize</code> function:</p>
+<ul>
+<li>intializes both the LiveDecoder and LiveEncoder instances</li>
+<li>suspends the LiveEncoder (it will be resumed once it is supposed to transmit information)</li>
+</ul>
+<h2 id="handling-state-machine-1"><a class="header" href="#handling-state-machine-1">Handling state machine</a></h2>
+<p>The <code>__HandleLoopCycle</code> function:</p>
+<ul>
+<li>decodes received VBus bytes using the LiveDecoder, calling <code>__DecoderHandler</code> if an event occurred</li>
+<li>advances the LiveEncoder's state machine, calling <code>__EncoderHandler</code> if an event occurred</li>
+</ul>
+<h2 id="reacting-to-livedecoder-events-1"><a class="header" href="#reacting-to-livedecoder-events-1">Reacting to LiveDecoder events</a></h2>
+<p>The <code>__DecoderHandler</code> function is called whenever the LiveDecoder emits an event. This function can be used to react to requests from the VBus master. For that it must:</p>
+<ul>
+<li>first resume the suspended LiveEncoder to allow any <code>ResolVBus_LiveEncoder_Queue...</code> functions to be called</li>
+<li>call the appropriate <code>ResolVBus_LiveEncoder_Queue...</code> function</li>
+<li>suspend the LiveEncoder again to wait for the next request</li>
+</ul>
+<h2 id="reacting-to-liveencoder-events-1"><a class="header" href="#reacting-to-liveencoder-events-1">Reacting to LiveEncoder events</a></h2>
+<p>The <code>__EncoderHandler</code> function is called whenever the LiveEncoder emits an event:</p>
+<ul>
+<li><code>RESOLVBUS_LIVEENCODEREVENTTYPE_IDLE</code> should never be emitted because the LiveEncoder is kept in a suspended state most of the time</li>
+<li><code>RESOLVBUS_LIVEENCODEREVENTTYPE_TRANSMIT</code> must be used to transmit the provided bytes over the serial port / network socket / ...</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </body>
+</html>
