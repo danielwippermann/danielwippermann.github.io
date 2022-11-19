@@ -5,8 +5,6 @@
 [![NPM version](https://img.shields.io/npm/v/resol-vbus.svg)](https://npmjs.org/package/resol-vbus)
 [![Build Status](https://img.shields.io/travis/danielwippermann/resol-vbus.svg)](https://travis-ci.org/danielwippermann/resol-vbus)
 [![Coverage Status](https://img.shields.io/coveralls/danielwippermann/resol-vbus.svg)](https://coveralls.io/r/danielwippermann/resol-vbus)
-[![Dependency Status](https://img.shields.io/david/danielwippermann/resol-vbus.svg)](https://david-dm.org/danielwippermann/resol-vbus)
-[![devDependency Status](https://img.shields.io/david/dev/danielwippermann/resol-vbus.svg)](https://david-dm.org/danielwippermann/resol-vbus#info=devDependencies)
 [![License](https://img.shields.io/npm/l/resol-vbus.svg)](http://opensource.org/licenses/MIT)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdanielwippermann%2Fresol-vbus.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdanielwippermann%2Fresol-vbus?ref=badge_shield)
 
@@ -117,6 +115,14 @@ following command into your shell:
 ## Changelog
 
 ## Work in progress
+
+
+## Version 0.25.0 (2022-04-12)
+
+- Update several dependencies to fix security issues.
+- Update VBus specification file to 20220206.
+- Add support for CRC7 in protocols using minor version 1.
+- Add `Datagram` and `Telegram` support to `VBusRecordingConverter`.
 
 
 ## Version 0.24.0 (2021-09-12)
