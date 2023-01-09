@@ -1,14 +1,10 @@
 /*!
  * resol-vbus - A JavaScript library for processing RESOL VBus data
  *
- * Copyright (c) 2013-2018, Daniel Wippermann.
+ * Copyright (c) 2013-present, Daniel Wippermann.
  *
  * This Software is released under the MIT license.
  */
-'use strict';
-
-
-
 const packageInfo = require('../package.json');
 
 
@@ -52,6 +48,8 @@ const Customizer = require('./customizer');
 const ConnectionCustomizer = require('./connection-customizer');
 
 const TcpConnectionEndpoint = require('./tcp-connection-endpoint');
+
+const FileListReader = require('./file-list-reader');
 
 
 
@@ -99,5 +97,7 @@ module.exports = {
     ConnectionCustomizer,
 
     TcpConnectionEndpoint,
+
+    FileListReader,
 
 };

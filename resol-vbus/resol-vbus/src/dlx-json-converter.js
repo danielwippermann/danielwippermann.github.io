@@ -1,7 +1,4 @@
-/*! resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann | MIT license */
-'use strict';
-
-
+/*! resol-vbus | Copyright (c) 2013-present, Daniel Wippermann | MIT license */
 
 const HeaderSet = require('./header-set');
 const Specification = require('./specification');
@@ -138,8 +135,7 @@ class DLxJsonConverter extends Converter {
                 const fieldData = packetInfo.packetFields.map((packetField, packetFieldIndex) => {
                     let { rawValue } = packetField;
                     const { precision } = packetField.packetFieldSpec.type;
-                    const numberValue = spec.formatTextValueFromRawValueInternal(rawValue, noneUnit, numberType, precision, noneUnit);
-                    rawValue = +numberValue;
+                    rawValue = (rawValue != null) ? parseFloat(rawValue.toFixed(precision)) : 0;
 
                     return {
                         field_index: packetFieldIndex,

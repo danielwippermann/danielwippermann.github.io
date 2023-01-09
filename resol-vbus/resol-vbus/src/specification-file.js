@@ -1,7 +1,4 @@
-/*! resol-vbus | Copyright (c) 2016-2018, Daniel Wippermann | MIT license */
-'use strict';
-
-
+/*! resol-vbus | Copyright (c) 2016-present, Daniel Wippermann | MIT license */
 
 const fs = require('fs');
 const path = require('path');
@@ -9,6 +6,11 @@ const path = require('path');
 
 const moreints = require('buffer-more-ints');
 const { sprintf } = require('sprintf-js');
+
+
+const {
+    promisify,
+} = require('./utils');
 
 
 
@@ -620,18 +622,10 @@ class SpecificationFile {
         return defaultSpecificationFile;
     }
 
-    static loadFromFile(filename) {
-        return new Promise((resolve, reject) => {
-            fs.readFile(filename, (err, contents) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(contents);
-                }
-            });
-        }).then((contents) => {
-            return new SpecificationFile(contents);
-        });
+    static async loadFromFile(filename) {
+        const contents = await promisify(cb => fs.readFile(filename, cb));
+
+        return new SpecificationFile(contents);
     }
 
 }

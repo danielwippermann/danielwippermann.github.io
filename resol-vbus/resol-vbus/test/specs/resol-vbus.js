@@ -1,21 +1,7 @@
-/*! resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann | MIT license */
-'use strict';
-
-
-
-const chai = require('chai');
-const sinon = require('sinon');
-
+/*! resol-vbus | Copyright (c) 2013-present, Daniel Wippermann | MIT license */
 
 const vbus = require('../../src/index');
 // const vbus = require('../../dist/index');
-
-
-
-chai.config.includeStack = true;
-
-
-global.sinon = sinon;
 
 
 

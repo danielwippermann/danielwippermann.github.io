@@ -1,79 +1,88 @@
-/*! resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann | MIT license */
-'use strict';
-
-
+/*! resol-vbus | Copyright (c) 2013-present, Daniel Wippermann | MIT license */
 
 const {
     DataSource,
 } = require('./resol-vbus');
 
 
-const expect = require('./expect');
-
 const {
-    itShouldWorkCorrectlyAfterMigratingToClass,
+    expect,
+    expectOwnPropertyNamesToEqual,
+    itShouldBeAClass,
 } = require('./test-utils');
 
 
 
 describe('DataSource', () => {
 
-    describe('constructor', () => {
+    itShouldBeAClass(DataSource, null, {
+        provider: null,
+        id: null,
+        name: null,
+        description: null,
+        isSupportingLiveData: false,
+        isSupportingCustomization: false,
+        constructor: Function,
+        connectLive: Function,
+        createCustomizer: Function,
+    }, {
 
-        it('should be a constructor function', () => {
-            expect(DataSource).to.be.a('function');
-        });
+    });
+
+    describe('constructor', () => {
 
         it('should have reasonable defaults', () => {
             const dataSource = new DataSource();
 
-            expect(dataSource).to.be.an('object');
-            expect(dataSource.provider).to.equal(null);
-            expect(dataSource.id).to.equal(null);
-            expect(dataSource.name).to.equal(null);
-            expect(dataSource.description).to.equal(null);
-            expect(dataSource.isSupportingLiveData).to.equal(false);
-            expect(dataSource.isSupportingRecordedData).to.equal(false);
-            expect(dataSource.isSupportingCustomization).to.equal(false);
+            expectOwnPropertyNamesToEqual(dataSource, [
+                'provider',
+                'id',
+                'name',
+                'description',
+                'isSupportingLiveData',
+                'isSupportingCustomization',
+            ]);
+
+            expect(dataSource.provider).toBe(null);
+            expect(dataSource.id).toBe(null);
+            expect(dataSource.name).toBe(null);
+            expect(dataSource.description).toBe(null);
+            expect(dataSource.isSupportingLiveData).toBe(false);
+            expect(dataSource.isSupportingCustomization).toBe(false);
         });
 
         it('should copy selected options', () => {
-            const dataSource = new DataSource({
+            const options = {
                 provider: 'provider',
                 id: 'id',
                 name: 'name',
                 description: 'description',
                 isSupportingLiveData: true,
-                isSupportingRecordedData: true,
                 isSupportingCustomization: true,
                 junk: 'JUNK',
-            });
+            };
 
-            expect(dataSource).to.be.an('object');
-            expect(dataSource.provider).to.equal('provider');
-            expect(dataSource.id).to.equal('id');
-            expect(dataSource.name).to.equal('name');
-            expect(dataSource.description).to.equal('description');
-            expect(dataSource.isSupportingLiveData).to.equal(true);
-            expect(dataSource.isSupportingRecordedData).to.equal(true);
-            expect(dataSource.isSupportingCustomization).to.equal(true);
-            expect(dataSource.junk).to.equal(undefined);
+            const dataSource = new DataSource(options);
+
+            expect(dataSource.provider).toBe(options.provider);
+            expect(dataSource.id).toBe(options.id);
+            expect(dataSource.name).toBe(options.name);
+            expect(dataSource.description).toBe(options.description);
+            expect(dataSource.isSupportingLiveData).toBe(options.isSupportingLiveData);
+            expect(dataSource.isSupportingCustomization).toBe(options.isSupportingCustomization);
+            expect(dataSource.junk).toBe(undefined);
         });
 
     });
 
     describe('#connectLive', () => {
 
-        it('should be a method', () => {
-            expect(DataSource.prototype.connectLive).to.be.a('function');
-        });
-
         it('should report if not supported', () => {
             const converter = new DataSource();
 
             expect(() => {
                 converter.connectLive();
-            }).to.throw(Error, 'Does not support live data');
+            }).toThrow('Does not support live data');
         });
 
         it('should be abstract', () => {
@@ -83,49 +92,19 @@ describe('DataSource', () => {
 
             expect(() => {
                 converter.connectLive();
-            }).to.throw(Error, 'Must be implemented by sub-class');
-        });
-
-    });
-
-    describe('#openRecorder', () => {
-
-        it('should be a method', () => {
-            expect(DataSource.prototype.openRecorder).to.be.a('function');
-        });
-
-        it('should report if not supported', () => {
-            const converter = new DataSource();
-
-            expect(() => {
-                converter.openRecorder();
-            }).to.throw(Error, 'Does not support recorded data');
-        });
-
-        it('should be abstract', () => {
-            const converter = new DataSource({
-                isSupportingRecordedData: true,
-            });
-
-            expect(() => {
-                converter.openRecorder();
-            }).to.throw(Error, 'Must be implemented by sub-class');
+            }).toThrow('Must be implemented by sub-class');
         });
 
     });
 
     describe('#createCustomizer', () => {
 
-        it('should be a method', () => {
-            expect(DataSource.prototype).property('createCustomizer').to.be.a('function');
-        });
-
         it('should report if not supported', () => {
             const converter = new DataSource();
 
             expect(() => {
                 converter.createCustomizer();
-            }).to.throw(Error, 'Does not support customization');
+            }).toThrow('Does not support customization');
         });
 
         it('should be abstract', () => {
@@ -135,24 +114,8 @@ describe('DataSource', () => {
 
             expect(() => {
                 converter.createCustomizer();
-            }).to.throw(Error, 'Must be implemented by sub-class');
+            }).toThrow('Must be implemented by sub-class');
         });
-
-    });
-
-    itShouldWorkCorrectlyAfterMigratingToClass(DataSource, null, {
-        provider: null,
-        id: null,
-        name: null,
-        description: null,
-        isSupportingLiveData: false,
-        isSupportingRecordedData: false,
-        isSupportingCustomization: false,
-        constructor: Function,
-        connectLive: Function,
-        openRecorder: Function,
-        createCustomizer: Function,
-    }, {
 
     });
 

@@ -3,8 +3,8 @@
 #### A JavaScript library for processing RESOL VBus data.
 
 [![NPM version](https://img.shields.io/npm/v/resol-vbus.svg)](https://npmjs.org/package/resol-vbus)
-[![Build Status](https://img.shields.io/travis/danielwippermann/resol-vbus.svg)](https://travis-ci.org/danielwippermann/resol-vbus)
-[![Coverage Status](https://img.shields.io/coveralls/danielwippermann/resol-vbus.svg)](https://coveralls.io/r/danielwippermann/resol-vbus)
+[![Node.js CI](https://github.com/danielwippermann/resol-vbus/actions/workflows/node.js.yml/badge.svg)](https://github.com/danielwippermann/resol-vbus/actions/workflows/node.js.yml)
+[![codecov](https://codecov.io/github/danielwippermann/resol-vbus/branch/master/graph/badge.svg?token=SEJoNC9Viy)](https://codecov.io/github/danielwippermann/resol-vbus)
 [![License](https://img.shields.io/npm/l/resol-vbus.svg)](http://opensource.org/licenses/MIT)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdanielwippermann%2Fresol-vbus.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdanielwippermann%2Fresol-vbus?ref=badge_shield)
 
@@ -93,9 +93,6 @@ following command into your shell:
 
 ## Known issues
 
-- The `FileSystemRecorder` class sometimes writes invalid JSON into its "SyncState.json" file causing it to not
-  being able to restore and recover from that when the app using the recorder restarts (e.g. the "vbustouch-proxy"
-  example).
 - The `ConfigurationOptimizers` do not yet detect the firmware version running on the controller to be configured.
   That sometimes causes configuration loads and saves to fail because unknown values are read from or written to
   (e.g. using the "customizer" example on a DeltaSol MX with firmware version 1.11 or below).
@@ -329,7 +326,7 @@ All other trademarks are the property of their respective owners.
 
 The MIT License (MIT)
 
-Copyright (c) 2013-2020, Daniel Wippermann.
+Copyright (c) 2013-present, Daniel Wippermann.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -1,7 +1,4 @@
-/*! resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann | MIT license */
-'use strict';
-
-
+/*! resol-vbus | Copyright (c) 2013-present, Daniel Wippermann | MIT license */
 
 const { applyDefaultOptions } = require('./utils');
 
@@ -36,9 +33,9 @@ class HeaderSetConsolidator extends HeaderSet {
      * is used to start a background timer that fires a `headerSet` event every
      * time the given interval has passed.
      *
-     * The second use case is in combination with Recorders. In that case no timer
+     * The second use case is in combination with Converters. In that case no timer
      * has to be started because the data is not received in real time. As recorded HeaderSet
-     * instances are played back they are can be handed over to the `processHeaderSet`
+     * instances are decoded they can be handed over to the `processHeaderSet`
      * method. This method will fire a `headerSet` event every time the recorded data
      * belong to a different interval.
      *

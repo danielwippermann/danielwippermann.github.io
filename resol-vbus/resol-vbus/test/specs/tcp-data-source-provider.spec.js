@@ -1,7 +1,4 @@
-/*! resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann | MIT license */
-'use strict';
-
-
+/*! resol-vbus | Copyright (c) 2013-present, Daniel Wippermann | MIT license */
 
 const dgram = require('dgram');
 const http = require('http');
@@ -13,27 +10,45 @@ const {
 } = require('./resol-vbus');
 
 
-const expect = require('./expect');
-
 const {
-    itShouldWorkCorrectlyAfterMigratingToClass,
+    expect,
+    itShouldBeAClass,
+    expectOwnPropertyNamesToEqual,
 } = require('./test-utils');
 
 
 
 describe('TCP Data Source Provider', () => {
 
-    describe('constructor', () => {
+    itShouldBeAClass(TcpDataSourceProvider, DataSourceProvider, {
+        id: 'tcp-data-source-provider',
+        name: 'TCP VBus Data Source Provider',
+        description: 'Data source provider for TCP connected VBus devices',
+        broadcastAddress: '255.255.255.255',
+        broadcastPort: 7053,
+        constructor: Function,
+        discoverDataSources: Function,
+        createDataSource: Function,
+    }, {
+        discoverDevices: Function,
+        sendBroadcast: Function,
+        sendBroadcastIPv6: Function,
+        fetchDeviceInformation: Function,
+        parseDeviceInformation: Function,
+    });
 
-        it('should be a constructor', () => {
-            expect(TcpDataSourceProvider).to.be.a('function');
-        });
+    describe('constructor', () => {
 
         it('should have reasonable defaults', () => {
             const dsp = new TcpDataSourceProvider();
 
-            expect(dsp).property('broadcastAddress').equals('255.255.255.255');
-            expect(dsp).property('broadcastPort').equals(7053);
+            expectOwnPropertyNamesToEqual(dsp, [
+                'broadcastAddress',
+                'broadcastPort',
+            ]);
+
+            expect(dsp.broadcastAddress).toBe('255.255.255.255');
+            expect(dsp.broadcastPort).toBe(7053);
         });
 
         it('should copy selected options', () => {
@@ -45,41 +60,42 @@ describe('TCP Data Source Provider', () => {
 
             const dsp = new TcpDataSourceProvider(options);
 
-            expect(dsp).property('broadcastAddress').equals(options.broadcastAddress);
-            expect(dsp).property('broadcastPort').equals(options.broadcastPort);
-            expect(dsp).not.property('junk');
+            expect(dsp.broadcastAddress).toBe(options.broadcastAddress);
+            expect(dsp.broadcastPort).toBe(options.broadcastPort);
+            expect(dsp.junk).toBe(undefined);
         });
 
     });
 
     describe('.parseDeviceInformation', () => {
 
-        it('should be a function', () => {
-            expect(TcpDataSourceProvider.parseDeviceInformation).to.be.a('function');
-        });
-
         it('should work correctly', () => {
             const string = 'vendor = "RESOL"\r\nproduct = "DL3"\r\nserial = "001E660300F0"\r\nversion = "2.1.0"\r\nbuild = "201311280853"\r\nname = "DL3-001E660300F0"\r\nfeatures = "vbus,dl2,dl3"\r\n';
 
             const info = TcpDataSourceProvider.parseDeviceInformation(string);
 
-            expect(info).to.be.an('object');
-            expect(info.vendor).to.equal('RESOL');
-            expect(info.product).to.equal('DL3');
-            expect(info.serial).to.equal('001E660300F0');
-            expect(info.version).to.equal('2.1.0');
-            expect(info.build).to.equal('201311280853');
-            expect(info.name).to.equal('DL3-001E660300F0');
-            expect(info.features).to.equal('vbus,dl2,dl3');
+            expectOwnPropertyNamesToEqual(info, [
+                'vendor',
+                'product',
+                'serial',
+                'version',
+                'build',
+                'name',
+                'features',
+            ]);
+
+            expect(info.vendor).toBe('RESOL');
+            expect(info.product).toBe('DL3');
+            expect(info.serial).toBe('001E660300F0');
+            expect(info.version).toBe('2.1.0');
+            expect(info.build).toBe('201311280853');
+            expect(info.name).toBe('DL3-001E660300F0');
+            expect(info.features).toBe('vbus,dl2,dl3');
         });
 
     });
 
     describe('.fetchDeviceInformation', () => {
-
-        it('should be a function', () => {
-            expect(TcpDataSourceProvider.fetchDeviceInformation).to.be.a('function');
-        });
 
         it('should work correctly', () => {
             return new Promise((resolve, reject) => {
@@ -103,14 +119,25 @@ describe('TCP Data Source Provider', () => {
 
                         const info = await TcpDataSourceProvider.fetchDeviceInformation(host, address.port);
 
-                        expect(info).to.be.an('object');
-                        expect(info.vendor).to.equal('RESOL');
-                        expect(info.product).to.equal('DL3');
-                        expect(info.serial).to.equal('001E660300F0');
-                        expect(info.version).to.equal('2.1.0');
-                        expect(info.build).to.equal('201311280853');
-                        expect(info.name).to.equal('DL3-001E660300F0');
-                        expect(info.features).to.equal('vbus,dl2,dl3');
+                        expectOwnPropertyNamesToEqual(info, [
+                            '__address__',
+                            'vendor',
+                            'product',
+                            'serial',
+                            'version',
+                            'build',
+                            'name',
+                            'features',
+                        ]);
+
+                        expect(info.__address__).toBe('127.0.0.1');
+                        expect(info.vendor).toBe('RESOL');
+                        expect(info.product).toBe('DL3');
+                        expect(info.serial).toBe('001E660300F0');
+                        expect(info.version).toBe('2.1.0');
+                        expect(info.build).toBe('201311280853');
+                        expect(info.name).toBe('DL3-001E660300F0');
+                        expect(info.features).toBe('vbus,dl2,dl3');
 
                         resolve();
                     } catch (err) {
@@ -144,17 +171,11 @@ describe('TCP Data Source Provider', () => {
 
     describe('.sendBroadcast', () => {
 
-        it('should be a function', () => {
-            expect(TcpDataSourceProvider)
-                .to.have.a.property('sendBroadcast')
-                .that.is.a('function');
-        });
-
         it('should work correctly', async () => {
             const originalSend = dgram.Socket.prototype.send;
             const originalFDI = TcpDataSourceProvider.fetchDeviceInformation;
 
-            dgram.Socket.prototype.send = sinon.spy(function() {
+            dgram.Socket.prototype.send = jest.fn(function() {
                 this.emit('message', '---RESOL-BROADCAST-REPLY---', {
                     family: 'IPv4',
                     port: 7053,
@@ -162,7 +183,7 @@ describe('TCP Data Source Provider', () => {
                 });
             });
 
-            TcpDataSourceProvider.fetchDeviceInformation = sinon.spy(() => {
+            TcpDataSourceProvider.fetchDeviceInformation = jest.fn(() => {
                 return {};
             });
 
@@ -171,9 +192,9 @@ describe('TCP Data Source Provider', () => {
                     timeout: 50,
                 });
 
-                expect(infos).lengthOf(1);
-                expect(dgram.Socket.prototype.send.callCount).equal(3);
-                expect(TcpDataSourceProvider.fetchDeviceInformation).property('callCount').equal(1);
+                expect(infos).toHaveLength(1);
+                expect(dgram.Socket.prototype.send.mock.calls.length).toBe(3);
+                expect(TcpDataSourceProvider.fetchDeviceInformation.mock.calls.length).toBe(1);
             } finally {
                 dgram.Socket.prototype.send = originalSend;
                 TcpDataSourceProvider.fetchDeviceInformation = originalFDI;
@@ -184,16 +205,10 @@ describe('TCP Data Source Provider', () => {
 
     describe('.discoverDevices', () => {
 
-        it('should be a function', () => {
-            expect(TcpDataSourceProvider)
-                .to.have.a.property('discoverDevices')
-                .that.is.a('function');
-        });
-
         it('should work correctly', async () => {
             const originalSendBroadcast = TcpDataSourceProvider.sendBroadcast;
 
-            TcpDataSourceProvider.sendBroadcast = sinon.spy(() => {
+            TcpDataSourceProvider.sendBroadcast = jest.fn(() => {
                 return Promise.resolve([
                     Promise.reject(new Error('Failed')),
                     Promise.resolve({ address: 'ADDRESS' }),
@@ -203,9 +218,9 @@ describe('TCP Data Source Provider', () => {
             try {
                 const infos = await TcpDataSourceProvider.discoverDevices();
 
-                expect(infos).lengthOf(1);
-                expect(infos [0]).property('address').equals('ADDRESS');
-                expect(TcpDataSourceProvider.sendBroadcast).property('callCount').equal(1);
+                expect(infos).toHaveLength(1);
+                expect(infos [0].address).toBe('ADDRESS');
+                expect(TcpDataSourceProvider.sendBroadcast.mock.calls.length).toBe(1);
             } finally {
                 TcpDataSourceProvider.sendBroadcast = originalSendBroadcast;
             }
@@ -215,14 +230,10 @@ describe('TCP Data Source Provider', () => {
 
     describe('#discoverDataSources', () => {
 
-        it('should be a method', () => {
-            expect(TcpDataSourceProvider.prototype).property('discoverDataSources').a('function');
-        });
-
         it('should work correctly', async () => {
             const originalDiscoverDevices = TcpDataSourceProvider.discoverDevices;
 
-            TcpDataSourceProvider.discoverDevices = sinon.spy(() => {
+            TcpDataSourceProvider.discoverDevices = jest.fn(() => {
                 return Promise.resolve([
                     { __address__: 'ADDRESS' },
                 ]);
@@ -232,30 +243,13 @@ describe('TCP Data Source Provider', () => {
 
             try {
                 const dataSources = await dsp.discoverDataSources();
-                expect(dataSources).a('array').lengthOf(1);
-                expect(TcpDataSourceProvider.discoverDevices).property('callCount').equals(1);
+                expect(dataSources).toHaveLength(1);
+                expect(TcpDataSourceProvider.discoverDevices.mock.calls.length).toBe(1);
             } finally {
                 TcpDataSourceProvider.discoverDevices = originalDiscoverDevices;
             }
         });
 
-    });
-
-    itShouldWorkCorrectlyAfterMigratingToClass(TcpDataSourceProvider, DataSourceProvider, {
-        id: 'tcp-data-source-provider',
-        name: 'TCP VBus Data Source Provider',
-        description: 'Data source provider for TCP connected VBus devices',
-        broadcastAddress: '255.255.255.255',
-        broadcastPort: 7053,
-        constructor: Function,
-        discoverDataSources: Function,
-        createDataSource: Function,
-    }, {
-        discoverDevices: Function,
-        sendBroadcast: Function,
-        sendBroadcastIPv6: Function,
-        fetchDeviceInformation: Function,
-        parseDeviceInformation: Function,
     });
 
 });

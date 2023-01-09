@@ -1,7 +1,4 @@
-/*! resol-vbus | Copyright (c) 2013-2018, Daniel Wippermann | MIT license */
-'use strict';
-
-
+/*! resol-vbus | Copyright (c) 2013-present, Daniel Wippermann | MIT license */
 
 const { sprintf } = require('sprintf-js');
 
@@ -103,9 +100,8 @@ class Header {
             */
             sourceAddress: 0,
 
+            minorVersion: 0,
         });
-
-        this.minorVersion = (options && options.minorVersion) || 0;
 
         if (!this.timestamp) {
             this.timestamp = new Date();
