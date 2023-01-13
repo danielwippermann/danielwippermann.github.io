@@ -23,6 +23,10 @@ var searchData=
   ['resolvbus_5fliveencoderphase_5fsuspended_20',['RESOLVBUS_LIVEENCODERPHASE_SUSPENDED',['../_resol_v_bus_8h.html#a0ae2cb2d13e3dd074026e0d5354a45a6ad4120c82e9c7583645e1b4a7b34f1376',1,'ResolVBus.h']]],
   ['resolvbus_5fliveencoderphase_5fsuspendedwithtimeout_21',['RESOLVBUS_LIVEENCODERPHASE_SUSPENDEDWITHTIMEOUT',['../_resol_v_bus_8h.html#a0ae2cb2d13e3dd074026e0d5354a45a6ad3785647d2e92f04b3a7dc1eb534474a',1,'ResolVBus.h']]],
   ['resolvbus_5fliveencoderphase_5ftransmitting_22',['RESOLVBUS_LIVEENCODERPHASE_TRANSMITTING',['../_resol_v_bus_8h.html#a0ae2cb2d13e3dd074026e0d5354a45a6a8ceb5753be94c7b20931973cea821554',1,'ResolVBus.h']]],
-  ['resolvbus_5fok_23',['RESOLVBUS_OK',['../_resol_v_bus_8h.html#ac10971690289477da386c7cb8564f431ae62f32bc62458361ddf4ebab374e68cd',1,'ResolVBus.h']]],
-  ['resolvbus_5fwouldblock_24',['RESOLVBUS_WOULDBLOCK',['../_resol_v_bus_8h.html#ac10971690289477da386c7cb8564f431ae0a0d58043de6dbf00dd2e30382a23ec',1,'ResolVBus.h']]]
+  ['resolvbus_5flivetransceivereventtype_5faction_23',['RESOLVBUS_LIVETRANSCEIVEREVENTTYPE_ACTION',['../_resol_v_bus_8h.html#a5d6f713b66c1065b45b04aa11a137b5eaefc4952f1fb162a66e1bc3e8772fb496',1,'ResolVBus.h']]],
+  ['resolvbus_5flivetransceivereventtype_5fdecoder_24',['RESOLVBUS_LIVETRANSCEIVEREVENTTYPE_DECODER',['../_resol_v_bus_8h.html#a5d6f713b66c1065b45b04aa11a137b5ea75cc7f43bd97e1cd91a04a928a4f371c',1,'ResolVBus.h']]],
+  ['resolvbus_5flivetransceivereventtype_5fencoder_25',['RESOLVBUS_LIVETRANSCEIVEREVENTTYPE_ENCODER',['../_resol_v_bus_8h.html#a5d6f713b66c1065b45b04aa11a137b5eae7ccb003eed33c14324573453c9aa27e',1,'ResolVBus.h']]],
+  ['resolvbus_5flivetransceivereventtype_5ftimeout_26',['RESOLVBUS_LIVETRANSCEIVEREVENTTYPE_TIMEOUT',['../_resol_v_bus_8h.html#a5d6f713b66c1065b45b04aa11a137b5eadb9b08795dd8c03700e51329d4db374c',1,'ResolVBus.h']]],
+  ['resolvbus_5fok_27',['RESOLVBUS_OK',['../_resol_v_bus_8h.html#ac10971690289477da386c7cb8564f431ae62f32bc62458361ddf4ebab374e68cd',1,'ResolVBus.h']]],
+  ['resolvbus_5fwouldblock_28',['RESOLVBUS_WOULDBLOCK',['../_resol_v_bus_8h.html#ac10971690289477da386c7cb8564f431ae0a0d58043de6dbf00dd2e30382a23ec',1,'ResolVBus.h']]]
 ];

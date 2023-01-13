@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Master - resol-vbus-c</title>
+        <title>LiveTransceiver - resol-vbus-c</title>
 
 
         <!-- Custom HTML head -->
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="Details.html"><strong aria-hidden="true">2.</strong> Details</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ErrorHandling.html"><strong aria-hidden="true">2.1.</strong> Error handling</a></li><li class="chapter-item expanded "><a href="LiveEncoder.html"><strong aria-hidden="true">2.2.</strong> LiveEncoder</a></li><li class="chapter-item expanded "><a href="LiveDecoder.html"><strong aria-hidden="true">2.3.</strong> LiveDecoder</a></li><li class="chapter-item expanded "><a href="LiveTransceiver.html"><strong aria-hidden="true">2.4.</strong> LiveTransceiver</a></li><li class="chapter-item expanded "><a href="Debugging.html"><strong aria-hidden="true">2.5.</strong> Debugging</a></li></ol></li><li class="chapter-item expanded "><a href="Examples.html"><strong aria-hidden="true">3.</strong> Examples</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="MasterExample.html" class="active"><strong aria-hidden="true">3.1.</strong> Master</a></li><li class="chapter-item expanded "><a href="MinionExample.html"><strong aria-hidden="true">3.2.</strong> Minion</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="Details.html"><strong aria-hidden="true">2.</strong> Details</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ErrorHandling.html"><strong aria-hidden="true">2.1.</strong> Error handling</a></li><li class="chapter-item expanded "><a href="LiveEncoder.html"><strong aria-hidden="true">2.2.</strong> LiveEncoder</a></li><li class="chapter-item expanded "><a href="LiveDecoder.html"><strong aria-hidden="true">2.3.</strong> LiveDecoder</a></li><li class="chapter-item expanded "><a href="LiveTransceiver.html" class="active"><strong aria-hidden="true">2.4.</strong> LiveTransceiver</a></li><li class="chapter-item expanded "><a href="Debugging.html"><strong aria-hidden="true">2.5.</strong> Debugging</a></li></ol></li><li class="chapter-item expanded "><a href="Examples.html"><strong aria-hidden="true">3.</strong> Examples</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="MasterExample.html"><strong aria-hidden="true">3.1.</strong> Master</a></li><li class="chapter-item expanded "><a href="MinionExample.html"><strong aria-hidden="true">3.2.</strong> Minion</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -142,58 +142,69 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="master-example"><a class="header" href="#master-example">Master example</a></h1>
-<p>A minimal VBus master is implemented in the <code>examples/Master.c</code> example. It features:</p>
+                        <h1 id="livetransceiver"><a class="header" href="#livetransceiver">LiveTransceiver</a></h1>
+<p>The &quot;LiveTransceiver&quot; module implements the <code>RESOLVBUS_LIVETRANSCEIVER</code> type and its associated functions, which combines the functionalities of the &quot;LiveEncoder&quot; and &quot;LiveDecoder&quot; modules to communicate with a VBus controller, e.g. to access its parameters.</p>
+<h2 id="initialization-and-integration"><a class="header" href="#initialization-and-integration">Initialization and integration</a></h2>
+<p>Before the transceiver can be used, it must be initialized by calling <code>ResolVBus_LiveTransceiver_Initialize</code>:</p>
+<pre><code>// ...
+RESOLVBUS_LIVETRANSCEIVER Transceiver = RESOLVBUS_LIVETRANSCEIVER_INITIALIZER;
+uint8_t EncoderBuffer [512];
+uint8_t DecoderBuffer [512];
+if (Result == RESOLVBUS_OK) {
+    Result = ResolVBus_LiveTransceiver_Initialize(Transceiver, EncoderBuffer, sizeof (EncoderBuffer), DecoderBuffer, sizeof (DecoderBuffer), LiveTransceiverHandler);
+}
+// ...
+</code></pre>
+<p>The function takes six arguments: the transceiver instance itself, a transmission buffer as well as its length, an optional buffer for holding decoded frame data as well as its length and an event handler function.</p>
+<p>The transmission buffer is used by the <code>ResolVBus_LiveEncoder_Queue...</code> functions to store the over-the-wire representation of the VBus primitives. It must be large enough to hold the largest VBus primitive that is expected to be transmitted.</p>
+<p>The optional decoder buffer is used to reassemble the contents of multiple VBus packet or telegram frames. If no buffer is provided, the reassembly must be done manually.</p>
+<p>The event handler is a function that is called whenever the transceiver wants to inform its user about an event:</p>
 <ul>
-<li>a LiveDecoder instance for decoding incoming VBus bytes</li>
-<li>a LiveEncoder instance for transmitting VBus primitives</li>
-<li>a minimal state machine for repeatedly transmitting information</li>
+<li><code>RESOLVBUS_LIVETRANSCEIVEREVENTTYPE_TIMEOUT</code>: the action started on the transceiver has timed out (optionally after several retries)</li>
+<li><code>RESOLVBUS_LIVETRANSCEIVEREVENTTYPE_ENCODER</code>: the &quot;LiveEncoder&quot; part of the transceiver has emitted an event (e.g. to transmit data)</li>
+<li><code>RESOLVBUS_LIVETRANSCEIVEREVENTTYPE_DECODER</code>:  the &quot;LiveDecoder&quot; part of the transceiver has emitted an event (e.g. from receiving VBus primitives)</li>
 </ul>
-<h2 id="the-main-function"><a class="header" href="#the-main-function">The <code>main</code> function</a></h2>
-<p>The <code>main</code> function:</p>
+<p>The event handler can be called from multiple sources:</p>
 <ul>
-<li>initializes both the LiveDecoder and LiveEncoder instances using the <code>__Initialize</code> function</li>
-<li>opens a serial port / network socket / ...</li>
-<li>enters a loop
-<ul>
-<li>reads from the serial port / network socket / ... with a small timeout / non-blocking</li>
-<li>calculates the time passed since the last loop cycle</li>
-<li>decides whether it would be a appropriate time to start sending information (e.g. once every second)</li>
-<li>calls <code>__HandleLoopCycle</code> handing over that information for state machine handling</li>
+<li>from the event pump implemented in <code>ResolVBus_LiveTransceiver_HandleTimer</code>: this function must be called &quot;frequently&quot; (see its documentation for details). The function takes the time that has passed since the last call as its second argument. That time is used to drive forward the internal state machine.</li>
+<li>from the decoding state machine in <code>ResolVBus_LiveTransceiver_Decode</code>: this function must be called for every chunk of VBus bytes. If a VBus primitive can be decoded from those bytes, an event is emitted.</li>
 </ul>
-</li>
-</ul>
-<h2 id="initialization"><a class="header" href="#initialization">Initialization</a></h2>
-<p>The <code>__Initialize</code> function:</p>
+<h2 id="accessing-the-liveencoder"><a class="header" href="#accessing-the-liveencoder">Accessing the &quot;LiveEncoder&quot;</a></h2>
+<p>To queue VBus primitives to be transmitted the user can access the &quot;LiveEncoder&quot; part using the <code>ResolVBus_LiveTransceiver_GetEncoder</code> function.</p>
+<h2 id="accessing-the-livedecoder"><a class="header" href="#accessing-the-livedecoder">Accessing the &quot;LiveDecoder&quot;</a></h2>
+<p>To decode a chunk of bytes received, those bytes have to be passed to the <code>ResolVBus_LiveTransceiver_Decode</code> function.</p>
+<h2 id="performing-an-action"><a class="header" href="#performing-an-action">Performing an action</a></h2>
+<p>To communicate with a VBus controller an action can be started on the &quot;LiveTransceiver&quot;. Those actions can:</p>
 <ul>
-<li>intializes both the LiveDecoder and LiveEncoder instances</li>
-<li>suspends the LiveEncoder (it will be resumed once it is supposed to transmit information)</li>
+<li>optionally transmit VBus primitives (requests)</li>
+<li>wait for reception of VBus primitives (requests or responses)</li>
+<li>have an optional timeout and retry managment</li>
 </ul>
-<h2 id="handling-state-machine"><a class="header" href="#handling-state-machine">Handling state machine</a></h2>
-<p>The <code>__HandleLoopCycle</code> function:</p>
+<p>The following actions are currently implemented:</p>
 <ul>
-<li>starts the internal state machine if requested and possible (because the LiveEncoder is idle)</li>
-<li>decodes received VBus bytes using the LiveDecoder, calling <code>__DecoderHandler</code> if an event occurred</li>
-<li>advances the LiveEncoder's state machine, calling <code>__EncoderHandler</code> if an event occurred</li>
+<li><code>ResolVBus_LiveTransceiver_WaitForFreeBus</code>: wait for a VBus datagram with command 0x0500, indicating that the VBus controller offers control over the VBus timing to another device</li>
+<li><code>ResolVBus_LiveTransceiver_ReleaseBus</code>: return VBus timing control back to the VBus controller</li>
+<li><code>ResolVBus_LiveTransceiver_GetValueById</code>: get a value from the controller</li>
+<li><code>ResolVBus_LiveTransceiver_SetValueById</code>: set a value in the controller</li>
+<li><code>ResolVBus_LiveTransceiver_GetValueIdByIdHash</code>: lookup a value's ID by the corresponding ID hash</li>
 </ul>
-<h2 id="reacting-to-livedecoder-events"><a class="header" href="#reacting-to-livedecoder-events">Reacting to LiveDecoder events</a></h2>
-<p>The <code>__DecoderHandler</code> function is called whenever the LiveDecoder emits an event. This function can be used to store received information from VBus minions.</p>
-<h2 id="reacting-to-liveencoder-events"><a class="header" href="#reacting-to-liveencoder-events">Reacting to LiveEncoder events</a></h2>
-<p>The <code>__EncoderHandler</code> function is called whenever the LiveEncoder emits an event:</p>
+<p>All those actions take multiple arguments:</p>
 <ul>
-<li><code>RESOLVBUS_LIVEENCODEREVENTTYPE_IDLE</code> can be used to advance the internal state machine</li>
-<li><code>RESOLVBUS_LIVEENCODEREVENTTYPE_TRANSMIT</code> must be used to transmit the provided bytes over the serial port / network socket / ...</li>
+<li>the transceiver instance</li>
+<li>zero or more action related arguments like VBus controller address, value ID, etc.</li>
+<li>an optional <code>RESOLVBUS_LIVETRANSCEIVEROPTIONS</code> pointer, if custom timeout and/or retry options should be used</li>
+<li>a function pointer to report completion or timeout back to the caller</li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="Examples.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="LiveDecoder.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="MinionExample.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="Debugging.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -203,11 +214,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="Examples.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="LiveDecoder.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="MinionExample.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="Debugging.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

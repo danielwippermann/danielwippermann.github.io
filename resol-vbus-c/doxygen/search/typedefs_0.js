@@ -10,5 +10,10 @@ var searchData=
   ['resolvbus_5fliveencodereventtype_7',['RESOLVBUS_LIVEENCODEREVENTTYPE',['../_resol_v_bus_8h.html#a5b8cd0f983cc7335dde339fd43004de3',1,'ResolVBus.h']]],
   ['resolvbus_5fliveencoderhandler_8',['RESOLVBUS_LIVEENCODERHANDLER',['../_resol_v_bus_8h.html#a8ad9677f0c0de8eabdf766827c1ff791',1,'ResolVBus.h']]],
   ['resolvbus_5fliveencoderphase_9',['RESOLVBUS_LIVEENCODERPHASE',['../_resol_v_bus_8h.html#abf1bd967719773eec1b626a4620e62a9',1,'ResolVBus.h']]],
-  ['resolvbus_5fresult_10',['RESOLVBUS_RESULT',['../_resol_v_bus_8h.html#afeac740c903ff1dbf101fb840a6f7576',1,'ResolVBus.h']]]
+  ['resolvbus_5flivetransceiver_10',['RESOLVBUS_LIVETRANSCEIVER',['../_resol_v_bus_8h.html#ab7f604fe733ca55a3bbd31b48cb5419d',1,'ResolVBus.h']]],
+  ['resolvbus_5flivetransceiverevent_11',['RESOLVBUS_LIVETRANSCEIVEREVENT',['../_resol_v_bus_8h.html#aa6c6256a7565a1093b197008cdaf9c6a',1,'ResolVBus.h']]],
+  ['resolvbus_5flivetransceivereventtype_12',['RESOLVBUS_LIVETRANSCEIVEREVENTTYPE',['../_resol_v_bus_8h.html#ad482a208ccffdc9edd37ba505e59884e',1,'ResolVBus.h']]],
+  ['resolvbus_5flivetransceiverhandler_13',['RESOLVBUS_LIVETRANSCEIVERHANDLER',['../_resol_v_bus_8h.html#a2f537ec1f1ff773abdc3d8a839cf3b34',1,'ResolVBus.h']]],
+  ['resolvbus_5flivetransceiveroptions_14',['RESOLVBUS_LIVETRANSCEIVEROPTIONS',['../_resol_v_bus_8h.html#a2b78d10df734ea86c610d41a1f043593',1,'ResolVBus.h']]],
+  ['resolvbus_5fresult_15',['RESOLVBUS_RESULT',['../_resol_v_bus_8h.html#afeac740c903ff1dbf101fb840a6f7576',1,'ResolVBus.h']]]
 ];

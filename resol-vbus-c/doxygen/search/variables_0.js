@@ -1,9 +1,21 @@
 var searchData=
 [
-  ['baudrate_0',['Baudrate',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_e_n_c_o_d_e_r.html#a4d1e6e0b829887349a05341de4c2fbd6',1,'RESOLVBUS_LIVEENCODER']]],
-  ['buffer_1',['Buffer',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_e_n_c_o_d_e_r.html#ae25ea7e678c93d2a762b828306aceb26',1,'RESOLVBUS_LIVEENCODER::Buffer()'],['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_d_e_c_o_d_e_r.html#a2494eb3b984342e2d3f08947a18a5a00',1,'RESOLVBUS_LIVEDECODER::Buffer()']]],
-  ['bufferindex_2',['BufferIndex',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_d_e_c_o_d_e_r.html#ac0ab9a4a68798431aa1b6eb084001b3f',1,'RESOLVBUS_LIVEDECODER']]],
-  ['bufferlength_3',['BufferLength',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_e_n_c_o_d_e_r.html#a26b7f1ef65ace236855bee0b80b0ec86',1,'RESOLVBUS_LIVEENCODER']]],
-  ['bufferreadindex_4',['BufferReadIndex',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_e_n_c_o_d_e_r.html#ab20d97ce4eeabc8656491e7188833513',1,'RESOLVBUS_LIVEENCODER']]],
-  ['bufferwriteindex_5',['BufferWriteIndex',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_e_n_c_o_d_e_r.html#aa8b08ff04a45a5f4206a2947ed59b455',1,'RESOLVBUS_LIVEENCODER']]]
+  ['actioncommand_0',['ActionCommand',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_t_r_a_n_s_c_e_i_v_e_r.html#a4037c08c16a2533eeb8988d5ed0eee25',1,'RESOLVBUS_LIVETRANSCEIVER']]],
+  ['actioncommithandler_1',['ActionCommitHandler',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_t_r_a_n_s_c_e_i_v_e_r.html#a6377bc04def06df7c72fb7422e86cb9e',1,'RESOLVBUS_LIVETRANSCEIVER']]],
+  ['actionexpectedcommand1_2',['ActionExpectedCommand1',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_t_r_a_n_s_c_e_i_v_e_r.html#abf81994c7a25da8e05251a56f7c706e9',1,'RESOLVBUS_LIVETRANSCEIVER']]],
+  ['actionexpectedcommand2_3',['ActionExpectedCommand2',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_t_r_a_n_s_c_e_i_v_e_r.html#a18c9801f49fcdaacd6d41e815c192463',1,'RESOLVBUS_LIVETRANSCEIVER']]],
+  ['actionexpectedcommand3_4',['ActionExpectedCommand3',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_t_r_a_n_s_c_e_i_v_e_r.html#a00e43706261aa84580f48540e63613d0',1,'RESOLVBUS_LIVETRANSCEIVER']]],
+  ['actionexpectedparam16_5',['ActionExpectedParam16',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_t_r_a_n_s_c_e_i_v_e_r.html#ae26c4045bca1af1f42367b501a3236a7',1,'RESOLVBUS_LIVETRANSCEIVER']]],
+  ['actionexpectedparam32_6',['ActionExpectedParam32',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_t_r_a_n_s_c_e_i_v_e_r.html#a790b8a774697365ef4a0f784aebb095a',1,'RESOLVBUS_LIVETRANSCEIVER']]],
+  ['actionhandler_7',['ActionHandler',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_t_r_a_n_s_c_e_i_v_e_r.html#a6f96bfd26cd322aa4551128716bbcc1c',1,'RESOLVBUS_LIVETRANSCEIVER']]],
+  ['actionhasexpectedparam16_8',['ActionHasExpectedParam16',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_t_r_a_n_s_c_e_i_v_e_r.html#a4d4266164922d0da2c09890fd15cc23f',1,'RESOLVBUS_LIVETRANSCEIVER']]],
+  ['actionhasexpectedparam32_9',['ActionHasExpectedParam32',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_t_r_a_n_s_c_e_i_v_e_r.html#a1a614785144e889c18a55bc4058a5aa5',1,'RESOLVBUS_LIVETRANSCEIVER']]],
+  ['actionnexttimeout_10',['ActionNextTimeout',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_t_r_a_n_s_c_e_i_v_e_r.html#ac77787de1e04f6d16b93499ab0cb6ce4',1,'RESOLVBUS_LIVETRANSCEIVER']]],
+  ['actionparam16_11',['ActionParam16',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_t_r_a_n_s_c_e_i_v_e_r.html#a71bf3f0f5261f9f539068d7a2308a406',1,'RESOLVBUS_LIVETRANSCEIVER']]],
+  ['actionparam32_12',['ActionParam32',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_t_r_a_n_s_c_e_i_v_e_r.html#a3cc42bce762d19b77e10a67bec178a7c',1,'RESOLVBUS_LIVETRANSCEIVER']]],
+  ['actionpeeraddress_13',['ActionPeerAddress',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_t_r_a_n_s_c_e_i_v_e_r.html#a31c1654f3da591dd3f7b77b72eaee57d',1,'RESOLVBUS_LIVETRANSCEIVER']]],
+  ['actionset_14',['ActionSet',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_t_r_a_n_s_c_e_i_v_e_r.html#a9d17d832da6ef85a118eac7e89a1e9a7',1,'RESOLVBUS_LIVETRANSCEIVER']]],
+  ['actiontimeout_15',['ActionTimeout',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_t_r_a_n_s_c_e_i_v_e_r.html#adbd79277306475ea82d14a2b83e3cdf5',1,'RESOLVBUS_LIVETRANSCEIVER']]],
+  ['actiontimeoutincr_16',['ActionTimeoutIncr',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_t_r_a_n_s_c_e_i_v_e_r.html#a464adb416f096e0eff274c5bbcf4036a',1,'RESOLVBUS_LIVETRANSCEIVER']]],
+  ['actiontries_17',['ActionTries',['../struct_r_e_s_o_l_v_b_u_s___l_i_v_e_t_r_a_n_s_c_e_i_v_e_r.html#a015faea17e84052d17277e77c9304c8c',1,'RESOLVBUS_LIVETRANSCEIVER']]]
 ];
