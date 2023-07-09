@@ -4226,7 +4226,7 @@
       "meta": {
         "range": [
           1068,
-          1702
+          1739
         ],
         "filename": "dlx-json-converter.js",
         "lineno": 30,
@@ -4313,15 +4313,15 @@
       "comment": "/**\n     * Reference to the Specification instance that is used for the binary -> text conversion.\n     * @type {Specification}\n     */",
       "meta": {
         "range": [
-          8687,
-          8706
+          9682,
+          9701
         ],
         "filename": "dlx-json-converter.js",
-        "lineno": 284,
+        "lineno": 305,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101126745",
+          "id": "astnode101126825",
           "name": "specification",
           "type": "Literal",
           "value": null
@@ -4338,7 +4338,7 @@
       "kind": "member",
       "memberof": "DLxJsonConverter",
       "scope": "instance",
-      "___id": "T000002R503384",
+      "___id": "T000002R503391",
       "___s": true
     },
     {
@@ -4353,7 +4353,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127079",
+          "id": "astnode101127159",
           "name": "HeaderSetConsolidator",
           "type": "MethodDefinition",
           "paramnames": [
@@ -4423,7 +4423,7 @@
       "name": "HeaderSetConsolidator",
       "longname": "HeaderSetConsolidator",
       "scope": "global",
-      "___id": "T000002R503421",
+      "___id": "T000002R503428",
       "___s": true
     },
     {
@@ -4438,7 +4438,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127094",
+          "id": "astnode101127174",
           "name": "interval",
           "type": "Literal",
           "value": 0
@@ -4455,7 +4455,7 @@
       "kind": "member",
       "memberof": "HeaderSetConsolidator",
       "scope": "instance",
-      "___id": "T000002R503422",
+      "___id": "T000002R503429",
       "___s": true
     },
     {
@@ -4470,7 +4470,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127096",
+          "id": "astnode101127176",
           "name": "timeToLive",
           "type": "Literal",
           "value": 0
@@ -4487,7 +4487,7 @@
       "kind": "member",
       "memberof": "HeaderSetConsolidator",
       "scope": "instance",
-      "___id": "T000002R503423",
+      "___id": "T000002R503430",
       "___s": true
     },
     {
@@ -4502,7 +4502,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127098",
+          "id": "astnode101127178",
           "name": "minTimestamp",
           "type": "Literal",
           "value": null
@@ -4519,7 +4519,7 @@
       "kind": "member",
       "memberof": "HeaderSetConsolidator",
       "scope": "instance",
-      "___id": "T000002R503424",
+      "___id": "T000002R503431",
       "___s": true
     },
     {
@@ -4534,7 +4534,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127100",
+          "id": "astnode101127180",
           "name": "maxTimestamp",
           "type": "Literal",
           "value": null
@@ -4551,7 +4551,7 @@
       "kind": "member",
       "memberof": "HeaderSetConsolidator",
       "scope": "instance",
-      "___id": "T000002R503425",
+      "___id": "T000002R503432",
       "___s": true
     },
     {
@@ -4566,7 +4566,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127102",
+          "id": "astnode101127182",
           "name": "HeaderSetConsolidator#startTimer",
           "type": "MethodDefinition",
           "paramnames": []
@@ -4582,7 +4582,7 @@
       "memberof": "HeaderSetConsolidator",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R503426",
+      "___id": "T000002R503433",
       "___s": true
     },
     {
@@ -4597,7 +4597,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127125",
+          "id": "astnode101127205",
           "name": "HeaderSetConsolidator#stopTimer",
           "type": "MethodDefinition",
           "paramnames": []
@@ -4613,7 +4613,7 @@
       "memberof": "HeaderSetConsolidator",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R503428",
+      "___id": "T000002R503435",
       "___s": true
     },
     {
@@ -4628,7 +4628,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127146",
+          "id": "astnode101127226",
           "name": "HeaderSetConsolidator#processHeaderSet",
           "type": "MethodDefinition",
           "paramnames": [
@@ -4656,7 +4656,7 @@
       "kind": "function",
       "memberof": "HeaderSetConsolidator",
       "scope": "instance",
-      "___id": "T000002R503430",
+      "___id": "T000002R503437",
       "___s": true
     },
     {
@@ -4671,7 +4671,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127363",
+          "id": "astnode101127443",
           "name": "interval",
           "type": "Literal",
           "value": 0
@@ -4688,7 +4688,7 @@
       "kind": "member",
       "memberof": "HeaderSetConsolidator",
       "scope": "instance",
-      "___id": "T000002R503447",
+      "___id": "T000002R503454",
       "___s": true
     },
     {
@@ -4703,7 +4703,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127365",
+          "id": "astnode101127445",
           "name": "timeToLive",
           "type": "Literal",
           "value": 0
@@ -4720,7 +4720,7 @@
       "kind": "member",
       "memberof": "HeaderSetConsolidator",
       "scope": "instance",
-      "___id": "T000002R503448",
+      "___id": "T000002R503455",
       "___s": true
     },
     {
@@ -4735,7 +4735,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127367",
+          "id": "astnode101127447",
           "name": "minTimestamp",
           "type": "Literal",
           "value": null
@@ -4752,7 +4752,7 @@
       "kind": "member",
       "memberof": "HeaderSetConsolidator",
       "scope": "instance",
-      "___id": "T000002R503449",
+      "___id": "T000002R503456",
       "___s": true
     },
     {
@@ -4767,7 +4767,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127369",
+          "id": "astnode101127449",
           "name": "maxTimestamp",
           "type": "Literal",
           "value": null
@@ -4784,7 +4784,7 @@
       "kind": "member",
       "memberof": "HeaderSetConsolidator",
       "scope": "instance",
-      "___id": "T000002R503450",
+      "___id": "T000002R503457",
       "___s": true
     },
     {
@@ -4799,7 +4799,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127416",
+          "id": "astnode101127496",
           "name": "HeaderSet",
           "type": "MethodDefinition",
           "paramnames": [
@@ -4848,7 +4848,7 @@
       "name": "HeaderSet",
       "longname": "HeaderSet",
       "scope": "global",
-      "___id": "T000002R503460",
+      "___id": "T000002R503467",
       "___s": true
     },
     {
@@ -4863,7 +4863,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127436",
+          "id": "astnode101127516",
           "name": "timestamp",
           "type": "Literal",
           "value": null
@@ -4880,7 +4880,7 @@
       "kind": "member",
       "memberof": "HeaderSet",
       "scope": "instance",
-      "___id": "T000002R503462",
+      "___id": "T000002R503469",
       "___s": true
     },
     {
@@ -4895,7 +4895,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127488",
+          "id": "astnode101127568",
           "name": "HeaderSet#containsHeader",
           "type": "MethodDefinition",
           "paramnames": [
@@ -4933,7 +4933,7 @@
       "kind": "function",
       "memberof": "HeaderSet",
       "scope": "instance",
-      "___id": "T000002R503465",
+      "___id": "T000002R503472",
       "___s": true
     },
     {
@@ -4948,7 +4948,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127505",
+          "id": "astnode101127585",
           "name": "HeaderSet#addHeader",
           "type": "MethodDefinition",
           "paramnames": [
@@ -4976,7 +4976,7 @@
       "kind": "function",
       "memberof": "HeaderSet",
       "scope": "instance",
-      "___id": "T000002R503467",
+      "___id": "T000002R503474",
       "___s": true
     },
     {
@@ -4999,7 +4999,7 @@
       "memberof": "HeaderSet",
       "longname": "HeaderSet#event:addHeader",
       "scope": "instance",
-      "___id": "T000002R503471",
+      "___id": "T000002R503478",
       "___s": true
     },
     {
@@ -5014,7 +5014,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127570",
+          "id": "astnode101127650",
           "name": "HeaderSet#addHeaders",
           "type": "MethodDefinition",
           "paramnames": [
@@ -5042,7 +5042,7 @@
       "kind": "function",
       "memberof": "HeaderSet",
       "scope": "instance",
-      "___id": "T000002R503472",
+      "___id": "T000002R503479",
       "___s": true
     },
     {
@@ -5065,7 +5065,7 @@
       "memberof": "HeaderSet",
       "longname": "HeaderSet#event:removeHeader",
       "scope": "instance",
-      "___id": "T000002R503476",
+      "___id": "T000002R503483",
       "___s": true
     },
     {
@@ -5080,7 +5080,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127642",
+          "id": "astnode101127722",
           "name": "HeaderSet#removeAllHeaders",
           "type": "MethodDefinition",
           "paramnames": []
@@ -5096,7 +5096,7 @@
       "memberof": "HeaderSet",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R503479",
+      "___id": "T000002R503486",
       "___s": true
     },
     {
@@ -5111,7 +5111,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127658",
+          "id": "astnode101127738",
           "name": "HeaderSet#removeHeadersOlderThan",
           "type": "MethodDefinition",
           "paramnames": [
@@ -5140,7 +5140,7 @@
       "kind": "function",
       "memberof": "HeaderSet",
       "scope": "instance",
-      "___id": "T000002R503480",
+      "___id": "T000002R503487",
       "___s": true
     },
     {
@@ -5155,7 +5155,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127718",
+          "id": "astnode101127798",
           "name": "HeaderSet#getHeaderCount",
           "type": "MethodDefinition",
           "paramnames": []
@@ -5181,7 +5181,7 @@
       "memberof": "HeaderSet",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R503486",
+      "___id": "T000002R503493",
       "___s": true
     },
     {
@@ -5196,7 +5196,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127728",
+          "id": "astnode101127808",
           "name": "HeaderSet#getHeaders",
           "type": "MethodDefinition",
           "paramnames": []
@@ -5222,7 +5222,7 @@
       "memberof": "HeaderSet",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R503487",
+      "___id": "T000002R503494",
       "___s": true
     },
     {
@@ -5237,7 +5237,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127740",
+          "id": "astnode101127820",
           "name": "HeaderSet#getSortedHeaders",
           "type": "MethodDefinition",
           "paramnames": []
@@ -5263,7 +5263,7 @@
       "memberof": "HeaderSet",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R503488",
+      "___id": "T000002R503495",
       "___s": true
     },
     {
@@ -5278,7 +5278,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127794",
+          "id": "astnode101127874",
           "name": "HeaderSet#getId",
           "type": "MethodDefinition",
           "paramnames": []
@@ -5304,7 +5304,7 @@
       "memberof": "HeaderSet",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R503494",
+      "___id": "T000002R503501",
       "___s": true
     },
     {
@@ -5319,7 +5319,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127830",
+          "id": "astnode101127910",
           "name": "HeaderSet#getIdHash",
           "type": "MethodDefinition",
           "paramnames": []
@@ -5345,7 +5345,7 @@
       "memberof": "HeaderSet",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R503498",
+      "___id": "T000002R503505",
       "___s": true
     },
     {
@@ -5360,7 +5360,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127889",
+          "id": "astnode101127969",
           "name": "timestamp",
           "type": "Literal",
           "value": null
@@ -5377,7 +5377,7 @@
       "kind": "member",
       "memberof": "HeaderSet",
       "scope": "instance",
-      "___id": "T000002R503501",
+      "___id": "T000002R503508",
       "___s": true
     },
     {
@@ -5392,7 +5392,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127891",
+          "id": "astnode101127971",
           "name": "headerList",
           "type": "Literal",
           "value": null
@@ -5409,7 +5409,7 @@
       "kind": "member",
       "memberof": "HeaderSet",
       "scope": "instance",
-      "___id": "T000002R503502",
+      "___id": "T000002R503509",
       "___s": true
     },
     {
@@ -5424,7 +5424,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128180",
+          "id": "astnode101128260",
           "name": "Header",
           "type": "MethodDefinition",
           "paramnames": [
@@ -5499,7 +5499,7 @@
       "name": "Header",
       "longname": "Header",
       "scope": "global",
-      "___id": "T000002R503508",
+      "___id": "T000002R503515",
       "___s": true
     },
     {
@@ -5514,7 +5514,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128191",
+          "id": "astnode101128271",
           "name": "timestamp",
           "type": "Literal",
           "value": null
@@ -5532,7 +5532,7 @@
       "kind": "member",
       "memberof": "Header",
       "scope": "instance",
-      "___id": "T000002R503509",
+      "___id": "T000002R503516",
       "___s": true
     },
     {
@@ -5547,7 +5547,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128193",
+          "id": "astnode101128273",
           "name": "channel",
           "type": "Literal",
           "value": 0
@@ -5565,7 +5565,7 @@
       "kind": "member",
       "memberof": "Header",
       "scope": "instance",
-      "___id": "T000002R503510",
+      "___id": "T000002R503517",
       "___s": true
     },
     {
@@ -5580,7 +5580,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128195",
+          "id": "astnode101128275",
           "name": "destinationAddress",
           "type": "Literal",
           "value": 0
@@ -5598,7 +5598,7 @@
       "kind": "member",
       "memberof": "Header",
       "scope": "instance",
-      "___id": "T000002R503511",
+      "___id": "T000002R503518",
       "___s": true
     },
     {
@@ -5613,7 +5613,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128197",
+          "id": "astnode101128277",
           "name": "sourceAddress",
           "type": "Literal",
           "value": 0
@@ -5631,7 +5631,7 @@
       "kind": "member",
       "memberof": "Header",
       "scope": "instance",
-      "___id": "T000002R503512",
+      "___id": "T000002R503519",
       "___s": true
     },
     {
@@ -5646,7 +5646,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128214",
+          "id": "astnode101128294",
           "name": "Header#toLiveBuffer",
           "type": "MethodDefinition",
           "paramnames": []
@@ -5704,7 +5704,7 @@
       "kind": "function",
       "memberof": "Header",
       "scope": "instance",
-      "___id": "T000002R503515",
+      "___id": "T000002R503522",
       "___s": true
     },
     {
@@ -5719,7 +5719,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128222",
+          "id": "astnode101128302",
           "name": "Header#getProtocolVersion",
           "type": "MethodDefinition",
           "paramnames": []
@@ -5746,7 +5746,7 @@
       "memberof": "Header",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R503516",
+      "___id": "T000002R503523",
       "___s": true
     },
     {
@@ -5761,7 +5761,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128230",
+          "id": "astnode101128310",
           "name": "Header#getInfo",
           "type": "MethodDefinition",
           "paramnames": []
@@ -5787,7 +5787,7 @@
       "memberof": "Header",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R503517",
+      "___id": "T000002R503524",
       "___s": true
     },
     {
@@ -5802,7 +5802,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128236",
+          "id": "astnode101128316",
           "name": "Header#getId",
           "type": "MethodDefinition",
           "paramnames": []
@@ -5828,7 +5828,7 @@
       "memberof": "Header",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R503518",
+      "___id": "T000002R503525",
       "___s": true
     },
     {
@@ -5843,7 +5843,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128257",
+          "id": "astnode101128337",
           "name": "Header#compareTo",
           "type": "MethodDefinition",
           "paramnames": [
@@ -5881,7 +5881,7 @@
       "kind": "function",
       "memberof": "Header",
       "scope": "instance",
-      "___id": "T000002R503519",
+      "___id": "T000002R503526",
       "___s": true
     },
     {
@@ -5896,7 +5896,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128321",
+          "id": "astnode101128401",
           "name": "Header.fromLiveBuffer",
           "type": "MethodDefinition",
           "paramnames": []
@@ -5951,7 +5951,7 @@
       "kind": "function",
       "memberof": "Header",
       "scope": "static",
-      "___id": "T000002R503524",
+      "___id": "T000002R503531",
       "___s": true
     },
     {
@@ -5966,7 +5966,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128329",
+          "id": "astnode101128409",
           "name": "Header.calcChecksumV0",
           "type": "MethodDefinition",
           "paramnames": [
@@ -6024,7 +6024,7 @@
       "kind": "function",
       "memberof": "Header",
       "scope": "static",
-      "___id": "T000002R503525",
+      "___id": "T000002R503532",
       "___s": true
     },
     {
@@ -6039,7 +6039,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128369",
+          "id": "astnode101128449",
           "name": "Header.calcAndCompareChecksumV0",
           "type": "MethodDefinition",
           "paramnames": [
@@ -6097,7 +6097,7 @@
       "kind": "function",
       "memberof": "Header",
       "scope": "static",
-      "___id": "T000002R503530",
+      "___id": "T000002R503537",
       "___s": true
     },
     {
@@ -6112,7 +6112,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128392",
+          "id": "astnode101128472",
           "name": "Header.calcAndSetChecksumV0",
           "type": "MethodDefinition",
           "paramnames": [
@@ -6170,7 +6170,7 @@
       "kind": "function",
       "memberof": "Header",
       "scope": "static",
-      "___id": "T000002R503532",
+      "___id": "T000002R503539",
       "___s": true
     },
     {
@@ -6185,7 +6185,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128562",
+          "id": "astnode101128642",
           "name": "Header.injectSeptett",
           "type": "MethodDefinition",
           "paramnames": [
@@ -6253,7 +6253,7 @@
       "kind": "function",
       "memberof": "Header",
       "scope": "static",
-      "___id": "T000002R503549",
+      "___id": "T000002R503556",
       "___s": true
     },
     {
@@ -6268,7 +6268,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128625",
+          "id": "astnode101128705",
           "name": "Header.extractSeptett",
           "type": "MethodDefinition",
           "paramnames": [
@@ -6336,7 +6336,7 @@
       "kind": "function",
       "memberof": "Header",
       "scope": "static",
-      "___id": "T000002R503558",
+      "___id": "T000002R503565",
       "___s": true
     },
     {
@@ -6351,7 +6351,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128704",
+          "id": "astnode101128784",
           "name": "timestamp",
           "type": "Literal",
           "value": null
@@ -6369,7 +6369,7 @@
       "kind": "member",
       "memberof": "Header",
       "scope": "instance",
-      "___id": "T000002R503569",
+      "___id": "T000002R503576",
       "___s": true
     },
     {
@@ -6384,7 +6384,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128706",
+          "id": "astnode101128786",
           "name": "channel",
           "type": "Literal",
           "value": 0
@@ -6402,7 +6402,7 @@
       "kind": "member",
       "memberof": "Header",
       "scope": "instance",
-      "___id": "T000002R503570",
+      "___id": "T000002R503577",
       "___s": true
     },
     {
@@ -6417,7 +6417,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128708",
+          "id": "astnode101128788",
           "name": "destinationAddress",
           "type": "Literal",
           "value": 0
@@ -6435,7 +6435,7 @@
       "kind": "member",
       "memberof": "Header",
       "scope": "instance",
-      "___id": "T000002R503571",
+      "___id": "T000002R503578",
       "___s": true
     },
     {
@@ -6450,7 +6450,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128710",
+          "id": "astnode101128790",
           "name": "sourceAddress",
           "type": "Literal",
           "value": 0
@@ -6468,7 +6468,7 @@
       "kind": "member",
       "memberof": "Header",
       "scope": "instance",
-      "___id": "T000002R503572",
+      "___id": "T000002R503579",
       "___s": true
     },
     {
@@ -6483,7 +6483,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128787",
+          "id": "astnode101128867",
           "name": "I18N",
           "type": "MethodDefinition",
           "paramnames": [
@@ -6513,7 +6513,7 @@
       "name": "I18N",
       "longname": "I18N",
       "scope": "global",
-      "___id": "T000002R503591",
+      "___id": "T000002R503598",
       "___s": true
     },
     {
@@ -6528,7 +6528,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128820",
+          "id": "astnode101128900",
           "name": "I18N#sprintf",
           "type": "MethodDefinition",
           "paramnames": []
@@ -6581,7 +6581,7 @@
       "kind": "function",
       "memberof": "I18N",
       "scope": "instance",
-      "___id": "T000002R503595",
+      "___id": "T000002R503602",
       "___s": true
     },
     {
@@ -6596,7 +6596,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128831",
+          "id": "astnode101128911",
           "name": "I18N#vsprintf",
           "type": "MethodDefinition",
           "paramnames": [
@@ -6647,7 +6647,7 @@
       "kind": "function",
       "memberof": "I18N",
       "scope": "instance",
-      "___id": "T000002R503596",
+      "___id": "T000002R503603",
       "___s": true
     },
     {
@@ -6662,7 +6662,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128860",
+          "id": "astnode101128940",
           "name": "I18N#t",
           "type": "MethodDefinition",
           "paramnames": [
@@ -6714,7 +6714,7 @@
       "kind": "function",
       "memberof": "I18N",
       "scope": "instance",
-      "___id": "T000002R503598",
+      "___id": "T000002R503605",
       "___s": true
     },
     {
@@ -6729,7 +6729,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128967",
+          "id": "astnode101129047",
           "name": "I18N#moment",
           "type": "MethodDefinition",
           "paramnames": []
@@ -6769,7 +6769,7 @@
       "kind": "function",
       "memberof": "I18N",
       "scope": "instance",
-      "___id": "T000002R503609",
+      "___id": "T000002R503616",
       "___s": true
     },
     {
@@ -6784,7 +6784,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101129005",
+          "id": "astnode101129085",
           "name": "I18N#momentUtc",
           "type": "MethodDefinition",
           "paramnames": []
@@ -6824,7 +6824,7 @@
       "kind": "function",
       "memberof": "I18N",
       "scope": "instance",
-      "___id": "T000002R503612",
+      "___id": "T000002R503619",
       "___s": true
     },
     {
@@ -6839,7 +6839,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101129076",
+          "id": "astnode101129156",
           "name": "I18N#numeral",
           "type": "MethodDefinition",
           "paramnames": []
@@ -6879,7 +6879,7 @@
       "kind": "function",
       "memberof": "I18N",
       "scope": "instance",
-      "___id": "T000002R503618",
+      "___id": "T000002R503625",
       "___s": true
     },
     {
@@ -6894,7 +6894,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101129406",
+          "id": "astnode101129486",
           "name": "Packet",
           "type": "MethodDefinition",
           "paramnames": [
@@ -6957,7 +6957,7 @@
       "name": "Packet",
       "longname": "Packet",
       "scope": "global",
-      "___id": "T000002R503691",
+      "___id": "T000002R503698",
       "___s": true
     },
     {
@@ -6972,7 +6972,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101129421",
+          "id": "astnode101129501",
           "name": "command",
           "type": "Literal",
           "value": 0
@@ -6989,7 +6989,7 @@
       "kind": "member",
       "memberof": "Packet",
       "scope": "instance",
-      "___id": "T000002R503692",
+      "___id": "T000002R503699",
       "___s": true
     },
     {
@@ -7004,7 +7004,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101129423",
+          "id": "astnode101129503",
           "name": "frameCount",
           "type": "Literal",
           "value": 0
@@ -7021,7 +7021,7 @@
       "kind": "member",
       "memberof": "Packet",
       "scope": "instance",
-      "___id": "T000002R503693",
+      "___id": "T000002R503700",
       "___s": true
     },
     {
@@ -7036,7 +7036,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101129868",
+          "id": "astnode101129948",
           "name": "command",
           "type": "Literal",
           "value": 0
@@ -7053,7 +7053,7 @@
       "kind": "member",
       "memberof": "Packet",
       "scope": "instance",
-      "___id": "T000002R503726",
+      "___id": "T000002R503733",
       "___s": true
     },
     {
@@ -7068,7 +7068,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101129870",
+          "id": "astnode101129950",
           "name": "frameCount",
           "type": "Literal",
           "value": 0
@@ -7085,7 +7085,7 @@
       "kind": "member",
       "memberof": "Packet",
       "scope": "instance",
-      "___id": "T000002R503727",
+      "___id": "T000002R503734",
       "___s": true
     },
     {
@@ -7100,7 +7100,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101129872",
+          "id": "astnode101129952",
           "name": "frameData",
           "type": "Literal",
           "value": null
@@ -7112,7 +7112,7 @@
       "kind": "member",
       "memberof": "Packet",
       "scope": "instance",
-      "___id": "T000002R503728",
+      "___id": "T000002R503735",
       "___s": true
     },
     {
@@ -7127,7 +7127,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101129920",
+          "id": "astnode101130000",
           "name": "SerialConnection",
           "type": "MethodDefinition",
           "paramnames": [
@@ -7168,7 +7168,7 @@
       "name": "SerialConnection",
       "longname": "SerialConnection",
       "scope": "global",
-      "___id": "T000002R503737",
+      "___id": "T000002R503744",
       "___s": true
     },
     {
@@ -7183,7 +7183,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101129935",
+          "id": "astnode101130015",
           "name": "path",
           "type": "Literal",
           "value": null
@@ -7200,7 +7200,7 @@
       "kind": "member",
       "memberof": "SerialConnection",
       "scope": "instance",
-      "___id": "T000002R503738",
+      "___id": "T000002R503745",
       "___s": true
     },
     {
@@ -7215,7 +7215,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101130440",
+          "id": "astnode101130520",
           "name": "path",
           "type": "Literal",
           "value": null
@@ -7232,7 +7232,7 @@
       "kind": "member",
       "memberof": "SerialConnection",
       "scope": "instance",
-      "___id": "T000002R503776",
+      "___id": "T000002R503783",
       "___s": true
     },
     {
@@ -7247,7 +7247,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101130444",
+          "id": "astnode101130524",
           "name": "reconnectTimeout",
           "type": "Literal",
           "value": 0
@@ -7264,7 +7264,7 @@
       "kind": "member",
       "memberof": "SerialConnection",
       "scope": "instance",
-      "___id": "T000002R503778",
+      "___id": "T000002R503785",
       "___s": true
     },
     {
@@ -7279,7 +7279,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101130446",
+          "id": "astnode101130526",
           "name": "reconnectTimeoutIncr",
           "type": "Literal",
           "value": 10000
@@ -7296,7 +7296,7 @@
       "kind": "member",
       "memberof": "SerialConnection",
       "scope": "instance",
-      "___id": "T000002R503779",
+      "___id": "T000002R503786",
       "___s": true
     },
     {
@@ -7311,7 +7311,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101130448",
+          "id": "astnode101130528",
           "name": "reconnectTimeoutMax",
           "type": "Literal",
           "value": 60000
@@ -7328,7 +7328,7 @@
       "kind": "member",
       "memberof": "SerialConnection",
       "scope": "instance",
-      "___id": "T000002R503780",
+      "___id": "T000002R503787",
       "___s": true
     },
     {
@@ -7343,7 +7343,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101130656",
+          "id": "astnode101130736",
           "name": "SerialDataSource",
           "type": "MethodDefinition",
           "paramnames": [
@@ -7364,7 +7364,7 @@
       "longname": "SerialDataSource",
       "scope": "global",
       "params": [],
-      "___id": "T000002R503813",
+      "___id": "T000002R503820",
       "___s": true
     },
     {
@@ -7379,7 +7379,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101130671",
+          "id": "astnode101130751",
           "name": "path",
           "type": "Literal",
           "value": null
@@ -7391,7 +7391,7 @@
       "kind": "member",
       "memberof": "SerialDataSource",
       "scope": "instance",
-      "___id": "T000002R503814",
+      "___id": "T000002R503821",
       "___s": true
     },
     {
@@ -7406,7 +7406,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101130719",
+          "id": "astnode101130799",
           "name": "path",
           "type": "Literal",
           "value": null
@@ -7418,7 +7418,7 @@
       "kind": "member",
       "memberof": "SerialDataSource",
       "scope": "instance",
-      "___id": "T000002R503821",
+      "___id": "T000002R503828",
       "___s": true
     },
     {
@@ -7477,7 +7477,7 @@
       ],
       "longname": "UnitSpecification",
       "scope": "global",
-      "___id": "T000002R504135",
+      "___id": "T000002R504143",
       "___s": true
     },
     {
@@ -7536,7 +7536,7 @@
       ],
       "longname": "TypeSpecification",
       "scope": "global",
-      "___id": "T000002R504136",
+      "___id": "T000002R504144",
       "___s": true
     },
     {
@@ -7613,7 +7613,7 @@
       ],
       "longname": "DeviceSpecification",
       "scope": "global",
-      "___id": "T000002R504137",
+      "___id": "T000002R504145",
       "___s": true
     },
     {
@@ -7726,7 +7726,7 @@
       ],
       "longname": "PacketSpecification",
       "scope": "global",
-      "___id": "T000002R504138",
+      "___id": "T000002R504146",
       "___s": true
     },
     {
@@ -7776,7 +7776,7 @@
       ],
       "longname": "packetFieldGetRawValue",
       "scope": "global",
-      "___id": "T000002R504139",
+      "___id": "T000002R504147",
       "___s": true
     },
     {
@@ -7835,7 +7835,7 @@
       ],
       "longname": "PacketFieldSpecification",
       "scope": "global",
-      "___id": "T000002R504140",
+      "___id": "T000002R504148",
       "___s": true
     },
     {
@@ -7926,7 +7926,7 @@
       ],
       "longname": "PacketField",
       "scope": "global",
-      "___id": "T000002R504141",
+      "___id": "T000002R504149",
       "___s": true
     },
     {
@@ -7997,7 +7997,7 @@
       ],
       "longname": "FilteredPacketFieldSpecification",
       "scope": "global",
-      "___id": "T000002R504142",
+      "___id": "T000002R504150",
       "___s": true
     },
     {
@@ -8110,7 +8110,7 @@
       ],
       "longname": "BlockTypeSection",
       "scope": "global",
-      "___id": "T000002R504143",
+      "___id": "T000002R504151",
       "___s": true
     },
     {
@@ -8125,7 +8125,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101133591",
+          "id": "astnode101133730",
           "name": "Specification",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8171,7 +8171,7 @@
       "name": "Specification",
       "longname": "Specification",
       "scope": "global",
-      "___id": "T000002R504145",
+      "___id": "T000002R504153",
       "___s": true
     },
     {
@@ -8186,7 +8186,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101133602",
+          "id": "astnode101133741",
           "name": "language",
           "type": "Literal",
           "value": "en"
@@ -8203,7 +8203,7 @@
       "kind": "member",
       "memberof": "Specification",
       "scope": "instance",
-      "___id": "T000002R504146",
+      "___id": "T000002R504154",
       "___s": true
     },
     {
@@ -8218,7 +8218,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101133681",
+          "id": "astnode101133820",
           "name": "Specification#getUnitById",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8259,7 +8259,7 @@
       "kind": "function",
       "memberof": "Specification",
       "scope": "instance",
-      "___id": "T000002R504156",
+      "___id": "T000002R504164",
       "___s": true
     },
     {
@@ -8274,7 +8274,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101133694",
+          "id": "astnode101133833",
           "name": "Specification#getTypeById",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8315,7 +8315,7 @@
       "kind": "function",
       "memberof": "Specification",
       "scope": "instance",
-      "___id": "T000002R504157",
+      "___id": "T000002R504165",
       "___s": true
     },
     {
@@ -8377,7 +8377,7 @@
       ],
       "longname": "Specification#getDeviceSpecification",
       "scope": "instance",
-      "___id": "T000002R504158",
+      "___id": "T000002R504166",
       "___s": true
     },
     {
@@ -8392,7 +8392,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101133707",
+          "id": "astnode101133846",
           "name": "Specification#getDeviceSpecification",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8441,7 +8441,7 @@
       "kind": "function",
       "memberof": "Specification",
       "scope": "instance",
-      "___id": "T000002R504159",
+      "___id": "T000002R504167",
       "___s": true
     },
     {
@@ -8510,7 +8510,7 @@
       ],
       "longname": "Specification#getPacketSpecification",
       "scope": "instance",
-      "___id": "T000002R504186",
+      "___id": "T000002R504194",
       "___s": true
     },
     {
@@ -8552,7 +8552,7 @@
       ],
       "longname": "Specification#getPacketSpecification",
       "scope": "instance",
-      "___id": "T000002R504187",
+      "___id": "T000002R504195",
       "___s": true
     },
     {
@@ -8567,7 +8567,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101133983",
+          "id": "astnode101134122",
           "name": "Specification#getPacketSpecification",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8608,7 +8608,7 @@
       "kind": "function",
       "memberof": "Specification",
       "scope": "instance",
-      "___id": "T000002R504188",
+      "___id": "T000002R504196",
       "___s": true
     },
     {
@@ -8659,7 +8659,7 @@
       ],
       "longname": "Specification#getPacketFieldSpecification",
       "scope": "instance",
-      "___id": "T000002R504219",
+      "___id": "T000002R504227",
       "___s": true
     },
     {
@@ -8674,7 +8674,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101134233",
+          "id": "astnode101134372",
           "name": "Specification#getPacketFieldSpecification",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8716,7 +8716,7 @@
       "kind": "function",
       "memberof": "Specification",
       "scope": "instance",
-      "___id": "T000002R504220",
+      "___id": "T000002R504228",
       "___s": true
     },
     {
@@ -8731,7 +8731,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101134333",
+          "id": "astnode101134472",
           "name": "Specification#getRawValue",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8806,7 +8806,7 @@
       "kind": "function",
       "memberof": "Specification",
       "scope": "instance",
-      "___id": "T000002R504227",
+      "___id": "T000002R504235",
       "___s": true
     },
     {
@@ -8821,7 +8821,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101134745",
+          "id": "astnode101134884",
           "name": "Specification#convertRawValue",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8879,7 +8879,7 @@
       "kind": "function",
       "memberof": "Specification",
       "scope": "instance",
-      "___id": "T000002R504253",
+      "___id": "T000002R504261",
       "___s": true
     },
     {
@@ -8894,7 +8894,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101135901",
+          "id": "astnode101136040",
           "name": "Specification#formatTextValueFromRawValue",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8958,7 +8958,7 @@
       "kind": "function",
       "memberof": "Specification",
       "scope": "instance",
-      "___id": "T000002R504340",
+      "___id": "T000002R504348",
       "___s": true
     },
     {
@@ -8973,7 +8973,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101136354",
+          "id": "astnode101136493",
           "name": "Specification#getPacketFieldsForHeaders",
           "type": "MethodDefinition",
           "paramnames": [
@@ -9011,7 +9011,7 @@
       "kind": "function",
       "memberof": "Specification",
       "scope": "instance",
-      "___id": "T000002R504376",
+      "___id": "T000002R504384",
       "___s": true
     },
     {
@@ -9026,7 +9026,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101136897",
+          "id": "astnode101137036",
           "name": "Specification#getBlockTypeSectionsForHeaders",
           "type": "MethodDefinition",
           "paramnames": [
@@ -9064,7 +9064,7 @@
       "kind": "function",
       "memberof": "Specification",
       "scope": "instance",
-      "___id": "T000002R504436",
+      "___id": "T000002R504444",
       "___s": true
     },
     {
@@ -9079,7 +9079,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101137886",
+          "id": "astnode101138025",
           "name": "Specification#getBlockTypePacketSpecificationsForSections",
           "type": "MethodDefinition",
           "paramnames": [
@@ -9117,7 +9117,7 @@
       "kind": "function",
       "memberof": "Specification",
       "scope": "instance",
-      "___id": "T000002R504565",
+      "___id": "T000002R504573",
       "___s": true
     },
     {
@@ -9132,7 +9132,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101138315",
+          "id": "astnode101138454",
           "name": "Specification#getBlockTypeFieldsForSections",
           "type": "MethodDefinition",
           "paramnames": [
@@ -9170,7 +9170,7 @@
       "kind": "function",
       "memberof": "Specification",
       "scope": "instance",
-      "___id": "T000002R504579",
+      "___id": "T000002R504587",
       "___s": true
     },
     {
@@ -9185,7 +9185,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139072",
+          "id": "astnode101139211",
           "name": "language",
           "type": "Literal",
           "value": "en"
@@ -9202,7 +9202,7 @@
       "kind": "member",
       "memberof": "Specification",
       "scope": "instance",
-      "___id": "T000002R504670",
+      "___id": "T000002R504678",
       "___s": true
     },
     {
@@ -9217,7 +9217,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139080",
+          "id": "astnode101139219",
           "name": "i18n",
           "type": "Literal",
           "value": null
@@ -9234,7 +9234,7 @@
       "kind": "member",
       "memberof": "Specification",
       "scope": "instance",
-      "___id": "T000002R504674",
+      "___id": "T000002R504682",
       "___s": true
     },
     {
@@ -9249,7 +9249,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139082",
+          "id": "astnode101139221",
           "name": "specificationData",
           "type": "Literal",
           "value": null
@@ -9266,7 +9266,7 @@
       "kind": "member",
       "memberof": "Specification",
       "scope": "instance",
-      "___id": "T000002R504675",
+      "___id": "T000002R504683",
       "___s": true
     },
     {
@@ -9281,7 +9281,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139123",
+          "id": "astnode101139262",
           "name": "TcpConnectionEndpoint",
           "type": "MethodDefinition",
           "paramnames": [
@@ -9331,7 +9331,7 @@
       "name": "TcpConnectionEndpoint",
       "longname": "TcpConnectionEndpoint",
       "scope": "global",
-      "___id": "T000002R504682",
+      "___id": "T000002R504690",
       "___s": true
     },
     {
@@ -9346,7 +9346,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139137",
+          "id": "astnode101139276",
           "name": "port",
           "type": "Literal",
           "value": 7053
@@ -9363,7 +9363,7 @@
       "kind": "member",
       "memberof": "TcpConnectionEndpoint",
       "scope": "instance",
-      "___id": "T000002R504683",
+      "___id": "T000002R504691",
       "___s": true
     },
     {
@@ -9378,7 +9378,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139139",
+          "id": "astnode101139278",
           "name": "channels",
           "type": "Literal",
           "value": null
@@ -9395,7 +9395,7 @@
       "kind": "member",
       "memberof": "TcpConnectionEndpoint",
       "scope": "instance",
-      "___id": "T000002R504684",
+      "___id": "T000002R504692",
       "___s": true
     },
     {
@@ -9410,7 +9410,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139155",
+          "id": "astnode101139294",
           "name": "TcpConnectionEndpoint#start",
           "type": "MethodDefinition",
           "paramnames": []
@@ -9436,7 +9436,7 @@
       "memberof": "TcpConnectionEndpoint",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R504686",
+      "___id": "T000002R504694",
       "___s": true
     },
     {
@@ -9451,7 +9451,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139756",
+          "id": "astnode101139895",
           "name": "port",
           "type": "Literal",
           "value": 7053
@@ -9468,7 +9468,7 @@
       "kind": "member",
       "memberof": "TcpConnectionEndpoint",
       "scope": "instance",
-      "___id": "T000002R504733",
+      "___id": "T000002R504741",
       "___s": true
     },
     {
@@ -9483,7 +9483,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139758",
+          "id": "astnode101139897",
           "name": "channels",
           "type": "Literal",
           "value": null
@@ -9500,7 +9500,7 @@
       "kind": "member",
       "memberof": "TcpConnectionEndpoint",
       "scope": "instance",
-      "___id": "T000002R504734",
+      "___id": "T000002R504742",
       "___s": true
     },
     {
@@ -9515,7 +9515,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139760",
+          "id": "astnode101139899",
           "name": "server",
           "type": "Literal",
           "value": null
@@ -9532,7 +9532,7 @@
       "kind": "member",
       "memberof": "TcpConnectionEndpoint",
       "scope": "instance",
-      "___id": "T000002R504735",
+      "___id": "T000002R504743",
       "___s": true
     },
     {
@@ -9547,7 +9547,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139810",
+          "id": "astnode101139949",
           "name": "TcpConnection",
           "type": "MethodDefinition",
           "paramnames": [
@@ -9624,7 +9624,7 @@
       "name": "TcpConnection",
       "longname": "TcpConnection",
       "scope": "global",
-      "___id": "T000002R504747",
+      "___id": "T000002R504755",
       "___s": true
     },
     {
@@ -9639,7 +9639,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139825",
+          "id": "astnode101139964",
           "name": "host",
           "type": "Literal",
           "value": null
@@ -9656,7 +9656,7 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504748",
+      "___id": "T000002R504756",
       "___s": true
     },
     {
@@ -9671,7 +9671,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139827",
+          "id": "astnode101139966",
           "name": "port",
           "type": "ConditionalExpression",
           "value": ""
@@ -9688,7 +9688,7 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504749",
+      "___id": "T000002R504757",
       "___s": true
     },
     {
@@ -9703,7 +9703,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139836",
+          "id": "astnode101139975",
           "name": "viaTag",
           "type": "Literal",
           "value": null
@@ -9720,7 +9720,7 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504750",
+      "___id": "T000002R504758",
       "___s": true
     },
     {
@@ -9735,7 +9735,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139838",
+          "id": "astnode101139977",
           "name": "password",
           "type": "Literal",
           "value": null
@@ -9752,7 +9752,7 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504751",
+      "___id": "T000002R504759",
       "___s": true
     },
     {
@@ -9767,7 +9767,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139842",
+          "id": "astnode101139981",
           "name": "channel",
           "type": "Literal",
           "value": 0
@@ -9786,7 +9786,7 @@
       "memberof": "TcpConnection",
       "scope": "instance",
       "overrides": "Connection#channel",
-      "___id": "T000002R504753",
+      "___id": "T000002R504761",
       "___s": true
     },
     {
@@ -9801,7 +9801,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139844",
+          "id": "astnode101139983",
           "name": "rawVBusDataOnly",
           "type": "Literal",
           "value": false
@@ -9818,7 +9818,7 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504754",
+      "___id": "T000002R504762",
       "___s": true
     },
     {
@@ -9833,7 +9833,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101140952",
+          "id": "astnode101141091",
           "name": "host",
           "type": "Literal",
           "value": null
@@ -9850,7 +9850,7 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504829",
+      "___id": "T000002R504837",
       "___s": true
     },
     {
@@ -9865,7 +9865,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101140954",
+          "id": "astnode101141093",
           "name": "port",
           "type": "Literal",
           "value": null
@@ -9882,7 +9882,7 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504830",
+      "___id": "T000002R504838",
       "___s": true
     },
     {
@@ -9897,7 +9897,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101140956",
+          "id": "astnode101141095",
           "name": "viaTag",
           "type": "Literal",
           "value": null
@@ -9914,7 +9914,7 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504831",
+      "___id": "T000002R504839",
       "___s": true
     },
     {
@@ -9929,7 +9929,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101140958",
+          "id": "astnode101141097",
           "name": "password",
           "type": "Literal",
           "value": null
@@ -9946,7 +9946,7 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504832",
+      "___id": "T000002R504840",
       "___s": true
     },
     {
@@ -9961,7 +9961,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101140962",
+          "id": "astnode101141101",
           "name": "channel",
           "type": "Literal",
           "value": 0
@@ -9980,7 +9980,7 @@
       "memberof": "TcpConnection",
       "scope": "instance",
       "overrides": "Connection#channel",
-      "___id": "T000002R504834",
+      "___id": "T000002R504842",
       "___s": true
     },
     {
@@ -9995,7 +9995,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101140964",
+          "id": "astnode101141103",
           "name": "rawVBusDataOnly",
           "type": "Literal",
           "value": false
@@ -10012,7 +10012,7 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504835",
+      "___id": "T000002R504843",
       "___s": true
     },
     {
@@ -10027,7 +10027,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101140968",
+          "id": "astnode101141107",
           "name": "reconnectTimeout",
           "type": "Literal",
           "value": 0
@@ -10044,7 +10044,7 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504837",
+      "___id": "T000002R504845",
       "___s": true
     },
     {
@@ -10059,7 +10059,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101140970",
+          "id": "astnode101141109",
           "name": "reconnectTimeoutIncr",
           "type": "Literal",
           "value": 10000
@@ -10076,7 +10076,7 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504838",
+      "___id": "T000002R504846",
       "___s": true
     },
     {
@@ -10091,7 +10091,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101140972",
+          "id": "astnode101141111",
           "name": "reconnectTimeoutMax",
           "type": "Literal",
           "value": 60000
@@ -10108,7 +10108,7 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504839",
+      "___id": "T000002R504847",
       "___s": true
     },
     {
@@ -10123,7 +10123,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101141020",
+          "id": "astnode101141159",
           "name": "TcpDataSourceProvider",
           "type": "MethodDefinition",
           "paramnames": [
@@ -10144,7 +10144,7 @@
       "longname": "TcpDataSourceProvider",
       "scope": "global",
       "params": [],
-      "___id": "T000002R504848",
+      "___id": "T000002R504856",
       "___s": true
     },
     {
@@ -10159,7 +10159,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101141123",
+          "id": "astnode101141262",
           "name": "TcpDataSourceProvider.discoverDevices",
           "type": "MethodDefinition",
           "paramnames": [
@@ -10215,7 +10215,7 @@
       "memberof": "TcpDataSourceProvider",
       "scope": "static",
       "async": true,
-      "___id": "T000002R504864",
+      "___id": "T000002R504872",
       "___s": true
     },
     {
@@ -10230,7 +10230,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101141960",
+          "id": "astnode101142099",
           "name": "TcpDataSource",
           "type": "MethodDefinition",
           "paramnames": [
@@ -10251,7 +10251,7 @@
       "longname": "TcpDataSource",
       "scope": "global",
       "params": [],
-      "___id": "T000002R504935",
+      "___id": "T000002R504943",
       "___s": true
     },
     {
@@ -10266,7 +10266,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101141975",
+          "id": "astnode101142114",
           "name": "host",
           "type": "Literal",
           "value": null
@@ -10283,7 +10283,7 @@
       "kind": "member",
       "memberof": "TcpDataSource",
       "scope": "instance",
-      "___id": "T000002R504936",
+      "___id": "T000002R504944",
       "___s": true
     },
     {
@@ -10298,7 +10298,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101141977",
+          "id": "astnode101142116",
           "name": "port",
           "type": "Literal",
           "value": 7053
@@ -10315,7 +10315,7 @@
       "kind": "member",
       "memberof": "TcpDataSource",
       "scope": "instance",
-      "___id": "T000002R504937",
+      "___id": "T000002R504945",
       "___s": true
     },
     {
@@ -10330,7 +10330,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101141979",
+          "id": "astnode101142118",
           "name": "liveChannel",
           "type": "Literal",
           "value": 0
@@ -10347,7 +10347,7 @@
       "kind": "member",
       "memberof": "TcpDataSource",
       "scope": "instance",
-      "___id": "T000002R504938",
+      "___id": "T000002R504946",
       "___s": true
     },
     {
@@ -10362,7 +10362,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101141981",
+          "id": "astnode101142120",
           "name": "livePassword",
           "type": "Literal",
           "value": "vbus"
@@ -10379,7 +10379,7 @@
       "kind": "member",
       "memberof": "TcpDataSource",
       "scope": "instance",
-      "___id": "T000002R504939",
+      "___id": "T000002R504947",
       "___s": true
     },
     {
@@ -10394,7 +10394,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142051",
+          "id": "astnode101142190",
           "name": "host",
           "type": "Literal",
           "value": null
@@ -10411,7 +10411,7 @@
       "kind": "member",
       "memberof": "TcpDataSource",
       "scope": "instance",
-      "___id": "T000002R504951",
+      "___id": "T000002R504959",
       "___s": true
     },
     {
@@ -10426,7 +10426,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142053",
+          "id": "astnode101142192",
           "name": "port",
           "type": "Literal",
           "value": 7053
@@ -10443,7 +10443,7 @@
       "kind": "member",
       "memberof": "TcpDataSource",
       "scope": "instance",
-      "___id": "T000002R504952",
+      "___id": "T000002R504960",
       "___s": true
     },
     {
@@ -10458,7 +10458,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142055",
+          "id": "astnode101142194",
           "name": "liveChannel",
           "type": "Literal",
           "value": 0
@@ -10475,7 +10475,7 @@
       "kind": "member",
       "memberof": "TcpDataSource",
       "scope": "instance",
-      "___id": "T000002R504953",
+      "___id": "T000002R504961",
       "___s": true
     },
     {
@@ -10490,7 +10490,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142057",
+          "id": "astnode101142196",
           "name": "livePassword",
           "type": "Literal",
           "value": "vbus"
@@ -10507,7 +10507,7 @@
       "kind": "member",
       "memberof": "TcpDataSource",
       "scope": "instance",
-      "___id": "T000002R504954",
+      "___id": "T000002R504962",
       "___s": true
     },
     {
@@ -10522,7 +10522,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142095",
+          "id": "astnode101142234",
           "name": "Telegram",
           "type": "MethodDefinition",
           "paramnames": [
@@ -10553,7 +10553,7 @@
       "name": "Telegram",
       "longname": "Telegram",
       "scope": "global",
-      "___id": "T000002R504961",
+      "___id": "T000002R504969",
       "___s": true
     },
     {
@@ -10568,7 +10568,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142110",
+          "id": "astnode101142249",
           "name": "command",
           "type": "Literal",
           "value": 0
@@ -10585,7 +10585,7 @@
       "kind": "member",
       "memberof": "Telegram",
       "scope": "instance",
-      "___id": "T000002R504962",
+      "___id": "T000002R504970",
       "___s": true
     },
     {
@@ -10600,7 +10600,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142570",
+          "id": "astnode101142709",
           "name": "command",
           "type": "Literal",
           "value": 0
@@ -10617,7 +10617,7 @@
       "kind": "member",
       "memberof": "Telegram",
       "scope": "instance",
-      "___id": "T000002R504997",
+      "___id": "T000002R505005",
       "___s": true
     },
     {
@@ -10632,7 +10632,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142606",
+          "id": "astnode101142745",
           "name": "TextConverter",
           "type": "MethodDefinition",
           "paramnames": [
@@ -10654,7 +10654,7 @@
       "longname": "TextConverter",
       "scope": "global",
       "params": [],
-      "___id": "T000002R505004",
+      "___id": "T000002R505012",
       "___s": true
     },
     {
@@ -10669,7 +10669,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142621",
+          "id": "astnode101142760",
           "name": "columnSeparator",
           "type": "Literal",
           "value": "\t"
@@ -10686,7 +10686,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505005",
+      "___id": "T000002R505013",
       "___s": true
     },
     {
@@ -10701,7 +10701,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142623",
+          "id": "astnode101142762",
           "name": "lineSeparator",
           "type": "Literal",
           "value": "\r\n"
@@ -10718,7 +10718,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505006",
+      "___id": "T000002R505014",
       "___s": true
     },
     {
@@ -10733,7 +10733,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142625",
+          "id": "astnode101142764",
           "name": "separateDateAndTime",
           "type": "Literal",
           "value": false
@@ -10750,7 +10750,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505007",
+      "___id": "T000002R505015",
       "___s": true
     },
     {
@@ -10765,7 +10765,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142627",
+          "id": "astnode101142766",
           "name": "specification",
           "type": "Literal",
           "value": null
@@ -10782,7 +10782,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505008",
+      "___id": "T000002R505016",
       "___s": true
     },
     {
@@ -10797,7 +10797,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142629",
+          "id": "astnode101142768",
           "name": "dateFormat",
           "type": "Literal",
           "value": "L"
@@ -10815,7 +10815,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505009",
+      "___id": "T000002R505017",
       "___s": true
     },
     {
@@ -10830,7 +10830,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142631",
+          "id": "astnode101142770",
           "name": "timeFormat",
           "type": "Literal",
           "value": "HH:mm:ss"
@@ -10848,7 +10848,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505010",
+      "___id": "T000002R505018",
       "___s": true
     },
     {
@@ -10863,7 +10863,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142655",
+          "id": "astnode101142794",
           "name": "TextConverter#reset",
           "type": "MethodDefinition",
           "paramnames": []
@@ -10880,7 +10880,7 @@
       "scope": "instance",
       "params": [],
       "overrides": "Converter#reset",
-      "___id": "T000002R505013",
+      "___id": "T000002R505021",
       "___s": true
     },
     {
@@ -10895,7 +10895,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142665",
+          "id": "astnode101142804",
           "name": "TextConverter#convertHeaderSet",
           "type": "MethodDefinition",
           "paramnames": [
@@ -10923,7 +10923,7 @@
       "memberof": "TextConverter",
       "scope": "instance",
       "overrides": "Converter#convertHeaderSet",
-      "___id": "T000002R505015",
+      "___id": "T000002R505023",
       "___s": true
     },
     {
@@ -10938,7 +10938,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101143017",
+          "id": "astnode101143156",
           "name": "TextConverter#formatDateAndTime",
           "type": "MethodDefinition",
           "paramnames": [
@@ -10987,7 +10987,7 @@
       "kind": "function",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505048",
+      "___id": "T000002R505056",
       "___s": true
     },
     {
@@ -11002,7 +11002,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101143063",
+          "id": "astnode101143202",
           "name": "columnSeparator",
           "type": "Literal",
           "value": "\t"
@@ -11019,7 +11019,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505050",
+      "___id": "T000002R505058",
       "___s": true
     },
     {
@@ -11034,7 +11034,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101143065",
+          "id": "astnode101143204",
           "name": "lineSeparator",
           "type": "Literal",
           "value": "\r\n"
@@ -11051,7 +11051,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505051",
+      "___id": "T000002R505059",
       "___s": true
     },
     {
@@ -11066,7 +11066,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101143067",
+          "id": "astnode101143206",
           "name": "separateDateAndTime",
           "type": "Literal",
           "value": false
@@ -11083,7 +11083,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505052",
+      "___id": "T000002R505060",
       "___s": true
     },
     {
@@ -11098,7 +11098,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101143069",
+          "id": "astnode101143208",
           "name": "specification",
           "type": "Literal",
           "value": null
@@ -11115,7 +11115,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505053",
+      "___id": "T000002R505061",
       "___s": true
     },
     {
@@ -11130,7 +11130,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101143071",
+          "id": "astnode101143210",
           "name": "dateFormat",
           "type": "Literal",
           "value": "L"
@@ -11148,7 +11148,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505054",
+      "___id": "T000002R505062",
       "___s": true
     },
     {
@@ -11163,7 +11163,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101143073",
+          "id": "astnode101143212",
           "name": "timeFormat",
           "type": "Literal",
           "value": "HH:mm:ss"
@@ -11181,7 +11181,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505055",
+      "___id": "T000002R505063",
       "___s": true
     },
     {
@@ -11196,7 +11196,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101143075",
+          "id": "astnode101143214",
           "name": "lastIdList",
           "type": "Literal",
           "value": null
@@ -11213,7 +11213,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505056",
+      "___id": "T000002R505064",
       "___s": true
     },
     {
@@ -11228,7 +11228,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101143089",
+          "id": "astnode101143228",
           "name": "generateGUID",
           "type": "FunctionExpression"
         },
@@ -11246,7 +11246,7 @@
       "kind": "function",
       "memberof": "utils",
       "scope": "static",
-      "___id": "T000002R505059",
+      "___id": "T000002R505067",
       "___s": true
     },
     {
@@ -11261,7 +11261,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101143707",
+          "id": "astnode101143846",
           "name": "VBusRecordingConverter",
           "type": "MethodDefinition",
           "paramnames": [
@@ -11283,7 +11283,7 @@
       "longname": "VBusRecordingConverter",
       "scope": "global",
       "params": [],
-      "___id": "T000002R505102",
+      "___id": "T000002R505110",
       "___s": true
     },
     {
@@ -11345,7 +11345,7 @@
         "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src/utils.js",
         "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src/vbus-recording-converter.js"
       ],
-      "___id": "T000002R505321",
+      "___id": "T000002R505329",
       "___s": true
     },
     {
@@ -11360,7 +11360,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128191",
+          "id": "astnode101128271",
           "name": "timestamp",
           "type": "Literal",
           "value": null
@@ -11381,7 +11381,7 @@
       "inherits": "Header#timestamp",
       "inherited": true,
       "overrides": "Header#timestamp",
-      "___id": "T000002R505322",
+      "___id": "T000002R505330",
       "___s": true
     },
     {
@@ -11396,7 +11396,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128193",
+          "id": "astnode101128273",
           "name": "channel",
           "type": "Literal",
           "value": 0
@@ -11417,7 +11417,7 @@
       "inherits": "Header#channel",
       "inherited": true,
       "overrides": "Header#channel",
-      "___id": "T000002R505323",
+      "___id": "T000002R505331",
       "___s": true
     },
     {
@@ -11432,7 +11432,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128195",
+          "id": "astnode101128275",
           "name": "destinationAddress",
           "type": "Literal",
           "value": 0
@@ -11453,7 +11453,7 @@
       "inherits": "Header#destinationAddress",
       "inherited": true,
       "overrides": "Header#destinationAddress",
-      "___id": "T000002R505324",
+      "___id": "T000002R505332",
       "___s": true
     },
     {
@@ -11468,7 +11468,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128197",
+          "id": "astnode101128277",
           "name": "sourceAddress",
           "type": "Literal",
           "value": 0
@@ -11489,7 +11489,7 @@
       "inherits": "Header#sourceAddress",
       "inherited": true,
       "overrides": "Header#sourceAddress",
-      "___id": "T000002R505325",
+      "___id": "T000002R505333",
       "___s": true
     },
     {
@@ -11504,7 +11504,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128214",
+          "id": "astnode101128294",
           "name": "Header#toLiveBuffer",
           "type": "MethodDefinition",
           "paramnames": []
@@ -11565,7 +11565,7 @@
       "inherits": "Header#toLiveBuffer",
       "inherited": true,
       "overrides": "Header#toLiveBuffer",
-      "___id": "T000002R505326",
+      "___id": "T000002R505334",
       "___s": true
     },
     {
@@ -11580,7 +11580,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128222",
+          "id": "astnode101128302",
           "name": "Header#getProtocolVersion",
           "type": "MethodDefinition",
           "paramnames": []
@@ -11609,7 +11609,7 @@
       "inherits": "Header#getProtocolVersion",
       "inherited": true,
       "overrides": "Header#getProtocolVersion",
-      "___id": "T000002R505327",
+      "___id": "T000002R505335",
       "___s": true
     },
     {
@@ -11624,7 +11624,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128230",
+          "id": "astnode101128310",
           "name": "Header#getInfo",
           "type": "MethodDefinition",
           "paramnames": []
@@ -11651,7 +11651,7 @@
       "scope": "instance",
       "inherits": "Header#getInfo",
       "inherited": true,
-      "___id": "T000002R505328",
+      "___id": "T000002R505336",
       "___s": true
     },
     {
@@ -11666,7 +11666,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128236",
+          "id": "astnode101128316",
           "name": "Header#getId",
           "type": "MethodDefinition",
           "paramnames": []
@@ -11694,7 +11694,7 @@
       "inherits": "Header#getId",
       "inherited": true,
       "overrides": "Header#getId",
-      "___id": "T000002R505329",
+      "___id": "T000002R505337",
       "___s": true
     },
     {
@@ -11709,7 +11709,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128257",
+          "id": "astnode101128337",
           "name": "Header#compareTo",
           "type": "MethodDefinition",
           "paramnames": [
@@ -11750,7 +11750,7 @@
       "inherits": "Header#compareTo",
       "inherited": true,
       "overrides": "Header#compareTo",
-      "___id": "T000002R505330",
+      "___id": "T000002R505338",
       "___s": true
     },
     {
@@ -11765,7 +11765,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128191",
+          "id": "astnode101128271",
           "name": "timestamp",
           "type": "Literal",
           "value": null
@@ -11786,7 +11786,7 @@
       "inherits": "Header#timestamp",
       "inherited": true,
       "overrides": "Header#timestamp",
-      "___id": "T000002R505331",
+      "___id": "T000002R505339",
       "___s": true
     },
     {
@@ -11801,7 +11801,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128193",
+          "id": "astnode101128273",
           "name": "channel",
           "type": "Literal",
           "value": 0
@@ -11822,7 +11822,7 @@
       "inherits": "Header#channel",
       "inherited": true,
       "overrides": "Header#channel",
-      "___id": "T000002R505332",
+      "___id": "T000002R505340",
       "___s": true
     },
     {
@@ -11837,7 +11837,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128195",
+          "id": "astnode101128275",
           "name": "destinationAddress",
           "type": "Literal",
           "value": 0
@@ -11858,7 +11858,7 @@
       "inherits": "Header#destinationAddress",
       "inherited": true,
       "overrides": "Header#destinationAddress",
-      "___id": "T000002R505333",
+      "___id": "T000002R505341",
       "___s": true
     },
     {
@@ -11873,7 +11873,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128197",
+          "id": "astnode101128277",
           "name": "sourceAddress",
           "type": "Literal",
           "value": 0
@@ -11894,7 +11894,7 @@
       "inherits": "Header#sourceAddress",
       "inherited": true,
       "overrides": "Header#sourceAddress",
-      "___id": "T000002R505334",
+      "___id": "T000002R505342",
       "___s": true
     },
     {
@@ -11909,7 +11909,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128214",
+          "id": "astnode101128294",
           "name": "Header#toLiveBuffer",
           "type": "MethodDefinition",
           "paramnames": []
@@ -11970,7 +11970,7 @@
       "inherits": "Header#toLiveBuffer",
       "inherited": true,
       "overrides": "Header#toLiveBuffer",
-      "___id": "T000002R505335",
+      "___id": "T000002R505343",
       "___s": true
     },
     {
@@ -11985,7 +11985,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128222",
+          "id": "astnode101128302",
           "name": "Header#getProtocolVersion",
           "type": "MethodDefinition",
           "paramnames": []
@@ -12014,7 +12014,7 @@
       "inherits": "Header#getProtocolVersion",
       "inherited": true,
       "overrides": "Header#getProtocolVersion",
-      "___id": "T000002R505336",
+      "___id": "T000002R505344",
       "___s": true
     },
     {
@@ -12029,7 +12029,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128230",
+          "id": "astnode101128310",
           "name": "Header#getInfo",
           "type": "MethodDefinition",
           "paramnames": []
@@ -12057,7 +12057,7 @@
       "inherits": "Header#getInfo",
       "inherited": true,
       "overrides": "Header#getInfo",
-      "___id": "T000002R505337",
+      "___id": "T000002R505345",
       "___s": true
     },
     {
@@ -12072,7 +12072,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128236",
+          "id": "astnode101128316",
           "name": "Header#getId",
           "type": "MethodDefinition",
           "paramnames": []
@@ -12100,7 +12100,7 @@
       "inherits": "Header#getId",
       "inherited": true,
       "overrides": "Header#getId",
-      "___id": "T000002R505338",
+      "___id": "T000002R505346",
       "___s": true
     },
     {
@@ -12115,7 +12115,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128257",
+          "id": "astnode101128337",
           "name": "Header#compareTo",
           "type": "MethodDefinition",
           "paramnames": [
@@ -12156,7 +12156,7 @@
       "inherits": "Header#compareTo",
       "inherited": true,
       "overrides": "Header#compareTo",
-      "___id": "T000002R505339",
+      "___id": "T000002R505347",
       "___s": true
     },
     {
@@ -12171,7 +12171,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128191",
+          "id": "astnode101128271",
           "name": "timestamp",
           "type": "Literal",
           "value": null
@@ -12192,7 +12192,7 @@
       "inherits": "Header#timestamp",
       "inherited": true,
       "overrides": "Header#timestamp",
-      "___id": "T000002R505340",
+      "___id": "T000002R505348",
       "___s": true
     },
     {
@@ -12207,7 +12207,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128193",
+          "id": "astnode101128273",
           "name": "channel",
           "type": "Literal",
           "value": 0
@@ -12228,7 +12228,7 @@
       "inherits": "Header#channel",
       "inherited": true,
       "overrides": "Header#channel",
-      "___id": "T000002R505341",
+      "___id": "T000002R505349",
       "___s": true
     },
     {
@@ -12243,7 +12243,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128195",
+          "id": "astnode101128275",
           "name": "destinationAddress",
           "type": "Literal",
           "value": 0
@@ -12264,7 +12264,7 @@
       "inherits": "Header#destinationAddress",
       "inherited": true,
       "overrides": "Header#destinationAddress",
-      "___id": "T000002R505342",
+      "___id": "T000002R505350",
       "___s": true
     },
     {
@@ -12279,7 +12279,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128197",
+          "id": "astnode101128277",
           "name": "sourceAddress",
           "type": "Literal",
           "value": 0
@@ -12300,7 +12300,7 @@
       "inherits": "Header#sourceAddress",
       "inherited": true,
       "overrides": "Header#sourceAddress",
-      "___id": "T000002R505343",
+      "___id": "T000002R505351",
       "___s": true
     },
     {
@@ -12315,7 +12315,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128214",
+          "id": "astnode101128294",
           "name": "Header#toLiveBuffer",
           "type": "MethodDefinition",
           "paramnames": []
@@ -12376,7 +12376,7 @@
       "inherits": "Header#toLiveBuffer",
       "inherited": true,
       "overrides": "Header#toLiveBuffer",
-      "___id": "T000002R505344",
+      "___id": "T000002R505352",
       "___s": true
     },
     {
@@ -12391,7 +12391,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128222",
+          "id": "astnode101128302",
           "name": "Header#getProtocolVersion",
           "type": "MethodDefinition",
           "paramnames": []
@@ -12420,7 +12420,7 @@
       "inherits": "Header#getProtocolVersion",
       "inherited": true,
       "overrides": "Header#getProtocolVersion",
-      "___id": "T000002R505345",
+      "___id": "T000002R505353",
       "___s": true
     },
     {
@@ -12435,7 +12435,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128230",
+          "id": "astnode101128310",
           "name": "Header#getInfo",
           "type": "MethodDefinition",
           "paramnames": []
@@ -12462,7 +12462,7 @@
       "scope": "instance",
       "inherits": "Header#getInfo",
       "inherited": true,
-      "___id": "T000002R505346",
+      "___id": "T000002R505354",
       "___s": true
     },
     {
@@ -12477,7 +12477,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128236",
+          "id": "astnode101128316",
           "name": "Header#getId",
           "type": "MethodDefinition",
           "paramnames": []
@@ -12505,7 +12505,7 @@
       "inherits": "Header#getId",
       "inherited": true,
       "overrides": "Header#getId",
-      "___id": "T000002R505347",
+      "___id": "T000002R505355",
       "___s": true
     },
     {
@@ -12520,7 +12520,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101128257",
+          "id": "astnode101128337",
           "name": "Header#compareTo",
           "type": "MethodDefinition",
           "paramnames": [
@@ -12561,7 +12561,7 @@
       "inherits": "Header#compareTo",
       "inherited": true,
       "overrides": "Header#compareTo",
-      "___id": "T000002R505348",
+      "___id": "T000002R505356",
       "___s": true
     },
     {
@@ -12576,7 +12576,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127436",
+          "id": "astnode101127516",
           "name": "timestamp",
           "type": "Literal",
           "value": null
@@ -12596,7 +12596,7 @@
       "inherits": "HeaderSet#timestamp",
       "inherited": true,
       "overrides": "HeaderSet#timestamp",
-      "___id": "T000002R505349",
+      "___id": "T000002R505357",
       "___s": true
     },
     {
@@ -12611,7 +12611,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127488",
+          "id": "astnode101127568",
           "name": "HeaderSet#containsHeader",
           "type": "MethodDefinition",
           "paramnames": [
@@ -12651,7 +12651,7 @@
       ],
       "inherits": "HeaderSet#containsHeader",
       "inherited": true,
-      "___id": "T000002R505350",
+      "___id": "T000002R505358",
       "___s": true
     },
     {
@@ -12666,7 +12666,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127505",
+          "id": "astnode101127585",
           "name": "HeaderSet#addHeader",
           "type": "MethodDefinition",
           "paramnames": [
@@ -12696,7 +12696,7 @@
       ],
       "inherits": "HeaderSet#addHeader",
       "inherited": true,
-      "___id": "T000002R505351",
+      "___id": "T000002R505359",
       "___s": true
     },
     {
@@ -12721,7 +12721,7 @@
       "scope": "instance",
       "inherits": "HeaderSet#event:addHeader",
       "inherited": true,
-      "___id": "T000002R505352",
+      "___id": "T000002R505360",
       "___s": true
     },
     {
@@ -12736,7 +12736,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127570",
+          "id": "astnode101127650",
           "name": "HeaderSet#addHeaders",
           "type": "MethodDefinition",
           "paramnames": [
@@ -12766,7 +12766,7 @@
       ],
       "inherits": "HeaderSet#addHeaders",
       "inherited": true,
-      "___id": "T000002R505353",
+      "___id": "T000002R505361",
       "___s": true
     },
     {
@@ -12791,7 +12791,7 @@
       "scope": "instance",
       "inherits": "HeaderSet#event:removeHeader",
       "inherited": true,
-      "___id": "T000002R505354",
+      "___id": "T000002R505362",
       "___s": true
     },
     {
@@ -12806,7 +12806,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127642",
+          "id": "astnode101127722",
           "name": "HeaderSet#removeAllHeaders",
           "type": "MethodDefinition",
           "paramnames": []
@@ -12823,7 +12823,7 @@
       "scope": "instance",
       "inherits": "HeaderSet#removeAllHeaders",
       "inherited": true,
-      "___id": "T000002R505355",
+      "___id": "T000002R505363",
       "___s": true
     },
     {
@@ -12838,7 +12838,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127658",
+          "id": "astnode101127738",
           "name": "HeaderSet#removeHeadersOlderThan",
           "type": "MethodDefinition",
           "paramnames": [
@@ -12869,7 +12869,7 @@
       ],
       "inherits": "HeaderSet#removeHeadersOlderThan",
       "inherited": true,
-      "___id": "T000002R505356",
+      "___id": "T000002R505364",
       "___s": true
     },
     {
@@ -12884,7 +12884,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127718",
+          "id": "astnode101127798",
           "name": "HeaderSet#getHeaderCount",
           "type": "MethodDefinition",
           "paramnames": []
@@ -12911,7 +12911,7 @@
       "scope": "instance",
       "inherits": "HeaderSet#getHeaderCount",
       "inherited": true,
-      "___id": "T000002R505357",
+      "___id": "T000002R505365",
       "___s": true
     },
     {
@@ -12926,7 +12926,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127728",
+          "id": "astnode101127808",
           "name": "HeaderSet#getHeaders",
           "type": "MethodDefinition",
           "paramnames": []
@@ -12953,7 +12953,7 @@
       "scope": "instance",
       "inherits": "HeaderSet#getHeaders",
       "inherited": true,
-      "___id": "T000002R505358",
+      "___id": "T000002R505366",
       "___s": true
     },
     {
@@ -12968,7 +12968,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127740",
+          "id": "astnode101127820",
           "name": "HeaderSet#getSortedHeaders",
           "type": "MethodDefinition",
           "paramnames": []
@@ -12995,7 +12995,7 @@
       "scope": "instance",
       "inherits": "HeaderSet#getSortedHeaders",
       "inherited": true,
-      "___id": "T000002R505359",
+      "___id": "T000002R505367",
       "___s": true
     },
     {
@@ -13010,7 +13010,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127794",
+          "id": "astnode101127874",
           "name": "HeaderSet#getId",
           "type": "MethodDefinition",
           "paramnames": []
@@ -13037,7 +13037,7 @@
       "scope": "instance",
       "inherits": "HeaderSet#getId",
       "inherited": true,
-      "___id": "T000002R505360",
+      "___id": "T000002R505368",
       "___s": true
     },
     {
@@ -13052,7 +13052,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127830",
+          "id": "astnode101127910",
           "name": "HeaderSet#getIdHash",
           "type": "MethodDefinition",
           "paramnames": []
@@ -13079,7 +13079,7 @@
       "scope": "instance",
       "inherits": "HeaderSet#getIdHash",
       "inherited": true,
-      "___id": "T000002R505361",
+      "___id": "T000002R505369",
       "___s": true
     },
     {
@@ -13094,7 +13094,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101127891",
+          "id": "astnode101127971",
           "name": "headerList",
           "type": "Literal",
           "value": null
@@ -13113,7 +13113,7 @@
       "scope": "instance",
       "inherits": "HeaderSet#headerList",
       "inherited": true,
-      "___id": "T000002R505362",
+      "___id": "T000002R505370",
       "___s": true
     },
     {
@@ -13146,7 +13146,7 @@
       "inherits": "Converter#reset",
       "inherited": true,
       "overrides": "Converter#reset",
-      "___id": "T000002R505363",
+      "___id": "T000002R505371",
       "___s": true
     },
     {
@@ -13189,7 +13189,7 @@
       "async": true,
       "inherits": "Converter#finish",
       "inherited": true,
-      "___id": "T000002R505364",
+      "___id": "T000002R505372",
       "___s": true
     },
     {
@@ -13235,7 +13235,7 @@
       "inherits": "Converter#convertRawData",
       "inherited": true,
       "overrides": "Converter#convertRawData",
-      "___id": "T000002R505365",
+      "___id": "T000002R505373",
       "___s": true
     },
     {
@@ -13282,7 +13282,7 @@
       "inherits": "Converter#convertComment",
       "inherited": true,
       "overrides": "Converter#convertComment",
-      "___id": "T000002R505366",
+      "___id": "T000002R505374",
       "___s": true
     },
     {
@@ -13328,7 +13328,7 @@
       "inherits": "Converter#convertHeader",
       "inherited": true,
       "overrides": "Converter#convertHeader",
-      "___id": "T000002R505367",
+      "___id": "T000002R505375",
       "___s": true
     },
     {
@@ -13374,7 +13374,7 @@
       "inherits": "Converter#convertHeaderSet",
       "inherited": true,
       "overrides": "Converter#convertHeaderSet",
-      "___id": "T000002R505368",
+      "___id": "T000002R505376",
       "___s": true
     },
     {
@@ -13408,7 +13408,7 @@
       "scope": "instance",
       "inherits": "Converter#objectMode",
       "inherited": true,
-      "___id": "T000002R505369",
+      "___id": "T000002R505377",
       "___s": true
     },
     {
@@ -13451,7 +13451,7 @@
       "async": true,
       "inherits": "Converter#finish",
       "inherited": true,
-      "___id": "T000002R505370",
+      "___id": "T000002R505378",
       "___s": true
     },
     {
@@ -13496,7 +13496,7 @@
       ],
       "inherits": "Converter#convertRawData",
       "inherited": true,
-      "___id": "T000002R505371",
+      "___id": "T000002R505379",
       "___s": true
     },
     {
@@ -13542,7 +13542,7 @@
       ],
       "inherits": "Converter#convertComment",
       "inherited": true,
-      "___id": "T000002R505372",
+      "___id": "T000002R505380",
       "___s": true
     },
     {
@@ -13587,7 +13587,7 @@
       ],
       "inherits": "Converter#convertHeader",
       "inherited": true,
-      "___id": "T000002R505373",
+      "___id": "T000002R505381",
       "___s": true
     },
     {
@@ -13621,7 +13621,7 @@
       "scope": "instance",
       "inherits": "Converter#objectMode",
       "inherited": true,
-      "___id": "T000002R505374",
+      "___id": "T000002R505382",
       "___s": true
     },
     {
@@ -13654,7 +13654,7 @@
       "inherits": "Converter#reset",
       "inherited": true,
       "overrides": "Converter#reset",
-      "___id": "T000002R505375",
+      "___id": "T000002R505383",
       "___s": true
     },
     {
@@ -13698,7 +13698,7 @@
       "inherits": "Converter#finish",
       "inherited": true,
       "overrides": "Converter#finish",
-      "___id": "T000002R505376",
+      "___id": "T000002R505384",
       "___s": true
     },
     {
@@ -13743,7 +13743,7 @@
       ],
       "inherits": "Converter#convertRawData",
       "inherited": true,
-      "___id": "T000002R505377",
+      "___id": "T000002R505385",
       "___s": true
     },
     {
@@ -13789,7 +13789,7 @@
       ],
       "inherits": "Converter#convertComment",
       "inherited": true,
-      "___id": "T000002R505378",
+      "___id": "T000002R505386",
       "___s": true
     },
     {
@@ -13834,7 +13834,7 @@
       ],
       "inherits": "Converter#convertHeader",
       "inherited": true,
-      "___id": "T000002R505379",
+      "___id": "T000002R505387",
       "___s": true
     },
     {
@@ -13880,7 +13880,7 @@
       "inherits": "Converter#convertHeaderSet",
       "inherited": true,
       "overrides": "Converter#convertHeaderSet",
-      "___id": "T000002R505380",
+      "___id": "T000002R505388",
       "___s": true
     },
     {
@@ -13914,7 +13914,7 @@
       "scope": "instance",
       "inherits": "Converter#objectMode",
       "inherited": true,
-      "___id": "T000002R505381",
+      "___id": "T000002R505389",
       "___s": true
     },
     {
@@ -13949,7 +13949,7 @@
       "inherits": "Customizer#id",
       "inherited": true,
       "overrides": "Customizer#id",
-      "___id": "T000002R505382",
+      "___id": "T000002R505390",
       "___s": true
     },
     {
@@ -13984,7 +13984,7 @@
       "inherits": "Customizer#deviceAddress",
       "inherited": true,
       "overrides": "Customizer#deviceAddress",
-      "___id": "T000002R505383",
+      "___id": "T000002R505391",
       "___s": true
     },
     {
@@ -14019,7 +14019,7 @@
       "inherits": "Customizer#optimizer",
       "inherited": true,
       "overrides": "Customizer#optimizer",
-      "___id": "T000002R505384",
+      "___id": "T000002R505392",
       "___s": true
     },
     {
@@ -14084,7 +14084,7 @@
       ],
       "inherits": "Customizer#loadConfiguration",
       "inherited": true,
-      "___id": "T000002R505385",
+      "___id": "T000002R505393",
       "___s": true
     },
     {
@@ -14159,7 +14159,7 @@
       ],
       "inherits": "Customizer#saveConfiguration",
       "inherited": true,
-      "___id": "T000002R505386",
+      "___id": "T000002R505394",
       "___s": true
     },
     {
@@ -14217,7 +14217,7 @@
       ],
       "inherits": "Customizer#_completeConfiguration",
       "inherited": true,
-      "___id": "T000002R505387",
+      "___id": "T000002R505395",
       "___s": true
     },
     {
@@ -14272,7 +14272,7 @@
       ],
       "inherits": "Customizer#_optimizeLoadConfiguration",
       "inherited": true,
-      "___id": "T000002R505388",
+      "___id": "T000002R505396",
       "___s": true
     },
     {
@@ -14337,7 +14337,7 @@
       ],
       "inherits": "Customizer#_optimizeSaveConfiguration",
       "inherited": true,
-      "___id": "T000002R505389",
+      "___id": "T000002R505397",
       "___s": true
     },
     {
@@ -14383,7 +14383,7 @@
       "inherits": "Connection#connect",
       "inherited": true,
       "overrides": "Connection#connect",
-      "___id": "T000002R505390",
+      "___id": "T000002R505398",
       "___s": true
     },
     {
@@ -14417,7 +14417,7 @@
       "inherits": "Connection#disconnect",
       "inherited": true,
       "overrides": "Connection#disconnect",
-      "___id": "T000002R505391",
+      "___id": "T000002R505399",
       "___s": true
     },
     {
@@ -14463,7 +14463,7 @@
       ],
       "inherits": "Connection#send",
       "inherited": true,
-      "___id": "T000002R505392",
+      "___id": "T000002R505400",
       "___s": true
     },
     {
@@ -14586,7 +14586,7 @@
       ],
       "inherits": "Connection#transceive",
       "inherited": true,
-      "___id": "T000002R505393",
+      "___id": "T000002R505401",
       "___s": true
     },
     {
@@ -14642,7 +14642,7 @@
       ],
       "inherits": "Connection#waitForFreeBus",
       "inherited": true,
-      "___id": "T000002R505394",
+      "___id": "T000002R505402",
       "___s": true
     },
     {
@@ -14716,7 +14716,7 @@
       ],
       "inherits": "Connection#releaseBus",
       "inherited": true,
-      "___id": "T000002R505395",
+      "___id": "T000002R505403",
       "___s": true
     },
     {
@@ -14820,7 +14820,7 @@
       ],
       "inherits": "Connection#getValueById",
       "inherited": true,
-      "___id": "T000002R505396",
+      "___id": "T000002R505404",
       "___s": true
     },
     {
@@ -14934,7 +14934,7 @@
       ],
       "inherits": "Connection#setValueById",
       "inherited": true,
-      "___id": "T000002R505397",
+      "___id": "T000002R505405",
       "___s": true
     },
     {
@@ -15038,7 +15038,7 @@
       ],
       "inherits": "Connection#getValueIdHashById",
       "inherited": true,
-      "___id": "T000002R505398",
+      "___id": "T000002R505406",
       "___s": true
     },
     {
@@ -15142,7 +15142,7 @@
       ],
       "inherits": "Connection#getValueIdByIdHash",
       "inherited": true,
-      "___id": "T000002R505399",
+      "___id": "T000002R505407",
       "___s": true
     },
     {
@@ -15236,7 +15236,7 @@
       ],
       "inherits": "Connection#getCaps1",
       "inherited": true,
-      "___id": "T000002R505400",
+      "___id": "T000002R505408",
       "___s": true
     },
     {
@@ -15340,7 +15340,7 @@
       ],
       "inherits": "Connection#beginBulkValueTransaction",
       "inherited": true,
-      "___id": "T000002R505401",
+      "___id": "T000002R505409",
       "___s": true
     },
     {
@@ -15434,7 +15434,7 @@
       ],
       "inherits": "Connection#commitBulkValueTransaction",
       "inherited": true,
-      "___id": "T000002R505402",
+      "___id": "T000002R505410",
       "___s": true
     },
     {
@@ -15528,7 +15528,7 @@
       ],
       "inherits": "Connection#rollbackBulkValueTransaction",
       "inherited": true,
-      "___id": "T000002R505403",
+      "___id": "T000002R505411",
       "___s": true
     },
     {
@@ -15642,7 +15642,7 @@
       ],
       "inherits": "Connection#setBulkValueById",
       "inherited": true,
-      "___id": "T000002R505404",
+      "___id": "T000002R505412",
       "___s": true
     },
     {
@@ -15683,7 +15683,7 @@
       "scope": "instance",
       "inherits": "Connection#createConnectedPromise",
       "inherited": true,
-      "___id": "T000002R505405",
+      "___id": "T000002R505413",
       "___s": true
     },
     {
@@ -15717,7 +15717,7 @@
       "scope": "instance",
       "inherits": "Connection#dataSource",
       "inherited": true,
-      "___id": "T000002R505406",
+      "___id": "T000002R505414",
       "___s": true
     },
     {
@@ -15751,7 +15751,7 @@
       "scope": "instance",
       "inherits": "Connection#channel",
       "inherited": true,
-      "___id": "T000002R505407",
+      "___id": "T000002R505415",
       "___s": true
     },
     {
@@ -15785,7 +15785,7 @@
       "scope": "instance",
       "inherits": "Connection#selfAddress",
       "inherited": true,
-      "___id": "T000002R505408",
+      "___id": "T000002R505416",
       "___s": true
     },
     {
@@ -15819,7 +15819,7 @@
       "scope": "instance",
       "inherits": "Connection#connectionState",
       "inherited": true,
-      "___id": "T000002R505409",
+      "___id": "T000002R505417",
       "___s": true
     },
     {
@@ -15853,7 +15853,7 @@
       "scope": "instance",
       "inherits": "Connection#rxBuffer",
       "inherited": true,
-      "___id": "T000002R505410",
+      "___id": "T000002R505418",
       "___s": true
     },
     {
@@ -15899,7 +15899,7 @@
       "inherits": "Connection#connect",
       "inherited": true,
       "overrides": "Connection#connect",
-      "___id": "T000002R505411",
+      "___id": "T000002R505419",
       "___s": true
     },
     {
@@ -15933,7 +15933,7 @@
       "inherits": "Connection#disconnect",
       "inherited": true,
       "overrides": "Connection#disconnect",
-      "___id": "T000002R505412",
+      "___id": "T000002R505420",
       "___s": true
     },
     {
@@ -15979,7 +15979,7 @@
       ],
       "inherits": "Connection#send",
       "inherited": true,
-      "___id": "T000002R505413",
+      "___id": "T000002R505421",
       "___s": true
     },
     {
@@ -16102,7 +16102,7 @@
       ],
       "inherits": "Connection#transceive",
       "inherited": true,
-      "___id": "T000002R505414",
+      "___id": "T000002R505422",
       "___s": true
     },
     {
@@ -16158,7 +16158,7 @@
       ],
       "inherits": "Connection#waitForFreeBus",
       "inherited": true,
-      "___id": "T000002R505415",
+      "___id": "T000002R505423",
       "___s": true
     },
     {
@@ -16232,7 +16232,7 @@
       ],
       "inherits": "Connection#releaseBus",
       "inherited": true,
-      "___id": "T000002R505416",
+      "___id": "T000002R505424",
       "___s": true
     },
     {
@@ -16336,7 +16336,7 @@
       ],
       "inherits": "Connection#getValueById",
       "inherited": true,
-      "___id": "T000002R505417",
+      "___id": "T000002R505425",
       "___s": true
     },
     {
@@ -16450,7 +16450,7 @@
       ],
       "inherits": "Connection#setValueById",
       "inherited": true,
-      "___id": "T000002R505418",
+      "___id": "T000002R505426",
       "___s": true
     },
     {
@@ -16554,7 +16554,7 @@
       ],
       "inherits": "Connection#getValueIdHashById",
       "inherited": true,
-      "___id": "T000002R505419",
+      "___id": "T000002R505427",
       "___s": true
     },
     {
@@ -16658,7 +16658,7 @@
       ],
       "inherits": "Connection#getValueIdByIdHash",
       "inherited": true,
-      "___id": "T000002R505420",
+      "___id": "T000002R505428",
       "___s": true
     },
     {
@@ -16752,7 +16752,7 @@
       ],
       "inherits": "Connection#getCaps1",
       "inherited": true,
-      "___id": "T000002R505421",
+      "___id": "T000002R505429",
       "___s": true
     },
     {
@@ -16856,7 +16856,7 @@
       ],
       "inherits": "Connection#beginBulkValueTransaction",
       "inherited": true,
-      "___id": "T000002R505422",
+      "___id": "T000002R505430",
       "___s": true
     },
     {
@@ -16950,7 +16950,7 @@
       ],
       "inherits": "Connection#commitBulkValueTransaction",
       "inherited": true,
-      "___id": "T000002R505423",
+      "___id": "T000002R505431",
       "___s": true
     },
     {
@@ -17044,7 +17044,7 @@
       ],
       "inherits": "Connection#rollbackBulkValueTransaction",
       "inherited": true,
-      "___id": "T000002R505424",
+      "___id": "T000002R505432",
       "___s": true
     },
     {
@@ -17158,7 +17158,7 @@
       ],
       "inherits": "Connection#setBulkValueById",
       "inherited": true,
-      "___id": "T000002R505425",
+      "___id": "T000002R505433",
       "___s": true
     },
     {
@@ -17199,7 +17199,7 @@
       "scope": "instance",
       "inherits": "Connection#createConnectedPromise",
       "inherited": true,
-      "___id": "T000002R505426",
+      "___id": "T000002R505434",
       "___s": true
     },
     {
@@ -17233,7 +17233,7 @@
       "scope": "instance",
       "inherits": "Connection#dataSource",
       "inherited": true,
-      "___id": "T000002R505427",
+      "___id": "T000002R505435",
       "___s": true
     },
     {
@@ -17267,7 +17267,7 @@
       "scope": "instance",
       "inherits": "Connection#selfAddress",
       "inherited": true,
-      "___id": "T000002R505428",
+      "___id": "T000002R505436",
       "___s": true
     },
     {
@@ -17301,7 +17301,7 @@
       "scope": "instance",
       "inherits": "Connection#connectionState",
       "inherited": true,
-      "___id": "T000002R505429",
+      "___id": "T000002R505437",
       "___s": true
     },
     {
@@ -17335,7 +17335,7 @@
       "scope": "instance",
       "inherits": "Connection#rxBuffer",
       "inherited": true,
-      "___id": "T000002R505430",
+      "___id": "T000002R505438",
       "___s": true
     }
   ]
