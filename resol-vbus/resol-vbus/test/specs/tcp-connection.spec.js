@@ -18,7 +18,7 @@ const {
 async function testConnection(callback) {
     const endpoint = new TcpConnectionEndpoint({
         port: 0,
-        channels: [ null, null, null, null, null, null, null, null, null, "Test" ],
+        channels: [ null, null, null, null, null, null, null, null, null, 'Test' ],
     });
 
     const infos = [];
@@ -91,6 +91,7 @@ describe('TcpConnection', () => {
         reconnectTimeout: 0,
         reconnectTimeoutIncr: 10000,
         reconnectTimeoutMax: 60000,
+        disableReconnect: false,
         constructor: Function,
         connect: Function,
         disconnect: Function,
@@ -113,9 +114,10 @@ describe('TcpConnection', () => {
                 'channel',
                 'rawVBusDataOnly',
                 'tlsOptions',
+                'disableReconnect',
 
                 'selfAddress',
-
+            ], [
                 // base class related
                 '_events',
                 '_eventsCount',
@@ -133,6 +135,7 @@ describe('TcpConnection', () => {
             expect(connection.channel).toBe(0);
             expect(connection.rawVBusDataOnly).toBe(false);
             expect(connection.tlsOptions).toBe(null);
+            expect(connection.disableReconnect).toBe(false);
             expect(connection.selfAddress).toBe(0x0020);
         });
 
@@ -146,6 +149,7 @@ describe('TcpConnection', () => {
                 channel: '9',
                 rawVBusDataOnly: true,
                 tlsOptions: {},
+                disableReconnect: true,
                 selfAddress: 0x0022,
                 junk: 'JUNK',
             };
@@ -160,6 +164,7 @@ describe('TcpConnection', () => {
             expect(connection.channel).toBe(options.channel);
             expect(connection.rawVBusDataOnly).toBe(options.rawVBusDataOnly);
             expect(connection.tlsOptions).toBe(options.tlsOptions);
+            expect(connection.disableReconnect).toBe(options.disableReconnect);
             expect(connection.selfAddress).toBe(options.selfAddress);
             expect(connection.junk).toBe(undefined);
         });

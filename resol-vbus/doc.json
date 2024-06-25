@@ -4313,8 +4313,8 @@
       "comment": "/**\n     * Reference to the Specification instance that is used for the binary -> text conversion.\n     * @type {Specification}\n     */",
       "meta": {
         "range": [
-          9682,
-          9701
+          9670,
+          9689
         ],
         "filename": "dlx-json-converter.js",
         "lineno": 305,
@@ -7119,11 +7119,11 @@
       "comment": "/**\n     * Creates a new SerialConnection instance and optionally initialized its member with the given values.\n     *\n     * @constructs\n     * @augments Connection\n     * @param {object} options Initialization values\n     * @param {string} options.path See {@link SerialConnection#path}\n     *\n     * @classdesc\n     * The SerialConnection class provides asscess to a VBus live data stream using a serial port.\n     */",
       "meta": {
         "range": [
-          803,
-          1112
+          856,
+          1165
         ],
         "filename": "serial-connection.js",
-        "lineno": 29,
+        "lineno": 30,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
@@ -7175,11 +7175,11 @@
       "comment": "/**\n            * The path to the serial port.\n            * @type {string}\n            */",
       "meta": {
         "range": [
-          1053,
-          1063
+          1106,
+          1116
         ],
         "filename": "serial-connection.js",
-        "lineno": 38,
+        "lineno": 39,
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
@@ -7207,15 +7207,15 @@
       "comment": "/**\n     * The path to the serial port.\n     * @type {string}\n     */",
       "meta": {
         "range": [
-          6321,
-          6331
+          6370,
+          6380
         ],
         "filename": "serial-connection.js",
-        "lineno": 206,
+        "lineno": 207,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101130520",
+          "id": "astnode101130518",
           "name": "path",
           "type": "Literal",
           "value": null
@@ -7239,15 +7239,15 @@
       "comment": "/**\n     * Timeout in milliseconds to way between reconnection retries.\n     * @type {number}\n     */",
       "meta": {
         "range": [
-          6465,
-          6484
+          6514,
+          6533
         ],
         "filename": "serial-connection.js",
-        "lineno": 214,
+        "lineno": 215,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101130524",
+          "id": "astnode101130522",
           "name": "reconnectTimeout",
           "type": "Literal",
           "value": 0
@@ -7271,15 +7271,15 @@
       "comment": "/**\n     * Value to increment timeout after every unsuccessful reconnection retry.\n     * @type {number}\n     */",
       "meta": {
         "range": [
-          6608,
-          6635
+          6657,
+          6684
         ],
         "filename": "serial-connection.js",
-        "lineno": 220,
+        "lineno": 221,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101130526",
+          "id": "astnode101130524",
           "name": "reconnectTimeoutIncr",
           "type": "Literal",
           "value": 10000
@@ -7303,15 +7303,15 @@
       "comment": "/**\n     * Maximum timeout value between unsuccessful reconnection retry.\n     * @type {number}\n     */",
       "meta": {
         "range": [
-          6750,
-          6776
+          6799,
+          6825
         ],
         "filename": "serial-connection.js",
-        "lineno": 226,
+        "lineno": 227,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101130528",
+          "id": "astnode101130526",
           "name": "reconnectTimeoutMax",
           "type": "Literal",
           "value": 60000
@@ -7343,7 +7343,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101130736",
+          "id": "astnode101130734",
           "name": "SerialDataSource",
           "type": "MethodDefinition",
           "paramnames": [
@@ -7379,7 +7379,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101130751",
+          "id": "astnode101130749",
           "name": "path",
           "type": "Literal",
           "value": null
@@ -7406,7 +7406,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101130799",
+          "id": "astnode101130797",
           "name": "path",
           "type": "Literal",
           "value": null
@@ -8125,7 +8125,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101133730",
+          "id": "astnode101133728",
           "name": "Specification",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8186,7 +8186,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101133741",
+          "id": "astnode101133739",
           "name": "language",
           "type": "Literal",
           "value": "en"
@@ -8218,7 +8218,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101133820",
+          "id": "astnode101133818",
           "name": "Specification#getUnitById",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8274,7 +8274,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101133833",
+          "id": "astnode101133831",
           "name": "Specification#getTypeById",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8392,7 +8392,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101133846",
+          "id": "astnode101133844",
           "name": "Specification#getDeviceSpecification",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8567,7 +8567,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101134122",
+          "id": "astnode101134120",
           "name": "Specification#getPacketSpecification",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8674,7 +8674,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101134372",
+          "id": "astnode101134370",
           "name": "Specification#getPacketFieldSpecification",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8731,7 +8731,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101134472",
+          "id": "astnode101134470",
           "name": "Specification#getRawValue",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8821,7 +8821,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101134884",
+          "id": "astnode101134882",
           "name": "Specification#convertRawValue",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8894,7 +8894,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101136040",
+          "id": "astnode101136038",
           "name": "Specification#formatTextValueFromRawValue",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8973,7 +8973,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101136493",
+          "id": "astnode101136491",
           "name": "Specification#getPacketFieldsForHeaders",
           "type": "MethodDefinition",
           "paramnames": [
@@ -9026,7 +9026,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101137036",
+          "id": "astnode101137034",
           "name": "Specification#getBlockTypeSectionsForHeaders",
           "type": "MethodDefinition",
           "paramnames": [
@@ -9079,7 +9079,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101138025",
+          "id": "astnode101138023",
           "name": "Specification#getBlockTypePacketSpecificationsForSections",
           "type": "MethodDefinition",
           "paramnames": [
@@ -9132,7 +9132,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101138454",
+          "id": "astnode101138452",
           "name": "Specification#getBlockTypeFieldsForSections",
           "type": "MethodDefinition",
           "paramnames": [
@@ -9185,7 +9185,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139211",
+          "id": "astnode101139209",
           "name": "language",
           "type": "Literal",
           "value": "en"
@@ -9217,7 +9217,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139219",
+          "id": "astnode101139217",
           "name": "i18n",
           "type": "Literal",
           "value": null
@@ -9249,7 +9249,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139221",
+          "id": "astnode101139219",
           "name": "specificationData",
           "type": "Literal",
           "value": null
@@ -9273,15 +9273,15 @@
       "comment": "/**\n     * Creates a new instance and optionally initializes its members.\n     *\n     * @constructs\n     * @augments EventEmitter\n     * @param {object} options The initialization values for this instance.\n     * @param {number} options.port See {@link TcpConnectionEndpoint#port}\n     * @param {string} options.password See {@link TcpConnectionEndpoint#password}\n     * @param {string[]} options.channels See {@link TcpConnectionEndpoint#channels}\n     *\n     * @classdesc\n     * The TcpConnectionEndpoint can act as the remote side for a TcpConnection.\n     * It supports all the commands that a DL3 connected via VBus.net would\n     * provide as well.\n     *\n     * A `connection` event is emitted whenever an incoming connection passes\n     * the VBus-over-TCP handshake.\n     */",
       "meta": {
         "range": [
-          1054,
-          1791
+          1165,
+          2694
         ],
         "filename": "tcp-connection-endpoint.js",
-        "lineno": 31,
+        "lineno": 38,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139262",
+          "id": "astnode101139274",
           "name": "TcpConnectionEndpoint",
           "type": "MethodDefinition",
           "paramnames": [
@@ -9340,22 +9340,22 @@
       "name": "TcpConnectionEndpoint",
       "longname": "TcpConnectionEndpoint",
       "scope": "global",
-      "___id": "T000002R504690",
+      "___id": "T000002R504692",
       "___s": true
     },
     {
       "comment": "/**\n            * The port number to listen on for incoming connections.\n            * @type {number}\n            */",
       "meta": {
         "range": [
-          1328,
-          1338
+          1439,
+          1449
         ],
         "filename": "tcp-connection-endpoint.js",
-        "lineno": 40,
+        "lineno": 47,
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139276",
+          "id": "astnode101139288",
           "name": "port",
           "type": "Literal",
           "value": 7053
@@ -9372,22 +9372,54 @@
       "kind": "member",
       "memberof": "TcpConnectionEndpoint",
       "scope": "instance",
-      "___id": "T000002R504691",
+      "___id": "T000002R504693",
+      "___s": true
+    },
+    {
+      "comment": "/**\n             * An optional async function that verifies the viaTag provided to the `CONNECT` command.\n             * @type {function}\n             */",
+      "meta": {
+        "range": [
+          1630,
+          1648
+        ],
+        "filename": "tcp-connection-endpoint.js",
+        "lineno": 53,
+        "columnno": 12,
+        "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
+        "code": {
+          "id": "astnode101139290",
+          "name": "verifyViaTag",
+          "type": "Literal",
+          "value": null
+        }
+      },
+      "description": "An optional async function that verifies the viaTag provided to the `CONNECT` command.",
+      "type": {
+        "names": [
+          "function"
+        ]
+      },
+      "name": "verifyViaTag",
+      "longname": "TcpConnectionEndpoint#verifyViaTag",
+      "kind": "member",
+      "memberof": "TcpConnectionEndpoint",
+      "scope": "instance",
+      "___id": "T000002R504694",
       "___s": true
     },
     {
       "comment": "/**\n             * The password to check against if the PASS command is received.\n             * @type {string}\n             */",
       "meta": {
         "range": [
-          1493,
-          1507
+          1803,
+          1817
         ],
         "filename": "tcp-connection-endpoint.js",
-        "lineno": 46,
+        "lineno": 59,
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139278",
+          "id": "astnode101139292",
           "name": "password",
           "type": "Literal",
           "value": null
@@ -9404,22 +9436,54 @@
       "kind": "member",
       "memberof": "TcpConnectionEndpoint",
       "scope": "instance",
-      "___id": "T000002R504692",
+      "___id": "T000002R504695",
+      "___s": true
+    },
+    {
+      "comment": "/**\n             * An optional async function that verifies the password provided to the `PASS` command.\n             * @type {function}\n             */",
+      "meta": {
+        "range": [
+          1997,
+          2017
+        ],
+        "filename": "tcp-connection-endpoint.js",
+        "lineno": 65,
+        "columnno": 12,
+        "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
+        "code": {
+          "id": "astnode101139294",
+          "name": "verifyPassword",
+          "type": "Literal",
+          "value": null
+        }
+      },
+      "description": "An optional async function that verifies the password provided to the `PASS` command.",
+      "type": {
+        "names": [
+          "function"
+        ]
+      },
+      "name": "verifyPassword",
+      "longname": "TcpConnectionEndpoint#verifyPassword",
+      "kind": "member",
+      "memberof": "TcpConnectionEndpoint",
+      "scope": "instance",
+      "___id": "T000002R504696",
       "___s": true
     },
     {
       "comment": "/**\n            * The list of channels to return if the CHANNELLIST command is received.\n            * @type {string[]}\n            */",
       "meta": {
         "range": [
-          1669,
-          1683
+          2179,
+          2193
         ],
         "filename": "tcp-connection-endpoint.js",
-        "lineno": 52,
+        "lineno": 71,
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139280",
+          "id": "astnode101139296",
           "name": "channels",
           "type": "Literal",
           "value": null
@@ -9436,22 +9500,86 @@
       "kind": "member",
       "memberof": "TcpConnectionEndpoint",
       "scope": "instance",
-      "___id": "T000002R504693",
+      "___id": "T000002R504697",
+      "___s": true
+    },
+    {
+      "comment": "/**\n             * An optional async function that verifies the channel provided to the `CHANNEL` command.\n             * @type {function}\n             */",
+      "meta": {
+        "range": [
+          2375,
+          2394
+        ],
+        "filename": "tcp-connection-endpoint.js",
+        "lineno": 77,
+        "columnno": 12,
+        "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
+        "code": {
+          "id": "astnode101139298",
+          "name": "verifyChannel",
+          "type": "Literal",
+          "value": null
+        }
+      },
+      "description": "An optional async function that verifies the channel provided to the `CHANNEL` command.",
+      "type": {
+        "names": [
+          "function"
+        ]
+      },
+      "name": "verifyChannel",
+      "longname": "TcpConnectionEndpoint#verifyChannel",
+      "kind": "member",
+      "memberof": "TcpConnectionEndpoint",
+      "scope": "instance",
+      "___id": "T000002R504698",
+      "___s": true
+    },
+    {
+      "comment": "/**\n             * An optional async function that verifies whether the `DATA` command succeeds.\n             * @type {function}\n             */",
+      "meta": {
+        "range": [
+          2566,
+          2586
+        ],
+        "filename": "tcp-connection-endpoint.js",
+        "lineno": 83,
+        "columnno": 12,
+        "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
+        "code": {
+          "id": "astnode101139300",
+          "name": "verifyDataMode",
+          "type": "Literal",
+          "value": null
+        }
+      },
+      "description": "An optional async function that verifies whether the `DATA` command succeeds.",
+      "type": {
+        "names": [
+          "function"
+        ]
+      },
+      "name": "verifyDataMode",
+      "longname": "TcpConnectionEndpoint#verifyDataMode",
+      "kind": "member",
+      "memberof": "TcpConnectionEndpoint",
+      "scope": "instance",
+      "___id": "T000002R504699",
       "___s": true
     },
     {
       "comment": "/**\n     * Starts the server to listen for incoming connections.\n     *\n     * @return {Promise} A promise that resolves when the server is started.\n     */",
       "meta": {
         "range": [
-          1958,
-          2719
+          2861,
+          3622
         ],
         "filename": "tcp-connection-endpoint.js",
-        "lineno": 66,
+        "lineno": 97,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139296",
+          "id": "astnode101139316",
           "name": "TcpConnectionEndpoint#start",
           "type": "MethodDefinition",
           "paramnames": []
@@ -9477,22 +9605,22 @@
       "memberof": "TcpConnectionEndpoint",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R504695",
+      "___id": "T000002R504701",
       "___s": true
     },
     {
       "comment": "/**\n     * The port number to listen on for incoming connections.\n     * @type {number}\n     */",
       "meta": {
         "range": [
-          8090,
-          8100
+          10790,
+          10800
         ],
         "filename": "tcp-connection-endpoint.js",
-        "lineno": 255,
+        "lineno": 317,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139947",
+          "id": "astnode101140134",
           "name": "port",
           "type": "Literal",
           "value": 7053
@@ -9509,22 +9637,22 @@
       "kind": "member",
       "memberof": "TcpConnectionEndpoint",
       "scope": "instance",
-      "___id": "T000002R504746",
+      "___id": "T000002R504760",
       "___s": true
     },
     {
       "comment": "/**\n     * The list of channels to return if the CHANNELLIST command is received.\n     * @type {string[]}\n     */",
       "meta": {
         "range": [
-          8225,
-          8239
+          10925,
+          10939
         ],
         "filename": "tcp-connection-endpoint.js",
-        "lineno": 261,
+        "lineno": 323,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139949",
+          "id": "astnode101140136",
           "name": "channels",
           "type": "Literal",
           "value": null
@@ -9541,22 +9669,22 @@
       "kind": "member",
       "memberof": "TcpConnectionEndpoint",
       "scope": "instance",
-      "___id": "T000002R504747",
+      "___id": "T000002R504761",
       "___s": true
     },
     {
       "comment": "/**\n     * The Server instance used for listening for incoming connections.\n     * @type {net.Server}\n     */",
       "meta": {
         "range": [
-          8360,
-          8372
+          11060,
+          11072
         ],
         "filename": "tcp-connection-endpoint.js",
-        "lineno": 267,
+        "lineno": 329,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101139951",
+          "id": "astnode101140138",
           "name": "server",
           "type": "Literal",
           "value": null
@@ -9573,22 +9701,22 @@
       "kind": "member",
       "memberof": "TcpConnectionEndpoint",
       "scope": "instance",
-      "___id": "T000002R504748",
+      "___id": "T000002R504762",
       "___s": true
     },
     {
-      "comment": "/**\n     * Creates a new TcpConnection instance and optionally initializes its\n     * members to the given values.\n     *\n     * @constructs\n     * @augments Connection\n     * @param {object} options Initialization values\n     * @param {string} options.host See {@link TcpConnection#host}\n     * @param {number} options.port See {@link TcpConnection#port}\n     * @param {string} options.viaTag See {@link TcpConnection#viaTag}\n     * @param {string} options.password See {@link TcpConnection#password}\n     * @param {boolean} options.rawVBusDataOnly See {@link TcpConnection#rawVBusDataOnly}\n     *\n     * @classdesc\n     * The TcpConnection class is primarily designed to provide access to VBus live data\n     * using the VBus-over-TCP specification. That includes the VBus/LAN adapter, the\n     * Dataloggers (DL2 and DL3) and VBus.net.\n     * In addition to that it can be used to connect to a raw VBus data stream using TCP\n     * (for example provided by a serial-to-LAN gateway).\n     */",
+      "comment": "/**\n     * Creates a new TcpConnection instance and optionally initializes its\n     * members to the given values.\n     *\n     * @constructs\n     * @augments Connection\n     * @param {object} options Initialization values\n     * @param {string} options.host See {@link TcpConnection#host}\n     * @param {number} options.port See {@link TcpConnection#port}\n     * @param {string} options.viaTag See {@link TcpConnection#viaTag}\n     * @param {string} options.password See {@link TcpConnection#password}\n     * @param {boolean} options.rawVBusDataOnly See {@link TcpConnection#rawVBusDataOnly}\n     * @param {boolean} options.disableReconnect See {@link TcpConnection#disableReconnect}\n     *\n     * @classdesc\n     * The TcpConnection class is primarily designed to provide access to VBus live data\n     * using the VBus-over-TCP specification. That includes the VBus/LAN adapter, the\n     * Dataloggers (DL2 and DL3) and VBus.net.\n     * In addition to that it can be used to connect to a raw VBus data stream using TCP\n     * (for example provided by a serial-to-LAN gateway).\n     */",
       "meta": {
         "range": [
-          1364,
-          2590
+          1456,
+          2854
         ],
         "filename": "tcp-connection.js",
-        "lineno": 41,
+        "lineno": 42,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101140001",
+          "id": "astnode101140188",
           "name": "TcpConnection",
           "type": "MethodDefinition",
           "paramnames": [
@@ -9659,28 +9787,37 @@
           },
           "description": "See {@link TcpConnection#rawVBusDataOnly}",
           "name": "options.rawVBusDataOnly"
+        },
+        {
+          "type": {
+            "names": [
+              "boolean"
+            ]
+          },
+          "description": "See {@link TcpConnection#disableReconnect}",
+          "name": "options.disableReconnect"
         }
       ],
       "classdesc": "The TcpConnection class is primarily designed to provide access to VBus live data\nusing the VBus-over-TCP specification. That includes the VBus/LAN adapter, the\nDataloggers (DL2 and DL3) and VBus.net.\nIn addition to that it can be used to connect to a raw VBus data stream using TCP\n(for example provided by a serial-to-LAN gateway).",
       "name": "TcpConnection",
       "longname": "TcpConnection",
       "scope": "global",
-      "___id": "T000002R504760",
+      "___id": "T000002R504774",
       "___s": true
     },
     {
       "comment": "/**\n            * Host name or IP address of the connection target.\n            * @type {string}\n            */",
       "meta": {
         "range": [
-          1632,
-          1642
+          1724,
+          1734
         ],
         "filename": "tcp-connection.js",
-        "lineno": 50,
+        "lineno": 51,
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101140016",
+          "id": "astnode101140203",
           "name": "host",
           "type": "Literal",
           "value": null
@@ -9697,22 +9834,22 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504761",
+      "___id": "T000002R504775",
       "___s": true
     },
     {
       "comment": "/**\n            * Port number of the connection target.\n            * @type {number}\n            */",
       "meta": {
         "range": [
-          1769,
-          1821
+          1861,
+          1913
         ],
         "filename": "tcp-connection.js",
-        "lineno": 56,
+        "lineno": 57,
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101140018",
+          "id": "astnode101140205",
           "name": "port",
           "type": "ConditionalExpression",
           "value": ""
@@ -9729,22 +9866,22 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504762",
+      "___id": "T000002R504776",
       "___s": true
     },
     {
       "comment": "/**\n            * Via tag if connection target is accessed using the VBus.net service.\n            * @type {string}\n            */",
       "meta": {
         "range": [
-          1979,
-          1991
+          2071,
+          2083
         ],
         "filename": "tcp-connection.js",
-        "lineno": 62,
+        "lineno": 63,
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101140027",
+          "id": "astnode101140214",
           "name": "viaTag",
           "type": "Literal",
           "value": null
@@ -9761,22 +9898,22 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504763",
+      "___id": "T000002R504777",
       "___s": true
     },
     {
       "comment": "/**\n            * Password needed to connect to target.\n            * @type {string}\n            */",
       "meta": {
         "range": [
-          2118,
-          2132
+          2210,
+          2224
         ],
         "filename": "tcp-connection.js",
-        "lineno": 68,
+        "lineno": 69,
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101140029",
+          "id": "astnode101140216",
           "name": "password",
           "type": "Literal",
           "value": null
@@ -9793,22 +9930,22 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504764",
+      "___id": "T000002R504778",
       "___s": true
     },
     {
       "comment": "/**\n            * Channel number to connect to.\n            * @type {string|number}\n            */",
       "meta": {
         "range": [
-          2298,
-          2308
+          2390,
+          2400
         ],
         "filename": "tcp-connection.js",
-        "lineno": 76,
+        "lineno": 77,
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101140033",
+          "id": "astnode101140220",
           "name": "channel",
           "type": "Literal",
           "value": 0
@@ -9827,22 +9964,22 @@
       "memberof": "TcpConnection",
       "scope": "instance",
       "overrides": "Connection#channel",
-      "___id": "T000002R504766",
+      "___id": "T000002R504780",
       "___s": true
     },
     {
       "comment": "/**\n            * Indicates that connection does not need to perform login handshake.\n            * Useful for serial-to-LAN converters.\n            * @type {boolean}\n            */",
       "meta": {
         "range": [
-          2517,
-          2539
+          2609,
+          2631
         ],
         "filename": "tcp-connection.js",
-        "lineno": 83,
+        "lineno": 84,
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101140035",
+          "id": "astnode101140222",
           "name": "rawVBusDataOnly",
           "type": "Literal",
           "value": false
@@ -9859,22 +9996,54 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504767",
+      "___id": "T000002R504781",
+      "___s": true
+    },
+    {
+      "comment": "/**\n             * Disable automatic reconnect on connection interruption.\n             * @type {boolean}\n             */",
+      "meta": {
+        "range": [
+          2811,
+          2834
+        ],
+        "filename": "tcp-connection.js",
+        "lineno": 92,
+        "columnno": 12,
+        "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
+        "code": {
+          "id": "astnode101140226",
+          "name": "disableReconnect",
+          "type": "Literal",
+          "value": false
+        }
+      },
+      "description": "Disable automatic reconnect on connection interruption.",
+      "type": {
+        "names": [
+          "boolean"
+        ]
+      },
+      "name": "disableReconnect",
+      "longname": "TcpConnection#disableReconnect",
+      "kind": "member",
+      "memberof": "TcpConnection",
+      "scope": "instance",
+      "___id": "T000002R504783",
       "___s": true
     },
     {
       "comment": "/**\n     * Host name or IP address of the connection target.\n     * @type {string}\n     */",
       "meta": {
         "range": [
-          14466,
-          14476
+          14944,
+          14954
         ],
         "filename": "tcp-connection.js",
-        "lineno": 425,
+        "lineno": 436,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101141143",
+          "id": "astnode101141352",
           "name": "host",
           "type": "Literal",
           "value": null
@@ -9891,22 +10060,22 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504842",
+      "___id": "T000002R504857",
       "___s": true
     },
     {
       "comment": "/**\n     * Port number of the connection target.\n     * @type {number}\n     */",
       "meta": {
         "range": [
-          14566,
-          14576
+          15044,
+          15054
         ],
         "filename": "tcp-connection.js",
-        "lineno": 431,
+        "lineno": 442,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101141145",
+          "id": "astnode101141354",
           "name": "port",
           "type": "Literal",
           "value": null
@@ -9923,22 +10092,22 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504843",
+      "___id": "T000002R504858",
       "___s": true
     },
     {
       "comment": "/**\n     * Via tag if connection target is accessed using the VBus.net service.\n     * @type {string}\n     */",
       "meta": {
         "range": [
-          14697,
-          14709
+          15175,
+          15187
         ],
         "filename": "tcp-connection.js",
-        "lineno": 437,
+        "lineno": 448,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101141147",
+          "id": "astnode101141356",
           "name": "viaTag",
           "type": "Literal",
           "value": null
@@ -9955,22 +10124,22 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504844",
+      "___id": "T000002R504859",
       "___s": true
     },
     {
       "comment": "/**\n     * Password needed to connect to target.\n     * @type {string}\n     */",
       "meta": {
         "range": [
-          14799,
-          14813
+          15277,
+          15291
         ],
         "filename": "tcp-connection.js",
-        "lineno": 443,
+        "lineno": 454,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101141149",
+          "id": "astnode101141358",
           "name": "password",
           "type": "Literal",
           "value": null
@@ -9987,22 +10156,22 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504845",
+      "___id": "T000002R504860",
       "___s": true
     },
     {
       "comment": "/**\n     * Channel number to connect to.\n     * @type {string|number}\n     */",
       "meta": {
         "range": [
-          14934,
-          14944
+          15412,
+          15422
         ],
         "filename": "tcp-connection.js",
-        "lineno": 451,
+        "lineno": 462,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101141153",
+          "id": "astnode101141362",
           "name": "channel",
           "type": "Literal",
           "value": 0
@@ -10021,22 +10190,22 @@
       "memberof": "TcpConnection",
       "scope": "instance",
       "overrides": "Connection#channel",
-      "___id": "T000002R504847",
+      "___id": "T000002R504862",
       "___s": true
     },
     {
       "comment": "/**\n     * Indicates that connection does not need to perform login handshake.\n     * Useful for serial-to-LAN converters.\n     * @type {boolean}\n     */",
       "meta": {
         "range": [
-          15109,
-          15131
+          15587,
+          15609
         ],
         "filename": "tcp-connection.js",
-        "lineno": 458,
+        "lineno": 469,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101141155",
+          "id": "astnode101141364",
           "name": "rawVBusDataOnly",
           "type": "Literal",
           "value": false
@@ -10053,22 +10222,22 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504848",
+      "___id": "T000002R504863",
       "___s": true
     },
     {
       "comment": "/**\n     * Timeout in milliseconds to way between reconnection retries.\n     * @type {number}\n     */",
       "meta": {
         "range": [
-          15267,
-          15286
+          15745,
+          15764
         ],
         "filename": "tcp-connection.js",
-        "lineno": 466,
+        "lineno": 477,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101141159",
+          "id": "astnode101141368",
           "name": "reconnectTimeout",
           "type": "Literal",
           "value": 0
@@ -10085,22 +10254,22 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504850",
+      "___id": "T000002R504865",
       "___s": true
     },
     {
       "comment": "/**\n     * Value to increment timeout after every unsuccessful reconnection retry.\n     * @type {number}\n     */",
       "meta": {
         "range": [
-          15410,
-          15437
+          15888,
+          15915
         ],
         "filename": "tcp-connection.js",
-        "lineno": 472,
+        "lineno": 483,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101141161",
+          "id": "astnode101141370",
           "name": "reconnectTimeoutIncr",
           "type": "Literal",
           "value": 10000
@@ -10117,22 +10286,22 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504851",
+      "___id": "T000002R504866",
       "___s": true
     },
     {
       "comment": "/**\n     * Maximum timeout value between unsuccessful reconnection retry.\n     * @type {number}\n     */",
       "meta": {
         "range": [
-          15552,
-          15578
+          16030,
+          16056
         ],
         "filename": "tcp-connection.js",
-        "lineno": 478,
+        "lineno": 489,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101141163",
+          "id": "astnode101141372",
           "name": "reconnectTimeoutMax",
           "type": "Literal",
           "value": 60000
@@ -10149,22 +10318,54 @@
       "kind": "member",
       "memberof": "TcpConnection",
       "scope": "instance",
-      "___id": "T000002R504852",
+      "___id": "T000002R504867",
+      "___s": true
+    },
+    {
+      "comment": "/**\n     * Disable automatic reconnect on connection interruption.\n     * @type {boolean}\n     */",
+      "meta": {
+        "range": [
+          16165,
+          16188
+        ],
+        "filename": "tcp-connection.js",
+        "lineno": 495,
+        "columnno": 4,
+        "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
+        "code": {
+          "id": "astnode101141374",
+          "name": "disableReconnect",
+          "type": "Literal",
+          "value": false
+        }
+      },
+      "description": "Disable automatic reconnect on connection interruption.",
+      "type": {
+        "names": [
+          "boolean"
+        ]
+      },
+      "name": "disableReconnect",
+      "longname": "TcpConnection#disableReconnect",
+      "kind": "member",
+      "memberof": "TcpConnection",
+      "scope": "instance",
+      "___id": "T000002R504868",
       "___s": true
     },
     {
       "comment": "/**\n     * Creates a new TcpDataSourceProvider instance.\n     *\n     * @constructs\n     * @augments DataSourceProvider\n     */",
       "meta": {
         "range": [
-          519,
-          760
+          1221,
+          1462
         ],
         "filename": "tcp-data-source-provider.js",
-        "lineno": 22,
+        "lineno": 46,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101141211",
+          "id": "astnode101141532",
           "name": "TcpDataSourceProvider",
           "type": "MethodDefinition",
           "paramnames": [
@@ -10185,22 +10386,22 @@
       "longname": "TcpDataSourceProvider",
       "scope": "global",
       "params": [],
-      "___id": "T000002R504861",
+      "___id": "T000002R504887",
       "___s": true
     },
     {
-      "comment": "/**\n     * Discovers devices on the local network.\n     *\n     * @param {object} options\n     * @param {string} options.broadcastAddress IP address to broadcast to\n     * @param {number} options.broadcastPort Port number to broadcast to.\n     * @returns {Promise} A Promise that resolves to an array of device information objects.\n     */",
+      "comment": "/**\n     * Discovers devices on the local network.\n     *\n     * @param {object} options Optional options object\n     * @param {string} options.family Either `IPv4` or `IPv6`. Defaults to 'IPv4'.\n     * @param {string} options.broadcastAddress IP address to broadcast to. Defaults to calculated address for IPv4 and \"ff02::1\" for IPv6.\n     * @param {string} options.localAddress Local IP address to broadcast from. Optional for IPv4, required for IPv6.\n     * @param {string} options.netmask Local IPv4 netmask. Optional for IPv4, ignored for IPv6.\n     * @param {string} options.broadcastInterface Local interface name to broadcast from. Ignored for IPv4, required for IPv6.\n     * @param {number} options.broadcastPort Port number to broadcast to. Defaults to 7053.\n     * @param {number} options.tries Number of broadcasts to send. Defaults to 3.\n     * @param {number} options.timeout Time between broadcast tries. Defaults to 500.\n     * @param {function} options.fetchCallback Callback to fetch information about the device.\n     * @returns {Promise} A Promise that resolves to an array of device information objects.\n     */",
       "meta": {
         "range": [
-          1885,
-          2438
+          3381,
+          3949
         ],
         "filename": "tcp-data-source-provider.js",
-        "lineno": 72,
+        "lineno": 103,
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101141314",
+          "id": "astnode101141635",
           "name": "TcpDataSourceProvider.discoverDevices",
           "type": "MethodDefinition",
           "paramnames": [
@@ -10219,6 +10420,7 @@
               "object"
             ]
           },
+          "description": "Optional options object",
           "name": "options"
         },
         {
@@ -10227,8 +10429,44 @@
               "string"
             ]
           },
-          "description": "IP address to broadcast to",
+          "description": "Either `IPv4` or `IPv6`. Defaults to 'IPv4'.",
+          "name": "options.family"
+        },
+        {
+          "type": {
+            "names": [
+              "string"
+            ]
+          },
+          "description": "IP address to broadcast to. Defaults to calculated address for IPv4 and \"ff02::1\" for IPv6.",
           "name": "options.broadcastAddress"
+        },
+        {
+          "type": {
+            "names": [
+              "string"
+            ]
+          },
+          "description": "Local IP address to broadcast from. Optional for IPv4, required for IPv6.",
+          "name": "options.localAddress"
+        },
+        {
+          "type": {
+            "names": [
+              "string"
+            ]
+          },
+          "description": "Local IPv4 netmask. Optional for IPv4, ignored for IPv6.",
+          "name": "options.netmask"
+        },
+        {
+          "type": {
+            "names": [
+              "string"
+            ]
+          },
+          "description": "Local interface name to broadcast from. Ignored for IPv4, required for IPv6.",
+          "name": "options.broadcastInterface"
         },
         {
           "type": {
@@ -10236,8 +10474,35 @@
               "number"
             ]
           },
-          "description": "Port number to broadcast to.",
+          "description": "Port number to broadcast to. Defaults to 7053.",
           "name": "options.broadcastPort"
+        },
+        {
+          "type": {
+            "names": [
+              "number"
+            ]
+          },
+          "description": "Number of broadcasts to send. Defaults to 3.",
+          "name": "options.tries"
+        },
+        {
+          "type": {
+            "names": [
+              "number"
+            ]
+          },
+          "description": "Time between broadcast tries. Defaults to 500.",
+          "name": "options.timeout"
+        },
+        {
+          "type": {
+            "names": [
+              "function"
+            ]
+          },
+          "description": "Callback to fetch information about the device.",
+          "name": "options.fetchCallback"
         }
       ],
       "returns": [
@@ -10256,7 +10521,297 @@
       "memberof": "TcpDataSourceProvider",
       "scope": "static",
       "async": true,
-      "___id": "T000002R504877",
+      "___id": "T000002R504903",
+      "___s": true
+    },
+    {
+      "comment": "/**\n     * Send device discovery broadcasts using IPv6.\n     *\n     * @param {object} options Optional options object.\n     * @param {string} options.broadcastAddress IP address to broadcast to. Defaults to \"ff02::1\".\n     * @param {string} options.localAddress Local IPv6 address to broadcast from. Required.\n     * @param {string} options.broadcastInterface Local interface name to broadcast from. Required.\n     * @param {number} options.broadcastPort Port number to broadcast to. Defaults to 7053.\n     * @param {number} options.tries Number of broadcasts to send. Defaults to 3.\n     * @param {number} options.timeout Time between broadcast tries. Defaults to 500.\n     * @param {function} options.fetchCallback Callback to fetch information about the device.\n     * @returns { Promise } A Promise that resolves to an array of Promises resolving to the fetched device information.\n     */",
+      "meta": {
+        "range": [
+          4853,
+          7132
+        ],
+        "filename": "tcp-data-source-provider.js",
+        "lineno": 137,
+        "columnno": 4,
+        "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
+        "code": {
+          "id": "astnode101141697",
+          "name": "TcpDataSourceProvider.sendBroadcastIPv6",
+          "type": "MethodDefinition",
+          "paramnames": [
+            "options"
+          ]
+        },
+        "vars": {
+          "": null
+        }
+      },
+      "description": "Send device discovery broadcasts using IPv6.",
+      "params": [
+        {
+          "type": {
+            "names": [
+              "object"
+            ]
+          },
+          "description": "Optional options object.",
+          "name": "options"
+        },
+        {
+          "type": {
+            "names": [
+              "string"
+            ]
+          },
+          "description": "IP address to broadcast to. Defaults to \"ff02::1\".",
+          "name": "options.broadcastAddress"
+        },
+        {
+          "type": {
+            "names": [
+              "string"
+            ]
+          },
+          "description": "Local IPv6 address to broadcast from. Required.",
+          "name": "options.localAddress"
+        },
+        {
+          "type": {
+            "names": [
+              "string"
+            ]
+          },
+          "description": "Local interface name to broadcast from. Required.",
+          "name": "options.broadcastInterface"
+        },
+        {
+          "type": {
+            "names": [
+              "number"
+            ]
+          },
+          "description": "Port number to broadcast to. Defaults to 7053.",
+          "name": "options.broadcastPort"
+        },
+        {
+          "type": {
+            "names": [
+              "number"
+            ]
+          },
+          "description": "Number of broadcasts to send. Defaults to 3.",
+          "name": "options.tries"
+        },
+        {
+          "type": {
+            "names": [
+              "number"
+            ]
+          },
+          "description": "Time between broadcast tries. Defaults to 500.",
+          "name": "options.timeout"
+        },
+        {
+          "type": {
+            "names": [
+              "function"
+            ]
+          },
+          "description": "Callback to fetch information about the device.",
+          "name": "options.fetchCallback"
+        }
+      ],
+      "returns": [
+        {
+          "type": {
+            "names": [
+              "Promise"
+            ]
+          },
+          "description": "A Promise that resolves to an array of Promises resolving to the fetched device information."
+        }
+      ],
+      "name": "sendBroadcastIPv6",
+      "longname": "TcpDataSourceProvider.sendBroadcastIPv6",
+      "kind": "function",
+      "memberof": "TcpDataSourceProvider",
+      "scope": "static",
+      "async": true,
+      "___id": "T000002R504910",
+      "___s": true
+    },
+    {
+      "comment": "/**\n     * Send device discovery broadcasts using IPv4.\n     *\n     * @param {object} options Optional options object.\n     * @param {string} options.broadcastAddress IP address to broadcast to. Defaults to calculated address or \"255.255.255.255\" if no \"netmask\" was provided.\n     * @param {string} options.localAddress Local IP address to broadcast from. Used in conjunction with \"netmask\" to calculate a \"broadcastAddress\" if none was provided explicitly.\n     * @param {string} options.netmask Local IP netmask. Used in conjunction with \"localAddress\" to calculate a \"broadcastAddress\" if none was provided explicitly.\n     * @param {number} options.broadcastPort Port number to broadcast to. Defaults to 7053.\n     * @param {number} options.tries Number of broadcasts to send. Defaults to 3.\n     * @param {number} options.timeout Time between broadcast tries. Defaults to 500.\n     * @param {function} options.fetchCallback Callback to fetch information about the device.\n     * @returns { Promise } A Promise that resolves to an array of Promises resolving to the fetched device information.\n     */",
+      "meta": {
+        "range": [
+          8249,
+          10667
+        ],
+        "filename": "tcp-data-source-provider.js",
+        "lineno": 220,
+        "columnno": 4,
+        "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
+        "code": {
+          "id": "astnode101141979",
+          "name": "TcpDataSourceProvider.sendBroadcast",
+          "type": "MethodDefinition",
+          "paramnames": [
+            "options"
+          ]
+        },
+        "vars": {
+          "": null
+        }
+      },
+      "description": "Send device discovery broadcasts using IPv4.",
+      "params": [
+        {
+          "type": {
+            "names": [
+              "object"
+            ]
+          },
+          "description": "Optional options object.",
+          "name": "options"
+        },
+        {
+          "type": {
+            "names": [
+              "string"
+            ]
+          },
+          "description": "IP address to broadcast to. Defaults to calculated address or \"255.255.255.255\" if no \"netmask\" was provided.",
+          "name": "options.broadcastAddress"
+        },
+        {
+          "type": {
+            "names": [
+              "string"
+            ]
+          },
+          "description": "Local IP address to broadcast from. Used in conjunction with \"netmask\" to calculate a \"broadcastAddress\" if none was provided explicitly.",
+          "name": "options.localAddress"
+        },
+        {
+          "type": {
+            "names": [
+              "string"
+            ]
+          },
+          "description": "Local IP netmask. Used in conjunction with \"localAddress\" to calculate a \"broadcastAddress\" if none was provided explicitly.",
+          "name": "options.netmask"
+        },
+        {
+          "type": {
+            "names": [
+              "number"
+            ]
+          },
+          "description": "Port number to broadcast to. Defaults to 7053.",
+          "name": "options.broadcastPort"
+        },
+        {
+          "type": {
+            "names": [
+              "number"
+            ]
+          },
+          "description": "Number of broadcasts to send. Defaults to 3.",
+          "name": "options.tries"
+        },
+        {
+          "type": {
+            "names": [
+              "number"
+            ]
+          },
+          "description": "Time between broadcast tries. Defaults to 500.",
+          "name": "options.timeout"
+        },
+        {
+          "type": {
+            "names": [
+              "function"
+            ]
+          },
+          "description": "Callback to fetch information about the device.",
+          "name": "options.fetchCallback"
+        }
+      ],
+      "returns": [
+        {
+          "type": {
+            "names": [
+              "Promise"
+            ]
+          },
+          "description": "A Promise that resolves to an array of Promises resolving to the fetched device information."
+        }
+      ],
+      "name": "sendBroadcast",
+      "longname": "TcpDataSourceProvider.sendBroadcast",
+      "kind": "function",
+      "memberof": "TcpDataSourceProvider",
+      "scope": "static",
+      "async": true,
+      "___id": "T000002R504934",
+      "___s": true
+    },
+    {
+      "comment": "/**\n     * Fetch device information using the `/cgi-bin/get_resol_device_information` web API.\n     *\n     * @param {string | object} addressOrOptions Either the IPv4 address as a string or an object for `http.get(options)`.\n     * @returns {Promise} A Promise that resolves to the parsed device information.\n     */",
+      "meta": {
+        "range": [
+          10994,
+          13032
+        ],
+        "filename": "tcp-data-source-provider.js",
+        "lineno": 302,
+        "columnno": 4,
+        "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
+        "code": {
+          "id": "astnode101142274",
+          "name": "TcpDataSourceProvider.fetchDeviceInformation",
+          "type": "MethodDefinition",
+          "paramnames": [
+            "addressOrOptions",
+            "port"
+          ]
+        },
+        "vars": {
+          "": null
+        }
+      },
+      "description": "Fetch device information using the `/cgi-bin/get_resol_device_information` web API.",
+      "params": [
+        {
+          "type": {
+            "names": [
+              "string",
+              "object"
+            ]
+          },
+          "description": "Either the IPv4 address as a string or an object for `http.get(options)`.",
+          "name": "addressOrOptions"
+        }
+      ],
+      "returns": [
+        {
+          "type": {
+            "names": [
+              "Promise"
+            ]
+          },
+          "description": "A Promise that resolves to the parsed device information."
+        }
+      ],
+      "name": "fetchDeviceInformation",
+      "longname": "TcpDataSourceProvider.fetchDeviceInformation",
+      "kind": "function",
+      "memberof": "TcpDataSourceProvider",
+      "scope": "static",
+      "async": true,
+      "___id": "T000002R504959",
       "___s": true
     },
     {
@@ -10271,7 +10826,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142151",
+          "id": "astnode101142563",
           "name": "TcpDataSource",
           "type": "MethodDefinition",
           "paramnames": [
@@ -10292,7 +10847,7 @@
       "longname": "TcpDataSource",
       "scope": "global",
       "params": [],
-      "___id": "T000002R504948",
+      "___id": "T000002R504989",
       "___s": true
     },
     {
@@ -10307,7 +10862,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142166",
+          "id": "astnode101142578",
           "name": "host",
           "type": "Literal",
           "value": null
@@ -10324,7 +10879,7 @@
       "kind": "member",
       "memberof": "TcpDataSource",
       "scope": "instance",
-      "___id": "T000002R504949",
+      "___id": "T000002R504990",
       "___s": true
     },
     {
@@ -10339,7 +10894,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142168",
+          "id": "astnode101142580",
           "name": "port",
           "type": "Literal",
           "value": 7053
@@ -10356,7 +10911,7 @@
       "kind": "member",
       "memberof": "TcpDataSource",
       "scope": "instance",
-      "___id": "T000002R504950",
+      "___id": "T000002R504991",
       "___s": true
     },
     {
@@ -10371,7 +10926,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142170",
+          "id": "astnode101142582",
           "name": "liveChannel",
           "type": "Literal",
           "value": 0
@@ -10388,7 +10943,7 @@
       "kind": "member",
       "memberof": "TcpDataSource",
       "scope": "instance",
-      "___id": "T000002R504951",
+      "___id": "T000002R504992",
       "___s": true
     },
     {
@@ -10403,7 +10958,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142172",
+          "id": "astnode101142584",
           "name": "livePassword",
           "type": "Literal",
           "value": "vbus"
@@ -10420,7 +10975,7 @@
       "kind": "member",
       "memberof": "TcpDataSource",
       "scope": "instance",
-      "___id": "T000002R504952",
+      "___id": "T000002R504993",
       "___s": true
     },
     {
@@ -10435,7 +10990,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142242",
+          "id": "astnode101142654",
           "name": "host",
           "type": "Literal",
           "value": null
@@ -10452,7 +11007,7 @@
       "kind": "member",
       "memberof": "TcpDataSource",
       "scope": "instance",
-      "___id": "T000002R504964",
+      "___id": "T000002R505005",
       "___s": true
     },
     {
@@ -10467,7 +11022,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142244",
+          "id": "astnode101142656",
           "name": "port",
           "type": "Literal",
           "value": 7053
@@ -10484,7 +11039,7 @@
       "kind": "member",
       "memberof": "TcpDataSource",
       "scope": "instance",
-      "___id": "T000002R504965",
+      "___id": "T000002R505006",
       "___s": true
     },
     {
@@ -10499,7 +11054,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142246",
+          "id": "astnode101142658",
           "name": "liveChannel",
           "type": "Literal",
           "value": 0
@@ -10516,7 +11071,7 @@
       "kind": "member",
       "memberof": "TcpDataSource",
       "scope": "instance",
-      "___id": "T000002R504966",
+      "___id": "T000002R505007",
       "___s": true
     },
     {
@@ -10531,7 +11086,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142248",
+          "id": "astnode101142660",
           "name": "livePassword",
           "type": "Literal",
           "value": "vbus"
@@ -10548,7 +11103,7 @@
       "kind": "member",
       "memberof": "TcpDataSource",
       "scope": "instance",
-      "___id": "T000002R504967",
+      "___id": "T000002R505008",
       "___s": true
     },
     {
@@ -10563,7 +11118,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142286",
+          "id": "astnode101142698",
           "name": "Telegram",
           "type": "MethodDefinition",
           "paramnames": [
@@ -10594,7 +11149,7 @@
       "name": "Telegram",
       "longname": "Telegram",
       "scope": "global",
-      "___id": "T000002R504974",
+      "___id": "T000002R505015",
       "___s": true
     },
     {
@@ -10609,7 +11164,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142301",
+          "id": "astnode101142713",
           "name": "command",
           "type": "Literal",
           "value": 0
@@ -10626,7 +11181,7 @@
       "kind": "member",
       "memberof": "Telegram",
       "scope": "instance",
-      "___id": "T000002R504975",
+      "___id": "T000002R505016",
       "___s": true
     },
     {
@@ -10641,7 +11196,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142761",
+          "id": "astnode101143173",
           "name": "command",
           "type": "Literal",
           "value": 0
@@ -10658,7 +11213,7 @@
       "kind": "member",
       "memberof": "Telegram",
       "scope": "instance",
-      "___id": "T000002R505010",
+      "___id": "T000002R505051",
       "___s": true
     },
     {
@@ -10673,7 +11228,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142797",
+          "id": "astnode101143209",
           "name": "TextConverter",
           "type": "MethodDefinition",
           "paramnames": [
@@ -10695,7 +11250,7 @@
       "longname": "TextConverter",
       "scope": "global",
       "params": [],
-      "___id": "T000002R505017",
+      "___id": "T000002R505058",
       "___s": true
     },
     {
@@ -10710,7 +11265,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142812",
+          "id": "astnode101143224",
           "name": "columnSeparator",
           "type": "Literal",
           "value": "\t"
@@ -10727,7 +11282,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505018",
+      "___id": "T000002R505059",
       "___s": true
     },
     {
@@ -10742,7 +11297,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142814",
+          "id": "astnode101143226",
           "name": "lineSeparator",
           "type": "Literal",
           "value": "\r\n"
@@ -10759,7 +11314,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505019",
+      "___id": "T000002R505060",
       "___s": true
     },
     {
@@ -10774,7 +11329,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142816",
+          "id": "astnode101143228",
           "name": "separateDateAndTime",
           "type": "Literal",
           "value": false
@@ -10791,7 +11346,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505020",
+      "___id": "T000002R505061",
       "___s": true
     },
     {
@@ -10806,7 +11361,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142818",
+          "id": "astnode101143230",
           "name": "specification",
           "type": "Literal",
           "value": null
@@ -10823,7 +11378,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505021",
+      "___id": "T000002R505062",
       "___s": true
     },
     {
@@ -10838,7 +11393,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142820",
+          "id": "astnode101143232",
           "name": "dateFormat",
           "type": "Literal",
           "value": "L"
@@ -10856,7 +11411,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505022",
+      "___id": "T000002R505063",
       "___s": true
     },
     {
@@ -10871,7 +11426,7 @@
         "columnno": 12,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142822",
+          "id": "astnode101143234",
           "name": "timeFormat",
           "type": "Literal",
           "value": "HH:mm:ss"
@@ -10889,7 +11444,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505023",
+      "___id": "T000002R505064",
       "___s": true
     },
     {
@@ -10904,7 +11459,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142846",
+          "id": "astnode101143258",
           "name": "TextConverter#reset",
           "type": "MethodDefinition",
           "paramnames": []
@@ -10921,7 +11476,7 @@
       "scope": "instance",
       "params": [],
       "overrides": "Converter#reset",
-      "___id": "T000002R505026",
+      "___id": "T000002R505067",
       "___s": true
     },
     {
@@ -10936,7 +11491,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101142856",
+          "id": "astnode101143268",
           "name": "TextConverter#convertHeaderSet",
           "type": "MethodDefinition",
           "paramnames": [
@@ -10964,7 +11519,7 @@
       "memberof": "TextConverter",
       "scope": "instance",
       "overrides": "Converter#convertHeaderSet",
-      "___id": "T000002R505028",
+      "___id": "T000002R505069",
       "___s": true
     },
     {
@@ -10979,7 +11534,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101143208",
+          "id": "astnode101143620",
           "name": "TextConverter#formatDateAndTime",
           "type": "MethodDefinition",
           "paramnames": [
@@ -11028,7 +11583,7 @@
       "kind": "function",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505061",
+      "___id": "T000002R505102",
       "___s": true
     },
     {
@@ -11043,7 +11598,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101143254",
+          "id": "astnode101143666",
           "name": "columnSeparator",
           "type": "Literal",
           "value": "\t"
@@ -11060,7 +11615,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505063",
+      "___id": "T000002R505104",
       "___s": true
     },
     {
@@ -11075,7 +11630,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101143256",
+          "id": "astnode101143668",
           "name": "lineSeparator",
           "type": "Literal",
           "value": "\r\n"
@@ -11092,7 +11647,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505064",
+      "___id": "T000002R505105",
       "___s": true
     },
     {
@@ -11107,7 +11662,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101143258",
+          "id": "astnode101143670",
           "name": "separateDateAndTime",
           "type": "Literal",
           "value": false
@@ -11124,7 +11679,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505065",
+      "___id": "T000002R505106",
       "___s": true
     },
     {
@@ -11139,7 +11694,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101143260",
+          "id": "astnode101143672",
           "name": "specification",
           "type": "Literal",
           "value": null
@@ -11156,7 +11711,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505066",
+      "___id": "T000002R505107",
       "___s": true
     },
     {
@@ -11171,7 +11726,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101143262",
+          "id": "astnode101143674",
           "name": "dateFormat",
           "type": "Literal",
           "value": "L"
@@ -11189,7 +11744,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505067",
+      "___id": "T000002R505108",
       "___s": true
     },
     {
@@ -11204,7 +11759,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101143264",
+          "id": "astnode101143676",
           "name": "timeFormat",
           "type": "Literal",
           "value": "HH:mm:ss"
@@ -11222,7 +11777,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505068",
+      "___id": "T000002R505109",
       "___s": true
     },
     {
@@ -11237,7 +11792,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101143266",
+          "id": "astnode101143678",
           "name": "lastIdList",
           "type": "Literal",
           "value": null
@@ -11254,7 +11809,7 @@
       "kind": "member",
       "memberof": "TextConverter",
       "scope": "instance",
-      "___id": "T000002R505069",
+      "___id": "T000002R505110",
       "___s": true
     },
     {
@@ -11269,7 +11824,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101143280",
+          "id": "astnode101143692",
           "name": "generateGUID",
           "type": "FunctionExpression"
         },
@@ -11287,7 +11842,7 @@
       "kind": "function",
       "memberof": "utils",
       "scope": "static",
-      "___id": "T000002R505072",
+      "___id": "T000002R505113",
       "___s": true
     },
     {
@@ -11302,7 +11857,7 @@
         "columnno": 4,
         "path": "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src",
         "code": {
-          "id": "astnode101143898",
+          "id": "astnode101144310",
           "name": "VBusRecordingConverter",
           "type": "MethodDefinition",
           "paramnames": [
@@ -11324,7 +11879,7 @@
       "longname": "VBusRecordingConverter",
       "scope": "global",
       "params": [],
-      "___id": "T000002R505115",
+      "___id": "T000002R505156",
       "___s": true
     },
     {
@@ -11386,7 +11941,7 @@
         "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src/utils.js",
         "/Users/daniel/Projects/Privat/resol-vbus-docs/public/resol-vbus/src/vbus-recording-converter.js"
       ],
-      "___id": "T000002R505334",
+      "___id": "T000002R505375",
       "___s": true
     },
     {
@@ -11422,7 +11977,7 @@
       "inherits": "Header#timestamp",
       "inherited": true,
       "overrides": "Header#timestamp",
-      "___id": "T000002R505335",
+      "___id": "T000002R505376",
       "___s": true
     },
     {
@@ -11458,7 +12013,7 @@
       "inherits": "Header#channel",
       "inherited": true,
       "overrides": "Header#channel",
-      "___id": "T000002R505336",
+      "___id": "T000002R505377",
       "___s": true
     },
     {
@@ -11494,7 +12049,7 @@
       "inherits": "Header#destinationAddress",
       "inherited": true,
       "overrides": "Header#destinationAddress",
-      "___id": "T000002R505337",
+      "___id": "T000002R505378",
       "___s": true
     },
     {
@@ -11530,7 +12085,7 @@
       "inherits": "Header#sourceAddress",
       "inherited": true,
       "overrides": "Header#sourceAddress",
-      "___id": "T000002R505338",
+      "___id": "T000002R505379",
       "___s": true
     },
     {
@@ -11606,7 +12161,7 @@
       "inherits": "Header#toLiveBuffer",
       "inherited": true,
       "overrides": "Header#toLiveBuffer",
-      "___id": "T000002R505339",
+      "___id": "T000002R505380",
       "___s": true
     },
     {
@@ -11650,7 +12205,7 @@
       "inherits": "Header#getProtocolVersion",
       "inherited": true,
       "overrides": "Header#getProtocolVersion",
-      "___id": "T000002R505340",
+      "___id": "T000002R505381",
       "___s": true
     },
     {
@@ -11692,7 +12247,7 @@
       "scope": "instance",
       "inherits": "Header#getInfo",
       "inherited": true,
-      "___id": "T000002R505341",
+      "___id": "T000002R505382",
       "___s": true
     },
     {
@@ -11735,7 +12290,7 @@
       "inherits": "Header#getId",
       "inherited": true,
       "overrides": "Header#getId",
-      "___id": "T000002R505342",
+      "___id": "T000002R505383",
       "___s": true
     },
     {
@@ -11791,7 +12346,7 @@
       "inherits": "Header#compareTo",
       "inherited": true,
       "overrides": "Header#compareTo",
-      "___id": "T000002R505343",
+      "___id": "T000002R505384",
       "___s": true
     },
     {
@@ -11827,7 +12382,7 @@
       "inherits": "Header#timestamp",
       "inherited": true,
       "overrides": "Header#timestamp",
-      "___id": "T000002R505344",
+      "___id": "T000002R505385",
       "___s": true
     },
     {
@@ -11863,7 +12418,7 @@
       "inherits": "Header#channel",
       "inherited": true,
       "overrides": "Header#channel",
-      "___id": "T000002R505345",
+      "___id": "T000002R505386",
       "___s": true
     },
     {
@@ -11899,7 +12454,7 @@
       "inherits": "Header#destinationAddress",
       "inherited": true,
       "overrides": "Header#destinationAddress",
-      "___id": "T000002R505346",
+      "___id": "T000002R505387",
       "___s": true
     },
     {
@@ -11935,7 +12490,7 @@
       "inherits": "Header#sourceAddress",
       "inherited": true,
       "overrides": "Header#sourceAddress",
-      "___id": "T000002R505347",
+      "___id": "T000002R505388",
       "___s": true
     },
     {
@@ -12011,7 +12566,7 @@
       "inherits": "Header#toLiveBuffer",
       "inherited": true,
       "overrides": "Header#toLiveBuffer",
-      "___id": "T000002R505348",
+      "___id": "T000002R505389",
       "___s": true
     },
     {
@@ -12055,7 +12610,7 @@
       "inherits": "Header#getProtocolVersion",
       "inherited": true,
       "overrides": "Header#getProtocolVersion",
-      "___id": "T000002R505349",
+      "___id": "T000002R505390",
       "___s": true
     },
     {
@@ -12098,7 +12653,7 @@
       "inherits": "Header#getInfo",
       "inherited": true,
       "overrides": "Header#getInfo",
-      "___id": "T000002R505350",
+      "___id": "T000002R505391",
       "___s": true
     },
     {
@@ -12141,7 +12696,7 @@
       "inherits": "Header#getId",
       "inherited": true,
       "overrides": "Header#getId",
-      "___id": "T000002R505351",
+      "___id": "T000002R505392",
       "___s": true
     },
     {
@@ -12197,7 +12752,7 @@
       "inherits": "Header#compareTo",
       "inherited": true,
       "overrides": "Header#compareTo",
-      "___id": "T000002R505352",
+      "___id": "T000002R505393",
       "___s": true
     },
     {
@@ -12233,7 +12788,7 @@
       "inherits": "Header#timestamp",
       "inherited": true,
       "overrides": "Header#timestamp",
-      "___id": "T000002R505353",
+      "___id": "T000002R505394",
       "___s": true
     },
     {
@@ -12269,7 +12824,7 @@
       "inherits": "Header#channel",
       "inherited": true,
       "overrides": "Header#channel",
-      "___id": "T000002R505354",
+      "___id": "T000002R505395",
       "___s": true
     },
     {
@@ -12305,7 +12860,7 @@
       "inherits": "Header#destinationAddress",
       "inherited": true,
       "overrides": "Header#destinationAddress",
-      "___id": "T000002R505355",
+      "___id": "T000002R505396",
       "___s": true
     },
     {
@@ -12341,7 +12896,7 @@
       "inherits": "Header#sourceAddress",
       "inherited": true,
       "overrides": "Header#sourceAddress",
-      "___id": "T000002R505356",
+      "___id": "T000002R505397",
       "___s": true
     },
     {
@@ -12417,7 +12972,7 @@
       "inherits": "Header#toLiveBuffer",
       "inherited": true,
       "overrides": "Header#toLiveBuffer",
-      "___id": "T000002R505357",
+      "___id": "T000002R505398",
       "___s": true
     },
     {
@@ -12461,7 +13016,7 @@
       "inherits": "Header#getProtocolVersion",
       "inherited": true,
       "overrides": "Header#getProtocolVersion",
-      "___id": "T000002R505358",
+      "___id": "T000002R505399",
       "___s": true
     },
     {
@@ -12503,7 +13058,7 @@
       "scope": "instance",
       "inherits": "Header#getInfo",
       "inherited": true,
-      "___id": "T000002R505359",
+      "___id": "T000002R505400",
       "___s": true
     },
     {
@@ -12546,7 +13101,7 @@
       "inherits": "Header#getId",
       "inherited": true,
       "overrides": "Header#getId",
-      "___id": "T000002R505360",
+      "___id": "T000002R505401",
       "___s": true
     },
     {
@@ -12602,7 +13157,7 @@
       "inherits": "Header#compareTo",
       "inherited": true,
       "overrides": "Header#compareTo",
-      "___id": "T000002R505361",
+      "___id": "T000002R505402",
       "___s": true
     },
     {
@@ -12637,7 +13192,7 @@
       "inherits": "HeaderSet#timestamp",
       "inherited": true,
       "overrides": "HeaderSet#timestamp",
-      "___id": "T000002R505362",
+      "___id": "T000002R505403",
       "___s": true
     },
     {
@@ -12692,7 +13247,7 @@
       ],
       "inherits": "HeaderSet#containsHeader",
       "inherited": true,
-      "___id": "T000002R505363",
+      "___id": "T000002R505404",
       "___s": true
     },
     {
@@ -12737,7 +13292,7 @@
       ],
       "inherits": "HeaderSet#addHeader",
       "inherited": true,
-      "___id": "T000002R505364",
+      "___id": "T000002R505405",
       "___s": true
     },
     {
@@ -12762,7 +13317,7 @@
       "scope": "instance",
       "inherits": "HeaderSet#event:addHeader",
       "inherited": true,
-      "___id": "T000002R505365",
+      "___id": "T000002R505406",
       "___s": true
     },
     {
@@ -12807,7 +13362,7 @@
       ],
       "inherits": "HeaderSet#addHeaders",
       "inherited": true,
-      "___id": "T000002R505366",
+      "___id": "T000002R505407",
       "___s": true
     },
     {
@@ -12832,7 +13387,7 @@
       "scope": "instance",
       "inherits": "HeaderSet#event:removeHeader",
       "inherited": true,
-      "___id": "T000002R505367",
+      "___id": "T000002R505408",
       "___s": true
     },
     {
@@ -12864,7 +13419,7 @@
       "scope": "instance",
       "inherits": "HeaderSet#removeAllHeaders",
       "inherited": true,
-      "___id": "T000002R505368",
+      "___id": "T000002R505409",
       "___s": true
     },
     {
@@ -12910,7 +13465,7 @@
       ],
       "inherits": "HeaderSet#removeHeadersOlderThan",
       "inherited": true,
-      "___id": "T000002R505369",
+      "___id": "T000002R505410",
       "___s": true
     },
     {
@@ -12952,7 +13507,7 @@
       "scope": "instance",
       "inherits": "HeaderSet#getHeaderCount",
       "inherited": true,
-      "___id": "T000002R505370",
+      "___id": "T000002R505411",
       "___s": true
     },
     {
@@ -12994,7 +13549,7 @@
       "scope": "instance",
       "inherits": "HeaderSet#getHeaders",
       "inherited": true,
-      "___id": "T000002R505371",
+      "___id": "T000002R505412",
       "___s": true
     },
     {
@@ -13036,7 +13591,7 @@
       "scope": "instance",
       "inherits": "HeaderSet#getSortedHeaders",
       "inherited": true,
-      "___id": "T000002R505372",
+      "___id": "T000002R505413",
       "___s": true
     },
     {
@@ -13078,7 +13633,7 @@
       "scope": "instance",
       "inherits": "HeaderSet#getId",
       "inherited": true,
-      "___id": "T000002R505373",
+      "___id": "T000002R505414",
       "___s": true
     },
     {
@@ -13120,7 +13675,7 @@
       "scope": "instance",
       "inherits": "HeaderSet#getIdHash",
       "inherited": true,
-      "___id": "T000002R505374",
+      "___id": "T000002R505415",
       "___s": true
     },
     {
@@ -13154,7 +13709,7 @@
       "scope": "instance",
       "inherits": "HeaderSet#headerList",
       "inherited": true,
-      "___id": "T000002R505375",
+      "___id": "T000002R505416",
       "___s": true
     },
     {
@@ -13187,7 +13742,7 @@
       "inherits": "Converter#reset",
       "inherited": true,
       "overrides": "Converter#reset",
-      "___id": "T000002R505376",
+      "___id": "T000002R505417",
       "___s": true
     },
     {
@@ -13230,7 +13785,7 @@
       "async": true,
       "inherits": "Converter#finish",
       "inherited": true,
-      "___id": "T000002R505377",
+      "___id": "T000002R505418",
       "___s": true
     },
     {
@@ -13276,7 +13831,7 @@
       "inherits": "Converter#convertRawData",
       "inherited": true,
       "overrides": "Converter#convertRawData",
-      "___id": "T000002R505378",
+      "___id": "T000002R505419",
       "___s": true
     },
     {
@@ -13323,7 +13878,7 @@
       "inherits": "Converter#convertComment",
       "inherited": true,
       "overrides": "Converter#convertComment",
-      "___id": "T000002R505379",
+      "___id": "T000002R505420",
       "___s": true
     },
     {
@@ -13369,7 +13924,7 @@
       "inherits": "Converter#convertHeader",
       "inherited": true,
       "overrides": "Converter#convertHeader",
-      "___id": "T000002R505380",
+      "___id": "T000002R505421",
       "___s": true
     },
     {
@@ -13415,7 +13970,7 @@
       "inherits": "Converter#convertHeaderSet",
       "inherited": true,
       "overrides": "Converter#convertHeaderSet",
-      "___id": "T000002R505381",
+      "___id": "T000002R505422",
       "___s": true
     },
     {
@@ -13449,7 +14004,7 @@
       "scope": "instance",
       "inherits": "Converter#objectMode",
       "inherited": true,
-      "___id": "T000002R505382",
+      "___id": "T000002R505423",
       "___s": true
     },
     {
@@ -13492,7 +14047,7 @@
       "async": true,
       "inherits": "Converter#finish",
       "inherited": true,
-      "___id": "T000002R505383",
+      "___id": "T000002R505424",
       "___s": true
     },
     {
@@ -13537,7 +14092,7 @@
       ],
       "inherits": "Converter#convertRawData",
       "inherited": true,
-      "___id": "T000002R505384",
+      "___id": "T000002R505425",
       "___s": true
     },
     {
@@ -13583,7 +14138,7 @@
       ],
       "inherits": "Converter#convertComment",
       "inherited": true,
-      "___id": "T000002R505385",
+      "___id": "T000002R505426",
       "___s": true
     },
     {
@@ -13628,7 +14183,7 @@
       ],
       "inherits": "Converter#convertHeader",
       "inherited": true,
-      "___id": "T000002R505386",
+      "___id": "T000002R505427",
       "___s": true
     },
     {
@@ -13662,7 +14217,7 @@
       "scope": "instance",
       "inherits": "Converter#objectMode",
       "inherited": true,
-      "___id": "T000002R505387",
+      "___id": "T000002R505428",
       "___s": true
     },
     {
@@ -13695,7 +14250,7 @@
       "inherits": "Converter#reset",
       "inherited": true,
       "overrides": "Converter#reset",
-      "___id": "T000002R505388",
+      "___id": "T000002R505429",
       "___s": true
     },
     {
@@ -13739,7 +14294,7 @@
       "inherits": "Converter#finish",
       "inherited": true,
       "overrides": "Converter#finish",
-      "___id": "T000002R505389",
+      "___id": "T000002R505430",
       "___s": true
     },
     {
@@ -13784,7 +14339,7 @@
       ],
       "inherits": "Converter#convertRawData",
       "inherited": true,
-      "___id": "T000002R505390",
+      "___id": "T000002R505431",
       "___s": true
     },
     {
@@ -13830,7 +14385,7 @@
       ],
       "inherits": "Converter#convertComment",
       "inherited": true,
-      "___id": "T000002R505391",
+      "___id": "T000002R505432",
       "___s": true
     },
     {
@@ -13875,7 +14430,7 @@
       ],
       "inherits": "Converter#convertHeader",
       "inherited": true,
-      "___id": "T000002R505392",
+      "___id": "T000002R505433",
       "___s": true
     },
     {
@@ -13921,7 +14476,7 @@
       "inherits": "Converter#convertHeaderSet",
       "inherited": true,
       "overrides": "Converter#convertHeaderSet",
-      "___id": "T000002R505393",
+      "___id": "T000002R505434",
       "___s": true
     },
     {
@@ -13955,7 +14510,7 @@
       "scope": "instance",
       "inherits": "Converter#objectMode",
       "inherited": true,
-      "___id": "T000002R505394",
+      "___id": "T000002R505435",
       "___s": true
     },
     {
@@ -13990,7 +14545,7 @@
       "inherits": "Customizer#id",
       "inherited": true,
       "overrides": "Customizer#id",
-      "___id": "T000002R505395",
+      "___id": "T000002R505436",
       "___s": true
     },
     {
@@ -14025,7 +14580,7 @@
       "inherits": "Customizer#deviceAddress",
       "inherited": true,
       "overrides": "Customizer#deviceAddress",
-      "___id": "T000002R505396",
+      "___id": "T000002R505437",
       "___s": true
     },
     {
@@ -14060,7 +14615,7 @@
       "inherits": "Customizer#optimizer",
       "inherited": true,
       "overrides": "Customizer#optimizer",
-      "___id": "T000002R505397",
+      "___id": "T000002R505438",
       "___s": true
     },
     {
@@ -14125,7 +14680,7 @@
       ],
       "inherits": "Customizer#loadConfiguration",
       "inherited": true,
-      "___id": "T000002R505398",
+      "___id": "T000002R505439",
       "___s": true
     },
     {
@@ -14200,7 +14755,7 @@
       ],
       "inherits": "Customizer#saveConfiguration",
       "inherited": true,
-      "___id": "T000002R505399",
+      "___id": "T000002R505440",
       "___s": true
     },
     {
@@ -14258,7 +14813,7 @@
       ],
       "inherits": "Customizer#_completeConfiguration",
       "inherited": true,
-      "___id": "T000002R505400",
+      "___id": "T000002R505441",
       "___s": true
     },
     {
@@ -14313,7 +14868,7 @@
       ],
       "inherits": "Customizer#_optimizeLoadConfiguration",
       "inherited": true,
-      "___id": "T000002R505401",
+      "___id": "T000002R505442",
       "___s": true
     },
     {
@@ -14378,7 +14933,7 @@
       ],
       "inherits": "Customizer#_optimizeSaveConfiguration",
       "inherited": true,
-      "___id": "T000002R505402",
+      "___id": "T000002R505443",
       "___s": true
     },
     {
@@ -14424,7 +14979,7 @@
       "inherits": "Connection#connect",
       "inherited": true,
       "overrides": "Connection#connect",
-      "___id": "T000002R505403",
+      "___id": "T000002R505444",
       "___s": true
     },
     {
@@ -14458,7 +15013,7 @@
       "inherits": "Connection#disconnect",
       "inherited": true,
       "overrides": "Connection#disconnect",
-      "___id": "T000002R505404",
+      "___id": "T000002R505445",
       "___s": true
     },
     {
@@ -14504,7 +15059,7 @@
       ],
       "inherits": "Connection#send",
       "inherited": true,
-      "___id": "T000002R505405",
+      "___id": "T000002R505446",
       "___s": true
     },
     {
@@ -14627,7 +15182,7 @@
       ],
       "inherits": "Connection#transceive",
       "inherited": true,
-      "___id": "T000002R505406",
+      "___id": "T000002R505447",
       "___s": true
     },
     {
@@ -14683,7 +15238,7 @@
       ],
       "inherits": "Connection#waitForFreeBus",
       "inherited": true,
-      "___id": "T000002R505407",
+      "___id": "T000002R505448",
       "___s": true
     },
     {
@@ -14757,7 +15312,7 @@
       ],
       "inherits": "Connection#releaseBus",
       "inherited": true,
-      "___id": "T000002R505408",
+      "___id": "T000002R505449",
       "___s": true
     },
     {
@@ -14861,7 +15416,7 @@
       ],
       "inherits": "Connection#getValueById",
       "inherited": true,
-      "___id": "T000002R505409",
+      "___id": "T000002R505450",
       "___s": true
     },
     {
@@ -14975,7 +15530,7 @@
       ],
       "inherits": "Connection#setValueById",
       "inherited": true,
-      "___id": "T000002R505410",
+      "___id": "T000002R505451",
       "___s": true
     },
     {
@@ -15079,7 +15634,7 @@
       ],
       "inherits": "Connection#getValueIdHashById",
       "inherited": true,
-      "___id": "T000002R505411",
+      "___id": "T000002R505452",
       "___s": true
     },
     {
@@ -15183,7 +15738,7 @@
       ],
       "inherits": "Connection#getValueIdByIdHash",
       "inherited": true,
-      "___id": "T000002R505412",
+      "___id": "T000002R505453",
       "___s": true
     },
     {
@@ -15277,7 +15832,7 @@
       ],
       "inherits": "Connection#getCaps1",
       "inherited": true,
-      "___id": "T000002R505413",
+      "___id": "T000002R505454",
       "___s": true
     },
     {
@@ -15381,7 +15936,7 @@
       ],
       "inherits": "Connection#beginBulkValueTransaction",
       "inherited": true,
-      "___id": "T000002R505414",
+      "___id": "T000002R505455",
       "___s": true
     },
     {
@@ -15475,7 +16030,7 @@
       ],
       "inherits": "Connection#commitBulkValueTransaction",
       "inherited": true,
-      "___id": "T000002R505415",
+      "___id": "T000002R505456",
       "___s": true
     },
     {
@@ -15569,7 +16124,7 @@
       ],
       "inherits": "Connection#rollbackBulkValueTransaction",
       "inherited": true,
-      "___id": "T000002R505416",
+      "___id": "T000002R505457",
       "___s": true
     },
     {
@@ -15683,7 +16238,7 @@
       ],
       "inherits": "Connection#setBulkValueById",
       "inherited": true,
-      "___id": "T000002R505417",
+      "___id": "T000002R505458",
       "___s": true
     },
     {
@@ -15724,7 +16279,7 @@
       "scope": "instance",
       "inherits": "Connection#createConnectedPromise",
       "inherited": true,
-      "___id": "T000002R505418",
+      "___id": "T000002R505459",
       "___s": true
     },
     {
@@ -15758,7 +16313,7 @@
       "scope": "instance",
       "inherits": "Connection#dataSource",
       "inherited": true,
-      "___id": "T000002R505419",
+      "___id": "T000002R505460",
       "___s": true
     },
     {
@@ -15792,7 +16347,7 @@
       "scope": "instance",
       "inherits": "Connection#channel",
       "inherited": true,
-      "___id": "T000002R505420",
+      "___id": "T000002R505461",
       "___s": true
     },
     {
@@ -15826,7 +16381,7 @@
       "scope": "instance",
       "inherits": "Connection#selfAddress",
       "inherited": true,
-      "___id": "T000002R505421",
+      "___id": "T000002R505462",
       "___s": true
     },
     {
@@ -15860,7 +16415,7 @@
       "scope": "instance",
       "inherits": "Connection#connectionState",
       "inherited": true,
-      "___id": "T000002R505422",
+      "___id": "T000002R505463",
       "___s": true
     },
     {
@@ -15894,7 +16449,7 @@
       "scope": "instance",
       "inherits": "Connection#rxBuffer",
       "inherited": true,
-      "___id": "T000002R505423",
+      "___id": "T000002R505464",
       "___s": true
     },
     {
@@ -15940,7 +16495,7 @@
       "inherits": "Connection#connect",
       "inherited": true,
       "overrides": "Connection#connect",
-      "___id": "T000002R505424",
+      "___id": "T000002R505465",
       "___s": true
     },
     {
@@ -15974,7 +16529,7 @@
       "inherits": "Connection#disconnect",
       "inherited": true,
       "overrides": "Connection#disconnect",
-      "___id": "T000002R505425",
+      "___id": "T000002R505466",
       "___s": true
     },
     {
@@ -16020,7 +16575,7 @@
       ],
       "inherits": "Connection#send",
       "inherited": true,
-      "___id": "T000002R505426",
+      "___id": "T000002R505467",
       "___s": true
     },
     {
@@ -16143,7 +16698,7 @@
       ],
       "inherits": "Connection#transceive",
       "inherited": true,
-      "___id": "T000002R505427",
+      "___id": "T000002R505468",
       "___s": true
     },
     {
@@ -16199,7 +16754,7 @@
       ],
       "inherits": "Connection#waitForFreeBus",
       "inherited": true,
-      "___id": "T000002R505428",
+      "___id": "T000002R505469",
       "___s": true
     },
     {
@@ -16273,7 +16828,7 @@
       ],
       "inherits": "Connection#releaseBus",
       "inherited": true,
-      "___id": "T000002R505429",
+      "___id": "T000002R505470",
       "___s": true
     },
     {
@@ -16377,7 +16932,7 @@
       ],
       "inherits": "Connection#getValueById",
       "inherited": true,
-      "___id": "T000002R505430",
+      "___id": "T000002R505471",
       "___s": true
     },
     {
@@ -16491,7 +17046,7 @@
       ],
       "inherits": "Connection#setValueById",
       "inherited": true,
-      "___id": "T000002R505431",
+      "___id": "T000002R505472",
       "___s": true
     },
     {
@@ -16595,7 +17150,7 @@
       ],
       "inherits": "Connection#getValueIdHashById",
       "inherited": true,
-      "___id": "T000002R505432",
+      "___id": "T000002R505473",
       "___s": true
     },
     {
@@ -16699,7 +17254,7 @@
       ],
       "inherits": "Connection#getValueIdByIdHash",
       "inherited": true,
-      "___id": "T000002R505433",
+      "___id": "T000002R505474",
       "___s": true
     },
     {
@@ -16793,7 +17348,7 @@
       ],
       "inherits": "Connection#getCaps1",
       "inherited": true,
-      "___id": "T000002R505434",
+      "___id": "T000002R505475",
       "___s": true
     },
     {
@@ -16897,7 +17452,7 @@
       ],
       "inherits": "Connection#beginBulkValueTransaction",
       "inherited": true,
-      "___id": "T000002R505435",
+      "___id": "T000002R505476",
       "___s": true
     },
     {
@@ -16991,7 +17546,7 @@
       ],
       "inherits": "Connection#commitBulkValueTransaction",
       "inherited": true,
-      "___id": "T000002R505436",
+      "___id": "T000002R505477",
       "___s": true
     },
     {
@@ -17085,7 +17640,7 @@
       ],
       "inherits": "Connection#rollbackBulkValueTransaction",
       "inherited": true,
-      "___id": "T000002R505437",
+      "___id": "T000002R505478",
       "___s": true
     },
     {
@@ -17199,7 +17754,7 @@
       ],
       "inherits": "Connection#setBulkValueById",
       "inherited": true,
-      "___id": "T000002R505438",
+      "___id": "T000002R505479",
       "___s": true
     },
     {
@@ -17240,7 +17795,7 @@
       "scope": "instance",
       "inherits": "Connection#createConnectedPromise",
       "inherited": true,
-      "___id": "T000002R505439",
+      "___id": "T000002R505480",
       "___s": true
     },
     {
@@ -17274,7 +17829,7 @@
       "scope": "instance",
       "inherits": "Connection#dataSource",
       "inherited": true,
-      "___id": "T000002R505440",
+      "___id": "T000002R505481",
       "___s": true
     },
     {
@@ -17308,7 +17863,7 @@
       "scope": "instance",
       "inherits": "Connection#selfAddress",
       "inherited": true,
-      "___id": "T000002R505441",
+      "___id": "T000002R505482",
       "___s": true
     },
     {
@@ -17342,7 +17897,7 @@
       "scope": "instance",
       "inherits": "Connection#connectionState",
       "inherited": true,
-      "___id": "T000002R505442",
+      "___id": "T000002R505483",
       "___s": true
     },
     {
@@ -17376,7 +17931,7 @@
       "scope": "instance",
       "inherits": "Connection#rxBuffer",
       "inherited": true,
-      "___id": "T000002R505443",
+      "___id": "T000002R505484",
       "___s": true
     }
   ]

@@ -114,9 +114,25 @@ following command into your shell:
 ## Work in progress
 
 
-## WIP
+## Version 0.29.0 (2024-01-22)
 
+- [BREAKING CHANGE] Changed IPv6 device discovery support activation.
+    Previously the `options` object passed into `TcpDataSourceProvider#discoverDevices`
+    needed an `ipv6` boolean value set to `true`. That option was removed in favor of a
+    `family` string value which defaults to `"IPv4"` but can be set to `"IPv6"` to
+    perform a IPv6 device discovery. In that case the two other options `localAddress`
+    and `broadcastInterface` are required as well. See the documentation for more details.
+- Add verifiers for VBus-over-TCP commands to `TcpConnectionEndpoint`.
+- Add `connectionAttemptFailed` event to `TcpConnectionEndpoint`.
+
+
+## Version 0.28.0 (2024-01-06)
+
+- Add `extendFieldData` option to `DLxJsonConverter`.
+- Add `SpecificationFile#getPacketTemplate`.
 - Add password and channel checks to TCP endpoint. (#93)
+- Add `TcpConnection#disableReconnect`.
+- Correctly propagate errors during `TcpConnection` reconnect.
 
 
 ## Version 0.27.0 (2022-03-09)
@@ -320,6 +336,7 @@ First release to the NPM registry.
 * Andrew Thompson (@thompsa)
 * @t9zx
 * @SurfGargano
+* @epenet
 
 
 
