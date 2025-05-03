@@ -485,7 +485,7 @@ async function generateEmSimulatorRelayResponse(requestParams) {
 
 
 async function writeHeaderSet(filename) {
-    logger.debug('HeaderSet complete');
+    logger.debug('HeaderSet complete ' + filename);
 
     const data = await generateJsonDataV1();
 
@@ -662,12 +662,28 @@ async function main(options) {
 
     const connection = new ConnectionClass(config.connectionOptions);
 
-    connection.on('packet', (packet) => {
+    function onPacket(connection, packet) {
         headerSet.addHeader(packet);
         hsc.addHeader(packet);
         textHeaderSetConsolidator.addHeader(packet);
         processEmSimulatorPacket(connection, packet);
+    }
+
+    connection.on('packet', packet => {
+        onPacket(connection, packet);
     });
+
+    let connection2;
+    if (config.hasOwnProperty('connection2ClassName') && config.hasOwnProperty('connection2Options')) {
+        const Connection2Class = connectionClassByName [config.connection2ClassName];
+        connection2 = new Connection2Class(config.connection2Options);
+        const connection2Channel = config.connection2Channel ?? 0;
+        connection2.on('packet', packet => {
+            packet.channel = connection2Channel;
+            onPacket(connection2, packet);
+        });
+        logger.debug('set up second connection')
+    }
 
     hsc.on('headerSet', (headerSet) => {
         /* istanbul ignore else */
@@ -726,6 +742,7 @@ async function main(options) {
     }
 
     await connection.connect();
+    if (typeof connection2 != 'undefined') await connection2.connect();
 
     logger.info('Ready to serve from the following URLs:');
     for (const iface of Object.values(os.networkInterfaces())) {
@@ -745,6 +762,7 @@ async function main(options) {
                 hsc.stopTimer();
 
                 connection.disconnect();
+                if (typeof connection2 != 'undefined') connection2.disconnect();
 
                 server.close(() => {
                     resolve();
